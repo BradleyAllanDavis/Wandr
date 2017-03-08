@@ -17,6 +17,8 @@
 		FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243301E706432009AB3DB /* LaunchScreen.storyboard */; };
 		FAA2433D1E706432009AB3DB /* TravelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2433C1E706432009AB3DB /* TravelAppTests.swift */; };
 		FAA243481E706432009AB3DB /* TravelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243471E706432009AB3DB /* TravelAppUITests.swift */; };
+		FAA243561E7091ED009AB3DB /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243551E7091ED009AB3DB /* Cart.storyboard */; };
+		FAA243581E7093A9009AB3DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243571E7093A9009AB3DB /* CartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		FAA243431E706432009AB3DB /* TravelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA243471E706432009AB3DB /* TravelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAppUITests.swift; sourceTree = "<group>"; };
 		FAA243491E706432009AB3DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAA243551E7091ED009AB3DB /* Cart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		FAA243571E7093A9009AB3DB /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +136,12 @@
 				FAA2432E1E706432009AB3DB /* Assets.xcassets */,
 				FAA243301E706432009AB3DB /* LaunchScreen.storyboard */,
 				FAA243331E706432009AB3DB /* Info.plist */,
+
 				4073EC4A1E70931E009F1F27 /* APIConfig.plist */,
+
+				FAA243551E7091ED009AB3DB /* Cart.storyboard */,
+				FAA243571E7093A9009AB3DB /* CartViewController.swift */,
+
 			);
 			path = TravelApp;
 			sourceTree = "<group>";
@@ -265,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA243561E7091ED009AB3DB /* Cart.storyboard in Resources */,
 				FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */,
 				4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
@@ -341,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA243581E7093A9009AB3DB /* CartViewController.swift in Sources */,
 				FAA2432A1E706432009AB3DB /* SecondViewController.swift in Sources */,
 				FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */,
 				FAA243281E706432009AB3DB /* FirstViewController.swift in Sources */,
