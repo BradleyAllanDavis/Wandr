@@ -21,9 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 let data = try Data(contentsOf: configPath)
                 let dict = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! [String:Any]
-                let key = dict["PlacesAPIKey"] as! String
                 
-                GMSPlacesClient.provideAPIKey(key)
+                if let key = dict["PlacesAPIKey"] as? String {
+                    GMSPlacesClient.provideAPIKey(key)
+                } else {
+                    print("Config file present but no api key found")
+                }
             } catch {
                 print("Error loading api config plist")
             }
