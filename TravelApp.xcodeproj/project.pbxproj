@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		33DE9EC3E6134A76D9F921BF /* libPods-TravelApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30084B68BF0BC488E9A62DF9 /* libPods-TravelApp.a */; };
+		4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4073EC4A1E70931E009F1F27 /* APIConfig.plist */; };
 		FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243251E706432009AB3DB /* AppDelegate.swift */; };
 		FAA243281E706432009AB3DB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243271E706432009AB3DB /* FirstViewController.swift */; };
 		FAA2432A1E706432009AB3DB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243291E706432009AB3DB /* SecondViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		30084B68BF0BC488E9A62DF9 /* libPods-TravelApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4073EC4A1E70931E009F1F27 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		5689233F0C1E7E572F694497 /* Pods-TravelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.release.xcconfig"; sourceTree = "<group>"; };
 		D877152BD7B5F48564990CAE /* Pods-TravelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA243221E706432009AB3DB /* TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				FAA2432E1E706432009AB3DB /* Assets.xcassets */,
 				FAA243301E706432009AB3DB /* LaunchScreen.storyboard */,
 				FAA243331E706432009AB3DB /* Info.plist */,
+				4073EC4A1E70931E009F1F27 /* APIConfig.plist */,
 			);
 			path = TravelApp;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */,
+				4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
 				FAA2432D1E706432009AB3DB /* Main.storyboard in Resources */,
 			);
@@ -584,6 +588,7 @@
 				FAA2434E1E706432009AB3DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAA2434F1E706432009AB3DB /* Build configuration list for PBXNativeTarget "TravelAppTests" */ = {
 			isa = XCConfigurationList;
@@ -592,6 +597,7 @@
 				FAA243511E706432009AB3DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAA243521E706432009AB3DB /* Build configuration list for PBXNativeTarget "TravelAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -600,6 +606,7 @@
 				FAA243541E706432009AB3DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

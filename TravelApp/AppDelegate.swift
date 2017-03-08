@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let configPath = Bundle.main.url(forResource: "APIConfig", withExtension: "plist") {
+            do {
+                let data = try Data(contentsOf: configPath)
+                let dict = try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as! [String:Any]
+                let key = dict["PlacesAPIKey"] as! String
+                
+                GMSPlacesClient.provideAPIKey(key)
+            } catch {
+                print("Error loading api config plist")
+            }
+        }
+        
         return true
     }
 
