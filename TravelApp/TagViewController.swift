@@ -1,5 +1,5 @@
 //
-//  CartViewController.swift
+//  TagViewController.swift
 //  TravelApp
 //
 //  Created by Macbook on 3/8/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CartViewController: UIViewController {
+class TagViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
