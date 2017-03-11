@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		33DE9EC3E6134A76D9F921BF /* libPods-TravelApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30084B68BF0BC488E9A62DF9 /* libPods-TravelApp.a */; };
 		4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4073EC4A1E70931E009F1F27 /* APIConfig.plist */; };
+		5632A07F1E738ABE00E011B3 /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5632A07E1E738ABE00E011B3 /* APIConfig.plist */; };
 		FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243251E706432009AB3DB /* AppDelegate.swift */; };
 		FAA2432D1E706432009AB3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA2432B1E706432009AB3DB /* Main.storyboard */; };
 		FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA2432E1E706432009AB3DB /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		30084B68BF0BC488E9A62DF9 /* libPods-TravelApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4073EC4A1E70931E009F1F27 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
+		5632A07E1E738ABE00E011B3 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		5689233F0C1E7E572F694497 /* Pods-TravelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.release.xcconfig"; sourceTree = "<group>"; };
 		D877152BD7B5F48564990CAE /* Pods-TravelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA243221E706432009AB3DB /* TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,10 +141,8 @@
 				FAA243651E71BD93009AB3DB /* TagPreferences */,
 				FAA243641E71BD8A009AB3DB /* Cart */,
 				FAA243591E70B502009AB3DB /* APIConfig.plist */,
+				5632A07E1E738ABE00E011B3 /* APIConfig.plist */,
 				FAA243251E706432009AB3DB /* AppDelegate.swift */,
-				FAA243271E706432009AB3DB /* FirstViewController.swift */,
-				FAA243291E706432009AB3DB /* SecondViewController.swift */,
-				FAA2432B1E706432009AB3DB /* Main.storyboard */,
 				FAA2432E1E706432009AB3DB /* Assets.xcassets */,
 				FAA2432B1E706432009AB3DB /* Main.storyboard */,
 				FAA243301E706432009AB3DB /* LaunchScreen.storyboard */,
@@ -313,6 +313,7 @@
 				4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */,
 				FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
+				5632A07F1E738ABE00E011B3 /* APIConfig.plist in Resources */,
 				FAA2432D1E706432009AB3DB /* Main.storyboard in Resources */,
 				FAA2435A1E70B502009AB3DB /* APIConfig.plist in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
