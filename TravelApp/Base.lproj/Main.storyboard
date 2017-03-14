@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -35,7 +35,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kxs-g7-lYe" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7V5-Uk-Hs5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7V5-Uk-Hs5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -46,7 +46,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxd-D1-WtS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="-955"/>
+            <point key="canvasLocation" x="950" y="-956"/>
         </scene>
         <!--Second-->
         <scene sceneID="FeP-6e-cNh">
@@ -54,7 +54,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lwk-aL-MeI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bKY-aM-YBB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bKY-aM-YBB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -73,7 +73,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eab-ur-eSc" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Third" id="x8j-Cs-fG3"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1HR-2s-lov">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1HR-2s-lov">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
