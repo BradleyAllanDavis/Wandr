@@ -10,38 +10,36 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate
+{
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    @IBOutlet weak var mapView: MKMapView!
-    
-    let locationManager = CLLocationManager()
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Set up initial core location stuff
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager,
-                         didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-                if CLLocationManager.isRangingAvailable() {
-                    // do stuff
-                }
-            }
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.mapType = .standard
+            mapView.delegate = self
+            mapView.showsUserLocation = true
         }
     }
+    
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        LocationService.singleton.startUpdatingLocation()
+        //var currentLocation = LocationService.sharedInstance.currentLocation
+        
+    }
+    
+    // Dispose of any resources that can be recreated
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+    // LocationService delegate methods
+    func tracingLocation(currentLocation: CLLocation){}
+    func tracingLocationDidFailWithError(error: NSError) {}
 }
