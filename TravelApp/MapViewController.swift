@@ -40,6 +40,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     
     // LocationService delegate methods
-    func tracingLocation(currentLocation: CLLocation){}
+    func tracingLocation(currentLocation: CLLocation) {}
     func tracingLocationDidFailWithError(error: NSError) {}
 }
