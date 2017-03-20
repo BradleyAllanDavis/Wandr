@@ -7,19 +7,39 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate
+{
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    override func viewDidLoad() {
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            mapView.mapType = .standard
+            mapView.delegate = self
+            mapView.showsUserLocation = true
+        }
+    }
+    
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        LocationService.singleton.startUpdatingLocation()
+        //var currentLocation = LocationService.sharedInstance.currentLocation
+        
     }
     
-    override func didReceiveMemoryWarning() {
+    // Dispose of any resources that can be recreated
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
+    // LocationService delegate methods
+    func tracingLocation(currentLocation: CLLocation) {}
+    func tracingLocationDidFailWithError(error: NSError) {}
 }
-
