@@ -20,7 +20,6 @@
 		FAA2433D1E706432009AB3DB /* TravelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2433C1E706432009AB3DB /* TravelAppTests.swift */; };
 		FAA243481E706432009AB3DB /* TravelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243471E706432009AB3DB /* TravelAppUITests.swift */; };
 		FAA243581E7093A9009AB3DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243571E7093A9009AB3DB /* CartViewController.swift */; };
-		FAA2435A1E70B502009AB3DB /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA243591E70B502009AB3DB /* APIConfig.plist */; };
 		FAA2435E1E70BB1D009AB3DB /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2435D1E70BB1D009AB3DB /* TagViewController.swift */; };
 		FAA243611E71BD2C009AB3DB /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA2435F1E71BD2C009AB3DB /* Tag.storyboard */; };
 		FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243621E71BD45009AB3DB /* Cart.storyboard */; };
@@ -49,7 +48,6 @@
 		1CD5C2D01E7C588F00181BC7 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		30084B68BF0BC488E9A62DF9 /* libPods-TravelApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TravelApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4073EC4A1E70931E009F1F27 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
-		5632A07E1E738ABE00E011B3 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		5689233F0C1E7E572F694497 /* Pods-TravelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.release.xcconfig"; sourceTree = "<group>"; };
 		96AA8ADE1E771BA0001AB7D0 /* Preference.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preference.storyboard; sourceTree = "<group>"; };
 		96C0D02A1E77064300B316B8 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 		FAA243471E706432009AB3DB /* TravelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAppUITests.swift; sourceTree = "<group>"; };
 		FAA243491E706432009AB3DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA243571E7093A9009AB3DB /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		FAA243591E70B502009AB3DB /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		FAA2435D1E70BB1D009AB3DB /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		FAA243601E71BD2C009AB3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
 		FAA243621E71BD45009AB3DB /* Cart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
@@ -334,9 +331,7 @@
 				4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */,
 				FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
-				5632A07F1E738ABE00E011B3 /* APIConfig.plist in Resources */,
 				FAA2432D1E706432009AB3DB /* Main.storyboard in Resources */,
-				FAA2435A1E70B502009AB3DB /* APIConfig.plist in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
 			);

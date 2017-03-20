@@ -13,6 +13,7 @@ class TagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -20,5 +21,8 @@ class TagViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // txt file is saved to our app's documents directory
+    let file = "tagPreferences.txt"
+    let text = "food:80%\nmuseums:40%\ntheaters:20%"
     
 }
