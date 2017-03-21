@@ -9,17 +9,20 @@ PODS:
     - GooglePlaces (= 2.2.0)
   - GooglePlaces (2.2.0):
     - GoogleMaps/Base (= 2.2.0)
+  - SIFloatingCollection (3.0.1)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
+  - SIFloatingCollection
 
 SPEC CHECKSUMS:
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlacePicker: 345b1aabd42c9d6d9bf2369c1bae1234d903e764
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
+  SIFloatingCollection: 096160b220e3a1b1cbcf349108ee24d3aa6b86de
 
-PODFILE CHECKSUM: 5b890fa2398fd9190acb2b31ff934632df455a72
+PODFILE CHECKSUM: f1ec6d46229f2a1849a1bbfa7b0f437b3799b84b
 
 COCOAPODS: 1.2.0

@@ -7,22 +7,49 @@
 //
 
 import UIKit
+import SpriteKit
 
 class TagViewController: UIViewController {
+    fileprivate var skView: SKView!
+    fileprivate var floatingCollectionScene: BubblesScene!
+    let types = ["Parks", "Night Clubs", "Movie Theaters", "Casinos", "Bars", "Art Galleries", "Aquariums", "Museums", "Food"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
+        skView = SKView(frame: UIScreen.main.bounds)
+        skView.backgroundColor = SKColor.white
+        view.addSubview(skView)
+        
+        floatingCollectionScene = BubblesScene(size: skView.bounds.size)
+        let navBarHeight = navigationController!.navigationBar.frame.height
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        floatingCollectionScene.topOffset = navBarHeight + statusBarHeight
+        skView.presentScene(floatingCollectionScene)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(commitSelection)
+        )
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addBubble)
+        )
+        
+        for index in 0..<types.count {
+            addBubble(index: index)
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func addBubble(index: Int) {
+        let newNode = BubbleNode.instantiate()
+        newNode.changeText(node: newNode, newText: types[index])
+        floatingCollectionScene.addChild(newNode)
     }
     
-    // txt file is saved to our app's documents directory
-    let file = "tagPreferences.txt"
-    let text = "food:80%\nmuseums:40%\ntheaters:20%"
-    
+    func commitSelection() {
+        floatingCollectionScene.performCommitSelectionAnimation()
+    }
 }
