@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>park</key>
+	<dict>
+		<key>Name</key>
+		<string>Parks</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>night_club</key>
+	<dict>
+		<key>Name</key>
+		<string>Night Clubs</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>movie_theater</key>
+	<dict>
+		<key>Name</key>
+		<string>Movie Theaters</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>casino</key>
+	<dict>
+		<key>Name</key>
+		<string>Casinos</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>bar</key>
+	<dict>
+		<key>Name</key>
+		<string>Bars</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>art_gallery</key>
+	<dict>
+		<key>Name</key>
+		<string>Art Galleries</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>aquarium</key>
+	<dict>
+		<key>Name</key>
+		<string>Aquariums</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>museum</key>
+	<dict>
+		<key>Name</key>
+		<string>Museums</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+	<key>restaurant</key>
+	<dict>
+		<key>Name</key>
+		<string>Food</string>
+		<key>Preference</key>
+		<false/>
+	</dict>
+</dict>
+</plist>
