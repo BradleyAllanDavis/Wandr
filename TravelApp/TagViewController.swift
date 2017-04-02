@@ -26,6 +26,7 @@ class TagViewController: UIViewController {
         let navBarHeight = navigationController!.navigationBar.frame.height
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         floatingCollectionScene.topOffset = navBarHeight + statusBarHeight
+        
         skView.presentScene(floatingCollectionScene)
         
         // TODO: Change to a more user-friendly button?
