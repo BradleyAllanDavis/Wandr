@@ -12,7 +12,7 @@
         <!--Map View Controller-->
         <scene sceneID="eSJ-5j-MxR">
             <objects>
-                <viewController id="45h-zq-vlf" customClass="MapViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" id="45h-zq-vlf" customClass="MapViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I2U-8O-BLA"/>
                         <viewControllerLayoutGuide type="bottom" id="u0z-Qe-UAi"/>
