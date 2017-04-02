@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="380" y="-595"/>
         </scene>
-        <!--Local Search View Controller-->
+        <!--City Search View Controller-->
         <scene sceneID="WNR-sI-KZS">
             <objects>
-                <viewController id="50h-4m-BAj" customClass="LocalSearchViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="50h-4m-BAj" customClass="CitySearchViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bZW-HZ-hVb"/>
                         <viewControllerLayoutGuide type="bottom" id="p4o-5c-uWW"/>
@@ -83,76 +83,6 @@
             </objects>
             <point key="canvasLocation" x="380" y="59"/>
         </scene>
-        <!--Text Field View Controller-->
-        <scene sceneID="oTW-dD-jBT">
-            <objects>
-                <viewController id="ARE-Jf-JiX" customClass="TextFieldViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KX0-Db-tSO"/>
-                        <viewControllerLayoutGuide type="bottom" id="JAa-gh-IkE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ool-hV-7Dn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gF5-hh-Gzo">
-                                <rect key="frame" x="30" y="61" width="314" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUT-3i-gun">
-                                <rect key="frame" x="106" y="122" width="163" height="30"/>
-                                <state key="normal" title="Google Web API Search"/>
-                                <connections>
-                                    <action selector="googleSearch:" destination="ARE-Jf-JiX" eventType="touchUpInside" id="aNd-bL-Vdl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjU-Ui-rg0">
-                                <rect key="frame" x="134" y="195" width="107" height="30"/>
-                                <state key="normal" title="MKLocalSearch"/>
-                                <connections>
-                                    <action selector="mkLocalSearch:" destination="ARE-Jf-JiX" eventType="touchUpInside" id="zdu-cB-FRu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bc2-g6-jr1">
-                                <rect key="frame" x="99" y="263" width="176" height="30"/>
-                                <state key="normal" title="Google Autocomplete API"/>
-                                <connections>
-                                    <action selector="googleAutocompleteSearch:" destination="ARE-Jf-JiX" eventType="touchUpInside" id="lrL-5L-vyH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-cP-OXm">
-                                <rect key="frame" x="160" y="578" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismissView:" destination="ARE-Jf-JiX" eventType="touchUpInside" id="exq-06-tsb"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fUT-3i-gun" firstAttribute="top" secondItem="KX0-Db-tSO" secondAttribute="bottom" constant="102" id="0ma-p4-VCU"/>
-                            <constraint firstItem="vQ3-cP-OXm" firstAttribute="centerX" secondItem="ool-hV-7Dn" secondAttribute="centerX" id="1Bc-DF-ivD"/>
-                            <constraint firstItem="gF5-hh-Gzo" firstAttribute="top" secondItem="KX0-Db-tSO" secondAttribute="bottom" constant="41" id="5CG-NB-beT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gF5-hh-Gzo" secondAttribute="trailing" constant="15" id="5ma-vX-FaM"/>
-                            <constraint firstItem="Bc2-g6-jr1" firstAttribute="centerX" secondItem="OjU-Ui-rg0" secondAttribute="centerX" id="7hC-KY-8yU"/>
-                            <constraint firstItem="OjU-Ui-rg0" firstAttribute="top" secondItem="fUT-3i-gun" secondAttribute="bottom" constant="43" id="91p-zl-LtE"/>
-                            <constraint firstItem="gF5-hh-Gzo" firstAttribute="leading" secondItem="ool-hV-7Dn" secondAttribute="leadingMargin" constant="14" id="UpW-OJ-jBP"/>
-                            <constraint firstItem="JAa-gh-IkE" firstAttribute="top" secondItem="vQ3-cP-OXm" secondAttribute="bottom" constant="59" id="c89-dK-8tB"/>
-                            <constraint firstItem="fUT-3i-gun" firstAttribute="centerX" secondItem="OjU-Ui-rg0" secondAttribute="centerX" id="icz-pN-dWj"/>
-                            <constraint firstItem="fUT-3i-gun" firstAttribute="centerX" secondItem="gF5-hh-Gzo" secondAttribute="centerX" id="o4f-Di-e0I"/>
-                            <constraint firstItem="Bc2-g6-jr1" firstAttribute="top" secondItem="OjU-Ui-rg0" secondAttribute="bottom" constant="38" id="rAk-Iz-uwd"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="searchField" destination="gF5-hh-Gzo" id="hDF-rx-ufL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wdu-HR-eYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="380" y="797"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="BaL-1y-9wh">
             <objects>
@@ -179,22 +109,12 @@
                                     <segue destination="50h-4m-BAj" kind="presentation" id="bTG-lo-hex"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nuT-8N-RXJ">
-                                <rect key="frame" x="35" y="237" width="305" height="30"/>
-                                <state key="normal" title="Normal Textfield"/>
-                                <connections>
-                                    <segue destination="ARE-Jf-JiX" kind="presentation" id="z2Z-gs-hPP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OyW-bI-8Mc" firstAttribute="leading" secondItem="FzM-g7-cxO" secondAttribute="leadingMargin" constant="26" id="1Hq-Uw-7XF"/>
-                            <constraint firstItem="nuT-8N-RXJ" firstAttribute="top" secondItem="OyW-bI-8Mc" secondAttribute="bottom" constant="49" id="2EP-pc-tRX"/>
                             <constraint firstItem="YcP-Y1-i2I" firstAttribute="leading" secondItem="FzM-g7-cxO" secondAttribute="leadingMargin" constant="29" id="7dx-7S-7dd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nuT-8N-RXJ" secondAttribute="trailing" constant="19" id="H7e-6k-alO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OyW-bI-8Mc" secondAttribute="trailing" constant="23" id="Oe6-wF-t1c"/>
-                            <constraint firstItem="nuT-8N-RXJ" firstAttribute="leading" secondItem="FzM-g7-cxO" secondAttribute="leadingMargin" constant="19" id="Qak-JP-7zI"/>
                             <constraint firstItem="OyW-bI-8Mc" firstAttribute="top" secondItem="YcP-Y1-i2I" secondAttribute="bottom" constant="47" id="bAE-ya-koH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YcP-Y1-i2I" secondAttribute="trailing" constant="28" id="f18-OL-cLi"/>
                             <constraint firstItem="YcP-Y1-i2I" firstAttribute="top" secondItem="wlG-wU-m1y" secondAttribute="bottom" constant="61" id="lZ8-lx-A2s"/>

@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import MapKit
+import GooglePlaces
 
 class SearchResultsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
-    var completionItem: MKLocalSearchCompletion?
+    @IBOutlet weak var addressLabel: UILabel!
+    var completionItem: GMSAutocompletePrediction?
     
     override func awakeFromNib() {
         super.awakeFromNib()

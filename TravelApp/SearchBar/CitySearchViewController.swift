@@ -7,23 +7,22 @@
 //
 
 import UIKit
-import MapKit
+import GooglePlaces
 
-class LocalSearchViewController: UIViewController, UISearchControllerDelegate, UISearchBarDelegate {
-    var autoCompleter = MKLocalSearchCompleter()
-    var searchResults = [MKLocalSearchCompletion]()
-    var resultViewController = SearchResultsViewController()
+class CitySearchViewController: UIViewController {
+    var searchResults = [GMSPlace]()
+    var selection: NSString?
+    var resultViewController = CitySearchResultsViewController()
     var searchController: UISearchController?
-    var selection: MKLocalSearchCompletion?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let subView = UIView(frame: CGRect(x: 0, y: 40.0, width: view.frame.size.width, height: 45.0))
         
-        autoCompleter.delegate = self
+        resultViewController.delegate = self
         
         searchController = UISearchController(searchResultsController: resultViewController)
-        searchController?.searchResultsUpdater = self
+        searchController?.searchResultsUpdater = resultViewController
         searchController?.dimsBackgroundDuringPresentation = true
         searchController?.searchBar.autoresizingMask = .flexibleWidth
         
@@ -42,24 +41,10 @@ class LocalSearchViewController: UIViewController, UISearchControllerDelegate, U
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
 }
 
-extension LocalSearchViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        autoCompleter.queryFragment = searchController.searchBar.text!
+extension CitySearchViewController: CitySearchResultsDelegate {
+    func didSelectLocation(resultsController: CitySearchResultsViewController, selectedCity: GMSPlace) {
+        print("Selected City \(selectedCity)")
     }
 }
-
-extension LocalSearchViewController: MKLocalSearchCompleterDelegate {
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        searchResults = completer.results
-        resultViewController.searchResults = completer.results
-        resultViewController.tableView.reloadData()
-    }
-    
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        print("Error getting search results")
-    }
-}
-
