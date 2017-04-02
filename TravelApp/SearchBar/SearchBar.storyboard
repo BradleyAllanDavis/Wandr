@@ -10,48 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Places Search View Controller-->
-        <scene sceneID="thE-8U-2eB">
-            <objects>
-                <viewController id="a7z-Nr-yrN" customClass="PlacesSearchViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="H7f-3j-c4X"/>
-                        <viewControllerLayoutGuide type="bottom" id="Pif-ZV-7NB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gTR-03-gzz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcv-Do-iWo">
-                                <rect key="frame" x="160" y="551" width="54" height="30"/>
-                                <state key="normal" title="Dismiss"/>
-                                <connections>
-                                    <action selector="dismissView:" destination="a7z-Nr-yrN" eventType="touchUpInside" id="cxc-Tm-tDg"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gcv-Do-iWo" firstAttribute="centerX" secondItem="gTR-03-gzz" secondAttribute="centerX" id="TtF-ef-bEO"/>
-                            <constraint firstItem="gcv-Do-iWo" firstAttribute="centerY" secondItem="gTR-03-gzz" secondAttribute="centerY" constant="232.5" id="pE4-04-Thu"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="JC7-sC-pY6" id="kye-AJ-1kB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="grX-Gn-kal" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="JC7-sC-pY6">
-                    <connections>
-                        <outlet property="delegate" destination="a7z-Nr-yrN" id="3xv-QR-i9Q"/>
-                        <outlet property="searchContentsController" destination="a7z-Nr-yrN" id="rTq-sR-LCW"/>
-                        <outlet property="searchResultsDataSource" destination="a7z-Nr-yrN" id="KnJ-lB-TZh"/>
-                        <outlet property="searchResultsDelegate" destination="a7z-Nr-yrN" id="eMU-oW-we9"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="380" y="-595"/>
-        </scene>
         <!--City Search View Controller-->
         <scene sceneID="WNR-sI-KZS">
             <objects>
@@ -81,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ke4-gy-ilR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="380" y="59"/>
+            <point key="canvasLocation" x="9" y="-15"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="BaL-1y-9wh">
@@ -95,16 +53,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcP-Y1-i2I">
-                                <rect key="frame" x="45" y="81" width="286" height="30"/>
-                                <state key="normal" title="Google Places Autocomplete"/>
-                                <connections>
-                                    <segue destination="a7z-Nr-yrN" kind="presentation" id="s8R-gt-1eX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyW-bI-8Mc">
-                                <rect key="frame" x="42" y="158" width="294" height="30"/>
-                                <state key="normal" title="MKLocalSearch Autocomplete"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OyW-bI-8Mc">
+                                <rect key="frame" x="52" y="300" width="294" height="30"/>
+                                <state key="normal" title="Places Search"/>
                                 <connections>
                                     <segue destination="50h-4m-BAj" kind="presentation" id="bTG-lo-hex"/>
                                 </connections>
@@ -113,11 +64,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OyW-bI-8Mc" firstAttribute="leading" secondItem="FzM-g7-cxO" secondAttribute="leadingMargin" constant="26" id="1Hq-Uw-7XF"/>
-                            <constraint firstItem="YcP-Y1-i2I" firstAttribute="leading" secondItem="FzM-g7-cxO" secondAttribute="leadingMargin" constant="29" id="7dx-7S-7dd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OyW-bI-8Mc" secondAttribute="trailing" constant="23" id="Oe6-wF-t1c"/>
-                            <constraint firstItem="OyW-bI-8Mc" firstAttribute="top" secondItem="YcP-Y1-i2I" secondAttribute="bottom" constant="47" id="bAE-ya-koH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YcP-Y1-i2I" secondAttribute="trailing" constant="28" id="f18-OL-cLi"/>
-                            <constraint firstItem="YcP-Y1-i2I" firstAttribute="top" secondItem="wlG-wU-m1y" secondAttribute="bottom" constant="61" id="lZ8-lx-A2s"/>
+                            <constraint firstItem="OyW-bI-8Mc" firstAttribute="top" secondItem="wlG-wU-m1y" secondAttribute="bottom" constant="280" id="cR2-rM-lK9"/>
                         </constraints>
                     </view>
                 </viewController>
