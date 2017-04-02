@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:powered_by_google_on_white.png">
+   </FileRef>
+   <FileRef
       location = "group:TravelApp.xcodeproj">
    </FileRef>
    <FileRef
