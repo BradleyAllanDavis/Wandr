@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error loading api config plist")
             }
         }
-        
         return true
     }
 
