@@ -17,7 +17,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     var resultViewController = CitySearchResultsViewController()
     var searchController: UISearchController?
-    var selection: NSString?
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
@@ -35,7 +34,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         LocationService.singleton.startUpdatingLocation()
         var currentLocation = LocationService.singleton.currentLocation
         
-        let subView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 45.0))
+        let subView = UIView(frame: CGRect(x: 0, y: 22.0, width: UIScreen.main.bounds.size.width, height: 45.0))
         
         resultViewController.delegate = self
         
@@ -47,7 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         subView.addSubview(searchController!.searchBar)
         subView.autoresizingMask = .flexibleWidth
         
-        mapView.addSubview(subView)
+        view.addSubview(subView)
         definesPresentationContext = true
     }
     

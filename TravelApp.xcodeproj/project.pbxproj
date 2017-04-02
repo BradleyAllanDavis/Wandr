@@ -344,7 +344,6 @@
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
 				FAA2432D1E706432009AB3DB /* Main.storyboard in Resources */,
 				404E60931E771E4F00F75F7C /* SearchResultsTableViewCell.xib in Resources */,
-				FAA2435A1E70B502009AB3DB /* APIConfig.plist in Resources */,
 				406934E81E746A9D0045B387 /* SearchBar.storyboard in Resources */,
 				4060C1E31E90C03B009477BE /* powered_by_google_on_white@2x.png in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,

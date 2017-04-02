@@ -13,13 +13,15 @@ protocol CitySearchResultsDelegate: class {
     func didSelectLocation(resultsController: CitySearchResultsViewController, selectedCity: GMSPlace)
 }
 
-class CitySearchResultsViewController: UITableViewController {
+class CitySearchResultsViewController: UITableViewController, UISearchControllerDelegate {
     weak var delegate: CitySearchResultsDelegate?
     var searchResults = [GMSAutocompletePrediction]()
-    let placesClient = GMSPlacesClient()
+    var placesClient: GMSPlacesClient?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        placesClient = GMSPlacesClient.shared()
         
         setupFooterView()
     }
@@ -59,7 +61,7 @@ class CitySearchResultsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        placesClient.lookUpPlaceID(searchResults[indexPath.row].placeID!, callback: {(result, error) -> Void in
+        placesClient?.lookUpPlaceID(searchResults[indexPath.row].placeID!, callback: {(result, error) -> Void in
             if let error = error {
                 print("Error getting place \(error)")
             }
@@ -68,11 +70,6 @@ class CitySearchResultsViewController: UITableViewController {
                 self.delegate?.didSelectLocation(resultsController: self, selectedCity: result)
             }
         })
-        
-        let parentViewController = presentingViewController as! CitySearchViewController
-        parentViewController.selection = searchResults[indexPath.row].placeID as NSString?
-        
-        dismiss(animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,7 +89,7 @@ extension CitySearchResultsViewController: UISearchResultsUpdating {
         if let searchString = searchController.searchBar.text {
             guard searchString.characters.count > 0 else { return }
             
-            placesClient.autocompleteQuery(
+            placesClient?.autocompleteQuery(
                 searchString,
                 bounds: nil,
                 filter: filter,
