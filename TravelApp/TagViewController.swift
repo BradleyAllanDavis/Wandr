@@ -13,6 +13,8 @@ class TagViewController: UIViewController {
     fileprivate var skView: SKView!
     fileprivate var floatingCollectionScene: BubblesScene!
     let types = ["Parks", "Night Clubs", "Movie Theaters", "Casinos", "Bars", "Art Galleries", "Aquariums", "Museums", "Food"]
+    var tagPreferences = ["restaurant": false, "museum": false, "aquarium": false, "art_gallery": false, "bar": false, "casino": false, "movie_theater": false, "night_club": false, "park": false]
+    var bubbles: [BubbleNode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +28,11 @@ class TagViewController: UIViewController {
         floatingCollectionScene.topOffset = navBarHeight + statusBarHeight
         skView.presentScene(floatingCollectionScene)
         
+        // TODO: Change to a more user-friendly button?
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
             action: #selector(commitSelection)
-        )
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addBubble)
         )
         
         for index in 0..<types.count {
@@ -46,10 +43,20 @@ class TagViewController: UIViewController {
     func addBubble(index: Int) {
         let newNode = BubbleNode.instantiate()
         newNode.changeText(node: newNode, newText: types[index])
+        bubbles.append(newNode)
         floatingCollectionScene.addChild(newNode)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMap" {
+            if let nextVC = segue.destination as? MapViewController {
+                nextVC.tagPreferences = tagPreferences
+            }
+        }
+    }
+    
     func commitSelection() {
-        floatingCollectionScene.performCommitSelectionAnimation()
+        tagPreferences = floatingCollectionScene.performCommitSelectionAnimation()
+        performSegue(withIdentifier: "toMap", sender: nil)
     }
 }

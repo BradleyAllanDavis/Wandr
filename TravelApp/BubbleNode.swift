@@ -38,6 +38,10 @@ class BubbleNode: SIFloatingNode {
         node.addChild(node.labelNode)
     }
     
+    public func getText(node: BubbleNode) -> String {
+        return node.labelNode.text!
+    }
+    
     public func changeText(node: BubbleNode, newText: String){
         node.labelNode.text = newText;
     }

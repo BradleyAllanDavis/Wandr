@@ -3,67 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>park</key>
-	<dict>
-		<key>Name</key>
-		<string>Parks</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>night_club</key>
-	<dict>
-		<key>Name</key>
-		<string>Night Clubs</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>movie_theater</key>
-	<dict>
-		<key>Name</key>
-		<string>Movie Theaters</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>casino</key>
-	<dict>
-		<key>Name</key>
-		<string>Casinos</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>bar</key>
-	<dict>
-		<key>Name</key>
-		<string>Bars</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>art_gallery</key>
-	<dict>
-		<key>Name</key>
-		<string>Art Galleries</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>aquarium</key>
-	<dict>
-		<key>Name</key>
-		<string>Aquariums</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>museum</key>
-	<dict>
-		<key>Name</key>
-		<string>Museums</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 	<key>restaurant</key>
-	<dict>
-		<key>Name</key>
-		<string>Food</string>
-		<key>Preference</key>
-		<false/>
-	</dict>
+	<false/>
 </dict>
 </plist>

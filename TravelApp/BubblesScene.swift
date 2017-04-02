@@ -21,6 +21,11 @@ extension CGFloat {
 }
 
 class BubblesScene: SIFloatingCollectionScene {
+    
+    var tagPreferences = ["restaurant": false, "museum": false, "aquarium": false, "art_gallery": false, "bar": false, "casino": false, "movie_theater": false, "night_club": false, "park": false]
+    
+    var tagNames = ["Food": "restaurant", "Museums": "museum", "Aquariums": "aquarium", "Art Galleries": "art_gallery", "Bars": "bar", "Casinos": "casino", "Movie Theaters": "movie_theater", "Night Clubs": "night_club", "Parks": "park"]
+    
     var bottomOffset: CGFloat = 200
     var topOffset: CGFloat = 0
     
@@ -62,20 +67,26 @@ class BubblesScene: SIFloatingCollectionScene {
         super.addChild(node)
     }
     
-    func performCommitSelectionAnimation() {
+    func performCommitSelectionAnimation() -> Dictionary<String, Bool> {
         let currentPhysicsSpeed = physicsWorld.speed
         physicsWorld.speed = 0
         let sortedNodes = sortedFloatingNodes()
         var actions: [SKAction] = []
-        
         for node in sortedNodes {
             node.physicsBody = nil
+            if node.state == .selected {
+                let bubble = node as? BubbleNode
+                tagPreferences[tagNames[(bubble?.getText(node: bubble!))!]!] = true
+            }
+            
             let action = actionForFloatingNode(node)
             actions.append(action)
         }
         run(SKAction.sequence(actions)) { [weak self] in
             self?.physicsWorld.speed = currentPhysicsSpeed
         }
+        
+        return tagPreferences
     }
     
     func sortedFloatingNodes() -> [SIFloatingNode] {
@@ -90,7 +101,6 @@ class BubblesScene: SIFloatingCollectionScene {
         let action = SKAction.run { [unowned self] () -> Void in
             if let index = self.floatingNodes.index(of: node) {
                 self.removeFloatingNode(at: index)
-                
                 if node.state == .selected {
                     let destinationPoint = CGPoint(x: self.size.width / 2, y: self.size.height + 40)
                     (node as? BubbleNode)?.throw(to: destinationPoint) {
@@ -100,5 +110,9 @@ class BubblesScene: SIFloatingCollectionScene {
             }
         }
         return action
+    }
+    
+    public func returnDict() -> Dictionary<String, Bool> {
+        return tagPreferences
     }
 }

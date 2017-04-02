@@ -13,6 +13,7 @@ import CoreLocation
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate
 {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var tagPreferences = [String: Bool]()
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
@@ -26,6 +27,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        dump(tagPreferences)
         
         LocationService.singleton.startUpdatingLocation()
         //var currentLocation = LocationService.sharedInstance.currentLocation
