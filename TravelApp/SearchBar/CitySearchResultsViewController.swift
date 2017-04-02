@@ -70,6 +70,8 @@ class CitySearchResultsViewController: UITableViewController, UISearchController
                 self.delegate?.didSelectLocation(resultsController: self, selectedCity: result)
             }
         })
+        
+        dismiss(animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
