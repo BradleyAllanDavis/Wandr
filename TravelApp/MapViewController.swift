@@ -15,8 +15,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
 {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var resultViewController = CitySearchResultsViewController()
+    var resultViewController = GMSAutocompleteResultsViewController()
     var searchController: UISearchController?
+    let apiSearch = PlacesAPISearch()
+    
+    //store places as array of dictionaries for now...
+    var currentPlaces = [Dictionary<String, AnyObject>]()
     
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
@@ -35,8 +39,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         var currentLocation = LocationService.singleton.currentLocation
         
         let subView = UIView(frame: CGRect(x: 0, y: 22.0, width: UIScreen.main.bounds.size.width, height: 45.0))
+        let filter = GMSAutocompleteFilter()
+        
+        filter.type = .city
+        
+        apiSearch.resultsUpdaterDelegate = self
         
         resultViewController.delegate = self
+        resultViewController.autocompleteFilter = filter
         
         searchController = UISearchController(searchResultsController: resultViewController)
         searchController?.searchResultsUpdater = resultViewController
@@ -62,8 +72,39 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     func tracingLocationDidFailWithError(error: NSError) {}
 }
 
-extension MapViewController: CitySearchResultsDelegate {
-    func didSelectLocation(resultsController: CitySearchResultsViewController, selectedCity: GMSPlace) {
-        print("Selected City \(selectedCity)")
+extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didAutocompleteWith place: GMSPlace) {
+        searchController?.isActive = false
+        
+        //starts the request for places nearby the selected location
+        apiSearch.requestPlacesByType(location: place.coordinate, searchRadius: 40233)
+    }
+    
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didFailAutocompleteWithError error: Error){
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
+
+extension MapViewController: PlacesAPISearchResultUpdater {
+    func didReceivePlacesFromAPI(places: [Dictionary<String, AnyObject>]) {
+        //do something with places
+        currentPlaces = places
+        print(places)
+    }
+    
+    func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String) {
+        print("Error getting places for type \(placeType)")
     }
 }
