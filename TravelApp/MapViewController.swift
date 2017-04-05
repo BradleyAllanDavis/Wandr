@@ -35,9 +35,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         super.viewDidLoad()
         
         LocationService.singleton.startUpdatingLocation()
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance((LocationService.singleton.currentLocation?.coordinate)!, 4000, 4000)
-        mapView.setRegion(coordinateRegion, animated: true)
-        
         
         let subView = UIView(frame: CGRect(x: 0, y: 22.0, width: UIScreen.main.bounds.size.width, height: 45.0))
         let filter = GMSAutocompleteFilter()
