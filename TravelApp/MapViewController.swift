@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 import GooglePlaces
-
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate
 {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -36,7 +35,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         super.viewDidLoad()
         
         LocationService.singleton.startUpdatingLocation()
-        var currentLocation = LocationService.singleton.currentLocation
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance((LocationService.singleton.currentLocation?.coordinate)!, 4000, 4000)
+        mapView.setRegion(coordinateRegion, animated: true)
+        
         
         let subView = UIView(frame: CGRect(x: 0, y: 22.0, width: UIScreen.main.bounds.size.width, height: 45.0))
         let filter = GMSAutocompleteFilter()
@@ -77,6 +78,10 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
                            didAutocompleteWith place: GMSPlace) {
         searchController?.isActive = false
         
+        // Update map to focus on searched location
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 4000, 4000)
+        mapView.setRegion(coordinateRegion, animated: true)
+        
         //starts the request for places nearby the selected location
         apiSearch.requestPlacesByType(location: place.coordinate, searchRadius: 40233)
     }
@@ -101,7 +106,7 @@ extension MapViewController: PlacesAPISearchResultUpdater {
     func didReceivePlacesFromAPI(places: [Dictionary<String, AnyObject>]) {
         //do something with places
         currentPlaces = places
-        print(places)
+        dump(places)
     }
     
     func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String) {
