@@ -12,7 +12,6 @@
 		4060C1E91E91AA5D009477BE /* PlacesAPISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */; };
 		4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4073EC4A1E70931E009F1F27 /* APIConfig.plist */; };
 		FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243251E706432009AB3DB /* AppDelegate.swift */; };
-		FAA2432D1E706432009AB3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA2432B1E706432009AB3DB /* Main.storyboard */; };
 		FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA2432E1E706432009AB3DB /* Assets.xcassets */; };
 		FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243301E706432009AB3DB /* LaunchScreen.storyboard */; };
 		FAA2433D1E706432009AB3DB /* TravelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2433C1E706432009AB3DB /* TravelAppTests.swift */; };
@@ -51,7 +50,6 @@
 		D877152BD7B5F48564990CAE /* Pods-TravelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA243221E706432009AB3DB /* TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA243251E706432009AB3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FAA2432C1E706432009AB3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAA2432E1E706432009AB3DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAA243311E706432009AB3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAA243331E706432009AB3DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 				4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */,
 				FAA243251E706432009AB3DB /* AppDelegate.swift */,
 				FAA2432E1E706432009AB3DB /* Assets.xcassets */,
-				FAA2432B1E706432009AB3DB /* Main.storyboard */,
 				FAA243301E706432009AB3DB /* LaunchScreen.storyboard */,
 				FAA243331E706432009AB3DB /* Info.plist */,
 				4073EC4A1E70931E009F1F27 /* APIConfig.plist */,
@@ -312,7 +309,6 @@
 				4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */,
 				FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
-				FAA2432D1E706432009AB3DB /* Main.storyboard in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,14 +423,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FAA2432B1E706432009AB3DB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FAA2432C1E706432009AB3DB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FAA243301E706432009AB3DB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
