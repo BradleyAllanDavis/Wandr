@@ -22,19 +22,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XDf-JM-xSK">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="647"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="leading" secondItem="zFn-AY-xKd" secondAttribute="leading" id="6mi-0B-nOv"/>
-                            <constraint firstItem="XDf-JM-xSK" firstAttribute="bottom" secondItem="u0z-Qe-UAi" secondAttribute="top" id="O2a-91-yhl"/>
+                            <constraint firstItem="XDf-JM-xSK" firstAttribute="bottom" secondItem="u0z-Qe-UAi" secondAttribute="top" constant="45" id="O2a-91-yhl"/>
                             <constraint firstAttribute="trailing" secondItem="XDf-JM-xSK" secondAttribute="trailing" id="R1R-J8-Uof"/>
-                            <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" id="is3-rA-xQI"/>
+                            <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="45" id="is3-rA-xQI"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="XDf-JM-xSK" id="ptD-aO-1PA"/>
                         <outlet property="searchDisplayController" destination="3dl-zm-BSk" id="bWq-jf-GLL"/>
