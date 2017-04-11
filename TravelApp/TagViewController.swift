@@ -58,6 +58,11 @@ class TagViewController: UIViewController {
     
     func commitSelection() {
         tagPreferences = floatingCollectionScene.performCommitSelectionAnimation()
-        performSegue(withIdentifier: "toMap", sender: nil)
+        
+        if (presentingViewController as? MapViewController) != nil {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "toMap", sender: nil)
+        }
     }
 }
