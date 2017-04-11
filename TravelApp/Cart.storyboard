@@ -12,7 +12,7 @@
         <!--Cart View Controller-->
         <scene sceneID="pYb-rf-3Fe">
             <objects>
-                <viewController id="ig1-XC-fuU" customClass="CartViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Cart" id="ig1-XC-fuU" customClass="CartViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ydI-9Q-ReE"/>
                         <viewControllerLayoutGuide type="bottom" id="c90-MP-dZq"/>
@@ -36,6 +36,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="ig1-XC-fuU" id="Wds-2g-HGk"/>
+                                    <outlet property="delegate" destination="ig1-XC-fuU" id="DJA-T7-lVB"/>
                                 </connections>
                             </tableView>
                         </subviews>
