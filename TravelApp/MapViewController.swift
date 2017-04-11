@@ -14,10 +14,23 @@ import GooglePlaces
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate
 {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var searchResultViewController = GMSAutocompleteResultsViewController()
     var tagPreferences = [String: Bool]()
-    var resultViewController = GMSAutocompleteResultsViewController()
-    var searchController: UISearchController?
+    
+    lazy var searchController: UISearchController = ({
+        [unowned self] in
+        let controller = TravelSearchController(searchResultsController: self.searchResultViewController)
+        
+        controller.delegate = self
+        controller.searchResultsUpdater = self.searchResultViewController
+        controller.dimsBackgroundDuringPresentation = false
+        controller.searchBar.placeholder = "Where To?"
+        
+        return controller
+    })()
+    
     let apiSearch = PlacesAPISearch()
+    var navBarView: TravelNavBarView!
     
     //store places as array of dictionaries for now...
     var currentPlaces = [Dictionary<String, AnyObject>]()
@@ -40,26 +53,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         LocationService.singleton.startUpdatingLocation()
         //var currentLocation = LocationService.sharedInstance.currentLocation
         
-        
-        let subView = UIView(frame: CGRect(x: 0, y: 22.0, width: UIScreen.main.bounds.size.width, height: 45.0))
         let filter = GMSAutocompleteFilter()
-        
         filter.type = .city
         
+        searchResultViewController.autocompleteFilter = filter
+        searchResultViewController.delegate = self
         apiSearch.resultsUpdaterDelegate = self
+        navBarView = TravelNavBarView(
+            frame: CGRect(x: 15, y: 25.0, width: UIScreen.main.bounds.size.width - 30, height: 45.0),
+            searchBar: searchController.searchBar,
+            navHandler: self,
+            preferenceSelector: #selector(transitionToPreferenceView),
+            cartSelector: #selector(transitionToCartView)
+        )
+        searchController.searchBar.delegate = navBarView
         
-        resultViewController.delegate = self
-        resultViewController.autocompleteFilter = filter
-        
-        searchController = UISearchController(searchResultsController: resultViewController)
-        searchController?.searchResultsUpdater = resultViewController
-        searchController?.dimsBackgroundDuringPresentation = true
-        searchController?.searchBar.autoresizingMask = .flexibleWidth
-        
-        subView.addSubview(searchController!.searchBar)
-        subView.autoresizingMask = .flexibleWidth
-        
-        view.addSubview(subView)
+        view.addSubview(navBarView)
         definesPresentationContext = true
     }
     
@@ -70,15 +79,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     
-    // LocationService delegate methods
+    //# MARK: - LocationService delegate methods
     func tracingLocation(currentLocation: CLLocation) {}
     func tracingLocationDidFailWithError(error: NSError) {}
+    
+    //# MARK: - Methods for navigation to tag and cart views
+    func transitionToPreferenceView() -> Void {
+        let storyboard = UIStoryboard(name: "Tag", bundle: .main)
+        let vc = storyboard.instantiateInitialViewController()
+        present(vc!, animated: true, completion: nil)
+    }
+    
+    func transitionToCartView() -> Void {
+        let storyboard = UIStoryboard(name: "Cart", bundle: .main)
+        let vc = storyboard.instantiateInitialViewController()
+        present(vc!, animated: true, completion: nil)
+    }
 }
+
+//# MARK: - UISearchResultsUpdating methods
 
 extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
-        searchController?.isActive = false
+        searchController.dismiss(animated: true, completion: {
+            self.navBarView.transitionToOrignialState()
+            self.navBarView.searchBar.searchTextField.text = place.formattedAddress
+        })
         
         // Update map to focus on searched location
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 4000, 4000)
@@ -104,6 +131,8 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
     }
 }
 
+//# MARK: - PlacesAPISearchUpdater methods
+
 extension MapViewController: PlacesAPISearchResultUpdater {
     func didReceivePlacesFromAPI(places: [Dictionary<String, AnyObject>]) {
         //do something with places
@@ -113,5 +142,24 @@ extension MapViewController: PlacesAPISearchResultUpdater {
     
     func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String) {
         print("Error getting places for type \(placeType)")
+    }
+}
+
+//# MARK: - UISearchControllerDelegate methodes
+extension MapViewController: UISearchControllerDelegate {
+    func didDismissSearchController(_ searchController: UISearchController) {
+        searchController.searchBar.frame = navBarView.originalSearchBarFrame
+    }
+}
+
+//# MARK: - MKMapView extension
+
+extension MKMapView {
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        
+        //reposition the compass so it's not under the search bar
+        let compassView = self.value(forKey: "compassView") as! UIView
+        compassView.frame = CGRect(x: compassView.frame.origin.x, y: 75, width: 36, height: 36)
     }
 }
