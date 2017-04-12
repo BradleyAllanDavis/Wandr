@@ -33,8 +33,9 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let row = indexPath.row
         print("Row: \(row)")
         
-        let destination = PlaceDetailViewController() // Your destination
-        navigationController?.pushViewController(destination, animated: true)
+        let storyboard = UIStoryboard(name: "PlaceDetail", bundle: .main)
+        let vc = storyboard.instantiateInitialViewController()
+        present(vc!, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
