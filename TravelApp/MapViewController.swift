@@ -48,8 +48,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     {
         super.viewDidLoad()
         
-        dump(tagPreferences)
-        
         LocationService.singleton.startUpdatingLocation()
         //var currentLocation = LocationService.sharedInstance.currentLocation
         
@@ -108,9 +106,21 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
         })
         
         // Update map to focus on searched location
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 4000, 4000)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 5000, 5000)
         mapView.setRegion(coordinateRegion, animated: true)
         
+        // Update types for API search if preferences are set
+        var types = [String]()
+        for type in tagPreferences {
+            if type.value {
+                types.append(type.key)
+            }
+        }
+        if !types.isEmpty {
+            dump(types)
+            apiSearch.types = types
+        }
+            
         //starts the request for places nearby the selected location
         apiSearch.requestPlacesByType(location: place.coordinate, searchRadius: 40233)
     }
@@ -138,6 +148,16 @@ extension MapViewController: PlacesAPISearchResultUpdater {
         //do something with places
         currentPlaces = places
         dump(places)
+        
+        // Add place annotations to map
+        for place in places {
+            let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = place["name"] as? String
+            mapView.addAnnotation(annotation)
+        }
     }
     
     func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String) {
@@ -145,7 +165,7 @@ extension MapViewController: PlacesAPISearchResultUpdater {
     }
 }
 
-//# MARK: - UISearchControllerDelegate methodes
+//# MARK: - UISearchControllerDelegate methods
 extension MapViewController: UISearchControllerDelegate {
     func didDismissSearchController(_ searchController: UISearchController) {
         searchController.searchBar.frame = navBarView.originalSearchBarFrame
