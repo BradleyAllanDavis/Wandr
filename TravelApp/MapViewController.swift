@@ -29,8 +29,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         return controller
     })()
     
-    let apiSearch = PlacesAPISearch()
     var navBarView: TravelNavBarView!
+    var slideView: SlideUpView!
     
     //store places as array of dictionaries for now...
     var currentPlaces = [Dictionary<String, AnyObject>]()
@@ -43,41 +43,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         }
     }
     
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        dump(tagPreferences)
-        
+        definesPresentationContext = true
         LocationService.singleton.startUpdatingLocation()
         //var currentLocation = LocationService.sharedInstance.currentLocation
         
-        let filter = GMSAutocompleteFilter()
-        filter.type = .city
+        dump(tagPreferences)
+        setupSearchBar()
         
-        searchResultViewController.autocompleteFilter = filter
-        searchResultViewController.delegate = self
-        apiSearch.resultsUpdaterDelegate = self
-        navBarView = TravelNavBarView(
-            frame: CGRect(x: 15, y: 25.0, width: UIScreen.main.bounds.size.width - 30, height: 45.0),
-            searchBar: searchController.searchBar,
-            navHandler: self,
-            preferenceSelector: #selector(transitionToPreferenceView),
-            cartSelector: #selector(transitionToCartView)
-        )
-        searchController.searchBar.delegate = navBarView
+        let effect = UIBlurEffect(style: .dark)
+        slideView = SlideUpView(effect: effect)
+        mapView.addSubview(slideView)
         
-        view.addSubview(navBarView)
-        definesPresentationContext = true
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewPlaces"), object: nil)
     }
     
     // Dispose of any resources that can be recreated
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-    }
-    
+    }    
     
     //# MARK: - LocationService delegate methods
     func tracingLocation(currentLocation: CLLocation) {}
@@ -94,6 +82,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let storyboard = UIStoryboard(name: "Cart", bundle: .main)
         let vc = storyboard.instantiateInitialViewController()
         present(vc!, animated: true, completion: nil)
+    }
+    
+    func setupSearchBar() {
+        let filter = GMSAutocompleteFilter()
+        filter.type = .city
+        
+        searchResultViewController.autocompleteFilter = filter
+        searchResultViewController.delegate = self
+        navBarView = TravelNavBarView(
+            frame: CGRect(x: 15, y: 25.0, width: UIScreen.main.bounds.size.width - 30, height: 45.0),
+            searchBar: searchController.searchBar,
+            navHandler: self,
+            preferenceSelector: #selector(transitionToPreferenceView),
+            cartSelector: #selector(transitionToCartView)
+        )
+        searchController.searchBar.delegate = navBarView
+        
+        view.addSubview(navBarView)
+    }
+    
+    func updatePlaces(notification: Notification) {
+        currentPlaces = PlaceStore.shared.nearbyPlaces
     }
 }
 
@@ -112,7 +122,7 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
         
         //starts the request for places nearby the selected location
-        apiSearch.requestPlacesByType(location: place.coordinate, searchRadius: 40233)
+        PlaceStore.shared.updateCurrentPlaces(with: place.coordinate, searchRadius: 4000)
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
@@ -128,20 +138,6 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
     
     func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-}
-
-//# MARK: - PlacesAPISearchUpdater methods
-
-extension MapViewController: PlacesAPISearchResultUpdater {
-    func didReceivePlacesFromAPI(places: [Dictionary<String, AnyObject>]) {
-        //do something with places
-        currentPlaces = places
-        dump(places)
-    }
-    
-    func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String) {
-        print("Error getting places for type \(placeType)")
     }
 }
 

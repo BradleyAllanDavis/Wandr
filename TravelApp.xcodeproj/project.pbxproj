@@ -8,11 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		1CD5C2D11E7C588F00181BC7 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5C2D01E7C588F00181BC7 /* LocationService.swift */; };
+		4037C0671EA2E3CC0050114B /* NearbyCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037C0661EA2E3CC0050114B /* NearbyCollectionViewFlowLayout.swift */; };
+		4037C0691EA302AC0050114B /* PlaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037C0681EA302AC0050114B /* PlaceStore.swift */; };
+		4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */; };
+		4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */; };
 		4060C1E91E91AA5D009477BE /* PlacesAPISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */; };
 		4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4073EC4A1E70931E009F1F27 /* APIConfig.plist */; };
 		407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */; };
 		407C8CB91E9C54F4002AF485 /* TravelSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */; };
 		407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */; };
+		40B459301E9F2E81005420B0 /* SlideUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B4592F1E9F2E81005420B0 /* SlideUpView.swift */; };
+		40B459391E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */; };
+		40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */; };
 		56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56237F551E804BDA0000ED5E /* tagPreferences.plist */; };
 		56E5AE361E805B710076C72F /* BubblesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE351E805B710076C72F /* BubblesScene.swift */; };
 		56E5AE381E805C220076C72F /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE371E805C220076C72F /* BubbleNode.swift */; };
@@ -54,11 +61,19 @@
 
 /* Begin PBXFileReference section */
 		1CD5C2D01E7C588F00181BC7 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		4037C0661EA2E3CC0050114B /* NearbyCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearbyCollectionViewFlowLayout.swift; path = SlideUpView/NearbyCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		4037C0681EA302AC0050114B /* PlaceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceStore.swift; sourceTree = "<group>"; };
+		4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularTableViewCell.swift; path = SlideUpView/PopularTableViewCell.swift; sourceTree = "<group>"; };
+		4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopularTableViewCell.xib; path = SlideUpView/PopularTableViewCell.xib; sourceTree = "<group>"; };
 		4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesAPISearch.swift; path = SearchBar/PlacesAPISearch.swift; sourceTree = "<group>"; };
 		4073EC4A1E70931E009F1F27 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelNavBarView.swift; path = TravelApp/SearchBar/TravelNavBarView.swift; sourceTree = "<group>"; };
 		407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchBar.swift; path = TravelApp/SearchBar/TravelSearchBar.swift; sourceTree = "<group>"; };
 		407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchController.swift; path = TravelApp/SearchBar/TravelSearchController.swift; sourceTree = "<group>"; };
+		40B4592F1E9F2E81005420B0 /* SlideUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideUpView.swift; path = SlideUpView/SlideUpView.swift; sourceTree = "<group>"; };
+		40B459351E9F58AE005420B0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideUpCollectionViewCell.swift; path = SlideUpView/SlideUpCollectionViewCell.swift; sourceTree = "<group>"; };
+		40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SlideUpCollectionViewCell.xib; path = SlideUpView/SlideUpCollectionViewCell.xib; sourceTree = "<group>"; };
 		4DB01D80E1D149DF667641A0 /* Pods_TravelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56237F551E804BDA0000ED5E /* tagPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tagPreferences.plist; sourceTree = "<group>"; };
 		5689233F0C1E7E572F694497 /* Pods-TravelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +141,19 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		40B4592E1E9F2E47005420B0 /* SlideUpView */ = {
+			isa = PBXGroup;
+			children = (
+				40B4592F1E9F2E81005420B0 /* SlideUpView.swift */,
+				40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */,
+				4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */,
+				4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */,
+				40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */,
+				4037C0661EA2E3CC0050114B /* NearbyCollectionViewFlowLayout.swift */,
+			);
+			name = SlideUpView;
+			sourceTree = "<group>";
+		};
 		96C0D0291E77061E00B316B8 /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +166,7 @@
 		A231B14D20A004ADEF4261DF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40B459351E9F58AE005420B0 /* QuartzCore.framework */,
 				4DB01D80E1D149DF667641A0 /* Pods_TravelApp.framework */,
 			);
 			name = Frameworks;
@@ -178,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				407C8CB41E9C54B7002AF485 /* SearchBar */,
+				40B4592E1E9F2E47005420B0 /* SlideUpView */,
 				96C0D0291E77061E00B316B8 /* Preference */,
 				FAA243661E71BD9D009AB3DB /* Map */,
 				FAA243651E71BD93009AB3DB /* TagPreferences */,
@@ -195,6 +225,7 @@
 				56237F551E804BDA0000ED5E /* tagPreferences.plist */,
 				FA52F9D21E9D2EEB00031CFF /* PlaceDetail.storyboard */,
 				FA4821D01E9D3A58005C7D7D /* PlaceDetailViewController.swift */,
+				4037C0681EA302AC0050114B /* PlaceStore.swift */,
 			);
 			path = TravelApp;
 			sourceTree = "<group>";
@@ -315,6 +346,8 @@
 				TargetAttributes = {
 					FAA243211E706432009AB3DB = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = QVW9R3V5SU;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					FAA243371E706432009AB3DB = {
@@ -359,8 +392,10 @@
 				4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */,
 				FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */,
 				56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */,
+				40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
 				FA52F9D31E9D2EEB00031CFF /* PlaceDetail.storyboard in Resources */,
+				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
 			);
@@ -436,17 +471,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				96C0D02B1E77064300B316B8 /* Preference.swift in Sources */,
+				4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */,
 				56E5AE361E805B710076C72F /* BubblesScene.swift in Sources */,
 				FAA243581E7093A9009AB3DB /* CartViewController.swift in Sources */,
 				56E5AE3A1E81C1840076C72F /* Plist.swift in Sources */,
 				56E5AE381E805C220076C72F /* BubbleNode.swift in Sources */,
 				FAA2436D1E71C2D0009AB3DB /* MapViewController.swift in Sources */,
+				4037C0671EA2E3CC0050114B /* NearbyCollectionViewFlowLayout.swift in Sources */,
 				FAA2435E1E70BB1D009AB3DB /* TagViewController.swift in Sources */,
 				407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */,
 				407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */,
+				4037C0691EA302AC0050114B /* PlaceStore.swift in Sources */,
 				FA4821D11E9D3A58005C7D7D /* PlaceDetailViewController.swift in Sources */,
+				40B459391E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift in Sources */,
 				1CD5C2D11E7C588F00181BC7 /* LocationService.swift in Sources */,
 				407C8CB91E9C54F4002AF485 /* TravelSearchBar.swift in Sources */,
+				40B459301E9F2E81005420B0 /* SlideUpView.swift in Sources */,
 				4060C1E91E91AA5D009477BE /* PlacesAPISearch.swift in Sources */,
 				FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */,
 			);
@@ -599,11 +639,14 @@
 			baseConfigurationReference = D877152BD7B5F48564990CAE /* Pods-TravelApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = QVW9R3V5SU;
 				INFOPLIST_FILE = TravelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasoncheng.TravelApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -613,11 +656,13 @@
 			baseConfigurationReference = 5689233F0C1E7E572F694497 /* Pods-TravelApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = QVW9R3V5SU;
 				INFOPLIST_FILE = TravelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasoncheng.TravelApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
