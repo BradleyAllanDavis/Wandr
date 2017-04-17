@@ -40,8 +40,6 @@ class SlideUpView: UIVisualEffectView {
         layer.cornerRadius = 5.0
         clipsToBounds = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewPlaces"), object: nil)
-        
         wayDownLabel.font = labelFont
         wayDownLabel.text = "Nearby Places"
         wayDownLabel.textColor = .white
@@ -49,24 +47,50 @@ class SlideUpView: UIVisualEffectView {
         addSubview(wayDownLabel)
         setupCollectionView()
         setupTableView()
+        registerNotifications()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    func updatePlaces(notification: Notification) {
+    func registerNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateNearbyPlaces(notification:)),
+            name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"),
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updatePopularPlaces(notification:)),
+            name: Notification.Name(rawValue: "ReceivedNewPopularPlaces"),
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(photosDidUpdate(notification:)),
+            name: Notification.Name(rawValue: "AddedNewPhoto"),
+            object: nil
+        )
+    }
+    
+    func updateNearbyPlaces(notification: Notification) {
         nearbyPlaces = PlaceStore.shared.nearbyPlaces
-        popularPlaces = PlaceStore.shared.popularPlaces
-        
         collectionView.reloadData()
+    }
+    
+    func updatePopularPlaces(notification: Notification) {
+        popularPlaces = PlaceStore.shared.popularPlaces
         tableView.reloadData()
+    }
+    
+    func photosDidUpdate(notification: Notification) {
+        collectionView.reloadData()
     }
     
     func setupCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.sectionInset = .zero
         layout.scrollDirection = .horizontal
         
         let collectionViewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 150)
@@ -75,7 +99,7 @@ class SlideUpView: UIVisualEffectView {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "SlideUpCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "slideCollectionCell")
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         collectionView.isHidden = true
 
         addSubview(collectionView)
@@ -155,7 +179,7 @@ class SlideUpView: UIVisualEffectView {
             self.layer.cornerRadius = 0.0
             self.collectionView.isHidden = false
             self.tableView.frame.origin.y = 150
-            self.wayDownLabel.isHidden = false
+            self.wayDownLabel.isHidden = true
         }, completion: { _ in
             
         })
@@ -179,6 +203,7 @@ class SlideUpView: UIVisualEffectView {
             self.currentOrigin = self.origins.wayDown
             self.layer.cornerRadius = 5.0
             self.collectionView.isHidden = true
+            self.wayDownLabel.isHidden = false
         }, completion: nil)
     }
 }
@@ -191,14 +216,20 @@ extension SlideUpView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return nearbyPlaces.count
+        return PlaceStore.shared.nearbyPlaces.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "slideCollectionCell", for: indexPath) as! SlideUpCollectionViewCell
+        let placeData = PlaceStore.shared.nearbyPlaces[indexPath.row]
+        let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
         
-        if nearbyPlaces[indexPath.row].index(forKey: "name") != nil {
-            cell.titleLabel.text = nearbyPlaces[indexPath.row]["name"] as? String
+        cell.titleLabel.text = placeData["name"] as? String
+        
+        if photo.status == .downloaded {
+            cell.imageView.image = photo.image
+        } else {
+            cell.imageView.image = #imageLiteral(resourceName: "Placeholder_location.png")
         }
         
         return cell
@@ -210,6 +241,14 @@ extension SlideUpView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         
         return CGSize(width: width, height: height)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
 }
 
 //# MARK: - UITableView methods
@@ -220,14 +259,14 @@ extension SlideUpView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return popularPlaces.count
+        return PlaceStore.shared.popularPlaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "popularTableCell", for: indexPath) as! PopularTableViewCell
         
         if popularPlaces[indexPath.row].index(forKey: "name") != nil {
-            cell.titleLabel.text = popularPlaces[indexPath.row]["name"] as? String
+            cell.titleLabel.text = PlaceStore.shared.popularPlaces[indexPath.row]["name"] as? String
         }
         
         return cell
