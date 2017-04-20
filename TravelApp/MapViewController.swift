@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import GooglePlaces
 
-class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate
+class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate, UIPopoverPresentationControllerDelegate
 {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
@@ -76,6 +76,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         
         view.addSubview(navBarView)
         definesPresentationContext = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMapSettings" {
+            let popoverViewController = segue.destination
+            popoverViewController.popoverPresentationController?.delegate = self
+            
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     // Dispose of any resources that can be recreated
