@@ -43,13 +43,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         }
     }
     
+    let locationService = LocationService.singleton
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        LocationService.singleton.startUpdatingLocation()
-        //var currentLocation = LocationService.sharedInstance.currentLocation
+        // Zoom to current location
+        locationService.startUpdatingLocation()
+        let currentLocation = locationService.locationManager?.location
+        let lat = currentLocation?.coordinate.latitude
+        let long = currentLocation?.coordinate.longitude
+        let center = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+        let span = MKCoordinateSpanMake(0.075, 0.075)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: true)
         
         let filter = GMSAutocompleteFilter()
         filter.type = .city
