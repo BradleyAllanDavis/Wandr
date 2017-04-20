@@ -48,10 +48,43 @@
                             <constraint firstItem="HG8-QR-2VK" firstAttribute="bottom" secondItem="c90-MP-dZq" secondAttribute="top" id="iaw-0f-Ccj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="YHu-yO-W7y" kind="show" identifier="toPlaceDetail" id="w6V-Lx-C3p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9g5-89-P2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="-295.50224887556226"/>
+        </scene>
+        <!--Place Detail View Controller-->
+        <scene sceneID="XFI-le-lym">
+            <objects>
+                <viewController id="YHu-yO-W7y" customClass="PlaceDetailViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pcG-wy-trZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="HAR-pu-coF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3uV-tw-bZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LT-Bn-BI8">
+                                <rect key="frame" x="121" y="28" width="133" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="placeTitleLabel" destination="3LT-Bn-BI8" id="rwP-FM-92s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0qP-10-Hg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1112.8" y="-293.70314842578711"/>
         </scene>
     </scenes>
 </document>

@@ -33,10 +33,26 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let row = indexPath.row
         print("Row: \(row)")
         
-        let storyboard = UIStoryboard(name: "PlaceDetail", bundle: .main)
-        let vc = storyboard.instantiateInitialViewController()
-        present(vc!, animated: true, completion: nil)
+        commitSelection()
+
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPlaceDetail" {
+            if let nextVC = segue.destination as? PlaceDetailViewController {
+                nextVC.placeTitle = data[1]
+            }
+        }
+    }
+    
+    func commitSelection() {
+        if (presentingViewController as? PlaceDetailViewController) != nil {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "toPlaceDetail", sender: nil)
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
