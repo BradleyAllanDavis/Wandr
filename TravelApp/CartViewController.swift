@@ -10,6 +10,7 @@ import UIKit
 
 class CartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     let data: [String] = ["Copenhagen", "Amsterdam", "Paris", "Barcelona", "Budapest", "Berlin"] // dummy filler data to test that the table views cells are set
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +38,15 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedIndex = indexPath.row
+        return indexPath
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPlaceDetail" {
             if let nextVC = segue.destination as? PlaceDetailViewController {
-                nextVC.placeTitle = data[1]
+                nextVC.placeTitle = data[selectedIndex!]
             }
         }
     }
