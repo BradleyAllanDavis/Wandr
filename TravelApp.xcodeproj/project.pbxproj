@@ -30,7 +30,6 @@
 		96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96AA8ADE1E771BA0001AB7D0 /* Preference.storyboard */; };
 		96C0D02B1E77064300B316B8 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0D02A1E77064300B316B8 /* Preference.swift */; };
 		FA4821D11E9D3A58005C7D7D /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4821D01E9D3A58005C7D7D /* PlaceDetailViewController.swift */; };
-		FA52F9D31E9D2EEB00031CFF /* PlaceDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA52F9D21E9D2EEB00031CFF /* PlaceDetail.storyboard */; };
 		FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243251E706432009AB3DB /* AppDelegate.swift */; };
 		FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA2432E1E706432009AB3DB /* Assets.xcassets */; };
 		FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243301E706432009AB3DB /* LaunchScreen.storyboard */; };
@@ -88,7 +87,6 @@
 		96C0D02A1E77064300B316B8 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		D877152BD7B5F48564990CAE /* Pods-TravelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FA4821D01E9D3A58005C7D7D /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
-		FA52F9D21E9D2EEB00031CFF /* PlaceDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceDetail.storyboard; sourceTree = "<group>"; };
 		FAA243221E706432009AB3DB /* TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA243251E706432009AB3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA2432E1E706432009AB3DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 				FAA243331E706432009AB3DB /* Info.plist */,
 				4073EC4A1E70931E009F1F27 /* APIConfig.plist */,
 				56237F551E804BDA0000ED5E /* tagPreferences.plist */,
-				FA52F9D21E9D2EEB00031CFF /* PlaceDetail.storyboard */,
 				FA4821D01E9D3A58005C7D7D /* PlaceDetailViewController.swift */,
 				4037C0681EA302AC0050114B /* PlaceStore.swift */,
 				4037C06A1EA400A80050114B /* PlacePhoto.swift */,
@@ -401,7 +398,6 @@
 				56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */,
 				40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
-				FA52F9D31E9D2EEB00031CFF /* PlaceDetail.storyboard in Resources */,
 				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
