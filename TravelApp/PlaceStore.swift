@@ -84,6 +84,16 @@ final class PlaceStore: NSObject {
             return photo
         }
     }
+    
+    func getPlace(for placeId: String) -> Dictionary<String, AnyObject>? {
+        if let place = nearbyPlaces.filter({
+            $0["place_id"] as! String == placeId
+        }).first {
+            return place
+        } else {
+            return nil
+        }
+    }
 }
 
 //# MARK: - PlacesAPISearchUpdater methods

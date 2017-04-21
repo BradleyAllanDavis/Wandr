@@ -12,6 +12,7 @@
 		4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037C06A1EA400A80050114B /* PlacePhoto.swift */; };
 		4037C06D1EA432730050114B /* Placeholder_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 4037C06C1EA432730050114B /* Placeholder_location.png */; };
 		4037C06F1EA43DEC0050114B /* SlideUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037C06E1EA43DEC0050114B /* SlideUpView.swift */; };
+		40425EF51EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40425EF41EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift */; };
 		4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */; };
 		4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */; };
 		4060C1E91E91AA5D009477BE /* PlacesAPISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */; };
@@ -66,6 +67,7 @@
 		4037C06A1EA400A80050114B /* PlacePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePhoto.swift; sourceTree = "<group>"; };
 		4037C06C1EA432730050114B /* Placeholder_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder_location.png; sourceTree = "<group>"; };
 		4037C06E1EA43DEC0050114B /* SlideUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideUpView.swift; path = SlideUpView/SlideUpView.swift; sourceTree = "<group>"; };
+		40425EF41EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearbyCollectionViewFlowLayout.swift; path = SlideUpView/NearbyCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularTableViewCell.swift; path = SlideUpView/PopularTableViewCell.swift; sourceTree = "<group>"; };
 		4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopularTableViewCell.xib; path = SlideUpView/PopularTableViewCell.xib; sourceTree = "<group>"; };
 		4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesAPISearch.swift; path = SearchBar/PlacesAPISearch.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */,
 				4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */,
 				40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */,
+				40425EF41EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift */,
 			);
 			name = SlideUpView;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */,
 				4037C0691EA302AC0050114B /* PlaceStore.swift in Sources */,
 				FA4821D11E9D3A58005C7D7D /* PlaceDetailViewController.swift in Sources */,
+				40425EF51EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift in Sources */,
 				40B459391E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift in Sources */,
 				1CD5C2D11E7C588F00181BC7 /* LocationService.swift in Sources */,
 				407C8CB91E9C54F4002AF485 /* TravelSearchBar.swift in Sources */,

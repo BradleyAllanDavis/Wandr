@@ -10,30 +10,35 @@ import UIKit
 
 struct SlideUpViewOrigins {
     let wayDown = CGPoint(x: 12.5, y: UIScreen.main.bounds.height - 35)
-    let middle = CGPoint(x: 0.0, y: UIScreen.main.bounds.height - 150)
+    let middle = CGPoint(x: 0.0, y: UIScreen.main.bounds.height - (UIScreen.main.bounds.size.width / 3) - 10)
     let wayUp = CGPoint(x: 0.0, y: 75)
     let defaultSize = CGSize(width: UIScreen.main.bounds.width - 25, height: UIScreen.main.bounds.height - 75)
     let shiftedSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 75)
 }
 
+enum NearbyScrollStatus {
+    case idle
+    case scrolling
+    case neverScrolled
+}
+
 class SlideUpView: UIVisualEffectView {
+    var centerPath: IndexPath?
     let origins = SlideUpViewOrigins()
     var currentOrigin: CGPoint!
-    var lastLocation: CGPoint!
     var wayDownLabel = UILabel(frame: CGRect(x: 15, y: 5, width: 100, height: 20))
     var collectionView: UICollectionView!
     var tableView: UITableView!
-    let data = ["one", "two", "three", "four"]
-    var nearbyPlaces = [Dictionary<String, AnyObject>]()
-    var popularPlaces = [Dictionary<String, AnyObject>]()
+    var collectionViewScrollStatus: NearbyScrollStatus = .neverScrolled
+    
     private var panGesture: UIPanGestureRecognizer!
     
     override init(effect: UIVisualEffect?) {
         super.init(effect: effect)
         
-        setupPanGesture()
-        
         let labelFont = UIFont(name: "Avenir", size: 14)
+        
+        setupPanGesture()
         
         frame = CGRect(origin: origins.wayDown, size: origins.defaultSize)
         currentOrigin = frame.origin
@@ -75,12 +80,17 @@ class SlideUpView: UIVisualEffectView {
     }
     
     func updateNearbyPlaces(notification: Notification) {
-        nearbyPlaces = PlaceStore.shared.nearbyPlaces
+        collectionViewScrollStatus = .neverScrolled
         collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        collectionView.scrollToItem(
+            at: IndexPath(row: 0, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
     }
     
     func updatePopularPlaces(notification: Notification) {
-        popularPlaces = PlaceStore.shared.popularPlaces
         tableView.reloadData()
     }
     
@@ -89,11 +99,10 @@ class SlideUpView: UIVisualEffectView {
     }
     
     func setupCollectionView() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = .zero
-        layout.scrollDirection = .horizontal
+        let layout:NearbyCollectionViewFlowLayout = NearbyCollectionViewFlowLayout()
+        let collectionViewFrame = CGRect(x: 0, y: 10, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.size.width / 3)
         
-        let collectionViewFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 150)
+        layout.scrollDirection = .horizontal
         
         collectionView = UICollectionView(frame: collectionViewFrame, collectionViewLayout: layout)
         collectionView.dataSource = self
@@ -101,7 +110,9 @@ class SlideUpView: UIVisualEffectView {
         collectionView.register(UINib(nibName: "SlideUpCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "slideCollectionCell")
         collectionView.backgroundColor = .clear
         collectionView.isHidden = true
-
+        collectionView.isPagingEnabled = false
+        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
+        
         addSubview(collectionView)
     }
     
@@ -140,11 +151,6 @@ class SlideUpView: UIVisualEffectView {
                 didDragUp()
             }
         }
-    }
-    
-    override func touchesBegan(_ touches: (Set<UITouch>!), with event: UIEvent!) {
-        self.superview?.bringSubview(toFront: self)
-        lastLocation = frame.origin
     }
     
     func didDragUp() {
@@ -208,9 +214,8 @@ class SlideUpView: UIVisualEffectView {
     }
 }
 
-//# MARK: - UICollectionView delegage methods
-
-extension SlideUpView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -232,14 +237,23 @@ extension SlideUpView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
             cell.imageView.image = #imageLiteral(resourceName: "Placeholder_location.png")
         }
         
+        if collectionViewScrollStatus == .idle && centerPath?.row == indexPath.row {
+            cell.imageView.alpha = 1.0
+        } else {
+            cell.imageView.alpha = 0.6
+        }
+        
+        if collectionViewScrollStatus == .neverScrolled && indexPath.row == 0 {
+            cell.imageView.alpha = 1.0
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.size.width / 2
-        let height = collectionView.frame.height
+        let width = UIScreen.main.bounds.size.width / 3
         
-        return CGSize(width: width, height: height)
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -247,13 +261,50 @@ extension SlideUpView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1.0
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let width = UIScreen.main.bounds.width / 3
+        return UIEdgeInsets(top: 0.0, left: width, bottom: 0.0, right: width)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let centerPoint = CGPoint(
+            x: collectionView.center.x + collectionView.contentOffset.x,
+            y: collectionView.center.y + collectionView.contentOffset.y
+        )
+        
+        if let centerIndexPath = collectionView.indexPathForItem(at: centerPoint) {
+            let paths = collectionView.indexPathsForVisibleItems
+            
+            for path in paths {
+                let cell = collectionView.cellForItem(at: path) as! SlideUpCollectionViewCell
+                
+                if path.row == centerIndexPath.row {
+                    cell.imageView.alpha = 1.0
+                } else {
+                    cell.imageView.alpha = 0.6
+                }
+            }
+            
+            centerPath = centerIndexPath
+        }
+        
+        collectionViewScrollStatus = .idle
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        collectionViewScrollStatus = .scrolling
+        
+        if centerPath != nil {
+            let cell = collectionView.cellForItem(at: centerPath!) as? SlideUpCollectionViewCell
+            cell?.imageView.alpha = 0.5
+        }
     }
 }
 
-//# MARK: - UITableView methods
-
-extension SlideUpView: UITableViewDelegate, UITableViewDataSource {
+extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -265,7 +316,7 @@ extension SlideUpView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "popularTableCell", for: indexPath) as! PopularTableViewCell
         
-        if popularPlaces[indexPath.row].index(forKey: "name") != nil {
+        if PlaceStore.shared.popularPlaces[indexPath.row].index(forKey: "name") != nil {
             cell.titleLabel.text = PlaceStore.shared.popularPlaces[indexPath.row]["name"] as? String
         }
         
@@ -277,7 +328,7 @@ extension SlideUpView: UITableViewDelegate, UITableViewDataSource {
         let header = UIVisualEffectView(effect: effect)
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragRecognizer(gesture:)))
         
-        header.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: 50)
+        header.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50)
         header.addGestureRecognizer(panGesture)
         
         let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: header.frame.width - 20, height: header.frame.height))

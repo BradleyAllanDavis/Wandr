@@ -16,5 +16,16 @@ class SlideUpCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    override func draw(_ rect: CGRect) {
+        imageView.bounds.size.width = imageView.bounds.size.height
+        imageView.layer.cornerRadius = imageView.bounds.size.width / 2
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 1.0
+        
+        backgroundColor = .clear
+        backgroundView?.backgroundColor = .clear
+    }
 
 }
