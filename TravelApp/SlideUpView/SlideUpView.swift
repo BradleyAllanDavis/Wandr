@@ -315,12 +315,28 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "popularTableCell", for: indexPath) as! PopularTableViewCell
+        let placeData = PlaceStore.shared.popularPlaces[indexPath.row]
+        let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
         
-        if PlaceStore.shared.popularPlaces[indexPath.row].index(forKey: "name") != nil {
-            cell.titleLabel.text = PlaceStore.shared.popularPlaces[indexPath.row]["name"] as? String
+        cell.titleLabel.text = placeData["name"] as? String
+        cell.vicinityLabel.text = placeData["vicinity"] as? String
+        
+        if photo.status == .downloaded {
+            cell.thumbnailImageView.image = photo.image
+        } else {
+            cell.thumbnailImageView.image = #imageLiteral(resourceName: "Placeholder_location.png")
+        }
+        
+        
+        if placeData.index(forKey: "rating") != nil {
+            cell.starLabel.rating = Double(placeData["rating"] as! Float)
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 74.5
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
