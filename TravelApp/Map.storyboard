@@ -51,7 +51,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="XDf-JM-xSK" id="ptD-aO-1PA"/>
-                        <outlet property="optionsButton" destination="nFn-b9-tW7" id="WwE-hu-Ts8"/>
                         <outlet property="searchDisplayController" destination="3dl-zm-BSk" id="bWq-jf-GLL"/>
                     </connections>
                 </viewController>

@@ -16,7 +16,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
     var tagPreferences = [String: Bool]()
-    @IBOutlet weak var optionsButton: UIButton!
     
     lazy var searchController: UISearchController = ({
         [unowned self] in
@@ -67,7 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         
         let effect = UIBlurEffect(style: .dark)
         slideView = SlideUpView(effect: effect)
-        mapView.insertSubview(slideView, aboveSubview: optionsButton)
+        view.addSubview(slideView)
         
         //Register notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
