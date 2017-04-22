@@ -12,6 +12,9 @@ import GooglePlaces
 final class PlaceStore: NSObject {
     static let shared: PlaceStore = PlaceStore()
     
+    var userSelectedPlaceTypes: [String] = ["restaurant"]
+    var currentNearbyFocusedPlaceIndex: Int = 0
+    
     fileprivate let apiSearch = PlacesAPISearch()
     fileprivate var _photos: [PlacePhoto] = []
     fileprivate var _nearbyPlaces: [Dictionary<String, AnyObject>] = []
@@ -54,7 +57,7 @@ final class PlaceStore: NSObject {
     }
     
     func updateCurrentPlaces(with location: CLLocationCoordinate2D, searchRadius: Int) {
-        apiSearch.requestPlacesByType(location: location, searchRadius: searchRadius)
+        apiSearch.requestPlacesByType(location: location, searchRadius: searchRadius, types: userSelectedPlaceTypes)
     }
     
     private func addPhoto(_ photo: PlacePhoto) {
@@ -105,6 +108,10 @@ extension PlaceStore: PlacesAPISearchResultUpdater {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
             }
+        })
+        
+        concurrentPhotoQueue.async(flags: .barrier, execute: {
+            self._photos.removeAll()
         })
         
         //just sort nearby places by rating to get popular

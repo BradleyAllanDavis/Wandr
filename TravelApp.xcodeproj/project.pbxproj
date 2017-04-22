@@ -355,11 +355,13 @@
 					};
 					FAA243371E706432009AB3DB = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3CBKZSSKFG;
 						ProvisioningStyle = Automatic;
 						TestTargetID = FAA243211E706432009AB3DB;
 					};
 					FAA243421E706432009AB3DB = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3CBKZSSKFG;
 						ProvisioningStyle = Automatic;
 						TestTargetID = FAA243211E706432009AB3DB;
 					};
@@ -571,6 +573,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3CBKZSSKFG;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -620,6 +623,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3CBKZSSKFG;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

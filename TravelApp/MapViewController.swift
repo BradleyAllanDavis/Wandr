@@ -11,11 +11,12 @@ import MapKit
 import CoreLocation
 import GooglePlaces
 
-class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate
+class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate, UIPopoverPresentationControllerDelegate
 {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
     var tagPreferences = [String: Bool]()
+    @IBOutlet weak var optionsButton: UIButton!
     
     lazy var searchController: UISearchController = ({
         [unowned self] in
@@ -43,22 +44,60 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         }
     }
     
+    let locationService = LocationService.singleton
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         definesPresentationContext = true
-        LocationService.singleton.startUpdatingLocation()
-        //var currentLocation = LocationService.sharedInstance.currentLocation
+        
+        // Zoom to current location
+        locationService.startUpdatingLocation()
+        let currentLocation = locationService.locationManager?.location
+        let lat = currentLocation?.coordinate.latitude
+        let long = currentLocation?.coordinate.longitude
+        let center = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+        let span = MKCoordinateSpanMake(0.075, 0.075)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: true)
         
         dump(tagPreferences)
         setupSearchBar()
         
         let effect = UIBlurEffect(style: .dark)
         slideView = SlideUpView(effect: effect)
-        mapView.addSubview(slideView)
+        mapView.insertSubview(slideView, aboveSubview: optionsButton)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewPlaces"), object: nil)
+        //Register notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nearbyFocusedPlaceChanged(notification:)), name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
+        
+        //Search for places using current location
+        updateUserTagPreferences()
+        PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
+    }
+    
+    func nearbyFocusedPlaceChanged(notification: Notification) {
+        let selectedIndex = PlaceStore.shared.currentNearbyFocusedPlaceIndex
+        let placeLoc = PlaceStore.shared.nearbyPlaces[selectedIndex]["geometry"]!["location"] as! Dictionary<String, AnyObject>
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+        let span = MKCoordinateSpanMake(0.025, 0.025)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMapSettings" {
+            let popoverViewController = segue.destination
+            popoverViewController.popoverPresentationController?.delegate = self
+            
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     // Dispose of any resources that can be recreated
@@ -104,6 +143,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     func updatePlaces(notification: Notification) {
         currentPlaces = PlaceStore.shared.nearbyPlaces
+        
+        // Add place annotations to map
+        for place in PlaceStore.shared.nearbyPlaces {
+            let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = place["name"] as? String
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    func updateUserTagPreferences() {
+        // Update types for API search if preferences are set
+        var types = [String]()
+        for type in tagPreferences {
+            if type.value {
+                types.append(type.key)
+            }
+        }
+        
+        if !types.isEmpty {
+            dump(types)
+            PlaceStore.shared.userSelectedPlaceTypes = types
+        }
     }
 }
 
@@ -118,9 +182,11 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
         })
         
         // Update map to focus on searched location
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 4000, 4000)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 5000, 5000)
         mapView.setRegion(coordinateRegion, animated: true)
         
+        updateUserTagPreferences()
+            
         //starts the request for places nearby the selected location
         PlaceStore.shared.updateCurrentPlaces(with: place.coordinate, searchRadius: 4000)
     }
@@ -141,7 +207,34 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
     }
 }
 
-//# MARK: - UISearchControllerDelegate methodes
+//<<<<<<< HEAD
+////# MARK: - UISearchControllerDelegate methodes
+//=======
+////# MARK: - PlacesAPISearchUpdater methods
+//
+//extension MapViewController: PlacesAPISearchResultUpdater {
+//    func didReceivePlacesFromAPI(places: [Dictionary<String, AnyObject>]) {
+//        //do something with places
+//        currentPlaces = places
+//        dump(places)
+//        
+//        // Add place annotations to map
+//        for place in places {
+//            let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
+//            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = location
+//            annotation.title = place["name"] as? String
+//            mapView.addAnnotation(annotation)
+//        }
+//    }
+//    
+//    func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String) {
+//        print("Error getting places for type \(placeType)")
+//    }
+//}
+
+//# MARK: - UISearchControllerDelegate methods
 extension MapViewController: UISearchControllerDelegate {
     func didDismissSearchController(_ searchController: UISearchController) {
         searchController.searchBar.frame = navBarView.originalSearchBarFrame

@@ -20,9 +20,9 @@ class PlacesAPISearch: NSObject {
     var resultsUpdaterDelegate: PlacesAPISearchResultUpdater?
     
     //TODO: these will get replaced with types from the tagPreference.plist
-    var types = ["bar"]
+//    var types = ["bar"]
     
-    public func requestPlacesByType(location: CLLocationCoordinate2D, searchRadius: Int) {
+    public func requestPlacesByType(location: CLLocationCoordinate2D, searchRadius: Int, types: [String]) {
         let downloadGroup = DispatchGroup()
         var placesArray = [Dictionary<String, AnyObject>]()
         

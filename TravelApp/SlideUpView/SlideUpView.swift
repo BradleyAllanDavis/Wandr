@@ -38,6 +38,8 @@ class SlideUpView: UIVisualEffectView {
         
         let labelFont = UIFont(name: "Avenir", size: 14)
         
+        layer.zPosition = 1
+        
         setupPanGesture()
         
         frame = CGRect(origin: origins.wayDown, size: origins.defaultSize)
@@ -96,6 +98,7 @@ class SlideUpView: UIVisualEffectView {
     
     func photosDidUpdate(notification: Notification) {
         collectionView.reloadData()
+        tableView.reloadData()
     }
     
     func setupCollectionView() {
@@ -133,6 +136,10 @@ class SlideUpView: UIVisualEffectView {
     func setupPanGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragRecognizer(gesture:)))
         addGestureRecognizer(panGesture)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.bringSubview(toFront: self)
     }
     
     func dragRecognizer(gesture: UIPanGestureRecognizer) {
@@ -289,6 +296,8 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
             }
             
             centerPath = centerIndexPath
+            PlaceStore.shared.currentNearbyFocusedPlaceIndex = centerIndexPath.row
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
         }
         
         collectionViewScrollStatus = .idle

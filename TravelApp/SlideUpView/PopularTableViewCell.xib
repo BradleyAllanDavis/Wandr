@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="22A-Le-Ulw">
-                        <rect key="frame" x="8" y="1" width="72" height="72"/>
+                        <rect key="frame" x="8" y="7" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="72" id="2rq-f5-Aol"/>
-                            <constraint firstAttribute="width" constant="72" id="Mkn-X8-i5t"/>
+                            <constraint firstAttribute="height" constant="60" id="2rq-f5-Aol"/>
+                            <constraint firstAttribute="width" constant="60" id="Mkn-X8-i5t"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqe-6i-hHv" customClass="CosmosView" customModule="Cosmos">
@@ -50,13 +50,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vht-EU-E5W">
-                        <rect key="frame" x="88" y="14" width="224" height="13.5"/>
+                        <rect key="frame" x="76" y="14" width="236" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTj-DH-iUD">
-                        <rect key="frame" x="99" y="44" width="112" height="21"/>
+                        <rect key="frame" x="87" y="44" width="124" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -68,7 +68,7 @@
                     <constraint firstItem="vht-EU-E5W" firstAttribute="leading" secondItem="22A-Le-Ulw" secondAttribute="trailing" constant="8" id="MVW-sH-7k1"/>
                     <constraint firstItem="CTj-DH-iUD" firstAttribute="top" secondItem="vht-EU-E5W" secondAttribute="bottom" constant="16.5" id="OJf-TF-KKe"/>
                     <constraint firstItem="Yqe-6i-hHv" firstAttribute="leading" secondItem="CTj-DH-iUD" secondAttribute="trailing" constant="8" id="Tbb-dt-ddI"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="22A-Le-Ulw" secondAttribute="bottom" constant="-6.5" id="VXp-Ss-9xF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="22A-Le-Ulw" secondAttribute="bottom" constant="-0.5" id="VXp-Ss-9xF"/>
                     <constraint firstItem="vht-EU-E5W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="cNG-mB-Igx"/>
                     <constraint firstAttribute="bottomMargin" secondItem="CTj-DH-iUD" secondAttribute="bottom" constant="1.5" id="mXl-mB-wHz"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Yqe-6i-hHv" secondAttribute="trailing" id="uHa-NZ-AS2"/>
