@@ -79,13 +79,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
     }
     
+    // Changes the focus of the map when scrolling through the CollectionView
     func nearbyFocusedPlaceChanged(notification: Notification) {
         let selectedIndex = PlaceStore.shared.currentNearbyFocusedPlaceIndex
         let placeLoc = PlaceStore.shared.nearbyPlaces[selectedIndex]["geometry"]!["location"] as! Dictionary<String, AnyObject>
         let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
         let span = MKCoordinateSpanMake(0.025, 0.025)
         let region = MKCoordinateRegion(center: location, span: span)
+        
         mapView.setRegion(region, animated: true)
+        
+        let currentPlaceName = PlaceStore.shared.getCurrentFocusedPlace()["name"] as? String
+        
+        // Show annotation call out
+        for annotation in mapView.annotations {
+            if annotation.title as? String  == currentPlaceName {
+                mapView.selectAnnotation(annotation, animated: true)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

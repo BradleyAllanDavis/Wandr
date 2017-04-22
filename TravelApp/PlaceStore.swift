@@ -97,6 +97,10 @@ final class PlaceStore: NSObject {
             return nil
         }
     }
+    
+    func getCurrentFocusedPlace() -> Dictionary<String, AnyObject> {
+        return _nearbyPlaces[currentNearbyFocusedPlaceIndex]
+    }
 }
 
 //# MARK: - PlacesAPISearchUpdater methods
