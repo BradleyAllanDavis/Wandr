@@ -11,11 +11,17 @@ import MapKit
 import CoreLocation
 import GooglePlaces
 
+enum MapPanningSource {
+    case automatic
+    case user
+}
+
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate, UIPopoverPresentationControllerDelegate
 {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
     var tagPreferences = [String: Bool]()
+    var panningSource: MapPanningSource = .automatic
     
     lazy var searchController: UISearchController = ({
         [unowned self] in
@@ -35,6 +41,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     //store places as array of dictionaries for now...
     var currentPlaces = [Dictionary<String, AnyObject>]()
     
+    @IBOutlet weak var redoSearchBlurView: UIVisualEffectView!
+    @IBOutlet weak var redoSearchButton: UIButton!
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             mapView.mapType = .standard
@@ -64,38 +72,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         dump(tagPreferences)
         setupSearchBar()
         
-        let effect = UIBlurEffect(style: .dark)
-        slideView = SlideUpView(effect: effect)
+        // Add the slide up view
+        slideView = SlideUpView(effect: UIBlurEffect(style: .dark))
         view.addSubview(slideView)
         
-        //Register notifications
+        // Register for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(nearbyFocusedPlaceChanged(notification:)), name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
         
-        //Search for places using current location
+        // Search for places using current location
         updateUserTagPreferences()
         PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
-    }
-    
-    // Changes the focus of the map when scrolling through the CollectionView
-    func nearbyFocusedPlaceChanged(notification: Notification) {
-        let selectedIndex = PlaceStore.shared.currentNearbyFocusedPlaceIndex
-        let placeLoc = PlaceStore.shared.nearbyPlaces[selectedIndex]["geometry"]!["location"] as! Dictionary<String, AnyObject>
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
-        let span = MKCoordinateSpanMake(0.025, 0.025)
-        let region = MKCoordinateRegion(center: location, span: span)
         
-        mapView.setRegion(region, animated: true)
-        
-        let currentPlaceName = PlaceStore.shared.getCurrentFocusedPlace()["name"] as? String
-        
-        // Show annotation call out
-        for annotation in mapView.annotations {
-            if annotation.title as? String  == currentPlaceName {
-                mapView.selectAnnotation(annotation, animated: true)
-            }
-        }
+        // Configure button for searching in area
+        redoSearchBlurView.layer.cornerRadius = 10.0;
+        redoSearchBlurView.layer.borderWidth = 0.25
+        redoSearchBlurView.layer.borderColor = UIColor.black.cgColor
+        redoSearchBlurView.clipsToBounds = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -110,6 +103,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         return UIModalPresentationStyle.none
     }
     
+    // Button action to redo search in current area
+    @IBAction func redoSearchInArea(_ sender: Any) {
+        let span = mapView.region.span
+        let center = mapView.region.center
+        let loc1 = CLLocation(latitude: center.latitude - span.latitudeDelta * 0.5, longitude: center.longitude)
+        let loc2 = CLLocation(latitude: center.latitude + span.latitudeDelta * 0.5, longitude: center.longitude)
+        let metersInLatitude = loc1.distance(from: loc2)
+        
+        PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: Int(metersInLatitude / 2))
+        redoSearchBlurView.isHidden = true;
+    }
+    
     // Dispose of any resources that can be recreated
     override func didReceiveMemoryWarning()
     {
@@ -119,6 +124,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     //# MARK: - LocationService delegate methods
     func tracingLocation(currentLocation: CLLocation) {}
     func tracingLocationDidFailWithError(error: NSError) {}
+    
+    //# MARK: - MapView delegate methods
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        //Check if the pan was the result of the user or the collectionview scrolling
+        if panningSource == .user {
+            redoSearchBlurView.isHidden = false
+        } else {
+            panningSource = .user
+            redoSearchBlurView.isHidden = true
+        }
+    }
     
     //# MARK: - Methods for navigation to tag and cart views
     func transitionToPreferenceView() -> Void {
@@ -133,6 +149,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         present(vc!, animated: true, completion: nil)
     }
     
+    // Set up the top search bar
     func setupSearchBar() {
         let filter = GMSAutocompleteFilter()
         filter.type = .city
@@ -151,8 +168,35 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         view.addSubview(navBarView)
     }
     
+    //# MARK: - Selectors for responding to NotificationCenter
+    
+    // Changes the focus of the map when scrolling through the CollectionView
+    func nearbyFocusedPlaceChanged(notification: Notification) {
+        let selectedIndex = PlaceStore.shared.currentNearbyFocusedPlaceIndex
+        let placeLoc = PlaceStore.shared.nearbyPlaces[selectedIndex]["geometry"]!["location"] as! Dictionary<String, AnyObject>
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+        let span = MKCoordinateSpanMake(0.025, 0.025)
+        let region = MKCoordinateRegion(center: location, span: span)
+        
+        mapView.setRegion(region, animated: true)
+        panningSource = .automatic
+        
+        let currentPlaceName = PlaceStore.shared.getCurrentFocusedPlace()["name"] as? String
+        
+        // Show annotation call out
+        for annotation in mapView.annotations {
+            if annotation.title as? String  == currentPlaceName {
+                mapView.selectAnnotation(annotation, animated: true)
+            }
+        }
+    }
+    
+    // Called after nearby places have been updated
     func updatePlaces(notification: Notification) {
         currentPlaces = PlaceStore.shared.nearbyPlaces
+        mapView.removeAnnotations(mapView.annotations)
+        redoSearchBlurView.isHidden = true
+        panningSource = .automatic
         
         // Add place annotations to map
         for place in PlaceStore.shared.nearbyPlaces {
@@ -165,8 +209,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         }
     }
     
+    // Update types for API search if preferences are set
     func updateUserTagPreferences() {
-        // Update types for API search if preferences are set
         var types = [String]()
         for type in tagPreferences {
             if type.value {
@@ -217,34 +261,8 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
     }
 }
 
-//<<<<<<< HEAD
-////# MARK: - UISearchControllerDelegate methodes
-//=======
-////# MARK: - PlacesAPISearchUpdater methods
-//
-//extension MapViewController: PlacesAPISearchResultUpdater {
-//    func didReceivePlacesFromAPI(places: [Dictionary<String, AnyObject>]) {
-//        //do something with places
-//        currentPlaces = places
-//        dump(places)
-//        
-//        // Add place annotations to map
-//        for place in places {
-//            let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
-//            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = location
-//            annotation.title = place["name"] as? String
-//            mapView.addAnnotation(annotation)
-//        }
-//    }
-//    
-//    func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String) {
-//        print("Error getting places for type \(placeType)")
-//    }
-//}
-
 //# MARK: - UISearchControllerDelegate methods
+
 extension MapViewController: UISearchControllerDelegate {
     func didDismissSearchController(_ searchController: UISearchController) {
         searchController.searchBar.frame = navBarView.originalSearchBarFrame

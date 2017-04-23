@@ -32,6 +32,8 @@ class SlideUpView: UIVisualEffectView {
     var collectionViewScrollStatus: NearbyScrollStatus = .neverScrolled
     
     private var panGesture: UIPanGestureRecognizer!
+    private var cvNoResultLabel: UILabel!
+    private var tvNoResultLabel: UILabel!
     
     override init(effect: UIVisualEffect?) {
         super.init(effect: effect)
@@ -85,6 +87,17 @@ class SlideUpView: UIVisualEffectView {
         collectionViewScrollStatus = .neverScrolled
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
+        
+        //make sure there are places before scrolling, make labels visible if not
+        guard PlaceStore.shared.nearbyPlaces.count > 0 else {
+            cvNoResultLabel.isHidden = false
+            tvNoResultLabel.isHidden = false
+            return
+        }
+        
+        cvNoResultLabel.isHidden = true
+        tvNoResultLabel.isHidden = true
+        
         collectionView.scrollToItem(
             at: IndexPath(row: 0, section: 0),
             at: .centeredHorizontally,
@@ -104,8 +117,18 @@ class SlideUpView: UIVisualEffectView {
     func setupCollectionView() {
         let layout:NearbyCollectionViewFlowLayout = NearbyCollectionViewFlowLayout()
         let collectionViewFrame = CGRect(x: 0, y: 10, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.size.width / 3)
+        let cvLabelFrame = CGRect(x: 0, y: (collectionViewFrame.height / 2) - 15, width: collectionViewFrame.width, height: 30)
         
         layout.scrollDirection = .horizontal
+        
+        cvNoResultLabel = UILabel(frame: cvLabelFrame)
+        
+        cvNoResultLabel.font = UIFont(name: "Avenir", size: 14.0)
+        cvNoResultLabel.backgroundColor = .clear
+        cvNoResultLabel.text = "Nothing happening in this area..."
+        cvNoResultLabel.textColor = .white
+        cvNoResultLabel.textAlignment = .center
+        cvNoResultLabel.isHidden = true
         
         collectionView = UICollectionView(frame: collectionViewFrame, collectionViewLayout: layout)
         collectionView.dataSource = self
@@ -115,12 +138,22 @@ class SlideUpView: UIVisualEffectView {
         collectionView.isHidden = true
         collectionView.isPagingEnabled = false
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
+        collectionView.addSubview(cvNoResultLabel)
         
         addSubview(collectionView)
     }
     
     func setupTableView() {
         let tableViewFrame = CGRect(x: 0, y: 150, width: UIScreen.main.bounds.size.width, height: frame.height)
+        let tvLabelFrame = CGRect(x: 0, y: (tableViewFrame.height / 2) - 15, width: tableViewFrame.width, height: 30)
+        tvNoResultLabel = UILabel(frame: tvLabelFrame)
+        
+        tvNoResultLabel.font = UIFont(name: "Avenir", size: 14.0)
+        tvNoResultLabel.backgroundColor = .clear
+        tvNoResultLabel.text = "Nothing happening in this area..."
+        tvNoResultLabel.textColor = .white
+        tvNoResultLabel.textAlignment = .center
+        tvNoResultLabel.isHidden = true
         
         tableView = UITableView(frame: tableViewFrame, style: .plain)
         tableView.isUserInteractionEnabled = true
@@ -129,6 +162,8 @@ class SlideUpView: UIVisualEffectView {
         tableView.delegate = self
         tableView.isHidden = true
         tableView.backgroundColor = .clear
+        tableView.tableFooterView = UIView()
+        tableView.addSubview(tvNoResultLabel)
         
         addSubview(tableView)
     }
@@ -277,6 +312,10 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard PlaceStore.shared.nearbyPlaces.count > 0 else {
+            return
+        }
+        
         let centerPoint = CGPoint(
             x: collectionView.center.x + collectionView.contentOffset.x,
             y: collectionView.center.y + collectionView.contentOffset.y

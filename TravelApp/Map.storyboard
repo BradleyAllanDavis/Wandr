@@ -36,21 +36,51 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-8W-OoK">
+                                <rect key="frame" x="117" y="84" width="140" height="30"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vJq-jI-Y62">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ7-bN-Pb7">
+                                            <rect key="frame" x="2" y="1" width="140" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                            <state key="normal" title="Search This Area">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="redoSearchInArea:" destination="45h-zq-vlf" eventType="touchUpInside" id="ldu-oR-Yoi"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="bQN-8a-dXV"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DMu-8W-OoK" firstAttribute="centerX" secondItem="XDf-JM-xSK" secondAttribute="centerX" id="4kR-mX-xX3"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="leading" secondItem="zFn-AY-xKd" secondAttribute="leading" id="6mi-0B-nOv"/>
                             <constraint firstItem="nFn-b9-tW7" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="100" id="Jyf-a5-QzP"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="bottom" secondItem="u0z-Qe-UAi" secondAttribute="top" constant="45" id="O2a-91-yhl"/>
                             <constraint firstAttribute="trailing" secondItem="XDf-JM-xSK" secondAttribute="trailing" id="R1R-J8-Uof"/>
+                            <constraint firstItem="DMu-8W-OoK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="64" id="YIZ-IH-ted"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="-20" id="is3-rA-xQI"/>
                             <constraint firstItem="nFn-b9-tW7" firstAttribute="leading" secondItem="XDf-JM-xSK" secondAttribute="trailing" constant="-38" id="o8H-55-b2O"/>
+                            <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="DMu-8W-OoK" secondAttribute="bottom" constant="-114" id="pkt-HO-5vw"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="XDf-JM-xSK" id="ptD-aO-1PA"/>
+                        <outlet property="redoSearchBlurView" destination="DMu-8W-OoK" id="Ygq-BQ-L0O"/>
+                        <outlet property="redoSearchButton" destination="hQ7-bN-Pb7" id="xrb-R3-Jri"/>
                         <outlet property="searchDisplayController" destination="3dl-zm-BSk" id="bWq-jf-GLL"/>
                     </connections>
                 </viewController>
