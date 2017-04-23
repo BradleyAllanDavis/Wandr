@@ -106,7 +106,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     // Button action to redo search in current area
-    @IBAction func redoSearchInArea(_ sender: Any) {
+    @IBAction func redoSearchInAreaAction(_ sender: Any) {
+        redoSearchInArea()
+    }
+    
+    func redoSearchInArea() {
+        updateUserTagPreferences()
+        
         let span = mapView.region.span
         let center = mapView.region.center
         let loc1 = CLLocation(latitude: center.latitude - span.latitudeDelta * 0.5, longitude: center.longitude)

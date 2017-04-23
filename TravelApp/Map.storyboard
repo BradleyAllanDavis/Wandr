@@ -31,7 +31,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="showMapSettings" popoverAnchorView="nFn-b9-tW7" id="nMY-f8-Evf">
+                                    <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="changeMapType" popoverAnchorView="nFn-b9-tW7" id="RJr-BX-M6Q">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -51,6 +51,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="redoSearchInArea:" destination="45h-zq-vlf" eventType="touchUpInside" id="ldu-oR-Yoi"/>
+                                                <action selector="redoSearchInAreaAction:" destination="45h-zq-vlf" eventType="touchUpInside" id="VBQ-Bs-Z3s"/>
                                             </connections>
                                         </button>
                                     </subviews>
