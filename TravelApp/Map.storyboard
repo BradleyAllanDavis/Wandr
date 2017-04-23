@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="45h-zq-vlf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="45h-zq-vlf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
                             </mapView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-b9-tW7">
-                                <rect key="frame" x="337" y="120" width="22" height="22"/>
+                                <rect key="frame" x="336" y="120" width="22" height="22"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
@@ -37,16 +37,15 @@
                                 </connections>
                             </button>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-8W-OoK">
-                                <rect key="frame" x="117" y="84" width="140" height="30"/>
+                                <rect key="frame" x="137.5" y="82" width="99" height="33"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vJq-jI-Y62">
-                                    <rect key="frame" x="0.0" y="0.0" width="140" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="99" height="33"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ7-bN-Pb7">
-                                            <rect key="frame" x="2" y="1" width="140" height="27"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ7-bN-Pb7">
+                                            <rect key="frame" x="5" y="2" width="89" height="29"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <state key="normal" title="Search This Area">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -55,24 +54,26 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="hQ7-bN-Pb7" secondAttribute="bottom" constant="2" id="AwH-w9-1cV"/>
+                                        <constraint firstItem="hQ7-bN-Pb7" firstAttribute="leading" secondItem="vJq-jI-Y62" secondAttribute="leading" constant="5" id="FCW-yz-EOd"/>
+                                        <constraint firstAttribute="trailing" secondItem="hQ7-bN-Pb7" secondAttribute="trailing" constant="5" id="kvP-J6-Nsx"/>
+                                        <constraint firstItem="hQ7-bN-Pb7" firstAttribute="top" secondItem="vJq-jI-Y62" secondAttribute="top" constant="2" id="njf-yp-Aq4"/>
+                                    </constraints>
                                 </view>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="bQN-8a-dXV"/>
-                                </constraints>
-                                <blurEffect style="extraLight"/>
+                                <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DMu-8W-OoK" firstAttribute="centerX" secondItem="XDf-JM-xSK" secondAttribute="centerX" id="4kR-mX-xX3"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="leading" secondItem="zFn-AY-xKd" secondAttribute="leading" id="6mi-0B-nOv"/>
+                            <constraint firstItem="DMu-8W-OoK" firstAttribute="centerX" secondItem="XDf-JM-xSK" secondAttribute="centerX" id="82u-fR-n9f"/>
                             <constraint firstItem="nFn-b9-tW7" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="100" id="Jyf-a5-QzP"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="bottom" secondItem="u0z-Qe-UAi" secondAttribute="top" constant="45" id="O2a-91-yhl"/>
                             <constraint firstAttribute="trailing" secondItem="XDf-JM-xSK" secondAttribute="trailing" id="R1R-J8-Uof"/>
-                            <constraint firstItem="DMu-8W-OoK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="64" id="YIZ-IH-ted"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="-20" id="is3-rA-xQI"/>
-                            <constraint firstItem="nFn-b9-tW7" firstAttribute="leading" secondItem="XDf-JM-xSK" secondAttribute="trailing" constant="-38" id="o8H-55-b2O"/>
-                            <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="DMu-8W-OoK" secondAttribute="bottom" constant="-114" id="pkt-HO-5vw"/>
+                            <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="DMu-8W-OoK" secondAttribute="bottom" constant="-115" id="jJ1-T0-gxE"/>
+                            <constraint firstItem="nFn-b9-tW7" firstAttribute="leading" secondItem="XDf-JM-xSK" secondAttribute="trailing" constant="-39" id="o8H-55-b2O"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

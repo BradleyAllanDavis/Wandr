@@ -18,6 +18,10 @@ enum MapPanningSource {
 
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate, UIPopoverPresentationControllerDelegate
 {
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
     var tagPreferences = [String: Bool]()
@@ -73,7 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         setupSearchBar()
         
         // Add the slide up view
-        slideView = SlideUpView(effect: UIBlurEffect(style: .dark))
+        slideView = SlideUpView(effect: UIBlurEffect(style: .light))
         view.addSubview(slideView)
         
         // Register for notifications
@@ -85,9 +89,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
         
         // Configure button for searching in area
-        redoSearchBlurView.layer.cornerRadius = 10.0;
-        redoSearchBlurView.layer.borderWidth = 0.25
-        redoSearchBlurView.layer.borderColor = UIColor.black.cgColor
+        redoSearchBlurView.layer.cornerRadius = 5.0;
         redoSearchBlurView.clipsToBounds = true
     }
     
@@ -157,7 +159,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         searchResultViewController.autocompleteFilter = filter
         searchResultViewController.delegate = self
         navBarView = TravelNavBarView(
-            frame: CGRect(x: 15, y: 25.0, width: UIScreen.main.bounds.size.width - 30, height: 45.0),
+            frame: CGRect(x: 10, y: 10.0, width: UIScreen.main.bounds.size.width - 20, height: 45.0),
             searchBar: searchController.searchBar,
             navHandler: self,
             preferenceSelector: #selector(transitionToPreferenceView),

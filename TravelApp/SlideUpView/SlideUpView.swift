@@ -51,7 +51,7 @@ class SlideUpView: UIVisualEffectView {
         
         wayDownLabel.font = labelFont
         wayDownLabel.text = "Nearby Places"
-        wayDownLabel.textColor = .white
+        wayDownLabel.textColor = .black
         
         addSubview(wayDownLabel)
         setupCollectionView()
