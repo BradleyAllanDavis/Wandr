@@ -82,7 +82,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         if segue.identifier == "showMapSettings" {
             let popoverViewController = segue.destination
             popoverViewController.popoverPresentationController?.delegate = self
-            
+//            self.addChildViewController(popoverViewController)
         }
     }
     
