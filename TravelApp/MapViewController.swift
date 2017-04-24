@@ -24,7 +24,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
-    var tagPreferences = [String: Bool]()
     var panningSource: MapPanningSource = .automatic
     
     lazy var searchController: UISearchController = ({
@@ -73,11 +72,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let region = MKCoordinateRegion(center: center, span: span)
         mapView.setRegion(region, animated: true)
         
-        dump(tagPreferences)
         setupSearchBar()
         
         // Add the slide up view
-        slideView = SlideUpView(effect: UIBlurEffect(style: .light))
+        slideView = SlideUpView(effect: UIBlurEffect(style: .dark))
         view.addSubview(slideView)
         
         // Register for notifications
@@ -85,7 +83,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         NotificationCenter.default.addObserver(self, selector: #selector(nearbyFocusedPlaceChanged(notification:)), name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
         
         // Search for places using current location
-        updateUserTagPreferences()
         PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
         
         // Configure button for searching in area
@@ -111,8 +108,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     func redoSearchInArea() {
-        updateUserTagPreferences()
-        
         let span = mapView.region.span
         let center = mapView.region.center
         let loc1 = CLLocation(latitude: center.latitude - span.latitudeDelta * 0.5, longitude: center.longitude)
@@ -217,18 +212,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         }
     }
     
-    // Update types for API search if preferences are set
-    func updateUserTagPreferences() {
-        var types = [String]()
-        for type in tagPreferences {
-            if type.value {
-                types.append(type.key)
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        var counter = 0;
+        for place in PlaceStore.shared.nearbyPlaces {
+            if place["name"] as? String == (view.annotation?.title)! {
+                slideView.animateMiddle()
+                slideView.collectionViewScrollStatus = .scrolling
+                slideView.collectionView.scrollToItem(
+                    at: IndexPath(row: counter, section: 0),
+                    at: .centeredHorizontally,
+                    animated: true
+                )
+            } else {
+                counter += 1
             }
-        }
-        
-        if !types.isEmpty {
-            dump(types)
-            PlaceStore.shared.userSelectedPlaceTypes = types
         }
     }
 }
@@ -246,8 +243,6 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
         // Update map to focus on searched location
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 5000, 5000)
         mapView.setRegion(coordinateRegion, animated: true)
-        
-        updateUserTagPreferences()
             
         //starts the request for places nearby the selected location
         PlaceStore.shared.updateCurrentPlaces(with: place.coordinate, searchRadius: 4000)

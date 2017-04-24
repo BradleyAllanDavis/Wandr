@@ -15,6 +15,7 @@
 		40425EF51EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40425EF41EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift */; };
 		4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */; };
 		4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */; };
+		406F669F1EAE6525006D827D /* availableTags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 406F669E1EAE6525006D827D /* availableTags.plist */; };
 		4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4073EC4A1E70931E009F1F27 /* APIConfig.plist */; };
 		407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */; };
 		407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */; };
@@ -78,6 +79,7 @@
 		4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularTableViewCell.swift; path = SlideUpView/PopularTableViewCell.swift; sourceTree = "<group>"; };
 		4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopularTableViewCell.xib; path = SlideUpView/PopularTableViewCell.xib; sourceTree = "<group>"; };
 		4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesAPISearch.swift; path = SearchBar/PlacesAPISearch.swift; sourceTree = "<group>"; };
+		406F669E1EAE6525006D827D /* availableTags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = availableTags.plist; sourceTree = "<group>"; };
 		4073EC4A1E70931E009F1F27 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelNavBarView.swift; path = TravelApp/SearchBar/TravelNavBarView.swift; sourceTree = "<group>"; };
 		407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchBar.swift; path = TravelApp/SearchBar/TravelSearchBar.swift; sourceTree = "<group>"; };
@@ -200,11 +202,7 @@
 		FA85AF3E1EADB60300918965 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
-				FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */,
 				FAF76E481EAD741E00A5E094 /* WelcomeButtonView.swift */,
-				FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */,
-				FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */,
 				FA85AF3C1EADB5CD00918965 /* Login.storyboard */,
 			);
 			name = Welcome;
@@ -261,6 +259,7 @@
 				FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */,
 				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
 				FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */,
+				406F669E1EAE6525006D827D /* availableTags.plist */,
 			);
 			path = TravelApp;
 			sourceTree = "<group>";
@@ -436,6 +435,7 @@
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
 				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
+				406F669F1EAE6525006D827D /* availableTags.plist in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
 				FA85AF3D1EADB5CD00918965 /* Login.storyboard in Resources */,
 			);

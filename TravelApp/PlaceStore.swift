@@ -12,7 +12,7 @@ import GooglePlaces
 final class PlaceStore: NSObject {
     static let shared: PlaceStore = PlaceStore()
     
-    var userSelectedPlaceTypes: [String] = ["restaurant"]
+    var tagPreferences: [String: Bool]
     var currentNearbyFocusedPlaceIndex: Int = 0
     
     fileprivate let apiSearch = PlacesAPISearch()
@@ -33,6 +33,18 @@ final class PlaceStore: NSObject {
         return photosCopy
     }
     
+    var userSelectedPlaceTypes: [String] {
+        let tagPrefs = tagPreferences.flatMap({ (tag, val) -> String? in
+            if val {
+                return tag
+            }
+            return nil
+        })
+        
+        return tagPrefs
+    }
+    
+    
     var nearbyPlaces: [Dictionary<String, AnyObject>] {
         var nearbyCopy: [Dictionary<String, AnyObject>]!
         concurrentNearbyPlaceQueue.sync {
@@ -52,7 +64,11 @@ final class PlaceStore: NSObject {
     }
     
     private override init() {
+        let plistManager = Plist(name: "tagPreferences")
+        tagPreferences = plistManager?.getValuesInPlistFile() as! [String: Bool]
+
         super.init()
+        
         apiSearch.resultsUpdaterDelegate = self
     }
     
@@ -100,6 +116,18 @@ final class PlaceStore: NSObject {
     
     func getCurrentFocusedPlace() -> Dictionary<String, AnyObject> {
         return _nearbyPlaces[currentNearbyFocusedPlaceIndex]
+    }
+    
+    func setTags(tags: [String: Bool]) {
+        tagPreferences = tags
+        let plistManager = Plist(name: "tagPreferences")        
+        try! plistManager?.addValuesToPlistFile(dictionary: tags as NSDictionary)
+    }
+    
+    func loadTagsFromPlist() {
+        let plistManager = Plist(name: "tagPreferences")
+        let tags = plistManager?.getValuesInPlistFile() as! [String: Bool]
+        tagPreferences = tags
     }
 }
 

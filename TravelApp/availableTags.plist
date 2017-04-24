@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-   availableTags.plist
-   TravelApp
-
-   Created by Richard Wollack on 4/24/17.
-   Copyright (c) 2017 Scott Franklin. All rights reserved.
--->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-    
-    </dict>
+<dict>
+	<key>Parks</key>
+	<string>park</string>
+	<key>Night Clubs</key>
+	<string>night_club</string>
+	<key>Movie Theaters</key>
+	<string>movie_theater</string>
+	<key>Casinos</key>
+	<string>casino</string>
+	<key>Bars</key>
+	<string>bar</string>
+	<key>Art Galleries</key>
+	<string>art_gallery</string>
+	<key>Aquariums</key>
+	<string>aquarium</string>
+	<key>Museums</key>
+	<string>museum</string>
+	<key>Food</key>
+	<string>restaurant</string>
+</dict>
 </plist>
