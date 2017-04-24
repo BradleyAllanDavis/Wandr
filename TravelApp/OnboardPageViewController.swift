@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FBSDKLoginKit
 
 class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
     
@@ -33,6 +34,13 @@ class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
+        
+        if (FBSDKAccessToken.current() != nil) {
+            // User is logged in, do work such as go to next view controller.
+            print("User logged On")
+            let vc = MapViewController()
+            //self.present(vc, animated: true, completion: nil)
         }
     }
     
