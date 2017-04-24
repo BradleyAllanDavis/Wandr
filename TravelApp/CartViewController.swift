@@ -34,7 +34,7 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let row = indexPath.row
         print("Row: \(row)")
         
-        commitSelection()
+//        commitSelection()
 
     }
     
@@ -43,21 +43,13 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return indexPath
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toPlaceDetail" {
-            if let nextVC = segue.destination as? PlaceDetailViewController {
-                nextVC.placeTitle = data[selectedIndex!]
-            }
-        }
-    }
-    
-    func commitSelection() {
-        if (presentingViewController as? PlaceDetailViewController) != nil {
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            performSegue(withIdentifier: "toPlaceDetail", sender: nil)
-        }
-    }
+//    func commitSelection() {
+//        if (presentingViewController as? PlaceDetailViewController) != nil {
+//            self.dismiss(animated: true, completion: nil)
+//        } else {
+//            performSegue(withIdentifier: "toPlaceDetail", sender: nil)
+//        }
+//    }
     
     
     override func didReceiveMemoryWarning() {

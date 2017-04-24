@@ -30,6 +30,7 @@ class SlideUpView: UIVisualEffectView {
     var collectionView: UICollectionView!
     var tableView: UITableView!
     var collectionViewScrollStatus: NearbyScrollStatus = .neverScrolled
+    var mapViewController: MapViewController!
     
     private var panGesture: UIPanGestureRecognizer!
     private var cvNoResultLabel: UILabel!
@@ -290,6 +291,10 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.mapViewController.showPlaceDetails(placeIndex: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

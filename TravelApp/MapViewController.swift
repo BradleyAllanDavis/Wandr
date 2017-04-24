@@ -74,6 +74,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         
         // Add the slide up view
         slideView = SlideUpView(effect: UIBlurEffect(style: .dark))
+        slideView.mapViewController = self
         view.addSubview(slideView)
         
         // Register for notifications
@@ -101,6 +102,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+    
+    func showPlaceDetails(placeIndex: Int) {
+        print("showPlaceDetails")
+        let vc = PlaceDetailController(nibName: "PlaceDetailView", bundle: nil)
+        vc.currentPlace = PlaceStore.shared.nearbyPlaces[placeIndex]
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
     }
     
     // Button action to redo search in current area
