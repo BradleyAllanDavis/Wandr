@@ -21,7 +21,7 @@ class SlideUpCollectionViewCell: UICollectionViewCell {
         imageView.bounds.size.width = imageView.bounds.size.height
         imageView.layer.cornerRadius = imageView.bounds.size.width / 2
         imageView.layer.masksToBounds = true
-        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderColor = UIColor.black.cgColor
         imageView.layer.borderWidth = 1.0
         
         backgroundColor = .clear

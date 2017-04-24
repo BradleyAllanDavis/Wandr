@@ -11,9 +11,9 @@ import UIKit
 struct SlideUpViewOrigins {
     let wayDown = CGPoint(x: 12.5, y: UIScreen.main.bounds.height - 35)
     let middle = CGPoint(x: 0.0, y: UIScreen.main.bounds.height - (UIScreen.main.bounds.size.width / 3) - 10)
-    let wayUp = CGPoint(x: 0.0, y: 75)
-    let defaultSize = CGSize(width: UIScreen.main.bounds.width - 25, height: UIScreen.main.bounds.height - 75)
-    let shiftedSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 75)
+    let wayUp = CGPoint(x: 0.0, y: 65)
+    let defaultSize = CGSize(width: UIScreen.main.bounds.width - 25, height: UIScreen.main.bounds.height - 65)
+    let shiftedSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 65)
 }
 
 enum NearbyScrollStatus {
@@ -51,7 +51,7 @@ class SlideUpView: UIVisualEffectView {
         
         wayDownLabel.font = labelFont
         wayDownLabel.text = "Nearby Places"
-        wayDownLabel.textColor = .black
+        wayDownLabel.textColor = .white
         
         addSubview(wayDownLabel)
         setupCollectionView()
@@ -228,6 +228,7 @@ class SlideUpView: UIVisualEffectView {
             self.collectionView.isHidden = false
             self.tableView.frame.origin.y = 150
             self.wayDownLabel.isHidden = true
+            self.effect = UIBlurEffect(style: .light)
         }, completion: { _ in
             
         })
@@ -242,6 +243,7 @@ class SlideUpView: UIVisualEffectView {
             self.tableView.frame.origin.y = 0.0
             self.tableView.isHidden = false
             self.wayDownLabel.isHidden = true
+            self.effect = UIBlurEffect(style: .dark)
         }, completion: nil)
     }
     
@@ -252,6 +254,7 @@ class SlideUpView: UIVisualEffectView {
             self.layer.cornerRadius = 5.0
             self.collectionView.isHidden = true
             self.wayDownLabel.isHidden = false
+            self.effect = UIBlurEffect(style: .dark)
         }, completion: nil)
     }
 }
@@ -312,7 +315,24 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
         return UIEdgeInsets(top: 0.0, left: width, bottom: 0.0, right: width)
     }
     
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        getCenterCell()
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        getCenterCell()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        collectionViewScrollStatus = .scrolling
+        
+        if centerPath != nil {
+            let cell = collectionView.cellForItem(at: centerPath!) as? SlideUpCollectionViewCell
+            cell?.imageView.alpha = 0.5
+        }
+    }
+    
+    func getCenterCell() {
         guard PlaceStore.shared.nearbyPlaces.count > 0 else {
             return
         }
@@ -341,15 +361,6 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
         }
         
         collectionViewScrollStatus = .idle
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        collectionViewScrollStatus = .scrolling
-        
-        if centerPath != nil {
-            let cell = collectionView.cellForItem(at: centerPath!) as? SlideUpCollectionViewCell
-            cell?.imageView.alpha = 0.5
-        }
     }
 }
 
