@@ -14,6 +14,7 @@ import SpriteKit
 
 class BubbleNode: SIFloatingNode {
     var labelNode = SKLabelNode(fontNamed: "")
+    let colors: [String:SKColor] = ["Night Clubs" : SKColor.blue, "Museums" : SKColor.green, "Art Galleries" : SKColor.brown, "Casinos" : SKColor.red, "Parks" : SKColor.orange, "Aquariums" : SKColor.cyan, "Movie Theaters" : SKColor.black, "Food" : SKColor.purple, "Bars" : SKColor.yellow]
     
     class func instantiate() -> BubbleNode {
         let node = BubbleNode(circleOfRadius: 45)
@@ -25,7 +26,9 @@ class BubbleNode: SIFloatingNode {
         let boundingBox = node.path?.boundingBox;
         let radius = (boundingBox?.size.width)! / 2.0;
         node.physicsBody = SKPhysicsBody(circleOfRadius: radius + 1.5)
-        node.fillColor = SKColor.black
+        node.fillColor = SKColor.gray
+        //let image = #imageLiteral(resourceName: "spherelight")
+        //node.fillTexture = SKTexture.init(image: image)
         node.strokeColor = node.fillColor
         
         node.labelNode.text = ""
@@ -46,11 +49,18 @@ class BubbleNode: SIFloatingNode {
         node.labelNode.text = newText;
     }
     
-    override func selectingAnimation() -> SKAction? {
+    override func selectingAnimation(node: SIFloatingNode) -> SKAction? {
+        let bubble = node as? BubbleNode
+        //node.fillColor = colors[getText(node: bubble!)]!
+        node.fillColor = SKColor.orange
+        node.strokeColor = node.fillColor
         return SKAction.scale(to: 1.3, duration: 0.2)
     }
     
-    override func normalizeAnimation() -> SKAction? {
+    override func normalizeAnimation(node: SIFloatingNode) -> SKAction? {
+        let bubble = node as? BubbleNode
+        bubble?.fillColor = SKColor.gray
+        node.strokeColor = node.fillColor
         return SKAction.scale(to: 1, duration: 0.2)
     }
     

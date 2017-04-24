@@ -46,6 +46,14 @@ class BubblesScene: SIFloatingCollectionScene {
         bodyFrame.origin.y = frame.size.height - bodyFrame.size.height - topOffset
         physicsBody = SKPhysicsBody(edgeLoopFrom: bodyFrame)
         magneticField.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2 + bottomOffset / 2 - topOffset)
+        
+        let description = SKLabelNode(fontNamed: "System")
+        description.text = "What do you want to find?"
+        description.fontSize = 24
+        description.fontColor = SKColor.black
+        description.position = CGPoint(x: frame.midX, y: 80)
+        
+        addChild(description)
     }
     
     override func addChild(_ node: SKNode) {

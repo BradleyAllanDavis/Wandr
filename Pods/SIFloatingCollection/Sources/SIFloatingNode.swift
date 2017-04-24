@@ -36,10 +36,10 @@ open class SIFloatingNode: SKShapeNode {
         
         switch state {
         case .normal:
-            action = normalizeAnimation()
+            action = normalizeAnimation(node: self)
             actionKey = SIFloatingNode.normalizeKey
         case .selected:
-            action = selectingAnimation()
+            action = selectingAnimation(node: self)
             actionKey = SIFloatingNode.selectingKey
         case .removing:
             action = removingAnimation()
@@ -64,8 +64,8 @@ open class SIFloatingNode: SKShapeNode {
     
     // MARK: -
     // MARK: Animations
-    open func selectingAnimation() -> SKAction? {return nil}
-    open func normalizeAnimation() -> SKAction? {return nil}
+    open func selectingAnimation(node: SIFloatingNode) -> SKAction? {return nil}
+    open func normalizeAnimation(node: SIFloatingNode) -> SKAction? {return nil}
     open func removeAnimation() -> SKAction? {return nil}
     open func removingAnimation() -> SKAction? {return nil}
 }
