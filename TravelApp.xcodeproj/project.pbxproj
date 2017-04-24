@@ -242,9 +242,9 @@
 				56237F551E804BDA0000ED5E /* tagPreferences.plist */,
 				4037C0681EA302AC0050114B /* PlaceStore.swift */,
 				4037C06A1EA400A80050114B /* PlacePhoto.swift */,
-				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
 				FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */,
 				FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */,
+				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
 				FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */,
 			);
 			path = TravelApp;

@@ -58,13 +58,14 @@ class TagViewController: UIViewController {
     
     func commitSelection() {
         tagPreferences = floatingCollectionScene.performCommitSelectionAnimation()
-        
-        if let vc =  presentingViewController as? MapViewController {
-            vc.tagPreferences = tagPreferences
-            vc.redoSearchInArea()
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            performSegue(withIdentifier: "toMap", sender: nil)
-        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+            if let vc =  self.presentingViewController as? MapViewController {
+                vc.tagPreferences = self.tagPreferences
+                vc.redoSearchInArea()
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.performSegue(withIdentifier: "toMap", sender: nil)
+            }
+        })
     }
 }

@@ -35,7 +35,7 @@ class BubblesScene: SIFloatingCollectionScene {
     }
     
     fileprivate func configure() {
-        backgroundColor = SKColor.white
+        backgroundColor = SKColor.init(red: 1, green: 250/255.0, blue: 240/255.0, alpha: 1)
         scaleMode = .aspectFill
         allowMultipleSelection = false
         allowEditing = true

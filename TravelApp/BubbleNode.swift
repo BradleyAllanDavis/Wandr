@@ -14,7 +14,15 @@ import SpriteKit
 
 class BubbleNode: SIFloatingNode {
     var labelNode = SKLabelNode(fontNamed: "")
-    let colors: [String:SKColor] = ["Night Clubs" : SKColor.blue, "Museums" : SKColor.green, "Art Galleries" : SKColor.brown, "Casinos" : SKColor.red, "Parks" : SKColor.orange, "Aquariums" : SKColor.cyan, "Movie Theaters" : SKColor.black, "Food" : SKColor.purple, "Bars" : SKColor.yellow]
+    let colors: [String:SKColor] = ["Night Clubs" : SKColor.init(red: 0/255.0, green: 51/255.0, blue: 102/255.0,alpha: 1),
+                                    "Museums" : SKColor.init(red: 215/255.0, green: 158/255.0, blue: 0/255.0, alpha: 1),
+                                    "Art Galleries" : SKColor.init(red: 202/255.0, green: 120/255.0, blue: 120/255.0, alpha: 1),
+                                    "Casinos" : SKColor.init(red: 171/255.0, green: 143/255.0, blue: 193/255.0, alpha: 1),
+                                    "Parks" : SKColor.init(red: 181/255.0, green: 230/255.0, blue: 162/255.0, alpha: 1),
+                                    "Aquariums" : SKColor.init(red: 70/255.0, green: 170/255.0, blue: 255/255.0, alpha: 1),
+                                    "Movie Theaters" : SKColor.black,
+                                    "Food" : SKColor.init(red: 255/255.0, green: 130/255.0, blue: 0/255.0, alpha: 1),
+                                    "Bars" : SKColor.init(red: 36/255.0, green: 100/255.0, blue: 241/255.0, alpha: 1)]
     
     class func instantiate() -> BubbleNode {
         let node = BubbleNode(circleOfRadius: 45)
@@ -51,8 +59,7 @@ class BubbleNode: SIFloatingNode {
     
     override func selectingAnimation(node: SIFloatingNode) -> SKAction? {
         let bubble = node as? BubbleNode
-        //node.fillColor = colors[getText(node: bubble!)]!
-        node.fillColor = SKColor.orange
+        node.fillColor = colors[getText(node: bubble!)]!
         node.strokeColor = node.fillColor
         return SKAction.scale(to: 1.3, duration: 0.2)
     }
