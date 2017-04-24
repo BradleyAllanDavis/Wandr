@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
-class OnboardPageViewController: UIPageViewController {
+class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newIndexedViewController(index: "Page1"),
@@ -17,6 +18,7 @@ class OnboardPageViewController: UIPageViewController {
                 self.newIndexedViewController(index: "Page4")]
     }()
     
+
     private func newIndexedViewController(index: String) -> UIViewController {
         return UIStoryboard(name: "Welcome", bundle: nil) .
             instantiateViewController(withIdentifier: "\(index)ViewController")
