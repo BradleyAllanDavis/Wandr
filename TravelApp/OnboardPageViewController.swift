@@ -13,7 +13,8 @@ class OnboardPageViewController: UIPageViewController {
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newIndexedViewController(index: "Page1"),
                 self.newIndexedViewController(index: "Page2"),
-                self.newIndexedViewController(index: "Page3")]
+                self.newIndexedViewController(index: "Page3"),
+                self.newIndexedViewController(index: "Page4")]
     }()
     
     private func newIndexedViewController(index: String) -> UIViewController {
@@ -52,7 +53,7 @@ extension OnboardPageViewController: UIPageViewControllerDataSource {
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0 else {
-            return orderedViewControllers.last
+            return nil
         }
         
         guard orderedViewControllers.count > previousIndex else {
@@ -73,7 +74,7 @@ extension OnboardPageViewController: UIPageViewControllerDataSource {
         let orderedViewControllersCount = orderedViewControllers.count
         
         guard orderedViewControllersCount != nextIndex else {
-            return orderedViewControllers.first
+            return nil
         }
         
         guard orderedViewControllersCount > nextIndex else {
