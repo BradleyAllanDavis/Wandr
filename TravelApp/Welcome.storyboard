@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="2454" y="645"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome Button View Controller-->
         <scene sceneID="xNr-Jx-wrD">
             <objects>
-                <viewController id="GlE-Zw-x5h" sceneMemberID="viewController">
+                <viewController id="GlE-Zw-x5h" customClass="WelcomeButtonViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dwj-d5-Sf7"/>
                         <viewControllerLayoutGuide type="bottom" id="hw3-C3-3sg"/>
@@ -171,27 +171,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="166"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtE-tO-SCJ">
-                                <rect key="frame" x="16" y="86" width="311" height="64"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGJ-HG-D2g">
+                                <rect key="frame" x="16" y="20" width="311" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Skip for now">
+                                <color key="backgroundColor" red="0.26492902636528015" green="0.39069819450378418" blue="0.63628560304641724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Login via Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="GlE-Zw-x5h" eventType="touchUpInside" id="NF5-eX-qmQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQe-XW-DEo">
+                                <rect key="frame" x="16" y="86" width="311" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="skip for now">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="EQ8-Ze-2rJ" kind="show" id="28A-Yf-Piu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXC-dj-F3N">
-                                <rect key="frame" x="16" y="20" width="311" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="n7V-1V-8FI" kind="show" id="5ob-0c-8zT"/>
+                                    <segue destination="EQ8-Ze-2rJ" kind="show" id="aCB-QH-oeC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -199,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qyc-vc-OGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="1372"/>
+            <point key="canvasLocation" x="1493.5999999999999" y="1371.8140929535234"/>
         </scene>
         <!--Tag-->
         <scene sceneID="qSq-0k-6dQ">
