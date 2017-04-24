@@ -316,7 +316,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        getCenterCell()
+//        getCenterCell()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -357,7 +357,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
             
             centerPath = centerIndexPath
             PlaceStore.shared.currentNearbyFocusedPlaceIndex = centerIndexPath.row
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
+//            NotificationCenter.default.post(name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
         }
         
         collectionViewScrollStatus = .idle
@@ -421,5 +421,13 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print("edited")
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }
