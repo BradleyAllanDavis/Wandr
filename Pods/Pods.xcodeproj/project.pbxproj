@@ -7,113 +7,161 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		099CB1C7CB62914AB895076A014C82AF /* SIFloatingCollection-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E050BF66FEDA8D696AB6A057CA2FE23 /* SIFloatingCollection-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32B6507698135672C82F91E3C6AE348D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		3C2CB83FC4FF3F833262634E1972C47B /* Pods-TravelApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 053B0FE3446282A43BE08A2F5BD2F5FA /* Pods-TravelApp-dummy.m */; };
-		7125B3AE259F58A55EBA3DD4E8B769FC /* Pods-TravelApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 79F1887920F48D2C8DB37ED57897990B /* Pods-TravelApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A544BDD3339676C8F5F16C4E86483AAC /* SIFloatingCollection-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB07156FC7D8547D89CFA5335E3206D /* SIFloatingCollection-dummy.m */; };
-		BBE1BC0267847970FB9F1CC8B95AFC96 /* SIFloatingCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874253E165415E32455FDADE4AD2B24E /* SIFloatingCollectionScene.swift */; };
-		C72586FB6F69B48D56C406BE3007B245 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		D834DE2A87CC891295912264DEBEAFC3 /* SIFloatingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C41C230BD3B9F10F6D0D5A6C04A9DE /* SIFloatingNode.swift */; };
+		015C902B9C0E63DA0519A0D34E10F739 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B6CED3EC7F8C4C1B063C5398F85477 /* CosmosSettings.swift */; };
+		0CCD272CB62BDDE41BC1781ACBA0B047 /* Pods-TravelApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 053B0FE3446282A43BE08A2F5BD2F5FA /* Pods-TravelApp-dummy.m */; };
+		0EC88D04EAE0CD3EFD3C3C89C1B9F45F /* CosmosLocalizedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C919154BBDF28B1629BC5B0B636C8D0 /* CosmosLocalizedRating.swift */; };
+		23FD58400D09F8076430E0DA121EF177 /* SIFloatingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C60A01829BDA45D66F721FE637078F6 /* SIFloatingNode.swift */; };
+		25DFA72039CBA011EBA738AA73084A8E /* CosmosSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6AD163011E34857EB2B220A31241D /* CosmosSize.swift */; };
+		371F422D050761A63F0156F537B8902D /* CosmosDefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2CF19CEF79CD035CD1FC59A7303D07 /* CosmosDefaultSettings.swift */; };
+		3DF6ECF23D38E7DA5B5B2B43707F2F4D /* Cosmos-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22832B9185E2C1DDC895FB88587AC067 /* Cosmos-dummy.m */; };
+		424AD9605CBDCD867083B9820784E0AC /* CosmosText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA37EDF8038C66CB63F5AC94302D3B /* CosmosText.swift */; };
+		45F546D14166EDEE46371951EC705C03 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFFCFA242D82A78B18413DDA110F2D8 /* CosmosView.swift */; };
+		4F40A9CBB316E7100828F0C6F5714946 /* CosmosTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DF5B8C06F130B1DDDBD37E08E64C96 /* CosmosTouch.swift */; };
+		62DCF7803F29AA62E897B6BC4A27B43A /* Pods-TravelApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 79F1887920F48D2C8DB37ED57897990B /* Pods-TravelApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7CC5A43D7E1372EB6292FCBC0151A36E /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E5EAF234917BD844D5AD5AA4C66C79 /* CosmosAccessibility.swift */; };
+		88BA9FFC474BD7B995A0CEA06FF431F7 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B7E3BCB62F345496FA0AA425968D69 /* StarFillMode.swift */; };
+		93AA83CCDB184E0A030B000B2F3E768A /* SIFloatingCollection-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5486B16B0E8C8B238F6BD9A778FAE41 /* SIFloatingCollection-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		99F08F6FE2B165EEBD5E01EDDA176620 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FE2139686F0128A848394BD5C7610 /* CosmosRating.swift */; };
+		AA971D9492DD9B9E288045C2C0CC9A99 /* CosmosLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E637ED68782E22ECFAB7E7AA99917 /* CosmosLayers.swift */; };
+		B206781F401AFC3580666279C68FD511 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		C79D2F2FCE3EF9B31D1222E0C4A59DC5 /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB019D5C3B599C3221779CA4A6F40BAE /* RightToLeft.swift */; };
+		C95B658D689425ED9DAA95EB479B44A6 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C64A5203E825E38F0796051D4A127AE /* StarLayer.swift */; };
+		D0509BE0C0EFD283A5878AF326920576 /* SIFloatingCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0A0473B9149C9E9C1607185FE7B144 /* SIFloatingCollectionScene.swift */; };
+		D8DA69674E6F9D94144FC90090584467 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		DE5E91A47C1BF6869DF17747D61C2FF1 /* Cosmos-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F3B3FC7F491B5DE0D8BEF36986178F /* Cosmos-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2D8D1AA0D41C73C4B570DE682C05D72 /* CosmosTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FCAA00AC0478EF9C26373BF23B0429 /* CosmosTouchTarget.swift */; };
+		F37DDDC2660EB17E1BE35429C1C58AD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		F66DE3EF01408C42C115587B201CB541 /* CosmosLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD77946D1FC6AFD2ED7FC77DFF8765B8 /* CosmosLayerHelper.swift */; };
+		FD3F01A21D6B48CA6C403AF7E5173591 /* SIFloatingCollection-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B29657A4847A849EA15F2E0C910101 /* SIFloatingCollection-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		33950C80C930B574559EB2257F225FC4 /* PBXContainerItemProxy */ = {
+		A9E8212D160D179BD98985BBD0DC7923 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 32B0C06312C81660A81751B11F455356;
+			remoteGlobalIDString = F8048A49349EB5134BFA039E4C0F5D13;
 			remoteInfo = SIFloatingCollection;
+		};
+		D396D37632496F74E7EA0DC6753CD574 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FDC533A4360A68ABDCE852F04B30927;
+			remoteInfo = Cosmos;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		038E637ED68782E22ECFAB7E7AA99917 /* CosmosLayers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayers.swift; path = Cosmos/CosmosLayers.swift; sourceTree = "<group>"; };
 		053B0FE3446282A43BE08A2F5BD2F5FA /* Pods-TravelApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TravelApp-dummy.m"; sourceTree = "<group>"; };
-		18E728982A6BCF3FFD19BF3EECF54835 /* SIFloatingCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SIFloatingCollection.framework; path = SIFloatingCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		338314446B8644364207B4F85C8E6CF8 /* SIFloatingCollection.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SIFloatingCollection.modulemap; sourceTree = "<group>"; };
-		34CEBCC84AC3D4A6F29DBC4DB23BF111 /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
+		0C60A01829BDA45D66F721FE637078F6 /* SIFloatingNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SIFloatingNode.swift; path = Sources/SIFloatingNode.swift; sourceTree = "<group>"; };
+		1525E6A809A7B6C0DAC6FCC5463329AA /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		22832B9185E2C1DDC895FB88587AC067 /* Cosmos-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cosmos-dummy.m"; sourceTree = "<group>"; };
+		2662AEA1E3EFA143466819208E5B568E /* SIFloatingCollection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SIFloatingCollection.framework; path = SIFloatingCollection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		26F3B3FC7F491B5DE0D8BEF36986178F /* Cosmos-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-umbrella.h"; sourceTree = "<group>"; };
+		2C64A5203E825E38F0796051D4A127AE /* StarLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarLayer.swift; path = Cosmos/StarLayer.swift; sourceTree = "<group>"; };
+		2CD9B5A68C54E7CDFA09AE612AB1D72F /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		31FCAA00AC0478EF9C26373BF23B0429 /* CosmosTouchTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouchTarget.swift; path = Cosmos/Helpers/CosmosTouchTarget.swift; sourceTree = "<group>"; };
 		39BDDD684EE315DCD75382516662D5DE /* Pods-TravelApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TravelApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		3C9A1D4578083CD2AFD49150C8F471BE /* Pods-TravelApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TravelApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		41C66A54887D9B3F537746D42860BC44 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C919154BBDF28B1629BC5B0B636C8D0 /* CosmosLocalizedRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLocalizedRating.swift; path = Cosmos/CosmosLocalizedRating.swift; sourceTree = "<group>"; };
+		4F2CF19CEF79CD035CD1FC59A7303D07 /* CosmosDefaultSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosDefaultSettings.swift; path = Cosmos/CosmosDefaultSettings.swift; sourceTree = "<group>"; };
 		55665CB72398879D2CB576E0DE7951AA /* Pods-TravelApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TravelApp.modulemap"; sourceTree = "<group>"; };
-		5B5CD9FEFEBD6B50B56E2CB2EB231F22 /* SIFloatingCollection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SIFloatingCollection-prefix.pch"; sourceTree = "<group>"; };
-		5E050BF66FEDA8D696AB6A057CA2FE23 /* SIFloatingCollection-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SIFloatingCollection-umbrella.h"; sourceTree = "<group>"; };
+		59E8E430F2DCCD7BAA724328C45BD341 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		60EAFD2E23D33AB78F2E9CD597B7182F /* Pods-TravelApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelApp-frameworks.sh"; sourceTree = "<group>"; };
+		62CCEC1C9192087DFB695893F36E2B5D /* GooglePlacePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlacePicker.framework; path = Frameworks/GooglePlacePicker.framework; sourceTree = "<group>"; };
+		65E5EAF234917BD844D5AD5AA4C66C79 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosAccessibility.swift; path = Cosmos/CosmosAccessibility.swift; sourceTree = "<group>"; };
+		6795711239F4159561F91D18675EB6DF /* SIFloatingCollection.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SIFloatingCollection.modulemap; sourceTree = "<group>"; };
+		723086A7106D13BD1FF6B498A9F50CDA /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		73D3299B303BA8EEA3FDC96F8A39B1D5 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cosmos.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F1887920F48D2C8DB37ED57897990B /* Pods-TravelApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TravelApp-umbrella.h"; sourceTree = "<group>"; };
-		7DB07156FC7D8547D89CFA5335E3206D /* SIFloatingCollection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SIFloatingCollection-dummy.m"; sourceTree = "<group>"; };
-		81C41C230BD3B9F10F6D0D5A6C04A9DE /* SIFloatingNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SIFloatingNode.swift; path = Sources/SIFloatingNode.swift; sourceTree = "<group>"; };
-		84845FE4948DF3A8C7F3671D9ED91C30 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
-		874253E165415E32455FDADE4AD2B24E /* SIFloatingCollectionScene.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SIFloatingCollectionScene.swift; path = Sources/SIFloatingCollectionScene.swift; sourceTree = "<group>"; };
+		82076DDF19CE36134520E60F687D9674 /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9C54355757DE88A3B9638A51010935B1 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
-		A0BE28DCE33C7D35DF6ABC1C4C34C886 /* SIFloatingCollection.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SIFloatingCollection.xcconfig; sourceTree = "<group>"; };
-		B027A9F0F4194B14AB2735468508FC2D /* Pods_TravelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TravelApp.framework; path = "Pods-TravelApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B820501D9DCFC52A18FDE69DA16D44EA /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
-		C0DFA00AD0E115DBA5877B3E18D2CAB4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BA6AD163011E34857EB2B220A31241D /* CosmosSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSize.swift; path = Cosmos/CosmosSize.swift; sourceTree = "<group>"; };
+		A39A2D025170174317BC987BFF8F2FD3 /* Cosmos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cosmos.xcconfig; sourceTree = "<group>"; };
+		AB019D5C3B599C3221779CA4A6F40BAE /* RightToLeft.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RightToLeft.swift; path = Cosmos/Helpers/RightToLeft.swift; sourceTree = "<group>"; };
+		AD378120E0E89519731E09C595158693 /* SIFloatingCollection.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SIFloatingCollection.xcconfig; sourceTree = "<group>"; };
+		B78F3BFC1E6DAFB51662D7BCB3F499A1 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		C5486B16B0E8C8B238F6BD9A778FAE41 /* SIFloatingCollection-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SIFloatingCollection-umbrella.h"; sourceTree = "<group>"; };
 		C67885803C63BB96798928FF1B9D61D4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C8D6CAC4B5223C1A5DA96476E288BCBA /* GooglePlacePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlacePicker.framework; path = Frameworks/GooglePlacePicker.framework; sourceTree = "<group>"; };
+		C6DF5B8C06F130B1DDDBD37E08E64C96 /* CosmosTouch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosTouch.swift; path = Cosmos/CosmosTouch.swift; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DA56372447388201A970E5A310795B88 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		CD0A0473B9149C9E9C1607185FE7B144 /* SIFloatingCollectionScene.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SIFloatingCollectionScene.swift; path = Sources/SIFloatingCollectionScene.swift; sourceTree = "<group>"; };
+		CD3FE2139686F0128A848394BD5C7610 /* CosmosRating.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosRating.swift; path = Cosmos/CosmosRating.swift; sourceTree = "<group>"; };
+		CD77946D1FC6AFD2ED7FC77DFF8765B8 /* CosmosLayerHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosLayerHelper.swift; path = Cosmos/CosmosLayerHelper.swift; sourceTree = "<group>"; };
+		D11670001D6A1F3912BC86E5AC8D0325 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBFFCFA242D82A78B18413DDA110F2D8 /* CosmosView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosView.swift; path = Cosmos/CosmosView.swift; sourceTree = "<group>"; };
+		DD41400F7B9C1E2850DBCDB9B834417F /* Pods_TravelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TravelApp.framework; path = "Pods-TravelApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E112B7D5D855CCFF88023AE9BE22A63B /* Pods-TravelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelApp.debug.xcconfig"; sourceTree = "<group>"; };
-		E1ABAB18B1FE93E31759897F9250ED55 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		E404B4E2D76DD0EC15A063006CF4E5F4 /* SIFloatingCollection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SIFloatingCollection-prefix.pch"; sourceTree = "<group>"; };
 		E5771FD321D2C0BF953284457A754918 /* Pods-TravelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TravelApp.release.xcconfig"; sourceTree = "<group>"; };
 		E66DEB8BE3990AEF548156C38BB4A46D /* Pods-TravelApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TravelApp-resources.sh"; sourceTree = "<group>"; };
-		E73B7F054536F9CAEC315D6894B46077 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		EABA37EDF8038C66CB63F5AC94302D3B /* CosmosText.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosText.swift; path = Cosmos/CosmosText.swift; sourceTree = "<group>"; };
+		EDF43D7488899B5DA231DAA42A181074 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		EE1C5B6BECE925CAE79C626E2035477A /* Cosmos.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Cosmos.modulemap; sourceTree = "<group>"; };
+		F2B6CED3EC7F8C4C1B063C5398F85477 /* CosmosSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CosmosSettings.swift; path = Cosmos/CosmosSettings.swift; sourceTree = "<group>"; };
+		F3B7E3BCB62F345496FA0AA425968D69 /* StarFillMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarFillMode.swift; path = Cosmos/StarFillMode.swift; sourceTree = "<group>"; };
+		F9B29657A4847A849EA15F2E0C910101 /* SIFloatingCollection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SIFloatingCollection-dummy.m"; sourceTree = "<group>"; };
+		FC45F0807CAD900A09AB126025BDF0D9 /* Cosmos-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cosmos-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4FBD5C31E003DF05AC0B8E8E528B3A83 /* Frameworks */ = {
+		028D86E31A54FB90C65928D44110613A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32B6507698135672C82F91E3C6AE348D /* Foundation.framework in Frameworks */,
+				B206781F401AFC3580666279C68FD511 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		865F1C35E1B17E10575AA5ADEF23E8B8 /* Frameworks */ = {
+		23E1D2C8911A1F4127AF93A478D985B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C72586FB6F69B48D56C406BE3007B245 /* Foundation.framework in Frameworks */,
+				F37DDDC2660EB17E1BE35429C1C58AD4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E97874B210009FF0271328CC591D979 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8DA69674E6F9D94144FC90090584467 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C67F6BE82748939A8D8F60E1B2CD454 /* Frameworks */ = {
+		1148E6218F5DC1DC78AEE31969FCAB6A /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				C8D6CAC4B5223C1A5DA96476E288BCBA /* GooglePlacePicker.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		323127253579BE02D6169C6969A855DB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B820501D9DCFC52A18FDE69DA16D44EA /* GoogleMapsBase.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		38E4C4247C41F811C9860C18AB57638E /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				C4589DFF86892639C100C90BD607C0DD /* Frameworks */,
-				8DDFC9E668034472896D5A7E152CF8E4 /* Resources */,
+				65CC6AC7B2AB4957ECCF5EE8DB629E5F /* Frameworks */,
+				6EA61E9054066706D408303DA83404CD /* Resources */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
 		};
-		40A343AEA686F48344FCFE38D58B3548 /* SIFloatingCollection */ = {
+		3EE2FC6AF550BB37B0D24D90060D56CB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				874253E165415E32455FDADE4AD2B24E /* SIFloatingCollectionScene.swift */,
-				81C41C230BD3B9F10F6D0D5A6C04A9DE /* SIFloatingNode.swift */,
-				E3E622BC0F7FA9F3E94A7B8C74BBE077 /* Support Files */,
+				B911028A93CCB31EA07D4FB5F2AB69A4 /* Cosmos */,
+				6DFD9BB105B4D0F4900A008EF551656A /* GoogleMaps */,
+				6D3EF72EDD87669BAAE0B5D08C97D817 /* GooglePlacePicker */,
+				6D7E4A92D302B7515C3A21D8008F260D /* GooglePlaces */,
+				C35D01224875C89B7585BDABEAEBFD4F /* SIFloatingCollection */,
 			);
-			name = SIFloatingCollection;
-			path = SIFloatingCollection;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3EFBFDDD950E3FE5A2EDADFC3D72F234 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				62CCEC1C9192087DFB695893F36E2B5D /* GooglePlacePicker.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		4117ACB3F2A11E9ACF945CE145E50135 /* Pods-TravelApp */ = {
@@ -134,6 +182,14 @@
 			path = "Target Support Files/Pods-TravelApp";
 			sourceTree = "<group>";
 		};
+		46931382772E786885419B973DF02374 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				723086A7106D13BD1FF6B498A9F50CDA /* GooglePlaces.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		482B60177F73D9ED7A107BF953BC73B7 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,28 +198,49 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		5425FDE4F47AF6913DBCBC8A6E4974D5 /* GoogleMaps */ = {
+		65CC6AC7B2AB4957ECCF5EE8DB629E5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B2A7EC81AD1A9B87566563F3DA26FF83 /* Base */,
-				38E4C4247C41F811C9860C18AB57638E /* Maps */,
+				B78F3BFC1E6DAFB51662D7BCB3F499A1 /* GoogleMaps.framework */,
+				2CD9B5A68C54E7CDFA09AE612AB1D72F /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D3EF72EDD87669BAAE0B5D08C97D817 /* GooglePlacePicker */ = {
+			isa = PBXGroup;
+			children = (
+				3EFBFDDD950E3FE5A2EDADFC3D72F234 /* Frameworks */,
+				E427AD61762C3EC5239E69201A7AC4A9 /* Resources */,
+			);
+			name = GooglePlacePicker;
+			path = GooglePlacePicker;
+			sourceTree = "<group>";
+		};
+		6D7E4A92D302B7515C3A21D8008F260D /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				46931382772E786885419B973DF02374 /* Frameworks */,
+				B13F64E7967FF4A4B9842EE807438B4B /* Resources */,
+			);
+			name = GooglePlaces;
+			path = GooglePlaces;
+			sourceTree = "<group>";
+		};
+		6DFD9BB105B4D0F4900A008EF551656A /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				A78395E73E84A5B012F9CBB4C1799B8B /* Base */,
+				1148E6218F5DC1DC78AEE31969FCAB6A /* Maps */,
 			);
 			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
-		5E9010F2BA7FBEA91597C7B88D661DDA /* Frameworks */ = {
+		6EA61E9054066706D408303DA83404CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DA56372447388201A970E5A310795B88 /* GooglePlaces.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6C7B513FEEBC62EAA96B81B6A23B2AC3 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				34CEBCC84AC3D4A6F29DBC4DB23BF111 /* GooglePlacePicker.bundle */,
+				59E8E430F2DCCD7BAA724328C45BD341 /* GoogleMaps.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -176,59 +253,101 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7A396381AB411C964219A839C3AA242D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				84845FE4948DF3A8C7F3671D9ED91C30 /* GooglePlaces.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				BDBE78D4EE6B0FABEB19B9405754412A /* Pods */,
-				E9A0DD2817DF40E9BC3F43CC647F1D15 /* Products */,
+				3EE2FC6AF550BB37B0D24D90060D56CB /* Pods */,
+				B0C53AA7533D18FE00CDCF997EBD798F /* Products */,
 				482B60177F73D9ED7A107BF953BC73B7 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		88187B130AB9643FF53FF875406E97BD /* GooglePlaces */ = {
+		7DE9866CFDBB0CB46D48051A7D6E33C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5E9010F2BA7FBEA91597C7B88D661DDA /* Frameworks */,
-				7A396381AB411C964219A839C3AA242D /* Resources */,
+				EDF43D7488899B5DA231DAA42A181074 /* GoogleMapsBase.framework */,
 			);
-			name = GooglePlaces;
-			path = GooglePlaces;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8DDFC9E668034472896D5A7E152CF8E4 /* Resources */ = {
+		82472558C66F560EABE55464A5537AD9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E73B7F054536F9CAEC315D6894B46077 /* GoogleMaps.bundle */,
+				41C66A54887D9B3F537746D42860BC44 /* Info.plist */,
+				6795711239F4159561F91D18675EB6DF /* SIFloatingCollection.modulemap */,
+				AD378120E0E89519731E09C595158693 /* SIFloatingCollection.xcconfig */,
+				F9B29657A4847A849EA15F2E0C910101 /* SIFloatingCollection-dummy.m */,
+				E404B4E2D76DD0EC15A063006CF4E5F4 /* SIFloatingCollection-prefix.pch */,
+				C5486B16B0E8C8B238F6BD9A778FAE41 /* SIFloatingCollection-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SIFloatingCollection";
+			sourceTree = "<group>";
+		};
+		A38E9B5D1E56424216CC7804D9ABAC4E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE1C5B6BECE925CAE79C626E2035477A /* Cosmos.modulemap */,
+				A39A2D025170174317BC987BFF8F2FD3 /* Cosmos.xcconfig */,
+				22832B9185E2C1DDC895FB88587AC067 /* Cosmos-dummy.m */,
+				FC45F0807CAD900A09AB126025BDF0D9 /* Cosmos-prefix.pch */,
+				26F3B3FC7F491B5DE0D8BEF36986178F /* Cosmos-umbrella.h */,
+				D11670001D6A1F3912BC86E5AC8D0325 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Cosmos";
+			sourceTree = "<group>";
+		};
+		A78395E73E84A5B012F9CBB4C1799B8B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7DE9866CFDBB0CB46D48051A7D6E33C0 /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		B0C53AA7533D18FE00CDCF997EBD798F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				73D3299B303BA8EEA3FDC96F8A39B1D5 /* Cosmos.framework */,
+				DD41400F7B9C1E2850DBCDB9B834417F /* Pods_TravelApp.framework */,
+				2662AEA1E3EFA143466819208E5B568E /* SIFloatingCollection.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B13F64E7967FF4A4B9842EE807438B4B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1525E6A809A7B6C0DAC6FCC5463329AA /* GooglePlaces.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		B1A7FFC620B8BD33C22E3964BD5D88F5 /* GooglePlacePicker */ = {
+		B911028A93CCB31EA07D4FB5F2AB69A4 /* Cosmos */ = {
 			isa = PBXGroup;
 			children = (
-				2C67F6BE82748939A8D8F60E1B2CD454 /* Frameworks */,
-				6C7B513FEEBC62EAA96B81B6A23B2AC3 /* Resources */,
+				65E5EAF234917BD844D5AD5AA4C66C79 /* CosmosAccessibility.swift */,
+				4F2CF19CEF79CD035CD1FC59A7303D07 /* CosmosDefaultSettings.swift */,
+				CD77946D1FC6AFD2ED7FC77DFF8765B8 /* CosmosLayerHelper.swift */,
+				038E637ED68782E22ECFAB7E7AA99917 /* CosmosLayers.swift */,
+				4C919154BBDF28B1629BC5B0B636C8D0 /* CosmosLocalizedRating.swift */,
+				CD3FE2139686F0128A848394BD5C7610 /* CosmosRating.swift */,
+				F2B6CED3EC7F8C4C1B063C5398F85477 /* CosmosSettings.swift */,
+				9BA6AD163011E34857EB2B220A31241D /* CosmosSize.swift */,
+				EABA37EDF8038C66CB63F5AC94302D3B /* CosmosText.swift */,
+				C6DF5B8C06F130B1DDDBD37E08E64C96 /* CosmosTouch.swift */,
+				31FCAA00AC0478EF9C26373BF23B0429 /* CosmosTouchTarget.swift */,
+				DBFFCFA242D82A78B18413DDA110F2D8 /* CosmosView.swift */,
+				AB019D5C3B599C3221779CA4A6F40BAE /* RightToLeft.swift */,
+				F3B7E3BCB62F345496FA0AA425968D69 /* StarFillMode.swift */,
+				2C64A5203E825E38F0796051D4A127AE /* StarLayer.swift */,
+				A38E9B5D1E56424216CC7804D9ABAC4E /* Support Files */,
 			);
-			name = GooglePlacePicker;
-			path = GooglePlacePicker;
-			sourceTree = "<group>";
-		};
-		B2A7EC81AD1A9B87566563F3DA26FF83 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				323127253579BE02D6169C6969A855DB /* Frameworks */,
-			);
-			name = Base;
+			name = Cosmos;
+			path = Cosmos;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -239,78 +358,98 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BDBE78D4EE6B0FABEB19B9405754412A /* Pods */ = {
+		C35D01224875C89B7585BDABEAEBFD4F /* SIFloatingCollection */ = {
 			isa = PBXGroup;
 			children = (
-				5425FDE4F47AF6913DBCBC8A6E4974D5 /* GoogleMaps */,
-				B1A7FFC620B8BD33C22E3964BD5D88F5 /* GooglePlacePicker */,
-				88187B130AB9643FF53FF875406E97BD /* GooglePlaces */,
-				40A343AEA686F48344FCFE38D58B3548 /* SIFloatingCollection */,
+				CD0A0473B9149C9E9C1607185FE7B144 /* SIFloatingCollectionScene.swift */,
+				0C60A01829BDA45D66F721FE637078F6 /* SIFloatingNode.swift */,
+				82472558C66F560EABE55464A5537AD9 /* Support Files */,
 			);
-			name = Pods;
+			name = SIFloatingCollection;
+			path = SIFloatingCollection;
 			sourceTree = "<group>";
 		};
-		C4589DFF86892639C100C90BD607C0DD /* Frameworks */ = {
+		E427AD61762C3EC5239E69201A7AC4A9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E1ABAB18B1FE93E31759897F9250ED55 /* GoogleMaps.framework */,
-				9C54355757DE88A3B9638A51010935B1 /* GoogleMapsCore.framework */,
+				82076DDF19CE36134520E60F687D9674 /* GooglePlacePicker.bundle */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E3E622BC0F7FA9F3E94A7B8C74BBE077 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C0DFA00AD0E115DBA5877B3E18D2CAB4 /* Info.plist */,
-				338314446B8644364207B4F85C8E6CF8 /* SIFloatingCollection.modulemap */,
-				A0BE28DCE33C7D35DF6ABC1C4C34C886 /* SIFloatingCollection.xcconfig */,
-				7DB07156FC7D8547D89CFA5335E3206D /* SIFloatingCollection-dummy.m */,
-				5B5CD9FEFEBD6B50B56E2CB2EB231F22 /* SIFloatingCollection-prefix.pch */,
-				5E050BF66FEDA8D696AB6A057CA2FE23 /* SIFloatingCollection-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SIFloatingCollection";
-			sourceTree = "<group>";
-		};
-		E9A0DD2817DF40E9BC3F43CC647F1D15 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B027A9F0F4194B14AB2735468508FC2D /* Pods_TravelApp.framework */,
-				18E728982A6BCF3FFD19BF3EECF54835 /* SIFloatingCollection.framework */,
-			);
-			name = Products;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		DA383013F74E6F27EC43B07A52FD03CE /* Headers */ = {
+		431868ACCAC6D27D70043E97CB081D5A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7125B3AE259F58A55EBA3DD4E8B769FC /* Pods-TravelApp-umbrella.h in Headers */,
+				62DCF7803F29AA62E897B6BC4A27B43A /* Pods-TravelApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDEDCFB5F7992E52E95705304603191E /* Headers */ = {
+		548F911D9FE9031D1315B06D0AA6FEBC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099CB1C7CB62914AB895076A014C82AF /* SIFloatingCollection-umbrella.h in Headers */,
+				93AA83CCDB184E0A030B000B2F3E768A /* SIFloatingCollection-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7F72A88918035AFA923560A84B87C61 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE5E91A47C1BF6869DF17747D61C2FF1 /* Cosmos-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		32B0C06312C81660A81751B11F455356 /* SIFloatingCollection */ = {
+		24FCB98A914A883D61012F55F59FFAF4 /* Pods-TravelApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E8B331BB7A53E7F42FB84753897F23C /* Build configuration list for PBXNativeTarget "SIFloatingCollection" */;
+			buildConfigurationList = 4D8ED170B156DD980F8FDA420F91EFD2 /* Build configuration list for PBXNativeTarget "Pods-TravelApp" */;
 			buildPhases = (
-				BD9E12D7F3889EDC54C44F383699CFFD /* Sources */,
-				4FBD5C31E003DF05AC0B8E8E528B3A83 /* Frameworks */,
-				EDEDCFB5F7992E52E95705304603191E /* Headers */,
+				DA48D6B841B3D7448CA8B178B0FC3BB9 /* Sources */,
+				5E97874B210009FF0271328CC591D979 /* Frameworks */,
+				431868ACCAC6D27D70043E97CB081D5A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CECABAC1ED85EE84C5141DBFB2AE4E9F /* PBXTargetDependency */,
+				5AC4FC451A48E600ECCA3589EA48712E /* PBXTargetDependency */,
+			);
+			name = "Pods-TravelApp";
+			productName = "Pods-TravelApp";
+			productReference = DD41400F7B9C1E2850DBCDB9B834417F /* Pods_TravelApp.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38CA41A3E689F135BAEECE91B63D9EA0 /* Build configuration list for PBXNativeTarget "Cosmos" */;
+			buildPhases = (
+				64A8AA816E108F31E7CEE1A683E42839 /* Sources */,
+				23E1D2C8911A1F4127AF93A478D985B5 /* Frameworks */,
+				B7F72A88918035AFA923560A84B87C61 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cosmos;
+			productName = Cosmos;
+			productReference = 73D3299B303BA8EEA3FDC96F8A39B1D5 /* Cosmos.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F8048A49349EB5134BFA039E4C0F5D13 /* SIFloatingCollection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DDB5A94D74567486D00F02BB27955B2 /* Build configuration list for PBXNativeTarget "SIFloatingCollection" */;
+			buildPhases = (
+				E80AD4AE1C6D4582096D16E35458ECB9 /* Sources */,
+				028D86E31A54FB90C65928D44110613A /* Frameworks */,
+				548F911D9FE9031D1315B06D0AA6FEBC /* Headers */,
 			);
 			buildRules = (
 			);
@@ -318,25 +457,7 @@
 			);
 			name = SIFloatingCollection;
 			productName = SIFloatingCollection;
-			productReference = 18E728982A6BCF3FFD19BF3EECF54835 /* SIFloatingCollection.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		BE103DCA4CFBCABEDA8B0B8EFF96CBD2 /* Pods-TravelApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AC9044563E348615358195420B91CB35 /* Build configuration list for PBXNativeTarget "Pods-TravelApp" */;
-			buildPhases = (
-				994B262CFB0E903D5E8C3E8D738C93A6 /* Sources */,
-				865F1C35E1B17E10575AA5ADEF23E8B8 /* Frameworks */,
-				DA383013F74E6F27EC43B07A52FD03CE /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9159CA357115B0A34114BAF37816AFA5 /* PBXTargetDependency */,
-			);
-			name = "Pods-TravelApp";
-			productName = "Pods-TravelApp";
-			productReference = B027A9F0F4194B14AB2735468508FC2D /* Pods_TravelApp.framework */;
+			productReference = 2662AEA1E3EFA143466819208E5B568E /* SIFloatingCollection.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -356,115 +477,77 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = E9A0DD2817DF40E9BC3F43CC647F1D15 /* Products */;
+			productRefGroup = B0C53AA7533D18FE00CDCF997EBD798F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BE103DCA4CFBCABEDA8B0B8EFF96CBD2 /* Pods-TravelApp */,
-				32B0C06312C81660A81751B11F455356 /* SIFloatingCollection */,
+				4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */,
+				24FCB98A914A883D61012F55F59FFAF4 /* Pods-TravelApp */,
+				F8048A49349EB5134BFA039E4C0F5D13 /* SIFloatingCollection */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		994B262CFB0E903D5E8C3E8D738C93A6 /* Sources */ = {
+		64A8AA816E108F31E7CEE1A683E42839 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C2CB83FC4FF3F833262634E1972C47B /* Pods-TravelApp-dummy.m in Sources */,
+				3DF6ECF23D38E7DA5B5B2B43707F2F4D /* Cosmos-dummy.m in Sources */,
+				7CC5A43D7E1372EB6292FCBC0151A36E /* CosmosAccessibility.swift in Sources */,
+				371F422D050761A63F0156F537B8902D /* CosmosDefaultSettings.swift in Sources */,
+				F66DE3EF01408C42C115587B201CB541 /* CosmosLayerHelper.swift in Sources */,
+				AA971D9492DD9B9E288045C2C0CC9A99 /* CosmosLayers.swift in Sources */,
+				0EC88D04EAE0CD3EFD3C3C89C1B9F45F /* CosmosLocalizedRating.swift in Sources */,
+				99F08F6FE2B165EEBD5E01EDDA176620 /* CosmosRating.swift in Sources */,
+				015C902B9C0E63DA0519A0D34E10F739 /* CosmosSettings.swift in Sources */,
+				25DFA72039CBA011EBA738AA73084A8E /* CosmosSize.swift in Sources */,
+				424AD9605CBDCD867083B9820784E0AC /* CosmosText.swift in Sources */,
+				4F40A9CBB316E7100828F0C6F5714946 /* CosmosTouch.swift in Sources */,
+				E2D8D1AA0D41C73C4B570DE682C05D72 /* CosmosTouchTarget.swift in Sources */,
+				45F546D14166EDEE46371951EC705C03 /* CosmosView.swift in Sources */,
+				C79D2F2FCE3EF9B31D1222E0C4A59DC5 /* RightToLeft.swift in Sources */,
+				88BA9FFC474BD7B995A0CEA06FF431F7 /* StarFillMode.swift in Sources */,
+				C95B658D689425ED9DAA95EB479B44A6 /* StarLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BD9E12D7F3889EDC54C44F383699CFFD /* Sources */ = {
+		DA48D6B841B3D7448CA8B178B0FC3BB9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A544BDD3339676C8F5F16C4E86483AAC /* SIFloatingCollection-dummy.m in Sources */,
-				BBE1BC0267847970FB9F1CC8B95AFC96 /* SIFloatingCollectionScene.swift in Sources */,
-				D834DE2A87CC891295912264DEBEAFC3 /* SIFloatingNode.swift in Sources */,
+				0CCD272CB62BDDE41BC1781ACBA0B047 /* Pods-TravelApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E80AD4AE1C6D4582096D16E35458ECB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD3F01A21D6B48CA6C403AF7E5173591 /* SIFloatingCollection-dummy.m in Sources */,
+				D0509BE0C0EFD283A5878AF326920576 /* SIFloatingCollectionScene.swift in Sources */,
+				23FD58400D09F8076430E0DA121EF177 /* SIFloatingNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9159CA357115B0A34114BAF37816AFA5 /* PBXTargetDependency */ = {
+		5AC4FC451A48E600ECCA3589EA48712E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SIFloatingCollection;
-			target = 32B0C06312C81660A81751B11F455356 /* SIFloatingCollection */;
-			targetProxy = 33950C80C930B574559EB2257F225FC4 /* PBXContainerItemProxy */;
+			target = F8048A49349EB5134BFA039E4C0F5D13 /* SIFloatingCollection */;
+			targetProxy = A9E8212D160D179BD98985BBD0DC7923 /* PBXContainerItemProxy */;
+		};
+		CECABAC1ED85EE84C5141DBFB2AE4E9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Cosmos;
+			target = 4FDC533A4360A68ABDCE852F04B30927 /* Cosmos */;
+			targetProxy = D396D37632496F74E7EA0DC6753CD574 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		033927FBC11E178B5DF6F32EB1AC647D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5771FD321D2C0BF953284457A754918 /* Pods-TravelApp.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TravelApp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TravelApp/Pods-TravelApp.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TravelApp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5E88C554473C1F32B090FD54509FAA8B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0BE28DCE33C7D35DF6ABC1C4C34C886 /* SIFloatingCollection.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SIFloatingCollection/SIFloatingCollection-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SIFloatingCollection/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SIFloatingCollection/SIFloatingCollection.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SIFloatingCollection;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		673254EEAF0B5BF4596080C749645884 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,9 +588,78 @@
 			};
 			name = Release;
 		};
-		B4B482334B8ADF223860730978E43B67 /* Release */ = {
+		7372300C98AC95FAECA7285BD5B7F1E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0BE28DCE33C7D35DF6ABC1C4C34C886 /* SIFloatingCollection.xcconfig */;
+			baseConfigurationReference = AD378120E0E89519731E09C595158693 /* SIFloatingCollection.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SIFloatingCollection/SIFloatingCollection-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SIFloatingCollection/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SIFloatingCollection/SIFloatingCollection.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SIFloatingCollection;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9EF2F2C037DC08E52CD6429274242661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E112B7D5D855CCFF88023AE9BE22A63B /* Pods-TravelApp.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TravelApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TravelApp/Pods-TravelApp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TravelApp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CD3E09A39F09D057909A3CD38C567373 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD378120E0E89519731E09C595158693 /* SIFloatingCollection.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -531,6 +683,73 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D328BF5AC7A27E80E5214F7E51F21B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A39A2D025170174317BC987BFF8F2FD3 /* Cosmos.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Cosmos/Cosmos-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cosmos/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Cosmos/Cosmos.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Cosmos;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E369B114462B563D429CB16ACC2957D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5771FD321D2C0BF953284457A754918 /* Pods-TravelApp.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-TravelApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TravelApp/Pods-TravelApp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TravelApp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -581,9 +800,9 @@
 			};
 			name = Debug;
 		};
-		EA6BD7EF269244F110303AE3F3196E87 /* Debug */ = {
+		E8FFBAAF3F155FD16002C12A1DC0EF0E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E112B7D5D855CCFF88023AE9BE22A63B /* Pods-TravelApp.debug.xcconfig */;
+			baseConfigurationReference = A39A2D025170174317BC987BFF8F2FD3 /* Cosmos.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -596,21 +815,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TravelApp/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Cosmos/Cosmos-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Cosmos/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TravelApp/Pods-TravelApp.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Cosmos/Cosmos.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TravelApp;
+				PRODUCT_NAME = Cosmos;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -620,6 +836,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0DDB5A94D74567486D00F02BB27955B2 /* Build configuration list for PBXNativeTarget "SIFloatingCollection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7372300C98AC95FAECA7285BD5B7F1E3 /* Debug */,
+				CD3E09A39F09D057909A3CD38C567373 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -629,20 +854,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E8B331BB7A53E7F42FB84753897F23C /* Build configuration list for PBXNativeTarget "SIFloatingCollection" */ = {
+		38CA41A3E689F135BAEECE91B63D9EA0 /* Build configuration list for PBXNativeTarget "Cosmos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5E88C554473C1F32B090FD54509FAA8B /* Debug */,
-				B4B482334B8ADF223860730978E43B67 /* Release */,
+				E8FFBAAF3F155FD16002C12A1DC0EF0E /* Debug */,
+				D328BF5AC7A27E80E5214F7E51F21B4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AC9044563E348615358195420B91CB35 /* Build configuration list for PBXNativeTarget "Pods-TravelApp" */ = {
+		4D8ED170B156DD980F8FDA420F91EFD2 /* Build configuration list for PBXNativeTarget "Pods-TravelApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EA6BD7EF269244F110303AE3F3196E87 /* Debug */,
-				033927FBC11E178B5DF6F32EB1AC647D /* Release */,
+				9EF2F2C037DC08E52CD6429274242661 /* Debug */,
+				E369B114462B563D429CB16ACC2957D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -4,6 +4,7 @@ target 'TravelApp' do
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
   pod 'SIFloatingCollection'
+  pod 'Cosmos', '~> 9.0'
   use_frameworks!
 end
 

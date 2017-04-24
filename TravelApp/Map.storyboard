@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="45h-zq-vlf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="45h-zq-vlf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,32 +24,65 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XDf-JM-xSK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
                             </mapView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-b9-tW7">
-                                <rect key="frame" x="337" y="625" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-b9-tW7">
+                                <rect key="frame" x="336" y="120" width="22" height="22"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="showMapSettings" popoverAnchorView="nFn-b9-tW7" id="nMY-f8-Evf">
+                                    <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="changeMapType" popoverAnchorView="nFn-b9-tW7" id="RJr-BX-M6Q">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-8W-OoK">
+                                <rect key="frame" x="137.5" y="82" width="99" height="33"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vJq-jI-Y62">
+                                    <rect key="frame" x="0.0" y="0.0" width="99" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ7-bN-Pb7">
+                                            <rect key="frame" x="5" y="2" width="89" height="29"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                            <state key="normal" title="Search This Area">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="redoSearchInArea:" destination="45h-zq-vlf" eventType="touchUpInside" id="ldu-oR-Yoi"/>
+                                                <action selector="redoSearchInAreaAction:" destination="45h-zq-vlf" eventType="touchUpInside" id="VBQ-Bs-Z3s"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="hQ7-bN-Pb7" secondAttribute="bottom" constant="2" id="AwH-w9-1cV"/>
+                                        <constraint firstItem="hQ7-bN-Pb7" firstAttribute="leading" secondItem="vJq-jI-Y62" secondAttribute="leading" constant="5" id="FCW-yz-EOd"/>
+                                        <constraint firstAttribute="trailing" secondItem="hQ7-bN-Pb7" secondAttribute="trailing" constant="5" id="kvP-J6-Nsx"/>
+                                        <constraint firstItem="hQ7-bN-Pb7" firstAttribute="top" secondItem="vJq-jI-Y62" secondAttribute="top" constant="2" id="njf-yp-Aq4"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="leading" secondItem="zFn-AY-xKd" secondAttribute="leading" id="6mi-0B-nOv"/>
+                            <constraint firstItem="DMu-8W-OoK" firstAttribute="centerX" secondItem="XDf-JM-xSK" secondAttribute="centerX" id="82u-fR-n9f"/>
+                            <constraint firstItem="nFn-b9-tW7" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="100" id="Jyf-a5-QzP"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="bottom" secondItem="u0z-Qe-UAi" secondAttribute="top" constant="45" id="O2a-91-yhl"/>
                             <constraint firstAttribute="trailing" secondItem="XDf-JM-xSK" secondAttribute="trailing" id="R1R-J8-Uof"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="-20" id="is3-rA-xQI"/>
+                            <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="DMu-8W-OoK" secondAttribute="bottom" constant="-115" id="jJ1-T0-gxE"/>
+                            <constraint firstItem="nFn-b9-tW7" firstAttribute="leading" secondItem="XDf-JM-xSK" secondAttribute="trailing" constant="-39" id="o8H-55-b2O"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="XDf-JM-xSK" id="ptD-aO-1PA"/>
+                        <outlet property="redoSearchBlurView" destination="DMu-8W-OoK" id="Ygq-BQ-L0O"/>
+                        <outlet property="redoSearchButton" destination="hQ7-bN-Pb7" id="xrb-R3-Jri"/>
                         <outlet property="searchDisplayController" destination="3dl-zm-BSk" id="bWq-jf-GLL"/>
                     </connections>
                 </viewController>
@@ -65,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="1896.8" y="-147.07646176911544"/>
         </scene>
-        <!--View Controller-->
+        <!--Map Settings Controller-->
         <scene sceneID="pnW-Ll-ert">
             <objects>
-                <viewController id="iwd-1s-QyO" sceneMemberID="viewController">
+                <viewController id="iwd-1s-QyO" customClass="MapSettingsController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Auf-hB-Fpc"/>
                         <viewControllerLayoutGuide type="bottom" id="Y9n-JB-7ru"/>
@@ -92,6 +125,9 @@
                                     <segment title="Satellite"/>
                                     <segment title="Hybrid"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeMapType:" destination="iwd-1s-QyO" eventType="valueChanged" id="A6V-gB-Hay"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="popularTableCell" rowHeight="75" id="KGk-i7-Jjw" customClass="PopularTableViewCell" customModule="TravelApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="22A-Le-Ulw">
+                        <rect key="frame" x="8" y="7" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="2rq-f5-Aol"/>
+                            <constraint firstAttribute="width" constant="60" id="Mkn-X8-i5t"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yqe-6i-hHv" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="219" y="45.5" width="93" height="20"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="93" id="1Io-8l-zqo"/>
+                            <constraint firstAttribute="height" constant="20" id="KWX-wB-yQw"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                <color key="value" red="1" green="0.46362219151143325" blue="0.38619683756055467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="13"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="minTouchRating">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vht-EU-E5W">
+                        <rect key="frame" x="76" y="14" width="236" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTj-DH-iUD">
+                        <rect key="frame" x="87" y="44" width="124" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CTj-DH-iUD" firstAttribute="leading" secondItem="22A-Le-Ulw" secondAttribute="trailing" constant="19" id="Dwg-fi-Ly9"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="22A-Le-Ulw" secondAttribute="leading" id="I5U-HY-dpT"/>
+                    <constraint firstItem="vht-EU-E5W" firstAttribute="leading" secondItem="22A-Le-Ulw" secondAttribute="trailing" constant="8" id="MVW-sH-7k1"/>
+                    <constraint firstItem="CTj-DH-iUD" firstAttribute="top" secondItem="vht-EU-E5W" secondAttribute="bottom" constant="16.5" id="OJf-TF-KKe"/>
+                    <constraint firstItem="Yqe-6i-hHv" firstAttribute="leading" secondItem="CTj-DH-iUD" secondAttribute="trailing" constant="8" id="Tbb-dt-ddI"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="22A-Le-Ulw" secondAttribute="bottom" constant="-0.5" id="VXp-Ss-9xF"/>
+                    <constraint firstItem="vht-EU-E5W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="cNG-mB-Igx"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="CTj-DH-iUD" secondAttribute="bottom" constant="1.5" id="mXl-mB-wHz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Yqe-6i-hHv" secondAttribute="trailing" id="uHa-NZ-AS2"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="vht-EU-E5W" secondAttribute="trailing" id="ycW-Tk-ic9"/>
+                    <constraint firstItem="Yqe-6i-hHv" firstAttribute="top" secondItem="vht-EU-E5W" secondAttribute="bottom" constant="18" id="zTS-Sk-SGp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="starLabel" destination="Yqe-6i-hHv" id="nku-aq-w1D"/>
+                <outlet property="thumbnailImageView" destination="22A-Le-Ulw" id="6tI-id-uF6"/>
+                <outlet property="titleLabel" destination="vht-EU-E5W" id="P6l-NE-IVo"/>
+                <outlet property="vicinityLabel" destination="CTj-DH-iUD" id="alN-lg-imo"/>
+            </connections>
+            <point key="canvasLocation" x="-80" y="30.5"/>
+        </tableViewCell>
+    </objects>
+</document>

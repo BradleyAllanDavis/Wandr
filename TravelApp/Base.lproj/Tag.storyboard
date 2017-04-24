@@ -38,6 +38,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4wq-Bv-7vj"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="VmE-pj-sWq" kind="presentation" identifier="toMap" id="Zc4-us-308"/>
                     </connections>
