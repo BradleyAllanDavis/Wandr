@@ -122,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8Y-SX-tHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1825" y="645"/>
+            <point key="canvasLocation" x="1794" y="645"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ceO-UQ-oHg">
@@ -168,7 +168,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hw3-C3-3sg"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="VKJ-EY-skd">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="173"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="166"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtE-tO-SCJ">
@@ -219,6 +219,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ier-qQ-4Jl"/>
+        <segue reference="XDT-Y8-D9L"/>
     </inferredMetricsTieBreakers>
 </document>

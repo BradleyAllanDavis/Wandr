@@ -33,6 +33,7 @@
 		FA452EFC1EAD7E43009F007D /* PlacesAPISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */; };
 		FA452EFD1EAD7E5B009F007D /* TravelSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */; };
 		FA85AF3B1EADB0BD00918965 /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */; };
+		FA85AF3D1EADB5CD00918965 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA85AF3C1EADB5CD00918965 /* Login.storyboard */; };
 		FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243251E706432009AB3DB /* AppDelegate.swift */; };
 		FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA2432E1E706432009AB3DB /* Assets.xcassets */; };
 		FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243301E706432009AB3DB /* LaunchScreen.storyboard */; };
@@ -96,6 +97,7 @@
 		FA333D371EAD451800FEA832 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
+		FA85AF3C1EADB5CD00918965 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = ../Login.storyboard; sourceTree = "<group>"; };
 		FAA243221E706432009AB3DB /* TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA243251E706432009AB3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA2432E1E706432009AB3DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -195,6 +197,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FA85AF3E1EADB60300918965 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
+				FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */,
+				FAF76E481EAD741E00A5E094 /* WelcomeButtonView.swift */,
+				FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */,
+				FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */,
+				FA85AF3C1EADB5CD00918965 /* Login.storyboard */,
+			);
+			name = Welcome;
+			sourceTree = "<group>";
+		};
 		FAA243191E706432009AB3DB = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +235,7 @@
 		FAA243241E706432009AB3DB /* TravelApp */ = {
 			isa = PBXGroup;
 			children = (
+				FA85AF3E1EADB60300918965 /* Welcome */,
 				4037C06C1EA432730050114B /* Placeholder_location.png */,
 				407C8CB41E9C54B7002AF485 /* SearchBar */,
 				40B4592E1E9F2E47005420B0 /* SlideUpView */,
@@ -238,14 +254,9 @@
 				FAA243331E706432009AB3DB /* Info.plist */,
 				FAF76E461EAD735500A5E094 /* PlaceDetailViewController.swift */,
 				4073EC4A1E70931E009F1F27 /* APIConfig.plist */,
-				FAF76E481EAD741E00A5E094 /* WelcomeButtonView.swift */,
 				56237F551E804BDA0000ED5E /* tagPreferences.plist */,
 				4037C0681EA302AC0050114B /* PlaceStore.swift */,
 				4037C06A1EA400A80050114B /* PlacePhoto.swift */,
-				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
-				FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */,
-				FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */,
-				FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */,
 			);
 			path = TravelApp;
 			sourceTree = "<group>";
@@ -422,6 +433,7 @@
 				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
+				FA85AF3D1EADB5CD00918965 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
