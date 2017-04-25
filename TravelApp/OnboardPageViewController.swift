@@ -40,7 +40,7 @@ class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
             // User is logged in, do work such as go to next view controller.
             print("User logged On")
             let vc = MapViewController()
-            //self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true, completion: nil)
         }
     }
     

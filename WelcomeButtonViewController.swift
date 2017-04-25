@@ -64,6 +64,9 @@ class WelcomeButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let error = error {
                 return
             }
+            
+            let vc = MapViewController()
+            self.present(vc, animated: true, completion: nil)
         }
         // ...
     }
