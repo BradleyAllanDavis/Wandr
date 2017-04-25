@@ -27,6 +27,11 @@ class TagViewController: UIViewController {
         let plistManager = Plist(name: "availableTags")
         availableTypes = plistManager?.getValuesInPlistFile() as! Dictionary<String, String>
         tagPreferences = PlaceStore.shared.tagPreferences
+        for tag in tagPreferences {
+            if tag.value == true {
+                SIFloatingNode.count += 1
+            }
+        }
         skView = SKView(frame: UIScreen.main.bounds)
         skView.backgroundColor = SKColor.white
         view.addSubview(skView)
