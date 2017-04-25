@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="45h-zq-vlf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="45h-zq-vlf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,18 +25,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XDf-JM-xSK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
                             </mapView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-b9-tW7">
-                                <rect key="frame" x="336" y="120" width="22" height="22"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="changeMapType" popoverAnchorView="nFn-b9-tW7" id="RJr-BX-M6Q">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMu-8W-OoK">
                                 <rect key="frame" x="137.5" y="82" width="99" height="33"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vJq-jI-Y62">
@@ -63,22 +52,34 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-b9-tW7">
+                                <rect key="frame" x="16" y="82" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="showMapSettings" popoverAnchorView="nFn-b9-tW7" id="RJr-BX-M6Q">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" left="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="leading" secondItem="zFn-AY-xKd" secondAttribute="leading" id="6mi-0B-nOv"/>
                             <constraint firstItem="DMu-8W-OoK" firstAttribute="centerX" secondItem="XDf-JM-xSK" secondAttribute="centerX" id="82u-fR-n9f"/>
-                            <constraint firstItem="nFn-b9-tW7" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="100" id="Jyf-a5-QzP"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="bottom" secondItem="u0z-Qe-UAi" secondAttribute="top" constant="45" id="O2a-91-yhl"/>
                             <constraint firstAttribute="trailing" secondItem="XDf-JM-xSK" secondAttribute="trailing" id="R1R-J8-Uof"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="I2U-8O-BLA" secondAttribute="bottom" constant="-20" id="is3-rA-xQI"/>
                             <constraint firstItem="XDf-JM-xSK" firstAttribute="top" secondItem="DMu-8W-OoK" secondAttribute="bottom" constant="-115" id="jJ1-T0-gxE"/>
-                            <constraint firstItem="nFn-b9-tW7" firstAttribute="leading" secondItem="XDf-JM-xSK" secondAttribute="trailing" constant="-39" id="o8H-55-b2O"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="mapInfoButton" destination="nFn-b9-tW7" id="6iF-Mo-j3f"/>
                         <outlet property="mapView" destination="XDf-JM-xSK" id="ptD-aO-1PA"/>
                         <outlet property="redoSearchBlurView" destination="DMu-8W-OoK" id="Ygq-BQ-L0O"/>
                         <outlet property="redoSearchButton" destination="hQ7-bN-Pb7" id="xrb-R3-Jri"/>
@@ -105,20 +106,18 @@
                         <viewControllerLayoutGuide type="top" id="Auf-hB-Fpc"/>
                         <viewControllerLayoutGuide type="bottom" id="Y9n-JB-7ru"/>
                     </layoutGuides>
-                    <view key="view" contentMode="bottomRight" id="qVT-1v-MjV">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                    <view key="view" contentMode="scaleToFill" id="qVT-1v-MjV">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="110"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2I-WY-DyS">
-                                <rect key="frame" x="16" y="20" width="268" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2I-WY-DyS">
+                                <rect key="frame" x="16" y="20" width="228" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bZ9-hw-q6I">
-                                <rect key="frame" x="16" y="92" width="268" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bZ9-hw-q6I">
+                                <rect key="frame" x="16" y="64" width="228" height="29"/>
                                 <segments>
                                     <segment title="Standard"/>
                                     <segment title="Satellite"/>
@@ -130,17 +129,27 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r2I-WY-DyS" firstAttribute="top" secondItem="Auf-hB-Fpc" secondAttribute="bottom" constant="20" id="4YT-DB-YUH"/>
+                            <constraint firstItem="r2I-WY-DyS" firstAttribute="leading" secondItem="bZ9-hw-q6I" secondAttribute="leading" id="4nc-5t-cCI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bZ9-hw-q6I" secondAttribute="leading" id="9Ys-lU-BRv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bZ9-hw-q6I" secondAttribute="trailing" id="CKc-Q0-De4"/>
+                            <constraint firstItem="bZ9-hw-q6I" firstAttribute="top" secondItem="r2I-WY-DyS" secondAttribute="bottom" constant="20" id="GhZ-Fb-Brl"/>
+                            <constraint firstItem="r2I-WY-DyS" firstAttribute="trailing" secondItem="bZ9-hw-q6I" secondAttribute="trailing" id="s6n-Yf-WEU"/>
+                            <constraint firstItem="Y9n-JB-7ru" firstAttribute="top" secondItem="bZ9-hw-q6I" secondAttribute="bottom" constant="18" id="sMs-qr-VZU"/>
+                            <constraint firstItem="bZ9-hw-q6I" firstAttribute="centerX" secondItem="qVT-1v-MjV" secondAttribute="centerX" id="z1Y-Ab-rlE"/>
+                        </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="150"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="260" height="110"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="150"/>
+                    <size key="freeformSize" width="260" height="110"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i9h-Il-AsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788.8000000000002" y="-140.32983508245877"/>
+            <point key="canvasLocation" x="2658" y="-135"/>
         </scene>
     </scenes>
 </document>

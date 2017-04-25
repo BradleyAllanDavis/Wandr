@@ -11,7 +11,6 @@ import UIKit
 class MapSettingsController: UIViewController
 {
     @IBAction func changeMapType(_ sender: UISegmentedControl!) {
-        print("segmentedControlAction")
         let vc = self.presentingViewController as! MapViewController
         switch (sender.selectedSegmentIndex) {
         case 0:
