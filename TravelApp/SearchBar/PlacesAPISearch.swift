@@ -25,6 +25,7 @@ class PlacesAPISearch: NSObject {
     public func requestPlacesByType(location: CLLocationCoordinate2D, searchRadius: Int, types: [String]) {
         let downloadGroup = DispatchGroup()
         var placesArray = [Dictionary<String, AnyObject>]()
+        var placeIds = [String]()
         
         for type in types {
             downloadGroup.enter()
@@ -36,7 +37,16 @@ class PlacesAPISearch: NSObject {
                 
                 if let data = data {
                     let placesDictArray = data["results"] as! [Dictionary<String, AnyObject>]
-                    placesArray += placesDictArray
+                    
+                    //prevent duplicates from showing up in different types
+                    for place in placesDictArray {
+                        let placeId = place["place_id"] as! String
+                        
+                        if !placeIds.contains(placeId) {
+                            placesArray.append(place)
+                            placeIds.append(placeId)
+                        }
+                    }
                 }
                 
                 downloadGroup.leave()

@@ -126,7 +126,7 @@ class SlideUpView: UIVisualEffectView {
         cvNoResultLabel.font = UIFont(name: "Avenir", size: 14.0)
         cvNoResultLabel.backgroundColor = .clear
         cvNoResultLabel.text = "Nothing happening in this area..."
-        cvNoResultLabel.textColor = .white
+        cvNoResultLabel.textColor = .black
         cvNoResultLabel.textAlignment = .center
         cvNoResultLabel.isHidden = true
         
