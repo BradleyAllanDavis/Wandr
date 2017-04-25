@@ -237,16 +237,16 @@ open class SIFloatingCollectionScene: SKScene {
             switch node.state {
             case .normal:
                 if shouldSelectNode(at: index) {
-                    /*
-                    if !allowMultipleSelection, let selectedIndex = indexOfSelectedNode() {
-                        let node = floatingNodes[selectedIndex]
-                        updateState(of: node)
+                    if SIFloatingNode.count < 4 {
+                        SIFloatingNode.count += 1
+                        changeLabel()
+                        node.state = .selected
                     }
-                    */
-                    node.state = .selected
                     floatingDelegate?.floatingScene?(self, didSelectFloatingNodeAt: index)
                 }
             case .selected:
+                SIFloatingNode.count -= 1
+                changeLabel()
                 if shouldDeselectNode(at: index) {
                     node.state = .normal
                     floatingDelegate?.floatingScene?(self, didDeselectFloatingNodeAt: index)
@@ -255,6 +255,10 @@ open class SIFloatingCollectionScene: SKScene {
                 cancelRemovingNode(node)
             }
         }
+    }
+    
+    open func changeLabel() {
+        
     }
     
     // MARK: -

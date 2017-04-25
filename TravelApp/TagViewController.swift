@@ -8,20 +8,17 @@
 
 import UIKit
 import SpriteKit
+import SIFloatingCollection
 
 class TagViewController: UIViewController {
     fileprivate var skView: SKView!
     fileprivate var floatingCollectionScene: BubblesScene!
-    var types = ["Parks", "Night Clubs", "Movie Theaters", "Casinos", "Bars", "Art Galleries", "Aquariums", "Museums", "Food"]
-    var availableTypes = [String: String]()
-    var tagPreferences = [String: Bool]()
+    let types = ["Parks", "Night Clubs", "Movie Theaters", "Casinos", "Bars", "Art Galleries", "Aquariums", "Museums", "Food"]
+    var tagPreferences = ["restaurant": false, "museum": false, "aquarium": false, "art_gallery": false, "bar": false, "casino": false, "movie_theater": false, "night_club": false, "park": false]
     var bubbles: [BubbleNode] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let plistManager = Plist(name: "availableTags")
-        availableTypes = plistManager?.getValuesInPlistFile() as! Dictionary<String, String>
-        tagPreferences = PlaceStore.shared.tagPreferences
         skView = SKView(frame: UIScreen.main.bounds)
         skView.backgroundColor = SKColor.white
         view.addSubview(skView)
@@ -48,24 +45,24 @@ class TagViewController: UIViewController {
     func addBubble(index: Int) {
         let newNode = BubbleNode.instantiate()
         newNode.changeText(node: newNode, newText: types[index])
-        let typeString = types[index]
-        
-        if availableTypes[typeString] != nil && tagPreferences[availableTypes[typeString]!]! {
-            newNode.state = .selected
-        }
-        
         bubbles.append(newNode)
         floatingCollectionScene.addChild(newNode)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMap" {
+            if let nextVC = segue.destination as? MapViewController {
+                nextVC.tagPreferences = tagPreferences
+            }
+        }
+    }
     
     func commitSelection() {
         tagPreferences = floatingCollectionScene.performCommitSelectionAnimation()
-        PlaceStore.shared.setTags(tags: tagPreferences)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+            SIFloatingNode.count = 0
             if let vc =  self.presentingViewController as? MapViewController {
-//                vc.tagPreferences = self.tagPreferences
+                vc.tagPreferences = self.tagPreferences
                 vc.redoSearchInArea()
                 self.dismiss(animated: true, completion: nil)
             } else {

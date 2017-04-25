@@ -17,6 +17,7 @@ public enum SIFloatingNodeState {
 open class SIFloatingNode: SKShapeNode {
     private(set) var previousState: SIFloatingNodeState = .normal
     open var title: String = "TITLE"
+    public static var count = 0
     public var state: SIFloatingNodeState = .normal {
         didSet {
             if state != oldValue {
@@ -44,6 +45,10 @@ open class SIFloatingNode: SKShapeNode {
         case .removing:
             action = removingAnimation()
             actionKey = SIFloatingNode.removingKey
+        }
+        
+        if action == nil {
+            return
         }
         
         if let action = action, let actionKey = actionKey {
