@@ -13,7 +13,7 @@ import UIKit
 import SpriteKit
 
 class BubbleNode: SIFloatingNode {
-    var labelNode = SKLabelNode(fontNamed: "System")
+    var labelNode = SKLabelNode(fontNamed: "")
     let bubbleColors: [String:SKColor] = ["Night Clubs" : SKColor.init(red: 0/255.0, green: 51/255.0, blue: 102/255.0,alpha: 1),
                                     "Museums" : SKColor.init(red: 215/255.0, green: 158/255.0, blue: 0/255.0, alpha: 1),
                                     "Art Galleries" : SKColor.init(red: 202/255.0, green: 120/255.0, blue: 120/255.0, alpha: 1),
