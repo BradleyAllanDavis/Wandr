@@ -14,6 +14,7 @@ final class PlaceStore: NSObject {
     
     var tagPreferences: [String: Bool]
     var currentNearbyFocusedPlaceIndex: Int = 0
+    var currentSearchCoordinate: CLLocationCoordinate2D?
     
     fileprivate let apiSearch = PlacesAPISearch()
     fileprivate var _photos: [PlacePhoto] = []
@@ -73,6 +74,7 @@ final class PlaceStore: NSObject {
     }
     
     func updateCurrentPlaces(with location: CLLocationCoordinate2D, searchRadius: Int) {
+        currentSearchCoordinate = location
         apiSearch.requestPlacesByType(location: location, searchRadius: searchRadius, types: userSelectedPlaceTypes)
     }
     
