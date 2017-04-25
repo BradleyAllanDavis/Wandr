@@ -22,7 +22,7 @@ extension CGFloat {
 
 class BubblesScene: SIFloatingCollectionScene {
     
-    var tagPreferences = ["restaurant": false, "museum": false, "aquarium": false, "art_gallery": false, "bar": false, "casino": false, "movie_theater": false, "night_club": false, "park": false]
+    var tagPreferences = [String: Bool]()
     
     var tagNames = ["Food": "restaurant", "Museums": "museum", "Aquariums": "aquarium", "Art Galleries": "art_gallery", "Bars": "bar", "Casinos": "casino", "Movie Theaters": "movie_theater", "Night Clubs": "night_club", "Parks": "park"]
     
@@ -36,6 +36,7 @@ class BubblesScene: SIFloatingCollectionScene {
     }
     
     fileprivate func configure() {
+        tagPreferences = PlaceStore.shared.tagPreferences
         backgroundColor = SKColor.init(red: 1, green: 250/255.0, blue: 240/255.0, alpha: 1)
         scaleMode = .aspectFill
         allowMultipleSelection = false

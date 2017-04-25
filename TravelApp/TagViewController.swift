@@ -16,7 +16,7 @@ class TagViewController: UIViewController {
     let types = ["Parks", "Night Clubs", "Movie Theaters", "Casinos", "Bars", "Art Galleries", "Aquariums", "Museums", "Food"]
     var tagPreferences = ["restaurant": false, "museum": false, "aquarium": false, "art_gallery": false, "bar": false, "casino": false, "movie_theater": false, "night_club": false, "park": false]
     var bubbles: [BubbleNode] = []
-    
+    var availableTypes = [String: String]()
     var alertController: UIAlertController?
     var alertTimer: Timer?
     var remainingTime = 0
@@ -24,6 +24,9 @@ class TagViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let plistManager = Plist(name: "availableTags")
+        availableTypes = plistManager?.getValuesInPlistFile() as! Dictionary<String, String>
+        tagPreferences = PlaceStore.shared.tagPreferences
         skView = SKView(frame: UIScreen.main.bounds)
         skView.backgroundColor = SKColor.white
         view.addSubview(skView)
@@ -50,6 +53,12 @@ class TagViewController: UIViewController {
     func addBubble(index: Int) {
         let newNode = BubbleNode.instantiate()
         newNode.changeText(node: newNode, newText: types[index])
+        let typeString = types[index]
+        
+        if availableTypes[typeString] != nil && tagPreferences[availableTypes[typeString]!]! {
+            newNode.state = .selected
+        }
+        
         bubbles.append(newNode)
         floatingCollectionScene.addChild(newNode)
     }
@@ -77,10 +86,11 @@ class TagViewController: UIViewController {
         }
         
         tagPreferences = floatingCollectionScene.performCommitSelectionAnimation()
+        PlaceStore.shared.setTags(tags: tagPreferences)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
             SIFloatingNode.count = 0
             if let vc =  self.presentingViewController as? MapViewController {
-                PlaceStore.shared.setTags(tags: self.tagPreferences)
                 vc.redoSearchInArea()
                 self.dismiss(animated: true, completion: nil)
             } else {
