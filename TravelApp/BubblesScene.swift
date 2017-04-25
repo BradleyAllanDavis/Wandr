@@ -84,9 +84,12 @@ class BubblesScene: SIFloatingCollectionScene {
         var actions: [SKAction] = []
         for node in sortedNodes {
             node.physicsBody = nil
+            let bubble = node as? BubbleNode
+            
             if node.state == .selected {
-                let bubble = node as? BubbleNode
                 tagPreferences[tagNames[(bubble?.getText(node: bubble!))!]!] = true
+            } else {
+                tagPreferences[tagNames[(bubble?.getText(node: bubble!))!]!] = false
             }
             
             let action = actionForFloatingNode(node)
