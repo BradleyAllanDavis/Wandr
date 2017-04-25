@@ -14,6 +14,7 @@ import GooglePlaces
 enum MapPanningSource {
     case automatic
     case user
+    case searchUpdate
 }
 
 class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDelegate, UIPopoverPresentationControllerDelegate
@@ -24,7 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
-    var panningSource: MapPanningSource = .automatic
+    var panningSource: MapPanningSource = .searchUpdate
     
     lazy var searchController: UISearchController = ({
         [unowned self] in
@@ -64,13 +65,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         
         // Zoom to current location
         locationService.startUpdatingLocation()
-        let currentLocation = locationService.locationManager?.location
-        let lat = currentLocation?.coordinate.latitude
-        let long = currentLocation?.coordinate.longitude
-        let center = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
-        let span = MKCoordinateSpanMake(0.075, 0.075)
-        let region = MKCoordinateRegion(center: center, span: span)
-        mapView.setRegion(region, animated: true)
+        let lat: CLLocationDegrees
+        let long: CLLocationDegrees
+        
+        if let currentLocation = locationService.locationManager?.location {
+            lat = currentLocation.coordinate.latitude
+            long = currentLocation.coordinate.longitude
+        } else {
+            // default to Madison if location services are off
+            lat = CLLocationDegrees(43.0731)
+            long = CLLocationDegrees(-89.4012)
+        }
+        
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
         
         setupSearchBar()
         
@@ -82,12 +89,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nearbyFocusedPlaceChanged(notification:)), name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
         
-        // Search for places using current location
-        PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
-        
         // Configure button for searching in area
         redoSearchBlurView.layer.cornerRadius = 5.0;
         redoSearchBlurView.clipsToBounds = true
+        
+        panningSource = .searchUpdate
+        
+        PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,12 +138,54 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     //# MARK: - MapView delegate methods
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        //Check if the pan was the result of the user or the collectionview scrolling
-        if panningSource == .user {
+        switch panningSource {
+        case .user:
             redoSearchBlurView.isHidden = false
-        } else {
+            break
+        case .automatic:
+            let currentPlaceName = PlaceStore.shared.getCurrentFocusedPlace()["name"] as? String
+            
             panningSource = .user
             redoSearchBlurView.isHidden = true
+            
+            // Show annotation call out
+            for annotation in mapView.annotations {
+                if annotation.title as? String  == currentPlaceName {
+                    mapView.selectAnnotation(annotation, animated: true)
+                    break
+                }
+            }
+            break
+        case .searchUpdate:
+            panningSource = .user
+            // Add place annotations to map
+            for place in PlaceStore.shared.nearbyPlaces {
+                let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
+                let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = location
+                annotation.title = place["name"] as? String
+                mapView.addAnnotation(annotation)
+            }
+            
+            break
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        var counter = 0;
+        for place in PlaceStore.shared.nearbyPlaces {
+            if place["name"] as? String == (view.annotation?.title)! {
+                slideView.animateMiddle()
+                slideView.collectionViewScrollStatus = .scrolling
+                slideView.collectionView.scrollToItem(
+                    at: IndexPath(row: counter, section: 0),
+                    at: .centeredHorizontally,
+                    animated: true
+                )
+            } else {
+                counter += 1
+            }
         }
     }
     
@@ -183,50 +233,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         
         mapView.setRegion(region, animated: true)
         panningSource = .automatic
-        
-        let currentPlaceName = PlaceStore.shared.getCurrentFocusedPlace()["name"] as? String
-        
-        // Show annotation call out
-        for annotation in mapView.annotations {
-            if annotation.title as? String  == currentPlaceName {
-                mapView.selectAnnotation(annotation, animated: true)
-            }
-        }
     }
     
     // Called after nearby places have been updated
     func updatePlaces(notification: Notification) {
+        let span = MKCoordinateSpanMake(0.075, 0.075)
+        let region = MKCoordinateRegion(center: PlaceStore.shared.currentSearchCoordinate!, span: span)
+        
         currentPlaces = PlaceStore.shared.nearbyPlaces
         mapView.removeAnnotations(mapView.annotations)
         redoSearchBlurView.isHidden = true
-        panningSource = .automatic
-        
-        // Add place annotations to map
-        for place in PlaceStore.shared.nearbyPlaces {
-            let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
-            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = location
-            annotation.title = place["name"] as? String
-            mapView.addAnnotation(annotation)
-        }
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        var counter = 0;
-        for place in PlaceStore.shared.nearbyPlaces {
-            if place["name"] as? String == (view.annotation?.title)! {
-                slideView.animateMiddle()
-                slideView.collectionViewScrollStatus = .scrolling
-                slideView.collectionView.scrollToItem(
-                    at: IndexPath(row: counter, section: 0),
-                    at: .centeredHorizontally,
-                    animated: true
-                )
-            } else {
-                counter += 1
-            }
-        }
+        panningSource = .searchUpdate
+        mapView.setRegion(region, animated: true)
     }
 }
 
@@ -243,7 +261,7 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
         // Update map to focus on searched location
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(place.coordinate, 5000, 5000)
         mapView.setRegion(coordinateRegion, animated: true)
-            
+        
         //starts the request for places nearby the selected location
         PlaceStore.shared.updateCurrentPlaces(with: place.coordinate, searchRadius: 4000)
     }

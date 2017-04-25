@@ -289,6 +289,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
         }
         
         if collectionViewScrollStatus == .neverScrolled && indexPath.row == 0 {
+            centerPath = indexPath
             cell.imageView.alpha = 1.0
         }
         
@@ -316,7 +317,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
     }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//        getCenterCell()
+        getCenterCell()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -357,7 +358,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
             
             centerPath = centerIndexPath
             PlaceStore.shared.currentNearbyFocusedPlaceIndex = centerIndexPath.row
-//            NotificationCenter.default.post(name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
         }
         
         collectionViewScrollStatus = .idle
