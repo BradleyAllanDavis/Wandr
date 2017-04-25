@@ -159,7 +159,7 @@
             </objects>
             <point key="canvasLocation" x="2454" y="645"/>
         </scene>
-        <!--Welcome Button View Controller-->
+        <!--Delegate-->
         <scene sceneID="xNr-Jx-wrD">
             <objects>
                 <viewController id="GlE-Zw-x5h" customClass="WelcomeButtonViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,18 +171,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="166"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGJ-HG-D2g">
-                                <rect key="frame" x="16" y="20" width="311" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.26492902636528015" green="0.39069819450378418" blue="0.63628560304641724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Login via Facebook">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookLogin:" destination="GlE-Zw-x5h" eventType="touchUpInside" id="NF5-eX-qmQ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQe-XW-DEo">
                                 <rect key="frame" x="16" y="86" width="311" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -193,6 +181,14 @@
                                     <segue destination="EQ8-Ze-2rJ" kind="show" id="aCB-QH-oeC"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQM-sB-X51" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="16" y="20" width="311" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GlE-Zw-x5h" id="rIg-lm-AWu"/>
+                                </connections>
+                            </view>
                         </subviews>
                     </view>
                 </viewController>

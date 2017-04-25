@@ -10,18 +10,20 @@ import UIKit
 import GooglePlaces
 import FBSDKLoginKit
 import FBSDKCoreKit
+import Firebase
+import FirebaseAuth
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+        FIRApp.configure()
         
         if let configPath = Bundle.main.url(forResource: "APIConfig", withExtension: "plist") {
             do {
@@ -40,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    
     
     func applicationDidBecomeActive(application: UIApplication) {
         //App activation code

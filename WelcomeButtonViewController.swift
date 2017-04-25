@@ -8,12 +8,14 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
+import FirebaseAuth
 
-class WelcomeButtonViewController: UIViewController {
+class WelcomeButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var loginButtonView: FBSDKLoginButton = FBSDKLoginButton()
     
-    @IBAction func facebookLogin(_ sender: Any) {
+    /**@IBAction func facebookLogin(_ sender: Any) {
         let login = FBSDKLoginManager()
         login.loginBehavior = FBSDKLoginBehavior.systemAccount
         login.logIn(withReadPermissions: ["public_profile", "email"], from: self, handler: {(result, error) in
@@ -38,7 +40,7 @@ class WelcomeButtonViewController: UIViewController {
             }
             
         })
-    }
+    }**/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,29 @@ class WelcomeButtonViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        print(result)
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        FIRAuth.auth()?.signIn(with:credential) { (user, error) in
+            //..
+            if let error = error {
+                return
+            }
+        }
+        // ...
+    }
+
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        return
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
