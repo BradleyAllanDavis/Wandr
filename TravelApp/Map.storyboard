@@ -52,19 +52,46 @@
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-b9-tW7">
-                                <rect key="frame" x="16" y="82" width="22" height="22"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18c-Gc-DLV">
+                                <rect key="frame" x="7" y="69" width="37" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="showMapSettings" popoverAnchorView="nFn-b9-tW7" id="RJr-BX-M6Q">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" left="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="LAq-HW-YWu">
+                                    <rect key="frame" x="0.0" y="0.0" width="37" height="77"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFn-b9-tW7">
+                                            <rect key="frame" x="3" y="4" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="paper-map-7">
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="iwd-1s-QyO" kind="popoverPresentation" identifier="showMapSettings" popoverAnchorView="nFn-b9-tW7" id="RJr-BX-M6Q">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" left="YES"/>
+                                                </segue>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eaq-yd-XXK">
+                                            <rect key="frame" x="3" y="38" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="map-pin-icon"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="gotoCurrentLocation:" destination="45h-zq-vlf" eventType="touchUpInside" id="did-9P-6J5"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -84,6 +111,7 @@
                         <outlet property="redoSearchBlurView" destination="DMu-8W-OoK" id="Ygq-BQ-L0O"/>
                         <outlet property="redoSearchButton" destination="hQ7-bN-Pb7" id="xrb-R3-Jri"/>
                         <outlet property="searchDisplayController" destination="3dl-zm-BSk" id="bWq-jf-GLL"/>
+                        <outlet property="settingsBlurView" destination="18c-Gc-DLV" id="wsR-Nd-pWv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJr-B0-vV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,4 +180,8 @@
             <point key="canvasLocation" x="2658" y="-135"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map-pin-icon" width="30" height="30"/>
+        <image name="paper-map-7" width="30" height="30"/>
+    </resources>
 </document>

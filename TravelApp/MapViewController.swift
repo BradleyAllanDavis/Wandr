@@ -22,7 +22,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         return true
     }
     
+    @IBAction func gotoCurrentLocation(_ sender: Any) {
+        let currentLocation = locationService.locationManager?.location
+        let lat = currentLocation?.coordinate.latitude
+        let long = currentLocation?.coordinate.longitude
+        let center = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
+        let span = MKCoordinateSpanMake(0.075, 0.075)
+        let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+
     @IBOutlet weak var mapInfoButton: UIButton!
+    @IBOutlet weak var settingsBlurView: UIVisualEffectView!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
@@ -61,6 +72,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.settingsBlurView.layer.cornerRadius = 10
+        self.settingsBlurView.clipsToBounds = true
+        self.settingsBlurView.frame.origin = CGPoint(x: 10, y: 65)
         
         definesPresentationContext = true
         
