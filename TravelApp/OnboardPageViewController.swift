@@ -41,7 +41,7 @@ class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
             print("User logged On")
 //            let vc = MapViewController()
             var storyboard: UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
-            var vc = storyboard.instantiateViewControllerWithIdentifier("Map") as MapViewController
+            var vc = storyboard.instantiateViewControllerWithIdentifier("Map") as! MapViewController
             self.present(vc, animated: true, completion: nil)
         }
     }
