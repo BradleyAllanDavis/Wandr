@@ -23,6 +23,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         return true
     }
     
+    @IBOutlet weak var mapInfoButton: UIButton!
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var searchResultViewController = GMSAutocompleteResultsViewController()
     var panningSource: MapPanningSource = .searchUpdate
@@ -102,7 +104,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         if segue.identifier == "showMapSettings" {
             let popoverViewController = segue.destination
             popoverViewController.popoverPresentationController?.delegate = self
-//            self.addChildViewController(popoverViewController)
+            popoverViewController.modalPresentationStyle = .popover
+            popoverViewController.popoverPresentationController?.sourceRect = self.mapInfoButton.bounds
         }
     }
     

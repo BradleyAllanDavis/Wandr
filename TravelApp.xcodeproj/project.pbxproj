@@ -16,12 +16,12 @@
 		4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */; };
 		4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */; };
 		406F669F1EAE6525006D827D /* availableTags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 406F669E1EAE6525006D827D /* availableTags.plist */; };
-		4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4073EC4A1E70931E009F1F27 /* APIConfig.plist */; };
 		407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */; };
 		407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */; };
 		40B459391E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */; };
 		40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */; };
 		56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56237F551E804BDA0000ED5E /* tagPreferences.plist */; };
+		562B5BB41EAECD31000D20CE /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 562B5BB31EAECD31000D20CE /* APIConfig.plist */; };
 		56E5AE361E805B710076C72F /* BubblesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE351E805B710076C72F /* BubblesScene.swift */; };
 		56E5AE381E805C220076C72F /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE371E805C220076C72F /* BubbleNode.swift */; };
 		56E5AE3A1E81C1840076C72F /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE391E81C1840076C72F /* Plist.swift */; };
@@ -82,7 +82,6 @@
 		4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopularTableViewCell.xib; path = SlideUpView/PopularTableViewCell.xib; sourceTree = "<group>"; };
 		4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesAPISearch.swift; path = SearchBar/PlacesAPISearch.swift; sourceTree = "<group>"; };
 		406F669E1EAE6525006D827D /* availableTags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = availableTags.plist; sourceTree = "<group>"; };
-		4073EC4A1E70931E009F1F27 /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = "<group>"; };
 		407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelNavBarView.swift; path = TravelApp/SearchBar/TravelNavBarView.swift; sourceTree = "<group>"; };
 		407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchBar.swift; path = TravelApp/SearchBar/TravelSearchBar.swift; sourceTree = "<group>"; };
 		407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchController.swift; path = TravelApp/SearchBar/TravelSearchController.swift; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SlideUpCollectionViewCell.xib; path = SlideUpView/SlideUpCollectionViewCell.xib; sourceTree = "<group>"; };
 		4DB01D80E1D149DF667641A0 /* Pods_TravelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56237F551E804BDA0000ED5E /* tagPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tagPreferences.plist; sourceTree = "<group>"; };
+		562B5BB31EAECD31000D20CE /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = SOURCE_ROOT; };
 		5689233F0C1E7E572F694497 /* Pods-TravelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.release.xcconfig"; sourceTree = "<group>"; };
 		56E5AE351E805B710076C72F /* BubblesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblesScene.swift; sourceTree = "<group>"; };
 		56E5AE371E805C220076C72F /* BubbleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 				FAA243301E706432009AB3DB /* LaunchScreen.storyboard */,
 				FAA243331E706432009AB3DB /* Info.plist */,
 				FAF76E461EAD735500A5E094 /* PlaceDetailViewController.swift */,
-				4073EC4A1E70931E009F1F27 /* APIConfig.plist */,
+				562B5BB31EAECD31000D20CE /* APIConfig.plist */,
 				56237F551E804BDA0000ED5E /* tagPreferences.plist */,
 				4037C0681EA302AC0050114B /* PlaceStore.swift */,
 				4037C06A1EA400A80050114B /* PlacePhoto.swift */,
@@ -435,7 +435,6 @@
 				FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */,
 				FAA243611E71BD2C009AB3DB /* Tag.storyboard in Resources */,
 				4037C06D1EA432730050114B /* Placeholder_location.png in Resources */,
-				4073EC4B1E70931E009F1F27 /* APIConfig.plist in Resources */,
 				FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */,
 				56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */,
 				40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */,
@@ -446,6 +445,7 @@
 				406F669F1EAE6525006D827D /* availableTags.plist in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
 				FA85AF3D1EADB5CD00918965 /* Login.storyboard in Resources */,
+				562B5BB41EAECD31000D20CE /* APIConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

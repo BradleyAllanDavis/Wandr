@@ -201,17 +201,9 @@
             <point key="canvasLocation" x="1493.5999999999999" y="1371.8140929535234"/>
         </scene>
         <!--Tag-->
-        <scene sceneID="qSq-0k-6dQ">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="TagReference" storyboardName="Tag" id="n7V-1V-8FI" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PLg-aS-Xnq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1990" y="1348"/>
-        </scene>
-        <!--Map-->
         <scene sceneID="Jcl-MO-b2K">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="MapReference" storyboardName="Map" id="EQ8-Ze-2rJ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="TagReference" storyboardName="Tag" id="EQ8-Ze-2rJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCL-Kg-Jak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1990" y="1395"/>

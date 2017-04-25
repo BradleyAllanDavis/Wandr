@@ -6,8 +6,6 @@ target 'TravelApp' do
   pod 'SIFloatingCollection'
   pod 'Cosmos', '~> 9.0'
   pod 'FBSDKLoginKit'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKShareKit'
   use_frameworks!
 end
 

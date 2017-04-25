@@ -22,13 +22,13 @@ extension CGFloat {
 
 class BubblesScene: SIFloatingCollectionScene {
     
-//    var tagPreferences = ["restaurant": false, "museum": false, "aquarium": false, "art_gallery": false, "bar": false, "casino": false, "movie_theater": false, "night_club": false, "park": false]
-
-    var tagPreferences = [String: Bool]()
+    var tagPreferences = ["restaurant": false, "museum": false, "aquarium": false, "art_gallery": false, "bar": false, "casino": false, "movie_theater": false, "night_club": false, "park": false]
+    
     var tagNames = ["Food": "restaurant", "Museums": "museum", "Aquariums": "aquarium", "Art Galleries": "art_gallery", "Bars": "bar", "Casinos": "casino", "Movie Theaters": "movie_theater", "Night Clubs": "night_club", "Parks": "park"]
     
     var bottomOffset: CGFloat = 200
     var topOffset: CGFloat = 0
+    let subtext = SKLabelNode(fontNamed: "System")
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -36,7 +36,6 @@ class BubblesScene: SIFloatingCollectionScene {
     }
     
     fileprivate func configure() {
-        tagPreferences = PlaceStore.shared.tagPreferences
         backgroundColor = SKColor.init(red: 1, green: 250/255.0, blue: 240/255.0, alpha: 1)
         scaleMode = .aspectFill
         allowMultipleSelection = false
@@ -49,13 +48,23 @@ class BubblesScene: SIFloatingCollectionScene {
         physicsBody = SKPhysicsBody(edgeLoopFrom: bodyFrame)
         magneticField.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2 + bottomOffset / 2 - topOffset)
         
-        let description = SKLabelNode(fontNamed: "Avenir")
+        let description = SKLabelNode(fontNamed: "System")
         description.text = "What do you want to find?"
         description.fontSize = 24
         description.fontColor = SKColor.black
-        description.position = CGPoint(x: frame.midX, y: 80)
+        description.position = CGPoint(x: frame.midX, y: 100)
+        
+        subtext.text = String(SIFloatingNode.count) + " out of 4 selected."
+        subtext.fontSize = 16
+        subtext.fontColor = SKColor.black
+        subtext.position = CGPoint(x: frame.midX, y: 70)
         
         addChild(description)
+        addChild(subtext)
+    }
+    
+    override func changeLabel() {
+        subtext.text = String(SIFloatingNode.count) + " out of 4 selected."
     }
     
     override func addChild(_ node: SKNode) {
