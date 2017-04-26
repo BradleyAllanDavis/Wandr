@@ -202,7 +202,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="TagReference" storyboardName="Tag" id="EQ8-Ze-2rJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCL-Kg-Jak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1990" y="1395"/>
+            <point key="canvasLocation" x="1987" y="1371"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

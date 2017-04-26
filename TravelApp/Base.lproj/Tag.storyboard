@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select up to four bubbles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c56-IG-fGg" userLabel="Desc">
-                                <rect key="frame" x="91" y="610" width="193" height="37"/>
+                                <rect key="frame" x="91" y="590" width="193" height="57"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,7 +37,15 @@
                             <constraint firstItem="gkz-5i-XFR" firstAttribute="top" secondItem="c56-IG-fGg" secondAttribute="bottom" constant="20" id="yvw-yh-HhI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4wq-Bv-7vj"/>
+                    <navigationItem key="navigationItem" id="4wq-Bv-7vj">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="h7i-5e-ZWX">
+                            <view key="customView" contentMode="scaleToFill" id="QmY-Ad-gOV" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="16" y="5" width="83" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="VmE-pj-sWq" kind="presentation" identifier="toMap" id="Zc4-us-308"/>
@@ -51,7 +59,7 @@
         <scene sceneID="aKr-67-VgT">
             <objects>
                 <navigationController id="evE-xR-Gnm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wev-rG-40a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Wev-rG-40a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
