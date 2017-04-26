@@ -38,6 +38,7 @@ class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
         
         if (FBSDKAccessToken.current() != nil) {
             // User is logged in, do work such as go to next view controller.
+
             var storyboard: UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
             var vc = storyboard.instantiateViewController(withIdentifier: "Map") as! MapViewController
             self.present(vc, animated: true, completion: nil)
