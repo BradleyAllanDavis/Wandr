@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Requesting user location</string>
+	<string>This app requires your location when using the map to provide local points of interest.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,8 +23,6 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires your location when using the map to provide local points of interest.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app requires your location when using the map to provide local points of interest.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -53,12 +51,12 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1409642685722842</string>
+				<string>fb1754661208197635</string>
 			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>1409642685722842</string>
+	<string>1754661208197635</string>
 	<key>FacebookDisplayName</key>
 	<string>iOS Traveller</string>
 	<key>LSApplicationQueriesSchemes</key>
