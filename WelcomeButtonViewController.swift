@@ -65,7 +65,8 @@ class WelcomeButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
-            let vc = MapViewController()
+            var storyboard: UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
+            var vc = storyboard.instantiateViewController(withIdentifier: "Map") as! MapViewController
             self.present(vc, animated: true, completion: nil)
         }
         // ...
