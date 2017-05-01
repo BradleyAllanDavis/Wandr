@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - Cartography (1.1.0)
   - Cosmos (9.0.0)
   - FBSDKCoreKit (4.22.0):
     - Bolts (~> 1.7)
@@ -52,8 +53,10 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
   - SIFloatingCollection (3.0.1)
+  - ZLSwipeableViewSwift (0.0.7)
 
 DEPENDENCIES:
+  - Cartography
   - Cosmos (~> 9.0)
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -64,9 +67,11 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - SIFloatingCollection
+  - ZLSwipeableViewSwift
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Cartography: 0538ccb4044acbbda2266335fc58cb4228794d90
   Cosmos: 33eee62b2a0418452aef470f711f83c3ea061b7b
   FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
   FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
@@ -82,7 +87,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   SIFloatingCollection: 096160b220e3a1b1cbcf349108ee24d3aa6b86de
+  ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
 
-PODFILE CHECKSUM: d7ab27876cea7ef826d19bba16d2b4c7bb2c5d24
+PODFILE CHECKSUM: 95609cee69d08fd707bdc867b82db080640cefa0
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

@@ -22,6 +22,11 @@
 		40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */; };
 		56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56237F551E804BDA0000ED5E /* tagPreferences.plist */; };
 		562B5BB41EAECD31000D20CE /* APIConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 562B5BB31EAECD31000D20CE /* APIConfig.plist */; };
+		56DABE101EB7B9510068C804 /* CardSwipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56DABE0F1EB7B9510068C804 /* CardSwipe.storyboard */; };
+		56DABE121EB7B95A0068C804 /* CardSwipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DABE111EB7B95A0068C804 /* CardSwipeController.swift */; };
+		56DABE141EB7B96B0068C804 /* CGColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DABE131EB7B96B0068C804 /* CGColors.swift */; };
+		56DABE161EB7B97C0068C804 /* TestView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DABE151EB7B97C0068C804 /* TestView1.swift */; };
+		56DABE181EB7B9820068C804 /* TestView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56DABE171EB7B9820068C804 /* TestView2.xib */; };
 		56E5AE361E805B710076C72F /* BubblesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE351E805B710076C72F /* BubblesScene.swift */; };
 		56E5AE381E805C220076C72F /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE371E805C220076C72F /* BubbleNode.swift */; };
 		56E5AE3A1E81C1840076C72F /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5AE391E81C1840076C72F /* Plist.swift */; };
@@ -91,6 +96,11 @@
 		56237F551E804BDA0000ED5E /* tagPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tagPreferences.plist; sourceTree = "<group>"; };
 		562B5BB31EAECD31000D20CE /* APIConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfig.plist; sourceTree = SOURCE_ROOT; };
 		5689233F0C1E7E572F694497 /* Pods-TravelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.release.xcconfig"; sourceTree = "<group>"; };
+		56DABE0F1EB7B9510068C804 /* CardSwipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardSwipe.storyboard; sourceTree = "<group>"; };
+		56DABE111EB7B95A0068C804 /* CardSwipeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardSwipeController.swift; sourceTree = "<group>"; };
+		56DABE131EB7B96B0068C804 /* CGColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGColors.swift; sourceTree = "<group>"; };
+		56DABE151EB7B97C0068C804 /* TestView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView1.swift; sourceTree = "<group>"; };
+		56DABE171EB7B9820068C804 /* TestView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView2.xib; sourceTree = "<group>"; };
 		56E5AE351E805B710076C72F /* BubblesScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubblesScene.swift; sourceTree = "<group>"; };
 		56E5AE371E805C220076C72F /* BubbleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
 		56E5AE391E81C1840076C72F /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
@@ -174,6 +184,18 @@
 			name = SlideUpView;
 			sourceTree = "<group>";
 		};
+		56DABE0E1EB7B9400068C804 /* CardSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				56DABE111EB7B95A0068C804 /* CardSwipeController.swift */,
+				56DABE0F1EB7B9510068C804 /* CardSwipe.storyboard */,
+				56DABE131EB7B96B0068C804 /* CGColors.swift */,
+				56DABE151EB7B97C0068C804 /* TestView1.swift */,
+				56DABE171EB7B9820068C804 /* TestView2.xib */,
+			);
+			name = CardSwipe;
+			sourceTree = "<group>";
+		};
 		96C0D0291E77061E00B316B8 /* Preference */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +257,7 @@
 		FAA243241E706432009AB3DB /* TravelApp */ = {
 			isa = PBXGroup;
 			children = (
+				56DABE0E1EB7B9400068C804 /* CardSwipe */,
 				FA85AF3E1EADB60300918965 /* Welcome */,
 				4037C06C1EA432730050114B /* Placeholder_location.png */,
 				407C8CB41E9C54B7002AF485 /* SearchBar */,
@@ -440,6 +463,8 @@
 				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
 				406F669F1EAE6525006D827D /* availableTags.plist in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
+				56DABE181EB7B9820068C804 /* TestView2.xib in Resources */,
+				56DABE101EB7B9510068C804 /* CardSwipe.storyboard in Resources */,
 				FA85AF3D1EADB5CD00918965 /* Login.storyboard in Resources */,
 				562B5BB41EAECD31000D20CE /* APIConfig.plist in Resources */,
 			);
@@ -474,7 +499,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6050E1BBBF512E7869FF2990 /* [CP] Embed Pods Frameworks */ = {
@@ -518,10 +543,12 @@
 				FA452EFC1EAD7E43009F007D /* PlacesAPISearch.swift in Sources */,
 				FA452EFB1EAD7E36009F007D /* LocationService.swift in Sources */,
 				96C0D02B1E77064300B316B8 /* Preference.swift in Sources */,
+				56DABE121EB7B95A0068C804 /* CardSwipeController.swift in Sources */,
 				4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */,
 				4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */,
 				FA85AF3B1EADB0BD00918965 /* Page1ViewController.swift in Sources */,
 				FAF76E471EAD735500A5E094 /* PlaceDetailViewController.swift in Sources */,
+				56DABE141EB7B96B0068C804 /* CGColors.swift in Sources */,
 				56E5AE361E805B710076C72F /* BubblesScene.swift in Sources */,
 				FAA243581E7093A9009AB3DB /* CartViewController.swift in Sources */,
 				56E5AE3A1E81C1840076C72F /* Plist.swift in Sources */,
@@ -530,6 +557,7 @@
 				FAA2436D1E71C2D0009AB3DB /* MapViewController.swift in Sources */,
 				FAF76E491EAD741E00A5E094 /* WelcomeButtonViewController.swift in Sources */,
 				FA333D3A1EAD452E00FEA832 /* WelcomeViewController.swift in Sources */,
+				56DABE161EB7B97C0068C804 /* TestView1.swift in Sources */,
 				FAA2435E1E70BB1D009AB3DB /* TagViewController.swift in Sources */,
 				407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */,
 				407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */,
