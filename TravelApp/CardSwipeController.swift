@@ -62,22 +62,24 @@ class CardSwipeController: UIViewController {
             //if photo.status == .downloaded {
                 placeView.image = photo.image
             //}
+            
+            
             views.append(placeView)
         }
         
-        // ...and then append the rest
-        for i in 0..<placeIndex {
-            let placeView = TestView1(frame: rect)
-            let placeData = PlaceStore.shared.popularPlaces[i]
-            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
-            
-            placeView.label?.text = placeData["name"] as? String
-            
-            //if photo.status == .downloaded {
-            placeView.image = photo.image
-            //}
-            views.append(placeView)
-        }
+        // ...and then append the rest, needed?
+//        for i in 0..<placeIndex {
+//            let placeView = TestView1(frame: rect)
+//            let placeData = PlaceStore.shared.popularPlaces[i]
+//            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
+//            
+//            placeView.label?.text = placeData["name"] as? String
+//            
+//            //if photo.status == .downloaded {
+//            placeView.image = photo.image
+//            //}
+//            views.append(placeView)
+//        }
         
         // Transparent navigation bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
