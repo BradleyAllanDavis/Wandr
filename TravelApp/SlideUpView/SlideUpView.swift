@@ -424,6 +424,14 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
         return 50
     }
     
+    // Send index of selected table cell to map view
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = ["index":indexPath.row]
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "TransitionToSwipeView"), object: indexPath.row, userInfo: index)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         print("edited")
     }

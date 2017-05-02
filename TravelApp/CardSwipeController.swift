@@ -17,6 +17,9 @@ class CardSwipeController: UIViewController {
     var views : [UIView] = []
     var viewIndex = 0
     
+    // Passed in from map view
+    var placeIndex = -1
+    
     var colors = UIColor.flatUIColors()
     var colorIndex = 0
     var loadCardsFromXib = false
@@ -42,16 +45,46 @@ class CardSwipeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         let rect = CGRect(
             origin: CGPoint(x: 0, y: 0),
             size: CGSize(width: self.view.bounds.width-20, height: self.view.bounds.height-40)
         )
         
-        let testView = TestView1(frame: rect)
-        views.append(testView)
+        // Start at placeIndex...
+        for i in placeIndex..<PlaceStore.shared.popularPlaces.count {
+            let placeView = TestView1(frame: rect)
+            let placeData = PlaceStore.shared.popularPlaces[i]
+            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
+            
+            placeView.label?.text = placeData["name"] as? String
+            
+            //if photo.status == .downloaded {
+                placeView.image = photo.image
+            //}
+            views.append(placeView)
+        }
         
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        // ...and then append the rest
+        for i in 0..<placeIndex {
+            let placeView = TestView1(frame: rect)
+            let placeData = PlaceStore.shared.popularPlaces[i]
+            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
+            
+            placeView.label?.text = placeData["name"] as? String
+            
+            //if photo.status == .downloaded {
+            placeView.image = photo.image
+            //}
+            views.append(placeView)
+        }
+        
+        // Transparent navigation bar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
         view.backgroundColor = UIColor.white
         view.clipsToBounds = true
         
@@ -158,8 +191,7 @@ class CardSwipeController: UIViewController {
         if colorIndex >= colors.count {
             colorIndex = 0
         }
-        //cardView.backgroundColor = colors[colorIndex]
-        cardView.backgroundColor = UIColor.gray
+        cardView.backgroundColor = colors[colorIndex]
         colorIndex += 1
         
         if loadCardsFromXib {

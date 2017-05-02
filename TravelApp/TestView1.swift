@@ -10,6 +10,9 @@ import UIKit
 
 class TestView1: UIView {
     
+    var label: UILabel?
+    var image: UIImage?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -32,11 +35,17 @@ class TestView1: UIView {
         // Corner Radius
         layer.cornerRadius = 10.0;
         
+        // Image
+        let image = #imageLiteral(resourceName: "Placeholder_location.png")
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: self.center.x, y: 50, width: 100, height: 100)
+        self.addSubview(imageView)
+        
         // Label
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-        label.center = CGPoint(x: 160, y: 285)
-        label.textAlignment = .center
-        label.text = "Test View 1"
-        self.addSubview(label)
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
+        label?.center = CGPoint(x: 160, y: 285)
+        label?.textAlignment = .center
+        label?.text = "Test View 1"
+        self.addSubview(label!)
     }
 }
