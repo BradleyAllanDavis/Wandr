@@ -61,12 +61,12 @@ class WelcomeButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         FIRAuth.auth()?.signIn(with:credential) { (user, error) in
             //..
-            if let error = error {
+            if error != nil {
                 return
             }
             
-            var storyboard: UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
-            var vc = storyboard.instantiateViewController(withIdentifier: "Map") as! MapViewController
+            let storyboard: UIStoryboard = UIStoryboard(name: "Tag", bundle: nil)
+            let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "TagNavigationView") as! UINavigationController
             self.present(vc, animated: true, completion: nil)
         }
         // ...

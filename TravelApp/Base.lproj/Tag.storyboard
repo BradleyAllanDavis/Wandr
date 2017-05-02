@@ -58,8 +58,8 @@
         <!--Navigation Controller-->
         <scene sceneID="aKr-67-VgT">
             <objects>
-                <navigationController id="evE-xR-Gnm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Wev-rG-40a">
+                <navigationController storyboardIdentifier="TagNavigationView" id="evE-xR-Gnm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wev-rG-40a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

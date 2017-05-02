@@ -168,7 +168,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hw3-C3-3sg"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="VKJ-EY-skd">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="173"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="166"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQe-XW-DEo">
@@ -206,6 +206,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ier-qQ-4Jl"/>
+        <segue reference="fw6-3d-2LO"/>
     </inferredMetricsTieBreakers>
 </document>

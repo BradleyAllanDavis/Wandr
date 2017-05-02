@@ -36,12 +36,16 @@ class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         if (FBSDKAccessToken.current() != nil) {
             // User is logged in, do work such as go to next view controller.
-
+            
             let storyboard: UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "Map") as! MapViewController
+            let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "Map") as! MapViewController
             self.present(vc, animated: true, completion: nil)
+            
         }
     }
     
