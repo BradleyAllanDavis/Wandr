@@ -141,7 +141,9 @@ class CardSwipeController: UIViewController {
                 
                 let placeView: TestView1 = self.views.remove(at: 0) as! TestView1
                 let place = PlaceStore.shared.getPlace(for: placeView.placeId!)
-                PlaceStore.shared.savePlaceToCart(placeId: place?["place_id"] as! String)
+                if !PlaceStore.shared.cartPlaceIds.contains(place?["place_id"] as! String) {
+                    PlaceStore.shared.savePlaceToCart(placeId: place?["place_id"] as! String)
+                }
             }
             if direction == .Left {
                 print("Swiped left, dismiss place")
