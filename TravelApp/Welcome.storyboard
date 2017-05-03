@@ -43,6 +43,15 @@
                                     <segue destination="GlE-Zw-x5h" kind="embed" id="fw6-3d-2LO"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wandr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLY-yQ-5kd">
+                                <rect key="frame" x="58" y="28" width="260" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="57"/>
+                                <color key="textColor" red="0.2282976508" green="0.25891217589999999" blue="0.6960117817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="2" height="4"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -180,7 +189,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hw3-C3-3sg"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="VKJ-EY-skd">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="173"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="166"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQe-XW-DEo">
@@ -263,6 +272,6 @@
         <image name="tagView" width="562" height="876"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ier-qQ-4Jl"/>
+        <segue reference="fw6-3d-2LO"/>
     </inferredMetricsTieBreakers>
 </document>
