@@ -27,6 +27,9 @@ class CardSwipeController: UIViewController {
     // Passed in from map view
     var placeIndex = -1
     
+    // For add to cart popup
+    var popupView: UIView!
+    
     var colors = UIColor.flatUIColors()
     var colorIndex = 0
     var loadCardsFromXib = false
@@ -51,7 +54,6 @@ class CardSwipeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         NotificationCenter.default.addObserver(
             self, selector: #selector(photosDidUpdate(notification:)),
@@ -86,7 +88,6 @@ class CardSwipeController: UIViewController {
             placeView.label?.text = placeData["name"] as? String
             placeView.imageView?.image = photo.image
             placeView.placeId = placeData["place_id"] as? String
-            
             
             views.append(placeView)
         }
@@ -129,7 +130,7 @@ class CardSwipeController: UIViewController {
         toolbarItems = items*/
         
         swipeableView = ZLSwipeableView()
-        swipeableView.allowedDirection = Direction.Right
+        swipeableView.allowedDirection = .All
         self.view.addSubview(swipeableView)
         swipeableView.didStart = {view, location in
             print("Did start swiping view at location: \(location)")
@@ -142,6 +143,73 @@ class CardSwipeController: UIViewController {
         }
         swipeableView.didSwipe = {view, direction, vector in
             print("Did swipe view in direction: \(direction), vector: \(vector)")
+            
+            if direction == .Right {
+                print("Swiped right, Add to cart")
+                
+                self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
+                self.popupView.backgroundColor = UIColor.clear
+                self.popupView.layer.cornerRadius = 30
+                self.view.addSubview(self.popupView)
+                
+                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                blurEffectView.frame = self.popupView.bounds
+                blurEffectView.clipsToBounds = true
+                blurEffectView.layer.cornerRadius = 30
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                self.popupView.addSubview(blurEffectView)
+                
+                let cart = UIImage(named: "shopping-cart-7")
+                let cartView = UIImageView(frame: CGRect(x: 50, y: 40, width: 50, height: 50))
+                cartView.image = cart
+                self.popupView.addSubview(cartView)
+                
+                let addedToCart = UILabel(frame: CGRect(x: 0, y: 100, width: 150, height: 50))
+                addedToCart.textColor = .black
+                addedToCart.textAlignment = .center
+                addedToCart.text = "Added to Cart"
+                self.popupView.addSubview(addedToCart)
+                
+                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+                
+                let placeView: TestView1 = self.views.remove(at: 0) as! TestView1
+                let place = PlaceStore.shared.getPlace(for: placeView.placeId!)
+                PlaceStore.shared.savePlaceToCart(placeId: place?["place_id"] as! String)
+            }
+            if direction == .Left {
+                print("Swiped left, dismiss place")
+
+                self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
+                self.popupView.backgroundColor = UIColor.clear
+                self.popupView.layer.cornerRadius = 30
+                self.view.addSubview(self.popupView)
+                
+                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                blurEffectView.frame = self.popupView.bounds
+                blurEffectView.clipsToBounds = true
+                blurEffectView.layer.cornerRadius = 30
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                self.popupView.addSubview(blurEffectView)
+                
+                let thumb = UIImage(named: "pin-map-off-7")
+                let thumbView = UIImageView(frame: CGRect(x: 50, y: 40, width: 50, height: 50))
+                thumbView.image = thumb
+                self.popupView.addSubview(thumbView)
+                
+                let notInterested = UILabel(frame: CGRect(x: 0, y: 100, width: 150, height: 50))
+                notInterested.textColor = .black
+                notInterested.textAlignment = .center
+                notInterested.text = "Not Interested"
+                self.popupView.addSubview(notInterested)
+                
+                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+            }
+            if direction == .Down {
+                print("Swiped left, dismiss swipeview")
+                self.dismiss(animated: true, completion: nil)
+            }
         }
         swipeableView.didCancel = {view in
             print("Did cancel swiping view")
@@ -158,6 +226,13 @@ class CardSwipeController: UIViewController {
             view1.right == view2.right-50
             view1.top == view2.top + 120
             view1.bottom == view2.bottom - 100
+        }
+    }
+    
+    func dismissPopup() {
+        print("dismiss add to cart")
+        if self.popupView != nil { // Dismiss the view from here
+            self.popupView.removeFromSuperview()
         }
     }
     
