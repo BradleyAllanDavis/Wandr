@@ -21,13 +21,18 @@ class PlacePhoto: NSObject {
     var status: PhotoStatus = .downloading
     var image: UIImage?
     let placeId: String
-    let place: Dictionary<String, AnyObject>
+    var place: Dictionary<String, AnyObject>? = nil
     
     init(placeId: String, completion: PhotoDownloadCompletionBlock!) {
         self.placeId = placeId
-        self.place = PlaceStore.shared.nearbyPlaces.filter({
+        
+        let place = PlaceStore.shared.nearbyPlaces.filter({
             $0["place_id"] as! String == placeId
-        }).first!
+        }).first
+        
+        if place != nil {
+            self.place = place
+        }
         
         super.init()
         self.loadFirstPhotoForPlace(downloadCompletion: completion)
@@ -68,7 +73,7 @@ class PlacePhoto: NSObject {
     
     private func downloadIcon(downloadCompletion: @escaping PhotoDownloadCompletionBlock) {
         let downloadSession = URLSession(configuration: URLSessionConfiguration.ephemeral)
-        let url = URL(string: place["icon"] as! String)
+        let url = URL(string: place?["icon"] as! String)
         let task = downloadSession.dataTask(with: url!, completionHandler: {
             data, response, error in
             if let data = data {

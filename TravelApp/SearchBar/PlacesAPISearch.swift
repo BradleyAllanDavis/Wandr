@@ -16,11 +16,17 @@ protocol PlacesAPISearchResultUpdater: class {
     func placesAPIDidReceiveErrorForPlaceType(error: Error, placeType: String)
 }
 
+protocol GMSPlaceRequestDelegate {
+    func didReceiveGMSPlace(place: GMSPlace)
+    func gmsPlaceDidReceiveError(error: Error)
+}
+
 class PlacesAPISearch: NSObject {
     var resultsUpdaterDelegate: PlacesAPISearchResultUpdater?
+    var gmsPlaceDelegate: GMSPlaceRequestDelegate?
     
     //TODO: these will get replaced with types from the tagPreference.plist
-//    var types = ["bar"]
+    //    var types = ["bar"]
     
     public func requestPlacesByType(location: CLLocationCoordinate2D, searchRadius: Int, types: [String]) {
         let downloadGroup = DispatchGroup()
@@ -86,6 +92,22 @@ class PlacesAPISearch: NSObject {
         })
         
         task.resume()
+    }
+    
+    func getGMSPlacesById(placeIds: [String]) {
+        for placeId in placeIds {
+            GMSPlacesClient.shared().lookUpPlaceID(placeId, callback: { (place, error) -> Void in
+                if let error = error {
+                    print("lookup place id query error: \(error.localizedDescription)")
+                    self.gmsPlaceDelegate?.gmsPlaceDidReceiveError(error: error)
+                    return
+                }
+                
+                guard let place = place else { return }
+                
+                self.gmsPlaceDelegate?.didReceiveGMSPlace(place: place)
+            })
+        }
     }
     
     private func getPlacesAPIKey() -> String? {

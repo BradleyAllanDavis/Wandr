@@ -215,9 +215,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     func transitionToCartView() {
-        let storyboard = UIStoryboard(name: "Cart", bundle: .main)
-        let vc = storyboard.instantiateInitialViewController()
-        present(vc!, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Cart", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CartVC") as! CartViewController
+        let nc = UINavigationController(rootViewController: vc)
+        vc.modalPresentationStyle = .overCurrentContext
+        nc.modalPresentationStyle = .overCurrentContext
+        present(nc, animated: true, completion: nil)
     }
     
     func transitionToCardSwipeView() {

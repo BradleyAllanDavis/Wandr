@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1C19700E1EAD3CB100941820 /* MapSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C19700D1EAD3CB100941820 /* MapSettingsController.swift */; };
+		40003B301EB9632500CFBEB3 /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40003B2F1EB9632500CFBEB3 /* Cart.storyboard */; };
+		40003B321EB966CD00CFBEB3 /* CartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40003B311EB966CD00CFBEB3 /* CartCollectionViewCell.swift */; };
+		40003B341EB969EC00CFBEB3 /* cartPlaceIds.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40003B331EB969EC00CFBEB3 /* cartPlaceIds.plist */; };
+		40003B361EB99C8000CFBEB3 /* circle-x-delete-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 40003B351EB99C8000CFBEB3 /* circle-x-delete-button.png */; };
+		40003B381EB9A0D100CFBEB3 /* CartDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40003B371EB9A0D100CFBEB3 /* CartDeleteButton.swift */; };
 		4037C0691EA302AC0050114B /* PlaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037C0681EA302AC0050114B /* PlaceStore.swift */; };
 		4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4037C06A1EA400A80050114B /* PlacePhoto.swift */; };
 		4037C06D1EA432730050114B /* Placeholder_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 4037C06C1EA432730050114B /* Placeholder_location.png */; };
@@ -48,7 +53,6 @@
 		FAA243581E7093A9009AB3DB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243571E7093A9009AB3DB /* CartViewController.swift */; };
 		FAA2435E1E70BB1D009AB3DB /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2435D1E70BB1D009AB3DB /* TagViewController.swift */; };
 		FAA243611E71BD2C009AB3DB /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA2435F1E71BD2C009AB3DB /* Tag.storyboard */; };
-		FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243621E71BD45009AB3DB /* Cart.storyboard */; };
 		FAA2436D1E71C2D0009AB3DB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2436C1E71C2D0009AB3DB /* MapViewController.swift */; };
 		FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243711E71C38B009AB3DB /* Map.storyboard */; };
 		FAF76E451EAD6B2B00A5E094 /* OnboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */; };
@@ -76,6 +80,11 @@
 /* Begin PBXFileReference section */
 		1C19700D1EAD3CB100941820 /* MapSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsController.swift; sourceTree = "<group>"; };
 		1CD5C2D01E7C588F00181BC7 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		40003B2F1EB9632500CFBEB3 /* Cart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
+		40003B311EB966CD00CFBEB3 /* CartCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionViewCell.swift; sourceTree = "<group>"; };
+		40003B331EB969EC00CFBEB3 /* cartPlaceIds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cartPlaceIds.plist; sourceTree = "<group>"; };
+		40003B351EB99C8000CFBEB3 /* circle-x-delete-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-x-delete-button.png"; sourceTree = "<group>"; };
+		40003B371EB9A0D100CFBEB3 /* CartDeleteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartDeleteButton.swift; sourceTree = "<group>"; };
 		4037C0681EA302AC0050114B /* PlaceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceStore.swift; path = TravelApp/PlaceStore.swift; sourceTree = "<group>"; };
 		4037C06A1EA400A80050114B /* PlacePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacePhoto.swift; path = TravelApp/PlacePhoto.swift; sourceTree = "<group>"; };
 		4037C06C1EA432730050114B /* Placeholder_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder_location.png; sourceTree = "<group>"; };
@@ -124,7 +133,6 @@
 		FAA243571E7093A9009AB3DB /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		FAA2435D1E70BB1D009AB3DB /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		FAA243601E71BD2C009AB3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
-		FAA243621E71BD45009AB3DB /* Cart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cart.storyboard; sourceTree = "<group>"; };
 		FAA2436C1E71C2D0009AB3DB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FAA243711E71C38B009AB3DB /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageViewController.swift; sourceTree = "<group>"; };
@@ -313,8 +321,12 @@
 		FAA243641E71BD8A009AB3DB /* CartView */ = {
 			isa = PBXGroup;
 			children = (
-				FAA243621E71BD45009AB3DB /* Cart.storyboard */,
+				40003B351EB99C8000CFBEB3 /* circle-x-delete-button.png */,
+				40003B331EB969EC00CFBEB3 /* cartPlaceIds.plist */,
+				40003B2F1EB9632500CFBEB3 /* Cart.storyboard */,
 				FAA243571E7093A9009AB3DB /* CartViewController.swift */,
+				40003B311EB966CD00CFBEB3 /* CartCollectionViewCell.swift */,
+				40003B371EB9A0D100CFBEB3 /* CartDeleteButton.swift */,
 			);
 			name = CartView;
 			sourceTree = "<group>";
@@ -456,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40003B301EB9632500CFBEB3 /* Cart.storyboard in Resources */,
 				FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */,
 				FAA243611E71BD2C009AB3DB /* Tag.storyboard in Resources */,
 				FA555D9F1EB01A2700E3D151 /* GoogleService-Info.plist in Resources */,
@@ -466,10 +479,11 @@
 				FA333D381EAD451800FEA832 /* Welcome.storyboard in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
 				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,
-				FAA243631E71BD45009AB3DB /* Cart.storyboard in Resources */,
+				40003B341EB969EC00CFBEB3 /* cartPlaceIds.plist in Resources */,
 				406F669F1EAE6525006D827D /* availableTags.plist in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
 				56DABE181EB7B9820068C804 /* TestView2.xib in Resources */,
+				40003B361EB99C8000CFBEB3 /* circle-x-delete-button.png in Resources */,
 				56DABE101EB7B9510068C804 /* CardSwipe.storyboard in Resources */,
 				562B5BB41EAECD31000D20CE /* APIConfig.plist in Resources */,
 			);
@@ -548,6 +562,7 @@
 				FA452EFC1EAD7E43009F007D /* PlacesAPISearch.swift in Sources */,
 				FA452EFB1EAD7E36009F007D /* LocationService.swift in Sources */,
 				96C0D02B1E77064300B316B8 /* Preference.swift in Sources */,
+				40003B321EB966CD00CFBEB3 /* CartCollectionViewCell.swift in Sources */,
 				56DABE121EB7B95A0068C804 /* CardSwipeController.swift in Sources */,
 				4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */,
 				4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */,
@@ -567,6 +582,7 @@
 				407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */,
 				407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */,
 				4037C0691EA302AC0050114B /* PlaceStore.swift in Sources */,
+				40003B381EB9A0D100CFBEB3 /* CartDeleteButton.swift in Sources */,
 				40425EF51EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift in Sources */,
 				40B459391E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift in Sources */,
 				4037C06F1EA43DEC0050114B /* SlideUpView.swift in Sources */,

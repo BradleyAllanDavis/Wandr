@@ -13,6 +13,7 @@ final class PlaceStore: NSObject {
     static let shared: PlaceStore = PlaceStore()
     
     var tagPreferences: [String: Bool]
+    var cartPlaceIds: [String] = []
     var currentNearbyFocusedPlaceIndex: Int = 0
     var currentSearchCoordinate: CLLocationCoordinate2D?
     
@@ -67,10 +68,19 @@ final class PlaceStore: NSObject {
     private override init() {
         let plistManager = Plist(name: "tagPreferences")
         tagPreferences = plistManager?.getValuesInPlistFile() as! [String: Bool]
-
+        
+        let cartPlistMgr = Plist(name: "cartPlaceIds")
+        let cartPlaces = cartPlistMgr?.getValuesInPlistFile() as! [String: [String]]
+        cartPlaceIds = cartPlaces["places"]!
+        
         super.init()
         
         apiSearch.resultsUpdaterDelegate = self
+        self.loadCartPlacesFromPlist()
+    }
+    
+    func removePopularPlace(at index: Int) {
+        _popularPlaces.remove(at: index)
     }
     
     func updateCurrentPlaces(with location: CLLocationCoordinate2D, searchRadius: Int) {
@@ -127,6 +137,26 @@ final class PlaceStore: NSObject {
         let plistManager = Plist(name: "tagPreferences")
         let tags = plistManager?.getValuesInPlistFile() as! [String: Bool]
         tagPreferences = tags
+    }
+    
+    func savePlaceToCart(placeId: String) {
+        cartPlaceIds.append(placeId)
+        let plistManager = Plist(name: "cartPlaceIds")
+        try! plistManager?.addValuesToPlistFile(dictionary: NSDictionary(dictionary: ["places": cartPlaceIds]))
+    }
+    
+    func removePlacefromCart(placeId: String) {
+        let newCartPlaces = cartPlaceIds.filter({ return $0 != placeId })
+        
+        cartPlaceIds = newCartPlaces
+        let plistManager = Plist(name: "cartPlaceIds")
+        try! plistManager?.addValuesToPlistFile(dictionary: NSDictionary(dictionary: ["places": cartPlaceIds]))
+    }
+    
+    func loadCartPlacesFromPlist() {
+        let plistManager = Plist(name: "cartPlaceIds")
+        let placeIds = plistManager?.getValuesInPlistFile()?["places"] as! [String]
+        cartPlaceIds = placeIds
     }
 }
 

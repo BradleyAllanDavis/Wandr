@@ -170,7 +170,7 @@ class SlideUpView: UIVisualEffectView {
     }
     
     func setupPanGesture() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragRecognizer(gesture:)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragRecognizer(gesture:)))
         addGestureRecognizer(panGesture)
     }
     
@@ -230,6 +230,7 @@ class SlideUpView: UIVisualEffectView {
             self.tableView.frame.origin.y = 150
             self.wayDownLabel.isHidden = true
             self.effect = UIBlurEffect(style: .light)
+            self.panGesture.isEnabled = true
         }, completion: { _ in
             
         })
@@ -245,6 +246,7 @@ class SlideUpView: UIVisualEffectView {
             self.tableView.isHidden = false
             self.wayDownLabel.isHidden = true
             self.effect = UIBlurEffect(style: .dark)
+            self.panGesture.isEnabled = false
         }, completion: nil)
     }
     
@@ -256,6 +258,7 @@ class SlideUpView: UIVisualEffectView {
             self.collectionView.isHidden = true
             self.wayDownLabel.isHidden = false
             self.effect = UIBlurEffect(style: .dark)
+            self.panGesture.isEnabled = true
         }, completion: nil)
     }
 }
@@ -430,11 +433,29 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
         parentVc?.transitionToSwipeView(index: indexPath.row)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        print("edited")
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let likeButton = UITableViewRowAction(style: .normal, title: "❤️", handler: {(action, indexPath) in
+            let place = PlaceStore.shared.popularPlaces[indexPath.row]
+            PlaceStore.shared.savePlaceToCart(placeId: place["place_id"] as! String)
+            PlaceStore.shared.removePopularPlace(at: indexPath.row)
+            tableView.reloadData()
+        })
+        
+        likeButton.backgroundColor = .blue
+        
+        return [likeButton]
     }
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 }
