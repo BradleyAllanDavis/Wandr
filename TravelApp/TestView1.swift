@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import Cosmos
 
 class TestView1: UIView {
     
     var label: UILabel?
     var image: UIImage?
-    var descrip: UITextView?
+    var vicinity: UILabel?
     var imageView: UIImageView?
     var placeId: String?
+    var descrip: UITextView?
+    var starLabel: CosmosView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,7 +45,15 @@ class TestView1: UIView {
         label = UILabel(frame: CGRect(x: 0, y: 30, width: self.frame.width, height: 30))
         label?.adjustsFontSizeToFitWidth = true
         label?.textAlignment = .center
+        label?.font = label?.font.withSize(22.0)
         self.addSubview(label!)
+        
+        // Star rating
+        starLabel = CosmosView(frame: CGRect(x: self.center.x, y: 90, width: 100, height: 30))
+        starLabel?.center = CGPoint(x: self.center.x, y: 90)
+        starLabel?.settings.fillMode = .precise
+        starLabel?.backgroundColor = .none
+        self.addSubview(starLabel!)
         
         // Image
         let image = #imageLiteral(resourceName: "Placeholder_location.png")
@@ -50,5 +61,11 @@ class TestView1: UIView {
         imageView?.contentMode = .scaleAspectFill
         imageView?.frame = CGRect(x: self.center.x - 100, y: self.center.y - 220, width: 200, height: 200)
         self.addSubview(imageView!)
+        
+        // Vicinity
+        vicinity = UILabel(frame: CGRect(x: 15, y: self.center.y, width: self.frame.width - 30, height: 20))
+        vicinity?.adjustsFontSizeToFitWidth = true
+        vicinity?.textAlignment = .center
+        self.addSubview(vicinity!)
     }
 }

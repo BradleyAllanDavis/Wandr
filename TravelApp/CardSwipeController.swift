@@ -71,11 +71,17 @@ class CardSwipeController: UIViewController {
         for i in 0..<dataSource.count {
             let placeView = TestView1(frame: rect)
             let placeData = dataSource[i]
-            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
             
-            placeView.label?.text = placeData["name"] as? String
-            placeView.imageView?.image = photo.image
             placeView.placeId = placeData["place_id"] as? String
+            placeView.label?.text = placeData["name"] as? String
+            placeView.vicinity?.text = placeData["vicinity"] as? String
+            
+            if placeData.index(forKey: "rating") != nil {
+                placeView.starLabel?.rating = Double(placeData["rating"] as! Float)
+            }
+            
+            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
+            placeView.imageView?.image = photo.image
             
             views.append(placeView)
         }
