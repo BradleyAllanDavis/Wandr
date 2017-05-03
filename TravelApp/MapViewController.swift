@@ -330,6 +330,6 @@ extension MKMapView {
         
         //reposition the compass so it's not under the search bar
         let compassView = self.value(forKey: "compassView") as! UIView
-        compassView.frame = CGRect(x: compassView.frame.origin.x, y: 75, width: 36, height: 36)
+        compassView.frame = CGRect(x: compassView.frame.origin.x, y: 85, width: 36, height: 36)
     }
 }
