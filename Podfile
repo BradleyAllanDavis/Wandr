@@ -10,6 +10,7 @@ target 'TravelApp' do
   pod 'FBSDKShareKit'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   pod 'ZLSwipeableViewSwift'
   pod 'Cartography'
   use_frameworks!
