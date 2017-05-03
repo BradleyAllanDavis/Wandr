@@ -53,17 +53,18 @@ class TestView1: UIView {
         starLabel?.center = CGPoint(x: self.center.x, y: 90)
         starLabel?.settings.fillMode = .precise
         starLabel?.backgroundColor = .none
+        starLabel?.settings.updateOnTouch = false
         self.addSubview(starLabel!)
         
         // Image
         let image = #imageLiteral(resourceName: "Placeholder_location.png")
         imageView = UIImageView(image: image)
         imageView?.contentMode = .scaleAspectFill
-        imageView?.frame = CGRect(x: self.center.x - 100, y: self.center.y - 220, width: 200, height: 200)
+        imageView?.frame = CGRect(x: self.center.x - 100, y: self.center.y - 200, width: 200, height: 200)
         self.addSubview(imageView!)
         
         // Vicinity
-        vicinity = UILabel(frame: CGRect(x: 15, y: self.center.y, width: self.frame.width - 30, height: 20))
+        vicinity = UILabel(frame: CGRect(x: 15, y: self.center.y + 20, width: self.frame.width - 30, height: 20))
         vicinity?.adjustsFontSizeToFitWidth = true
         vicinity?.textAlignment = .center
         self.addSubview(vicinity!)
