@@ -16,7 +16,8 @@ class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
         return [self.newIndexedViewController(index: "Page1"),
                 self.newIndexedViewController(index: "Page2"),
                 self.newIndexedViewController(index: "Page3"),
-                self.newIndexedViewController(index: "Page4")]
+                self.newIndexedViewController(index: "Page4"),
+                self.newIndexedViewController(index: "Page5")]
     }()
     
 

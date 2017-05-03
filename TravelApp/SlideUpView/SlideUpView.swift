@@ -438,14 +438,14 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let likeButton = UITableViewRowAction(style: .normal, title: "❤️", handler: {(action, indexPath) in
+        let likeButton = UITableViewRowAction(style: .normal, title: "add to cart", handler: {(action, indexPath) in
             let place = PlaceStore.shared.popularPlaces[indexPath.row]
             PlaceStore.shared.savePlaceToCart(placeId: place["place_id"] as! String)
             PlaceStore.shared.removePopularPlace(at: indexPath.row)
             tableView.reloadData()
         })
         
-        likeButton.backgroundColor = .blue
+        likeButton.backgroundColor = UIColor(red: 127/255, green: 222/255, blue: 235/255, alpha: 0.5)
         
         return [likeButton]
     }
