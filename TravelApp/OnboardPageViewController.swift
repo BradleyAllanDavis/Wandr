@@ -44,6 +44,7 @@ class OnboardPageViewController: UIPageViewController, MKMapViewDelegate  {
             
             let storyboard: UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
             let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "Map") as! MapViewController
+            PlaceStore.shared.loadTagsFromPlist()
             self.present(vc, animated: true, completion: nil)
             
         }
