@@ -21,7 +21,7 @@ class PopularTableViewCell: UITableViewCell {
         
         starLabel.settings.fillMode = .precise
         starLabel.backgroundColor = .none
-        
+        selectionStyle = .none
         thumbnailImageView.bounds.size.width = thumbnailImageView.bounds.size.height
         thumbnailImageView.layer.cornerRadius = thumbnailImageView.bounds.size.width / 2
         thumbnailImageView.layer.masksToBounds = true
