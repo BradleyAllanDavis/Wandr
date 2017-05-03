@@ -15,7 +15,7 @@ import FirebaseDatabase
 class WelcomeButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var loginButtonView: FBSDKLoginButton = FBSDKLoginButton()
-    
+    var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,21 +30,32 @@ class WelcomeButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
  
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-
+        ref = FIRDatabase.database().reference()
+        
         
         FIRAuth.auth()?.signIn(with:credential) { (user, error) in
-            //..
             if error != nil {
                 print("something went wrong")
                 return
             }
-            
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "Tag", bundle: nil)
-            let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "TagNavigationView") as! UINavigationController
-            self.present(vc, animated: true, completion: nil)
+            let userId = (FIRAuth.auth()?.currentUser?.uid)!
+            self.ref.child("Login").observeSingleEvent(of: .value, with: {(snapshot) in
+                
+                if snapshot.hasChild(userId) {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Map", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "Map") as! MapViewController
+                    self.present(vc, animated: true, completion: nil)
+                }
+                else {
+                    self.ref.child("Login").child(userId).child("recurring").setValue("True")
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tag", bundle: nil)
+                    let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "TagNavigationView") as! UINavigationController
+                    self.present(vc, animated: true, completion: nil)
+                }
+                
+                
+            })
         }
-        // ...
     }
 
     

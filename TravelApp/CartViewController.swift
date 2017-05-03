@@ -8,6 +8,9 @@
 
 import UIKit
 import GooglePlaces
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 enum CollectionViewState {
     case normal
@@ -18,6 +21,7 @@ class CartViewController: UIViewController {
     var cartPlaces = [GMSPlace]()
     var cartPhotos = [PlacePhoto]()
     var collectionViewState: CollectionViewState = .normal
+    var ref: FIRDatabaseReference!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -63,6 +67,8 @@ class CartViewController: UIViewController {
         cartPlaces.remove(at: button.index!)
         cartPhotos.remove(at: button.index!)
         collectionView.reloadData()
+        
+        
     }
     
     func addGestureRecognizers() {
