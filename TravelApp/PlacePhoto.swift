@@ -61,7 +61,7 @@ class PlacePhoto: NSObject {
             completion?(photo, error)
             
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "AddedNewPhoto"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "AddedNewPhoto"), object: self, userInfo: ["placeId": self.placeId])
             }
         })
     }
@@ -84,7 +84,7 @@ class PlacePhoto: NSObject {
             downloadCompletion(self.image, error)
             
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "AddedNewPhoto"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "AddedNewPhoto"), object: self, userInfo: ["placeId": self.placeId])
             }
         })
         

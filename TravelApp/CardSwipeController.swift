@@ -45,6 +45,12 @@ class CardSwipeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(photosDidUpdate(notification:)),
+            name: Notification.Name(rawValue: "AddedNewPhoto"),
+            object: nil
+        )
 
         let rect = CGRect(
             origin: CGPoint(x: 0, y: 0),
@@ -58,10 +64,8 @@ class CardSwipeController: UIViewController {
             let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
             
             placeView.label?.text = placeData["name"] as? String
-            
-            //if photo.status == .downloaded {
-                placeView.image = photo.image
-            //}
+            placeView.imageView?.image = photo.image
+            placeView.placeId = placeData["place_id"] as! String
             
             
             views.append(placeView)
@@ -134,6 +138,18 @@ class CardSwipeController: UIViewController {
             view1.right == view2.right-50
             view1.top == view2.top + 120
             view1.bottom == view2.bottom - 100
+        }
+    }
+    
+    func photosDidUpdate(notification: Notification) {
+        let placeId = notification.userInfo?["placeId"] as! String
+        let photo = notification.object as! PlacePhoto
+        
+        for case let view as TestView1 in views {
+            if view.placeId == placeId {
+                view.imageView?.image = photo.image
+                break
+            }
         }
     }
     

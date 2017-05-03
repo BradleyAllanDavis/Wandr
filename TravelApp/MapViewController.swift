@@ -99,13 +99,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         
         // Add the slide up view
         slideView = SlideUpView(effect: UIBlurEffect(style: .dark))
+        slideView.parentVc = self
         view.addSubview(slideView)
         
         // Register for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nearbyFocusedPlaceChanged(notification:)), name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
-        NotificationCenter.default.addObserver(self, selector:
-            #selector(transitionToSwipeView(notification:)), name: Notification.Name(rawValue: "TransitionToSwipeView"), object: nil)
         
         // Configure button for searching in area
         redoSearchBlurView.layer.cornerRadius = 5.0;
@@ -209,16 +208,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     //# MARK: - Methods for navigation to tag and cart views
-    func transitionToPreferenceView() -> Void {
+    func transitionToPreferenceView() {
         let storyboard = UIStoryboard(name: "Tag", bundle: .main)
         let vc = storyboard.instantiateInitialViewController()
         present(vc!, animated: true, completion: nil)
     }
     
-    func transitionToCartView() -> Void {
+    func transitionToCartView() {
         let storyboard = UIStoryboard(name: "Cart", bundle: .main)
         let vc = storyboard.instantiateInitialViewController()
         present(vc!, animated: true, completion: nil)
+    }
+    
+    func transitionToCardSwipeView() {
+        
     }
     
     // Set up the top search bar
@@ -267,9 +270,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     // Transitions to Swipe View with selected index of popular table
-    func transitionToSwipeView(notification: Notification) {
-        let index = notification.userInfo?["index"] as! Int
-        
+    func transitionToSwipeView(index: Int) {
         let storyboard: UIStoryboard = UIStoryboard(name: "CardSwipe", bundle: nil)
         let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "SwipeNavigationView") as! UINavigationController
         if let cardView = vc.viewControllers.first as? CardSwipeController {

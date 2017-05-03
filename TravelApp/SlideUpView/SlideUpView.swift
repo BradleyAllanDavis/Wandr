@@ -23,6 +23,7 @@ enum NearbyScrollStatus {
 }
 
 class SlideUpView: UIVisualEffectView {
+    var parentVc: MapViewController!
     var centerPath: IndexPath?
     let origins = SlideUpViewOrigins()
     var currentOrigin: CGPoint!
@@ -426,10 +427,7 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
     
     // Send index of selected table cell to map view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index = ["index":indexPath.row]
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "TransitionToSwipeView"), object: indexPath.row, userInfo: index)
-        }
+        parentVc?.transitionToSwipeView(index: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

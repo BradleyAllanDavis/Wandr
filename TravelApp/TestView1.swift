@@ -13,6 +13,8 @@ class TestView1: UIView {
     var label: UILabel?
     var image: UIImage?
     var descrip: UITextView?
+    var imageView: UIImageView?
+    var placeId: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,8 +46,9 @@ class TestView1: UIView {
         
         // Image
         let image = #imageLiteral(resourceName: "Placeholder_location.png")
-        let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: self.center.x - 100, y: self.center.y - 220, width: 200, height: 200)
-        self.addSubview(imageView)
+        imageView = UIImageView(image: image)
+        imageView?.contentMode = .scaleAspectFill
+        imageView?.frame = CGRect(x: self.center.x - 100, y: self.center.y - 220, width: 200, height: 200)
+        self.addSubview(imageView!)
     }
 }

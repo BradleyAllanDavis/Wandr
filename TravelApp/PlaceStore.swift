@@ -81,9 +81,6 @@ final class PlaceStore: NSObject {
     private func addPhoto(_ photo: PlacePhoto) {
         concurrentPhotoQueue.async(flags: .barrier) {
             self._photos.append(photo)
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "AddedNewPhoto"), object: nil)
-            }
         }
     }
     
