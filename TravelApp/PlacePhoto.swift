@@ -73,26 +73,28 @@ class PlacePhoto: NSObject {
     
     private func downloadIcon(downloadCompletion: @escaping PhotoDownloadCompletionBlock) {
         let downloadSession = URLSession(configuration: URLSessionConfiguration.ephemeral)
-        let url = URL(string: place?["icon"] as! String)
-        let task = downloadSession.dataTask(with: url!, completionHandler: {
-            data, response, error in
-            if let data = data {
-                self.image = UIImage(data: data)
+        if let place = place?["icon"] as? String {
+            if let url = URL(string: place) {
+                let task = downloadSession.dataTask(with: url, completionHandler: {
+                    data, response, error in
+                    if let data = data {
+                        self.image = UIImage(data: data)
+                    }
+                    
+                    if error == nil && self.image != nil {
+                        self.status = .downloaded
+                    } else {
+                        self.status = .failed
+                    }
+                    
+                    downloadCompletion(self.image, error)
+                    
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "AddedNewPhoto"), object: self, userInfo: ["placeId": self.placeId])
+                    }
+                })
+                task.resume()
             }
-            
-            if error == nil && self.image != nil {
-                self.status = .downloaded
-            } else {
-                self.status = .failed
-            }
-            
-            downloadCompletion(self.image, error)
-            
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "AddedNewPhoto"), object: self, userInfo: ["placeId": self.placeId])
-            }
-        })
-        
-        task.resume()
+        }
     }
 }
