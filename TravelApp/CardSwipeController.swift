@@ -27,23 +27,11 @@ class CardSwipeController: UIViewController {
     // Passed in from map view
     var placeIndex = -1
     
-    // For add to cart popup
     var popupView: UIView!
     
     var colors = UIColor.flatUIColors()
     var colorIndex = 0
     var loadCardsFromXib = false
-    
-    var reloadBarButtonItem: UIBarButtonItem!
-    // var reloadBarButtonItem = UIBarButtonItem(barButtonSystemItem: "Reload", target: .Plain) { item in }
-    var leftBarButtonItem: UIBarButtonItem!
-    // var leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: "←", target: .Plain) { item in }
-    var upBarButtonItem: UIBarButtonItem!
-    // var upBarButtonItem = UIBarButtonItem(barButtonSystemItem: "↑", target: .Plain) { item in }
-    var rightBarButtonItem: UIBarButtonItem!
-    // var rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: "→", target: .Plain) { item in }
-    var downBarButtonItem:UIBarButtonItem!
-    // var downBarButtonItem = UIBarButtonItem(barButtonSystemItem: "↓", target: .Plain) { item in }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -92,20 +80,6 @@ class CardSwipeController: UIViewController {
             views.append(placeView)
         }
         
-        // ...and then append the rest, needed?
-//        for i in 0..<placeIndex {
-//            let placeView = TestView1(frame: rect)
-//            let placeData = PlaceStore.shared.popularPlaces[i]
-//            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
-//            
-//            placeView.label?.text = placeData["name"] as? String
-//            
-//            //if photo.status == .downloaded {
-//            placeView.image = photo.image
-//            //}
-//            views.append(placeView)
-//        }
-        
         // Transparent navigation bar
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -114,20 +88,6 @@ class CardSwipeController: UIViewController {
         
         view.backgroundColor = UIColor.white
         view.clipsToBounds = true
-        
-        /*
-        reloadBarButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: self, action: #selector(reloadButtonAction))
-        leftBarButtonItem = UIBarButtonItem(title: "←", style: .plain, target: self, action: #selector(leftButtonAction))
-        upBarButtonItem = UIBarButtonItem(title: "↑", style: .plain, target: self, action: #selector(upButtonAction))
-        rightBarButtonItem = UIBarButtonItem(title: "→", style: .plain, target: self, action: #selector(rightButtonAction))
-        downBarButtonItem = UIBarButtonItem(title: "↓", style: .plain, target: self, action: #selector(downButtonAction))
-        
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        
-        let items = [fixedSpace, reloadBarButtonItem!, flexibleSpace, leftBarButtonItem!, flexibleSpace, upBarButtonItem!, flexibleSpace, rightBarButtonItem!, flexibleSpace, downBarButtonItem!, fixedSpace]
-        toolbarItems = items*/
         
         swipeableView = ZLSwipeableView()
         swipeableView.allowedDirection = .All
@@ -206,6 +166,35 @@ class CardSwipeController: UIViewController {
                 
                 Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
             }
+            if direction == .Up {
+                print("Swiped up, dismiss place")
+                
+                self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
+                self.popupView.backgroundColor = UIColor.clear
+                self.popupView.layer.cornerRadius = 30
+                self.view.addSubview(self.popupView)
+                
+                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                blurEffectView.frame = self.popupView.bounds
+                blurEffectView.clipsToBounds = true
+                blurEffectView.layer.cornerRadius = 30
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                self.popupView.addSubview(blurEffectView)
+                
+                let thumb = UIImage(named: "pin-map-off-7")
+                let thumbView = UIImageView(frame: CGRect(x: 50, y: 40, width: 50, height: 50))
+                thumbView.image = thumb
+                self.popupView.addSubview(thumbView)
+                
+                let notInterested = UILabel(frame: CGRect(x: 0, y: 100, width: 150, height: 50))
+                notInterested.textColor = .black
+                notInterested.textAlignment = .center
+                notInterested.text = "Not Interested"
+                self.popupView.addSubview(notInterested)
+                
+                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+            }
             if direction == .Down {
                 print("Swiped left, dismiss swipeview")
                 self.dismiss(animated: true, completion: nil)
@@ -220,7 +209,6 @@ class CardSwipeController: UIViewController {
         swipeableView.didDisappear = { view in
             print("Did disappear swiping view")
         }
-        
         constrain(swipeableView, view) { view1, view2 in
             view1.left == view2.left+50
             view1.right == view2.right-50
@@ -230,7 +218,7 @@ class CardSwipeController: UIViewController {
     }
     
     func dismissPopup() {
-        print("dismiss add to cart")
+        print("dismiss popup")
         if self.popupView != nil { // Dismiss the view from here
             self.popupView.removeFromSuperview()
         }
@@ -246,33 +234,6 @@ class CardSwipeController: UIViewController {
                 break
             }
         }
-    }
-    
-    func reloadButtonAction() {
-        let alertController = UIAlertController(title: nil, message: "Load Cards:", preferredStyle: .actionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            // ...
-        }
-        alertController.addAction(cancelAction)
-        
-        let ProgrammaticallyAction = UIAlertAction(title: "Programmatically", style: .default) { (action) in
-            self.loadCardsFromXib = false
-            self.colorIndex = 0
-            self.swipeableView.discardViews()
-            self.swipeableView.loadViews()
-        }
-        alertController.addAction(ProgrammaticallyAction)
-        
-        let XibAction = UIAlertAction(title: "From Xib", style: .default) { (action) in
-            self.loadCardsFromXib = true
-            self.colorIndex = 0
-            self.swipeableView.discardViews()
-            self.swipeableView.loadViews()
-        }
-        alertController.addAction(XibAction)
-        
-        self.present(alertController, animated: true, completion: nil)
     }
     
     func leftButtonAction() {
@@ -339,6 +300,4 @@ class CardSwipeController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
