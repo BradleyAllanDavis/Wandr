@@ -320,6 +320,10 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
         return UIEdgeInsets(top: 0.0, left: width, bottom: 0.0, right: width)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        parentVc?.transitionToSwipeView(index: indexPath.row, dataType: .nearby)
+    }
+    
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         getCenterCell()
     }
@@ -430,7 +434,7 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
     
     // Send index of selected table cell to map view
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        parentVc?.transitionToSwipeView(index: indexPath.row)
+        parentVc?.transitionToSwipeView(index: indexPath.row, dataType: .popular)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

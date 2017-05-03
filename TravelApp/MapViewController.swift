@@ -223,10 +223,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         present(nc, animated: true, completion: nil)
     }
     
-    func transitionToCardSwipeView() {
-        
-    }
-    
     // Set up the top search bar
     func setupSearchBar() {
         let filter = GMSAutocompleteFilter()
@@ -273,11 +269,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     }
     
     // Transitions to Swipe View with selected index of popular table
-    func transitionToSwipeView(index: Int) {
+    func transitionToSwipeView(index: Int, dataType: SwipeViewDataType) {
         let storyboard: UIStoryboard = UIStoryboard(name: "CardSwipe", bundle: nil)
         let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "SwipeNavigationView") as! UINavigationController
         if let cardView = vc.viewControllers.first as? CardSwipeController {
             cardView.placeIndex = index
+            cardView.dataType = dataType
         }
         self.present(vc, animated: true, completion: nil)
     }

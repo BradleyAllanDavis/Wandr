@@ -10,12 +10,19 @@ import Foundation
 import Cartography
 import ZLSwipeableViewSwift
 
+enum SwipeViewDataType {
+    case popular
+    case nearby
+}
+
 class CardSwipeController: UIViewController {
 
     var swipeableView: ZLSwipeableView!
     
     var views : [UIView] = []
     var viewIndex = 0
+    
+    var dataType: SwipeViewDataType = .popular
     
     // Passed in from map view
     var placeIndex = -1
@@ -57,15 +64,28 @@ class CardSwipeController: UIViewController {
             size: CGSize(width: self.view.bounds.width-20, height: self.view.bounds.height-40)
         )
         
+        let dataSource: [[String: AnyObject]]
+        if dataType == .popular {
+            let newData = PlaceStore.shared.popularPlaces
+            let part1 = Array(newData[placeIndex..<newData.count])
+            let part2 = Array(newData[0..<placeIndex])
+            dataSource = part1 + part2
+        } else {
+            let newData = PlaceStore.shared.nearbyPlaces
+            let part1 = Array(newData[placeIndex..<newData.count])
+            let part2 = Array(newData[0..<placeIndex])
+            dataSource = part1 + part2
+        }
+        
         // Start at placeIndex...
-        for i in placeIndex..<PlaceStore.shared.popularPlaces.count {
+        for i in 0..<dataSource.count {
             let placeView = TestView1(frame: rect)
-            let placeData = PlaceStore.shared.popularPlaces[i]
+            let placeData = dataSource[i]
             let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
             
             placeView.label?.text = placeData["name"] as? String
             placeView.imageView?.image = photo.image
-            placeView.placeId = placeData["place_id"] as! String
+            placeView.placeId = placeData["place_id"] as? String
             
             
             views.append(placeView)
