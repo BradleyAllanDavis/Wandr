@@ -36,6 +36,13 @@ class PlaceDetailViewController: UIViewController {
 //        placeTitleLabel.text = place!["name"] as? String
 //        place["place_id"] as! String
         
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.dismissVC))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
