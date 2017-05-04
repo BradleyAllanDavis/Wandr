@@ -53,6 +53,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     var navBarView: TravelNavBarView!
     var slideView: SlideUpView!
+    var alertController: UIAlertController?
+    var alertTimer: Timer?
+    var remainingTime = 0
+    var baseMessage: String?
     
     //store places as array of dictionaries for now...
     var currentPlaces = [Dictionary<String, AnyObject>]()
@@ -105,6 +109,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         // Register for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nearbyFocusedPlaceChanged(notification:)), name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cartItemAlreadyPresent(notification:)), name: Notification.Name(rawValue: "CartItemAlreadyPresent"), object: nil)
         
         // Configure button for searching in area
         redoSearchBlurView.layer.cornerRadius = 5.0;
@@ -131,6 +136,46 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     // Button action to redo search in current area
     @IBAction func redoSearchInAreaAction(_ sender: Any) {
         redoSearchInArea()
+    }
+    
+    func cartItemAlreadyPresent(notification: Notification) {
+        let time = 3
+        
+        guard (alertController == nil) else {
+            return
+        }
+        
+        baseMessage = "You already like this place"
+        remainingTime = time
+        
+        alertController = UIAlertController(title: title, message: baseMessage, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Thanks!", style: .cancel) { (action) in
+            self.alertController=nil;
+            self.alertTimer?.invalidate()
+            self.alertTimer=nil
+        }
+        
+        alertController!.addAction(cancelAction)
+        
+        alertTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        
+        self.present(alertController!, animated: true, completion: nil)
+    }
+    
+    func countDown() {
+        
+        self.remainingTime -= 1
+        if (remainingTime < 0) {
+            alertTimer?.invalidate()
+            alertTimer = nil
+            alertController!.dismiss(animated: true, completion: {
+                self.alertController = nil
+            })
+        } else {
+            alertController!.message = self.baseMessage
+        }
+        
     }
     
     func redoSearchInArea() {
