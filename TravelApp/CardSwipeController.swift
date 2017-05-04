@@ -18,21 +18,17 @@ enum SwipeViewDataType {
 class CardSwipeController: UIViewController {
 
     var swipeableView: ZLSwipeableView!
+    var rect : CGRect!
+    var loadCardsFromXib = true
     
-    var views : [UIView] = []
+    var viewControllers : [CardContentViewController] = []
     var viewColors : [UIColor] = []
     var viewIndex = 0
-    
     var dataType: SwipeViewDataType = .popular
     
     // Passed in from map view
     var placeIndex = -1
-    
     var popupView: UIView!
-    
-    var colors = UIColor.flatUIColors()
-    var colorIndex = 0
-    var loadCardsFromXib = false
     
     let colorValues: [String:UIColor] = ["night_club" : UIColor.init(red: 0/255.0, green: 51/255.0, blue: 102/255.0,alpha: 1),
                                           "museum" : UIColor.init(red: 215/255.0, green: 158/255.0, blue: 0/255.0, alpha: 1),
@@ -40,7 +36,7 @@ class CardSwipeController: UIViewController {
                                           "casino" : UIColor.init(red: 171/255.0, green: 143/255.0, blue: 193/255.0, alpha: 1),
                                           "park" : UIColor.init(red: 181/255.0, green: 230/255.0, blue: 162/255.0, alpha: 1),
                                           "aquarium" : UIColor.init(red: 70/255.0, green: 170/255.0, blue: 255/255.0, alpha: 1),
-                                          "movie_theater" : UIColor.black,
+                                          "movie_theater" : UIColor.init(red: 89/255.0, green: 44/255.0, blue: 99/255.0, alpha: 1),
                                           "restaurant" : UIColor.init(red: 255/255.0, green: 130/255.0, blue: 0/255.0, alpha: 1),
                                           "bar" : UIColor.init(red: 36/255.0, green: 100/255.0, blue: 241/255.0, alpha: 1)]
     
@@ -60,7 +56,7 @@ class CardSwipeController: UIViewController {
             object: nil
         )
 
-        let rect = CGRect(
+        rect = CGRect(
             origin: CGPoint(x: 0, y: 0),
             size: CGSize(width: self.view.bounds.width-20, height: self.view.bounds.height-40)
         )
@@ -80,32 +76,35 @@ class CardSwipeController: UIViewController {
         
         // Start at placeIndex...
         for i in 0..<dataSource.count {
-            let placeView = TestView1(frame: rect)
+            
+            let placeViewController = CardContentViewController(nibName: "CardContentView", bundle: nil)
+            let placeView = placeViewController.view!
             let placeData = dataSource[i]
             
-            placeView.placeId = placeData["place_id"] as? String
-            placeView.label?.text = placeData["name"] as? String
-            placeView.vicinity?.text = placeData["vicinity"] as? String
-            
+            placeViewController.placeId = placeData["place_id"] as? String
+            placeViewController.label.text = placeData["name"] as? String
+            placeViewController.vicinity.text = placeData["vicinity"] as? String
             if placeData.index(forKey: "rating") != nil {
-                placeView.starLabel?.rating = Double(placeData["rating"] as! Float)
+                placeViewController.starLabel?.rating = Double(placeData["rating"] as! Float)
             }
             
             let types = placeData["types"] as! [String]
             let placeType = types[0]
             
             let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
-            placeView.imageView?.image = photo.image
-            placeView.imageView?.layer.masksToBounds = true
-            placeView.imageView?.layer.cornerRadius = 10.0
-            placeView.imageView?.frame = CGRect(x: 5, y: placeView.frame.minY + 5, width: placeView.frame.width - 10, height: 250)
+            placeViewController.imageView.image = photo.image
+            placeViewController.imageView.layer.masksToBounds = true
+            placeViewController.imageView.layer.cornerRadius = 10.0
+            placeViewController.imageView.frame = CGRect(x: 5, y: placeView.frame.minY + 5, width: placeView.frame.width - 10, height: 250)
             
             if colorValues[placeType] != nil {
                 viewColors.append(colorValues[placeType]!)
             } else {
                 viewColors.append(colorValues["park"]!)
             }
-            views.append(placeView)
+            
+            viewControllers.append(placeViewController)
+            
         }
         
         // Transparent navigation bar
@@ -161,8 +160,8 @@ class CardSwipeController: UIViewController {
                 
                 Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
                 
-                let placeView: TestView1 = self.views.remove(at: 0) as! TestView1
-                let place = PlaceStore.shared.getPlace(for: placeView.placeId!)
+                let placeViewController = self.viewControllers.remove(at: 0)
+                let place = PlaceStore.shared.getPlace(for: placeViewController.placeId!)
                 if !PlaceStore.shared.cartPlaceIds.contains(place?["place_id"] as! String) {
                     PlaceStore.shared.savePlaceToCart(placeId: place?["place_id"] as! String)
                 }
@@ -229,9 +228,9 @@ class CardSwipeController: UIViewController {
         let placeId = notification.userInfo?["placeId"] as! String
         let photo = notification.object as! PlacePhoto
         
-        for case let view as TestView1 in views {
-            if view.placeId == placeId {
-                view.imageView?.image = photo.image
+        for case let viewController in viewControllers {
+            if viewController.placeId == placeId {
+                viewController.imageView?.image = photo.image
                 break
             }
         }
@@ -256,47 +255,27 @@ class CardSwipeController: UIViewController {
     // MARK: ()
     func nextCardView() -> UIView? {
         
-        if viewIndex >= views.count {
+        if viewIndex >= viewControllers.count {
             return nil
         }
         
-        let cardView = views[viewIndex]
+        let cardView = CardView(frame: rect)
+        let contentView = viewControllers[viewIndex].view!
+        
         cardView.backgroundColor = viewColors[viewIndex]
         viewIndex += 1
         
-        if colorIndex >= colors.count {
-            colorIndex = 0
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = cardView.backgroundColor
+        cardView.addSubview(contentView)
+        constrain(contentView, cardView) { view1, view2 in
+            view1.left == view2.left
+            view1.top == view2.top
+            view1.width == cardView.bounds.width
+            view1.height == cardView.bounds.height
         }
-        //cardView.backgroundColor = colors[colorIndex].lighter(by: 40.0)
-        //colorIndex += 1
         
-        
-        if loadCardsFromXib {
-            let contentView = Bundle.main.loadNibNamed("CardContentView", owner: self, options: nil)?.first! as! UIView
-            contentView.translatesAutoresizingMaskIntoConstraints = false
-            contentView.backgroundColor = cardView.backgroundColor
-            cardView.addSubview(contentView)
-            
-            // This is important:
-            // https://github.com/zhxnlai/ZLSwipeableView/issues/9
-            /*// Alternative:
-             let metrics = ["width":cardView.bounds.width, "height": cardView.bounds.height]
-             let views = ["contentView": contentView, "cardView": cardView]
-             cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[contentView(width)]", options: .AlignAllLeft, metrics: metrics, views: views))
-             cardView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[contentView(height)]", options: .AlignAllLeft, metrics: metrics, views: views))
-             */
-            constrain(contentView, cardView) { view1, view2 in
-                view1.left == view2.left
-                view1.top == view2.top
-                view1.width == cardView.bounds.width
-                view1.height == cardView.bounds.height
-            }
-        }
         return cardView
-    }
-    
-    func loadCardViews(viewsToSet : [UIView]) {
-        views = viewsToSet
     }
     
     override func didReceiveMemoryWarning() {
