@@ -8,6 +8,9 @@
 
 import UIKit
 import GooglePlaces
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 final class PlaceStore: NSObject {
     static let shared: PlaceStore = PlaceStore()
@@ -16,6 +19,7 @@ final class PlaceStore: NSObject {
     var cartPlaceIds: [String] = []
     var currentNearbyFocusedPlaceIndex: Int = 0
     var currentSearchCoordinate: CLLocationCoordinate2D?
+    var ref: FIRDatabaseReference!
     
     fileprivate let apiSearch = PlacesAPISearch()
     fileprivate var _photos: [PlacePhoto] = []
@@ -143,6 +147,10 @@ final class PlaceStore: NSObject {
         cartPlaceIds.append(placeId)
         let plistManager = Plist(name: "cartPlaceIds")
         try! plistManager?.addValuesToPlistFile(dictionary: NSDictionary(dictionary: ["places": cartPlaceIds]))
+        ref = FIRDatabase.database().reference()
+        if FIRAuth.auth()?.currentUser != nil {
+            ref.child("Cart").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(["places": cartPlaceIds])
+        }
     }
     
     func removePlacefromCart(placeId: String) {
@@ -151,6 +159,17 @@ final class PlaceStore: NSObject {
         cartPlaceIds = newCartPlaces
         let plistManager = Plist(name: "cartPlaceIds")
         try! plistManager?.addValuesToPlistFile(dictionary: NSDictionary(dictionary: ["places": cartPlaceIds]))
+        ref = FIRDatabase.database().reference()
+
+        if FIRAuth.auth()?.currentUser != nil {
+            let userId = (FIRAuth.auth()?.currentUser?.uid)!
+            print(userId as Any)
+            print(placeId)
+            
+            let childUpdates = ["/Cart/\(String(describing: userId))/": cartPlaceIds]
+            ref.updateChildValues(childUpdates)
+            
+        }
     }
     
     func loadCartPlacesFromPlist() {
