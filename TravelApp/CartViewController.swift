@@ -172,7 +172,7 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("select place \(cartPlaces[indexPath.row].name)")
-        let detailVC = PlaceDetailViewController()
+        let detailVC = PlaceDetailViewController(nibName: "DetailView", bundle: nil)
         detailVC.placeTitle = cartPlaces[indexPath.row].name
         detailVC.placeID = cartPlaces[indexPath.row].placeID
         detailVC.modalPresentationStyle = .overCurrentContext

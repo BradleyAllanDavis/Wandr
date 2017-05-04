@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Cosmos
 
 class PlaceDetailViewController: UIViewController {
     
+    @IBOutlet weak var vicinity: UILabel!
+    @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var placeTitleLabel: UILabel!
+    var starLabel: CosmosView?
     
     var placeTitle: String = "default"
     var placeDescription: String?
@@ -26,15 +30,22 @@ class PlaceDetailViewController: UIViewController {
         self.view.addSubview(blur)
         self.view.sendSubview(toBack: blur)
         
-//        self.placeTitleLabel.text = self.placeTitle
-        
-//        if let place = PlaceStore.shared.getPlace(for: self.placeID!) {
-//            placeTitleLabel.text = place["name"] as? String
-//        }
-        
-//        let place = PlaceStore.shared.getPlace(for: self.placeID!)
-//        placeTitleLabel.text = place!["name"] as? String
-//        place["place_id"] as! String
+        if let place = PlaceStore.shared.getPlace(for: self.placeID!) {
+            self.placeTitleLabel.text = place["name"] as? String
+            
+//            starLabel = CosmosView(frame: CGRect(x: self.view.center.x, y: 90, width: 100, height: 30))
+//            starLabel?.rating = place["rating"] as! Double
+//            starLabel?.center = CGPoint(x: self.view.center.x, y: 90)
+//            starLabel?.settings.fillMode = .precise
+//            starLabel?.backgroundColor = .none
+//            starLabel?.settings.updateOnTouch = false
+//            self.view.addSubview(starLabel!)
+            
+            let photo = PlaceStore.shared.getPhoto(for: place["place_id"] as! String)
+            self.photo.image = photo.image
+            
+            self.vicinity?.text = place["vicinity"] as? String
+        }
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.dismissVC))
         swipeDown.direction = .down

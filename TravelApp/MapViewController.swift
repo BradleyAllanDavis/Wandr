@@ -53,6 +53,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     
     var navBarView: TravelNavBarView!
     var slideView: SlideUpView!
+    var alertController: UIAlertController?
+    var alertTimer: Timer?
+    var remainingTime = 0
+    var baseMessage: String?
     
     //store places as array of dictionaries for now...
     var currentPlaces = [Dictionary<String, AnyObject>]()
@@ -105,6 +109,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         // Register for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlaces(notification:)), name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nearbyFocusedPlaceChanged(notification:)), name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cartItemAlreadyPresent(notification:)), name: Notification.Name(rawValue: "CartItemAlreadyPresent"), object: nil)
         
         // Configure button for searching in area
         redoSearchBlurView.layer.cornerRadius = 5.0;
@@ -131,6 +136,46 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     // Button action to redo search in current area
     @IBAction func redoSearchInAreaAction(_ sender: Any) {
         redoSearchInArea()
+    }
+    
+    func cartItemAlreadyPresent(notification: Notification) {
+        let time = 3
+        
+        guard (alertController == nil) else {
+            return
+        }
+        
+        baseMessage = "You already like this place"
+        remainingTime = time
+        
+        alertController = UIAlertController(title: title, message: baseMessage, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Thanks!", style: .cancel) { (action) in
+            self.alertController=nil;
+            self.alertTimer?.invalidate()
+            self.alertTimer=nil
+        }
+        
+        alertController!.addAction(cancelAction)
+        
+        alertTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+        
+        self.present(alertController!, animated: true, completion: nil)
+    }
+    
+    func countDown() {
+        
+        self.remainingTime -= 1
+        if (remainingTime < 0) {
+            alertTimer?.invalidate()
+            alertTimer = nil
+            alertController!.dismiss(animated: true, completion: {
+                self.alertController = nil
+            })
+        } else {
+            alertController!.message = self.baseMessage
+        }
+        
     }
     
     func redoSearchInArea() {
@@ -176,17 +221,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
             break
         case .searchUpdate:
             panningSource = .user
-            // Add place annotations to map
-            for place in PlaceStore.shared.nearbyPlaces {
-                let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
-                let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = location
-                annotation.title = place["name"] as? String
-                mapView.addAnnotation(annotation)
-            }
-            
             break
+        }
+    }
+    
+    func addAnnotations() {
+        // Add place annotations to map
+        for place in PlaceStore.shared.nearbyPlaces {
+            let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = place["name"] as? String
+            mapView.addAnnotation(annotation)
         }
     }
     
@@ -261,11 +308,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let span = MKCoordinateSpanMake(0.075, 0.075)
         let region = MKCoordinateRegion(center: PlaceStore.shared.currentSearchCoordinate!, span: span)
         
+        
         currentPlaces = PlaceStore.shared.nearbyPlaces
         mapView.removeAnnotations(mapView.annotations)
         redoSearchBlurView.isHidden = true
         panningSource = .searchUpdate
         mapView.setRegion(region, animated: true)
+        addAnnotations()
     }
     
     // Transitions to Swipe View with selected index of popular table

@@ -143,14 +143,23 @@ final class PlaceStore: NSObject {
         tagPreferences = tags
     }
     
-    func savePlaceToCart(placeId: String) {
-        cartPlaceIds.append(placeId)
-        let plistManager = Plist(name: "cartPlaceIds")
-        try! plistManager?.addValuesToPlistFile(dictionary: NSDictionary(dictionary: ["places": cartPlaceIds]))
-        ref = FIRDatabase.database().reference()
-        if FIRAuth.auth()?.currentUser != nil {
-            ref.child("Cart").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(["places": cartPlaceIds])
+    func savePlaceToCart(placeId: String) -> Bool {
+        if !cartPlaceIds.contains(placeId) {
+            cartPlaceIds.append(placeId)
+            let plistManager = Plist(name: "cartPlaceIds")
+            try! plistManager?.addValuesToPlistFile(dictionary: NSDictionary(dictionary: ["places": cartPlaceIds]))
+            ref = FIRDatabase.database().reference()
+            
+            if FIRAuth.auth()?.currentUser != nil {
+                ref.child("Cart").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(["places": cartPlaceIds])
+            }
+            
+            return true
+        } else {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "CartItemAlreadyPresent"), object: nil)
         }
+        
+        return false
     }
     
     func removePlacefromCart(placeId: String) {
@@ -168,7 +177,6 @@ final class PlaceStore: NSObject {
             
             let childUpdates = ["/Cart/\(String(describing: userId))/": cartPlaceIds]
             ref.updateChildValues(childUpdates)
-            
         }
     }
     

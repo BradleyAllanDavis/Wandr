@@ -21,6 +21,7 @@
 		4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */; };
 		4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */; };
 		406F669F1EAE6525006D827D /* availableTags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 406F669E1EAE6525006D827D /* availableTags.plist */; };
+		4072F1F31EBACE7300D86F3F /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4072F1F21EBACE7300D86F3F /* DetailView.xib */; };
 		407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */; };
 		407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */; };
 		40B459391E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */; };
@@ -94,6 +95,7 @@
 		4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopularTableViewCell.xib; path = SlideUpView/PopularTableViewCell.xib; sourceTree = "<group>"; };
 		4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesAPISearch.swift; path = TravelApp/SearchBar/PlacesAPISearch.swift; sourceTree = "<group>"; };
 		406F669E1EAE6525006D827D /* availableTags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = availableTags.plist; sourceTree = "<group>"; };
+		4072F1F21EBACE7300D86F3F /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelNavBarView.swift; path = TravelApp/SearchBar/TravelNavBarView.swift; sourceTree = "<group>"; };
 		407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchBar.swift; path = TravelApp/SearchBar/TravelSearchBar.swift; sourceTree = "<group>"; };
 		407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchController.swift; path = TravelApp/SearchBar/TravelSearchController.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		FAA243641E71BD8A009AB3DB /* CartView */ = {
 			isa = PBXGroup;
 			children = (
+				4072F1F21EBACE7300D86F3F /* DetailView.xib */,
 				40003B351EB99C8000CFBEB3 /* circle-x-delete-button.png */,
 				40003B331EB969EC00CFBEB3 /* cartPlaceIds.plist */,
 				40003B2F1EB9632500CFBEB3 /* Cart.storyboard */,
@@ -472,6 +475,7 @@
 				FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */,
 				FAA243611E71BD2C009AB3DB /* Tag.storyboard in Resources */,
 				FA555D9F1EB01A2700E3D151 /* GoogleService-Info.plist in Resources */,
+				4072F1F31EBACE7300D86F3F /* DetailView.xib in Resources */,
 				4037C06D1EA432730050114B /* Placeholder_location.png in Resources */,
 				FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */,
 				56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */,
