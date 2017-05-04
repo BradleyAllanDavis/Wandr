@@ -176,17 +176,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
             break
         case .searchUpdate:
             panningSource = .user
-            // Add place annotations to map
-            for place in PlaceStore.shared.nearbyPlaces {
-                let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
-                let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = location
-                annotation.title = place["name"] as? String
-                mapView.addAnnotation(annotation)
-            }
-            
             break
+        }
+    }
+    
+    func addAnnotations() {
+        // Add place annotations to map
+        for place in PlaceStore.shared.nearbyPlaces {
+            let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = place["name"] as? String
+            mapView.addAnnotation(annotation)
         }
     }
     
@@ -261,11 +263,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let span = MKCoordinateSpanMake(0.075, 0.075)
         let region = MKCoordinateRegion(center: PlaceStore.shared.currentSearchCoordinate!, span: span)
         
+        
         currentPlaces = PlaceStore.shared.nearbyPlaces
         mapView.removeAnnotations(mapView.annotations)
         redoSearchBlurView.isHidden = true
         panningSource = .searchUpdate
         mapView.setRegion(region, animated: true)
+        addAnnotations()
     }
     
     // Transitions to Swipe View with selected index of popular table
