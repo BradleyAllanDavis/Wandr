@@ -55,6 +55,8 @@ class CartViewController: UIViewController {
         addGestureRecognizers()
     }
     
+    
+    
     @IBAction func deleteItemFromCart(_ sender: Any) {
         let button = sender as! CartDeleteButton
         let place = cartPlaces[button.index!]
@@ -67,7 +69,8 @@ class CartViewController: UIViewController {
     
     func addGestureRecognizers() {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(startShake(gesture:)))
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(endShake(gesture:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
+//        tapGesture.cancelsTouchesInView = false
         
         longPressGesture.minimumPressDuration = 0.3
         longPressGesture.delaysTouchesBegan = true
@@ -76,12 +79,24 @@ class CartViewController: UIViewController {
         self.collectionView.addGestureRecognizer(tapGesture)
     }
     
+    func handleTap(gesture: UITapGestureRecognizer) {
+        print("handle tap")
+        if collectionViewState == .editing {
+            self.endShake(gesture: gesture)
+        } else {
+            if let indexPath = self.collectionView?.indexPathForItem(at: gesture.location(in: self.collectionView)) {
+                self.collectionView(self.collectionView, didSelectItemAt: indexPath)
+            }
+        }
+    }
+    
     func startShake(gesture: UILongPressGestureRecognizer) {
         collectionViewState = .editing
         collectionView.reloadData()
     }
     
     func endShake(gesture: UITapGestureRecognizer) {
+        print("end shake")
         collectionViewState = .normal
         collectionView.reloadData()
     }
@@ -147,6 +162,15 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (UIScreen.main.bounds.width / 2) - 7.5
         return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("select place \(cartPlaces[indexPath.row].name)")
+        let detailVC = PlaceDetailViewController()
+        detailVC.placeTitle = cartPlaces[indexPath.row].name
+        detailVC.placeID = cartPlaces[indexPath.row].placeID
+        detailVC.modalPresentationStyle = .overCurrentContext
+        self.present(detailVC, animated: true, completion: nil)
     }
 }
 
