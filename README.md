@@ -1,6 +1,6 @@
 # Wandr
 
-![Wandr Icon](TravelApp/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@3x.png)
+![Wandr Icon](Wandr-logo/Wandr-logo-lg.png)
 
 ## Idea
 
