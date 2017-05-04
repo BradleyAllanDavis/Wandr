@@ -422,6 +422,10 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
         header.addGestureRecognizer(panGesture)
         
         let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: header.frame.width - 20, height: header.frame.height))
+        let swipeViewButton = UIButton(frame: CGRect(x: header.frame.width - 40, y: 0, width: 30, height:header.frame.height))
+        let image = UIImage(named: "wandricon.png")
+        swipeViewButton.setImage(image, for: .normal)
+        swipeViewButton.addTarget(self, action: #selector(self.toSwipeView(sender:)), for: .touchUpInside)
         
         headerLabel.text = "Popular"
         headerLabel.font = UIFont(name: "Helectiva", size: 18)
@@ -429,8 +433,13 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
         headerLabel.text = "Popular"
         
         header.addSubview(headerLabel)
+        header.addSubview(swipeViewButton)
         
         return header
+    }
+    
+    func toSwipeView(sender: UIButton!){
+        parentVc?.transitionToSwipeView()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
