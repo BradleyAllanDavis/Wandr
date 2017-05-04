@@ -390,7 +390,8 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
         
         cell.titleLabel.text = placeData["name"] as? String
         cell.typeLabel.text = "Based on your interest in "
-        if let type = types[(placeData["types"]?[0] as? String)!] {
+        let placeDataTypes = placeData["types"] as! [String]
+        if let type = types[placeDataTypes[0]] {
             cell.typeLabel.text?.append(type)
         }
         

@@ -91,7 +91,8 @@ class CardSwipeController: UIViewController {
                 placeView.starLabel?.rating = Double(placeData["rating"] as! Float)
             }
             
-            let placeType = placeData["types"]?[0] as? String
+            let types = placeData["types"] as! [String]
+            let placeType = types[0]
             
             let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
             placeView.imageView?.image = photo.image
@@ -99,8 +100,8 @@ class CardSwipeController: UIViewController {
             placeView.imageView?.layer.cornerRadius = 10.0
             placeView.imageView?.frame = CGRect(x: 5, y: placeView.frame.minY + 5, width: placeView.frame.width - 10, height: 250)
             
-            if placeType != nil && colorValues[placeType!] != nil {
-                viewColors.append(colorValues[placeType!]!)
+            if colorValues[placeType] != nil {
+                viewColors.append(colorValues[placeType]!)
             } else {
                 viewColors.append(colorValues["park"]!)
             }
