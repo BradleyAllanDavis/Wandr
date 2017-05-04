@@ -43,23 +43,27 @@
                                     <segue destination="GlE-Zw-x5h" kind="embed" id="fw6-3d-2LO"/>
                                 </connections>
                             </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wandr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLY-yQ-5kd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wandr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLY-yQ-5kd">
                                 <rect key="frame" x="58" y="28" width="260" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="57"/>
                                 <color key="textColor" red="0.2282976508" green="0.25891217589999999" blue="0.6960117817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="2" height="4"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discover what's out there" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hx-iS-TQY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Discover what's out there" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hx-iS-TQY">
                                 <rect key="frame" x="90" y="111" width="195" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Hx-iS-TQY" firstAttribute="centerX" secondItem="fR1-yI-U96" secondAttribute="centerX" id="18E-mu-zQ8"/>
+                            <constraint firstItem="RLY-yQ-5kd" firstAttribute="top" secondItem="Edg-0o-BOK" secondAttribute="bottom" constant="8" id="DKZ-Qh-6ev"/>
+                            <constraint firstItem="9Hx-iS-TQY" firstAttribute="top" secondItem="RLY-yQ-5kd" secondAttribute="bottom" constant="8" id="JgV-n1-rF6"/>
+                            <constraint firstItem="RLY-yQ-5kd" firstAttribute="centerX" secondItem="fR1-yI-U96" secondAttribute="centerX" id="iGo-P3-HZw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="gbV-2m-gyc" id="VzQ-Ku-qoz"/>
