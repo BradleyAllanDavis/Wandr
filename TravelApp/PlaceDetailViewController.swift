@@ -26,14 +26,14 @@ class PlaceDetailViewController: UIViewController {
         self.view.addSubview(blur)
         self.view.sendSubview(toBack: blur)
         
-//        self.placeTitleLabel.text = self.placeTitle
+        self.placeTitleLabel.text = self.placeTitle
         
-//        if let place = PlaceStore.shared.getPlace(for: self.placeID!) {
-//            placeTitleLabel.text = place["name"] as? String
-//        }
+        if let place = PlaceStore.shared.getPlace(for: self.placeID!) {
+            placeTitleLabel.text = place["name"] as? String
+        }
         
-//        let place = PlaceStore.shared.getPlace(for: self.placeID!)
-//        placeTitleLabel.text = place!["name"] as? String
+        let place = PlaceStore.shared.getPlace(for: self.placeID!)
+        placeTitleLabel.text = place!["name"] as? String
 //        place["place_id"] as! String
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.dismissVC))
