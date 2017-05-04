@@ -97,7 +97,7 @@ class CardSwipeController: UIViewController {
             placeView.imageView?.image = photo.image
             placeView.imageView?.layer.masksToBounds = true
             placeView.imageView?.layer.cornerRadius = 10.0
-            placeView.imageView?.frame = CGRect(x: 5, y: placeView.frame.minY + 10, width: placeView.frame.width - 10, height: 250)
+            placeView.imageView?.frame = CGRect(x: 5, y: placeView.frame.minY + 5, width: placeView.frame.width - 10, height: 250)
             
             if placeType != nil && colorValues[placeType!] != nil {
                 viewColors.append(colorValues[placeType!]!)

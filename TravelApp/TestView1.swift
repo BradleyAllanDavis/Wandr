@@ -50,9 +50,17 @@ class TestView1: UIView {
         label?.textColor = UIColor.white
         self.addSubview(label!)
         
+        // Detail layer
+        let rect = CGRect(x: 5, y: self.layer.bounds.midY+100, width: self.layer.bounds.width-10, height: self.layer.bounds.maxY-(self.layer.bounds.midY+105))
+        let detailView = UIView(frame: rect)
+        detailView.layer.cornerRadius = 10.0
+        detailView.layer.masksToBounds = true
+        detailView.backgroundColor = UIColor.white
+        self.addSubview(detailView)
+        
         // Star rating
         starLabel = CosmosView(frame: CGRect(x: self.layer.bounds.midX, y: self.layer.bounds.maxY-80, width: 100, height: 30))
-        starLabel?.center = CGPoint(x: self.center.x, y: 90)
+        starLabel?.center = CGPoint(x: self.layer.bounds.midX, y: self.layer.bounds.maxY-80)
         starLabel?.settings.fillMode = .precise
         starLabel?.backgroundColor = .none
         starLabel?.settings.updateOnTouch = false
