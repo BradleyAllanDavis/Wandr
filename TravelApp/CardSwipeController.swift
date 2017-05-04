@@ -23,6 +23,7 @@ class CardSwipeController: UIViewController {
     
     var viewControllers : [CardContentViewController] = []
     var viewColors : [UIColor] = []
+    var currentView = 0
     var viewIndex = 0
     var dataType: SwipeViewDataType = .popular
     
@@ -160,13 +161,15 @@ class CardSwipeController: UIViewController {
                 
                 Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
                 
-                let placeViewController = self.viewControllers.remove(at: 0)
+                print(self.currentView)
+                let placeViewController = self.viewControllers.remove(at: self.currentView)
                 let place = PlaceStore.shared.getPlace(for: placeViewController.placeId!)
                 if !PlaceStore.shared.cartPlaceIds.contains(place?["place_id"] as! String) {
                     PlaceStore.shared.savePlaceToCart(placeId: place?["place_id"] as! String)
                 }
             }
             if direction == .Left {
+                self.currentView += 1
                 print("Swiped left, dismiss place")
 
                 self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
