@@ -20,6 +20,7 @@ class CardSwipeController: UIViewController {
     var swipeableView: ZLSwipeableView!
     
     var views : [UIView] = []
+    var viewColors : [UIColor] = []
     var viewIndex = 0
     
     var dataType: SwipeViewDataType = .popular
@@ -32,6 +33,16 @@ class CardSwipeController: UIViewController {
     var colors = UIColor.flatUIColors()
     var colorIndex = 0
     var loadCardsFromXib = false
+    
+    let colorValues: [String:UIColor] = ["night_club" : UIColor.init(red: 0/255.0, green: 51/255.0, blue: 102/255.0,alpha: 1),
+                                          "museum" : UIColor.init(red: 215/255.0, green: 158/255.0, blue: 0/255.0, alpha: 1),
+                                          "art_gallery" : UIColor.init(red: 202/255.0, green: 120/255.0, blue: 120/255.0, alpha: 1),
+                                          "casino" : UIColor.init(red: 171/255.0, green: 143/255.0, blue: 193/255.0, alpha: 1),
+                                          "park" : UIColor.init(red: 181/255.0, green: 230/255.0, blue: 162/255.0, alpha: 1),
+                                          "aquarium" : UIColor.init(red: 70/255.0, green: 170/255.0, blue: 255/255.0, alpha: 1),
+                                          "movie_theater" : UIColor.black,
+                                          "restaurant" : UIColor.init(red: 255/255.0, green: 130/255.0, blue: 0/255.0, alpha: 1),
+                                          "bar" : UIColor.init(red: 36/255.0, green: 100/255.0, blue: 241/255.0, alpha: 1)]
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -80,9 +91,19 @@ class CardSwipeController: UIViewController {
                 placeView.starLabel?.rating = Double(placeData["rating"] as! Float)
             }
             
+            let placeType = placeData["types"]?[0] as? String
+            
             let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
             placeView.imageView?.image = photo.image
+            placeView.imageView?.layer.masksToBounds = true
+            placeView.imageView?.layer.cornerRadius = 10.0
+            placeView.imageView?.frame = CGRect(x: 5, y: placeView.frame.minY + 10, width: placeView.frame.width - 10, height: 250)
             
+            if placeType != nil && colorValues[placeType!] != nil {
+                viewColors.append(colorValues[placeType!]!)
+            } else {
+                viewColors.append(colorValues["park"]!)
+            }
             views.append(placeView)
         }
         
@@ -268,13 +289,15 @@ class CardSwipeController: UIViewController {
         }
         
         let cardView = views[viewIndex]
+        cardView.backgroundColor = viewColors[viewIndex]
         viewIndex += 1
         
         if colorIndex >= colors.count {
             colorIndex = 0
         }
-        cardView.backgroundColor = colors[colorIndex].lighter(by: 40.0)
-        colorIndex += 1
+        //cardView.backgroundColor = colors[colorIndex].lighter(by: 40.0)
+        //colorIndex += 1
+        
         
         if loadCardsFromXib {
             let contentView = Bundle.main.loadNibNamed("CardContentView", owner: self, options: nil)?.first! as! UIView

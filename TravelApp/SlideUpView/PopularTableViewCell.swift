@@ -14,7 +14,7 @@ class PopularTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var starLabel: CosmosView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var vicinityLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

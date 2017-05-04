@@ -18,6 +18,7 @@ class TestView1: UIView {
     var placeId: String?
     var descrip: UITextView?
     var starLabel: CosmosView?
+    var type: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,14 +43,15 @@ class TestView1: UIView {
         layer.cornerRadius = 10.0;
         
         // Place title (label)
-        label = UILabel(frame: CGRect(x: 0, y: 30, width: self.frame.width, height: 30))
+        label = UILabel(frame: CGRect(x: 0, y: 280, width: self.frame.width, height: 30))
         label?.adjustsFontSizeToFitWidth = true
         label?.textAlignment = .center
         label?.font = label?.font.withSize(22.0)
+        label?.textColor = UIColor.white
         self.addSubview(label!)
         
         // Star rating
-        starLabel = CosmosView(frame: CGRect(x: self.center.x, y: 90, width: 100, height: 30))
+        starLabel = CosmosView(frame: CGRect(x: self.layer.bounds.midX, y: self.layer.bounds.maxY-80, width: 100, height: 30))
         starLabel?.center = CGPoint(x: self.center.x, y: 90)
         starLabel?.settings.fillMode = .precise
         starLabel?.backgroundColor = .none
@@ -67,6 +69,7 @@ class TestView1: UIView {
         vicinity = UILabel(frame: CGRect(x: 15, y: self.center.y + 20, width: self.frame.width - 30, height: 20))
         vicinity?.adjustsFontSizeToFitWidth = true
         vicinity?.textAlignment = .center
+        vicinity?.textColor = UIColor.white
         self.addSubview(vicinity!)
     }
 }

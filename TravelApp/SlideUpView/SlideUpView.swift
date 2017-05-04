@@ -31,6 +31,7 @@ class SlideUpView: UIVisualEffectView {
     var collectionView: UICollectionView!
     var tableView: UITableView!
     var collectionViewScrollStatus: NearbyScrollStatus = .neverScrolled
+    let types = ["park":"Parks", "night_club":"Night Clubs", "movie_theater":"Movie Theaters", "casino":"Casinos", "bar":"Bars", "art_gallery":"Art Galleries", "aquarium":"Aquariums", "museum":"Museums", "restaurant":"Food"]
     
     private var panGesture: UIPanGestureRecognizer!
     private var cvNoResultLabel: UILabel!
@@ -388,7 +389,10 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
         let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
         
         cell.titleLabel.text = placeData["name"] as? String
-        cell.vicinityLabel.text = placeData["vicinity"] as? String
+        cell.typeLabel.text = "Based on your interest in "
+        if let type = types[(placeData["types"]?[0] as? String)!] {
+            cell.typeLabel.text?.append(type)
+        }
         
         if photo.status == .downloaded {
             cell.thumbnailImageView.image = photo.image
