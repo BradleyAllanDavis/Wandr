@@ -291,7 +291,6 @@
 				1C76D6C81EB933C700A8657B /* GooglePlacesAPI */,
 				FAA243251E706432009AB3DB /* AppDelegate.swift */,
 				1CD5C2D01E7C588F00181BC7 /* LocationService.swift */,
-				FAF76E461EAD735500A5E094 /* PlaceDetailViewController.swift */,
 				56E5AE391E81C1840076C72F /* Plist.swift */,
 				FAA243331E706432009AB3DB /* Info.plist */,
 				4037C06C1EA432730050114B /* Placeholder_location.png */,
@@ -327,6 +326,7 @@
 				FAA243571E7093A9009AB3DB /* CartViewController.swift */,
 				40003B311EB966CD00CFBEB3 /* CartCollectionViewCell.swift */,
 				40003B371EB9A0D100CFBEB3 /* CartDeleteButton.swift */,
+				FAF76E461EAD735500A5E094 /* PlaceDetailViewController.swift */,
 			);
 			name = CartView;
 			sourceTree = "<group>";
