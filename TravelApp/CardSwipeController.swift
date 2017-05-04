@@ -118,7 +118,7 @@ class CardSwipeController: UIViewController {
         view.clipsToBounds = true
         
         swipeableView = ZLSwipeableView()
-        swipeableView.allowedDirection = .All
+        swipeableView.allowedDirection = [.Left, .Right, .Down]
         self.view.addSubview(swipeableView)
         swipeableView.didStart = {view, location in
             print("Did start swiping view at location: \(location)")
@@ -170,35 +170,6 @@ class CardSwipeController: UIViewController {
             if direction == .Left {
                 print("Swiped left, dismiss place")
 
-                self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
-                self.popupView.backgroundColor = UIColor.clear
-                self.popupView.layer.cornerRadius = 30
-                self.view.addSubview(self.popupView)
-                
-                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                blurEffectView.frame = self.popupView.bounds
-                blurEffectView.clipsToBounds = true
-                blurEffectView.layer.cornerRadius = 30
-                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                self.popupView.addSubview(blurEffectView)
-                
-                let thumb = UIImage(named: "pin-map-off-7")
-                let thumbView = UIImageView(frame: CGRect(x: 50, y: 40, width: 50, height: 50))
-                thumbView.image = thumb
-                self.popupView.addSubview(thumbView)
-                
-                let notInterested = UILabel(frame: CGRect(x: 0, y: 100, width: 150, height: 50))
-                notInterested.textColor = .black
-                notInterested.textAlignment = .center
-                notInterested.text = "Not Interested"
-                self.popupView.addSubview(notInterested)
-                
-                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
-            }
-            if direction == .Up {
-                print("Swiped up, dismiss place")
-                
                 self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
                 self.popupView.backgroundColor = UIColor.clear
                 self.popupView.layer.cornerRadius = 30
