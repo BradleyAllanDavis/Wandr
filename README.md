@@ -1,5 +1,3 @@
-# Wandr
-
 ![Wandr Icon](Wandr-logo/Wandr-logo-lg.png)
 
 ## Idea
