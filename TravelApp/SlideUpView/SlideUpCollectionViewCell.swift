@@ -15,6 +15,7 @@ class SlideUpCollectionViewCell: UICollectionViewCell {
     var placeId: String!
     var indexPath: IndexPath!
     weak var collectionView: UICollectionView!
+    var slideView: SlideUpView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +37,8 @@ class SlideUpCollectionViewCell: UICollectionViewCell {
         if indexPath.row >= PlaceStore.shared.nearbyPlaces.count {
             PlaceStore.shared.apiSearchMode = .morePlaces
             PlaceStore.shared.updateCurrentPlaces(with: PlaceStore.shared.currentSearchCoordinate!, searchRadius: 4000)
+        } else {
+            slideView.parentVc.transitionToSwipeView(index: indexPath.row, dataType: .nearby)
         }
     }
     

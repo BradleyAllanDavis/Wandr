@@ -281,6 +281,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
         
         cell.collectionView = collectionView
         cell.indexPath = indexPath
+        cell.slideView = self
         
         if indexPath.row < PlaceStore.shared.nearbyPlaces.count {
             let placeData = PlaceStore.shared.nearbyPlaces[indexPath.row]
