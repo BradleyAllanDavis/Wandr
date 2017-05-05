@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Cosmos
+import WebKit
 
 class CardContentViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class CardContentViewController: UIViewController {
     var placeId: String?
     var starLabel: CosmosView?
     var type: String?
+    var webView:WKWebView!
     
     let typeTexts = ["park":"Parks", "night_club":"Night Clubs", "movie_theater":"Movie Theaters", "casino":"Casinos", "bar":"Bars", "art_gallery":"Art Galleries", "aquarium":"Aquariums", "museum":"Museums", "restaurant":"Food"]
     
@@ -61,8 +63,39 @@ class CardContentViewController: UIViewController {
         starLabel?.settings.updateOnTouch = false
         starView.addSubview(starLabel!)
         
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(sender:)))
+            
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapGesture)
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer) {
+        var urlString: String = "http://www.google.com/"
+        var stringBuilder : String = "#q="
 
+        let place = PlaceStore.shared.getPlace(for: placeId!)!
+        let placeTitle = place["name"]
+        let titleArr: [String] = placeTitle!.components(separatedBy: " ")
+
+        for i in 0..<titleArr.count {
+            stringBuilder.append(titleArr[i])
+            if(i != titleArr.count-1){
+                stringBuilder.append("+")
+            }
+        }
+
+        urlString += stringBuilder
+        
+        print(urlString)
+        let url = URL(string: urlString)
+
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+            UIApplication.shared.openURL(url!)
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
