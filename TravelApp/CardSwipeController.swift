@@ -22,24 +22,25 @@ class CardSwipeController: UIViewController {
     var loadCardsFromXib = true
     
     var viewControllers : [CardContentViewController] = []
-    var viewColors : [UIColor] = []
-    var currentView = 0
-    var viewIndex = 0
+    var topViewIdx = 0
+    var nextLoadViewIdx = 0
     var dataType: SwipeViewDataType = .popular
     
     // Passed in from map view
     var placeIndex = -1
     var popupView: UIView!
     
-    let colorValues: [String:UIColor] = ["night_club" : UIColor.init(red: 0/255.0, green: 51/255.0, blue: 102/255.0,alpha: 1),
-                                          "museum" : UIColor.init(red: 215/255.0, green: 158/255.0, blue: 0/255.0, alpha: 1),
-                                          "art_gallery" : UIColor.init(red: 202/255.0, green: 120/255.0, blue: 120/255.0, alpha: 1),
-                                          "casino" : UIColor.init(red: 171/255.0, green: 143/255.0, blue: 193/255.0, alpha: 1),
-                                          "park" : UIColor.init(red: 181/255.0, green: 230/255.0, blue: 162/255.0, alpha: 1),
-                                          "aquarium" : UIColor.init(red: 70/255.0, green: 170/255.0, blue: 255/255.0, alpha: 1),
-                                          "movie_theater" : UIColor.init(red: 89/255.0, green: 44/255.0, blue: 99/255.0, alpha: 1),
-                                          "restaurant" : UIColor.init(red: 255/255.0, green: 130/255.0, blue: 0/255.0, alpha: 1),
-                                          "bar" : UIColor.init(red: 36/255.0, green: 100/255.0, blue: 241/255.0, alpha: 1)]
+    let supportTypes: [String] = ["park", "night_club", "movie_theater", "casino", "bar", "art_gallery", "aquarium", "museum", "restaurant"]
+    let colorValues: [String:UIColor] = ["default" : UIColor.init(red: 181/255.0, green: 230/255.0, blue: 162/255.0, alpha: 1),
+                                         "night_club" : UIColor.init(red: 0/255.0, green: 51/255.0, blue: 102/255.0,alpha: 1),
+                                         "museum" : UIColor.init(red: 215/255.0, green: 158/255.0, blue: 0/255.0, alpha: 1),
+                                         "art_gallery" : UIColor.init(red: 202/255.0, green: 120/255.0, blue: 120/255.0, alpha: 1),
+                                         "casino" : UIColor.init(red: 171/255.0, green: 143/255.0, blue: 193/255.0, alpha: 1),
+                                         "park" : UIColor.init(red: 181/255.0, green: 230/255.0, blue: 162/255.0, alpha: 1),
+                                         "aquarium" : UIColor.init(red: 70/255.0, green: 170/255.0, blue: 255/255.0, alpha: 1),
+                                         "movie_theater" : UIColor.init(red: 89/255.0, green: 44/255.0, blue: 99/255.0, alpha: 1),
+                                         "restaurant" : UIColor.init(red: 255/255.0, green: 130/255.0, blue: 0/255.0, alpha: 1),
+                                         "bar" : UIColor.init(red: 36/255.0, green: 100/255.0, blue: 241/255.0, alpha: 1)]
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -82,6 +83,7 @@ class CardSwipeController: UIViewController {
             let placeView = placeViewController.view!
             let placeData = dataSource[i]
             
+            // Set text
             placeViewController.placeId = placeData["place_id"] as? String
             placeViewController.label.text = placeData["name"] as? String
             placeViewController.vicinity.text = placeData["vicinity"] as? String
@@ -89,20 +91,21 @@ class CardSwipeController: UIViewController {
                 placeViewController.starLabel?.rating = Double(placeData["rating"] as! Float)
             }
             
+            // Set type
             let types = placeData["types"] as! [String]
-            let placeType = types[0]
+            for type in types {
+                if supportTypes.contains(type) {
+                    placeViewController.type = type
+                    break
+                }
+            }
             
+            // Set photo
             let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
             placeViewController.imageView.image = photo.image
             placeViewController.imageView.layer.masksToBounds = true
             placeViewController.imageView.layer.cornerRadius = 10.0
             placeViewController.imageView.frame = CGRect(x: 5, y: placeView.frame.minY + 5, width: placeView.frame.width - 10, height: 250)
-            
-            if colorValues[placeType] != nil {
-                viewColors.append(colorValues[placeType]!)
-            } else {
-                viewColors.append(colorValues["park"]!)
-            }
             
             viewControllers.append(placeViewController)
             
@@ -120,7 +123,8 @@ class CardSwipeController: UIViewController {
         swipeableView = ZLSwipeableView()
         swipeableView.allowedDirection = [.Left, .Right, .Down]
         self.view.addSubview(swipeableView)
-        swipeableView.didStart = {view, location in
+        
+        /* swipeableView.didStart = {view, location in
             print("Did start swiping view at location: \(location)")
         }
         swipeableView.swiping = {view, location, translation in
@@ -129,8 +133,25 @@ class CardSwipeController: UIViewController {
         swipeableView.didEnd = {view, location in
             print("Did end swiping view at location: \(location)")
         }
+        swipeableView.didCancel = {view in
+            print("Did cancel swiping view")
+        }
+        swipeableView.didDisappear = { view in
+            print("Did disappear swiping view")
+        } */
+        
+        swipeableView.didTap = {view, location in
+            let topViewController = self.viewControllers[self.topViewIdx]
+            let label = topViewController.label.text!
+            var type = "nil"
+            if let optType = topViewController.type {
+                type = optType
+            }
+            print("Top card is #\(self.topViewIdx): \(label), with type \(type)")
+        }
+        
         swipeableView.didSwipe = {view, direction, vector in
-            print("Did swipe view in direction: \(direction), vector: \(vector)")
+//            print("Did swipe view in direction: \(direction), vector: \(vector)")
             
             if direction == .Right {
                 print("Swiped right, Add to cart")
@@ -161,15 +182,18 @@ class CardSwipeController: UIViewController {
                 
                 Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
                 
-                print(self.currentView)
-                let placeViewController = self.viewControllers.remove(at: self.currentView)
+//                print(self.currentView)
+                let placeViewController = self.viewControllers.remove(at: self.topViewIdx)
+                if self.topViewIdx < self.nextLoadViewIdx {
+                    self.nextLoadViewIdx -= 1
+                }
                 let place = PlaceStore.shared.getPlace(for: placeViewController.placeId!)
                 if !PlaceStore.shared.cartPlaceIds.contains(place?["place_id"] as! String) {
                     PlaceStore.shared.savePlaceToCart(placeId: place?["place_id"] as! String)
                 }
             }
             if direction == .Left {
-                self.currentView += 1
+                self.topViewIdx = (self.topViewIdx + 1) % self.viewControllers.count
                 print("Swiped left, dismiss place")
 
                 self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
@@ -199,19 +223,11 @@ class CardSwipeController: UIViewController {
                 Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
             }
             if direction == .Down {
-                print("Swiped left, dismiss swipeview")
+                print("Swiped down, dismiss swipeview")
                 self.dismiss(animated: true, completion: nil)
             }
         }
-        swipeableView.didCancel = {view in
-            print("Did cancel swiping view")
-        }
-        swipeableView.didTap = {view, location in
-            print("Did tap at location \(location)")
-        }
-        swipeableView.didDisappear = { view in
-            print("Did disappear swiping view")
-        }
+        
         constrain(swipeableView, view) { view1, view2 in
             view1.left == view2.left+50
             view1.right == view2.right-50
@@ -221,7 +237,7 @@ class CardSwipeController: UIViewController {
     }
     
     func dismissPopup() {
-        print("dismiss popup")
+//        print("dismiss popup")
         if self.popupView != nil { // Dismiss the view from here
             self.popupView.removeFromSuperview()
         }
@@ -258,15 +274,23 @@ class CardSwipeController: UIViewController {
     // MARK: ()
     func nextCardView() -> UIView? {
         
-        if viewIndex >= viewControllers.count {
-            return nil
+        if nextLoadViewIdx >= viewControllers.count {
+            nextLoadViewIdx = 0
         }
         
         let cardView = CardView(frame: rect)
-        let contentView = viewControllers[viewIndex].view!
+        let contentViewController = viewControllers[nextLoadViewIdx]
+        let contentView = contentViewController.view!
         
-        cardView.backgroundColor = viewColors[viewIndex]
-        viewIndex += 1
+        // Set backgroundColor
+        cardView.backgroundColor = colorValues["default"]
+        if let type = contentViewController.type {
+            if let color = colorValues[type] {
+                cardView.backgroundColor = color
+            }
+        }
+        
+        nextLoadViewIdx += 1
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = cardView.backgroundColor
