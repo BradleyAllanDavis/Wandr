@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WAE-a9-DxS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WAE-a9-DxS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="488.80000000000001" y="644.52773613193403"/>
         </scene>
-        <!--View Controller-->
+        <!--Tag Tut View Controller-->
         <scene sceneID="7qE-yz-SoQ">
             <objects>
-                <viewController storyboardIdentifier="Page2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cim-R0-1iP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cim-R0-1iP" customClass="TagTutViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cxz-DF-jls"/>
                         <viewControllerLayoutGuide type="bottom" id="pYm-Ur-Fhw"/>
@@ -100,7 +100,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="tagView" translatesAutoresizingMaskIntoConstraints="NO" id="55L-xl-Dot">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="55L-xl-Dot">
                                 <rect key="frame" x="16" y="57" width="343" height="348"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-ek-mjz">
@@ -126,6 +126,9 @@
                             <constraint firstItem="KUg-qU-qBo" firstAttribute="leading" secondItem="GfR-sj-I4F" secondAttribute="leadingMargin" constant="45" id="zqF-Vd-OQk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tagGif" destination="55L-xl-Dot" id="hQ1-m2-mnF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZk-xb-lH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="1792.8" y="644.52773613193403"/>
         </scene>
-        <!--View Controller-->
+        <!--Swipe Tut View Controller-->
         <scene sceneID="ceO-UQ-oHg">
             <objects>
-                <viewController storyboardIdentifier="Page4ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOQ-u4-u19" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page4ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OOQ-u4-u19" customClass="SwipeTutViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KtN-W1-JS0"/>
                         <viewControllerLayoutGuide type="bottom" id="e3H-a0-24p"/>
@@ -198,7 +201,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="swipeView" translatesAutoresizingMaskIntoConstraints="NO" id="D5W-ak-e84">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="D5W-ak-e84">
                                 <rect key="frame" x="16" y="57" width="343" height="348"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7Z-Jl-zKT">
@@ -224,6 +227,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="D5W-ak-e84" secondAttribute="trailing" id="xRm-OV-XIL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="swipeGif" destination="D5W-ak-e84" id="WaD-w5-a4x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVH-lG-43d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,10 +280,10 @@
             </objects>
             <point key="canvasLocation" x="1987" y="1371"/>
         </scene>
-        <!--View Controller-->
+        <!--Map Tut View Controller-->
         <scene sceneID="nPv-m6-ZTT">
             <objects>
-                <viewController storyboardIdentifier="Page5ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y5X-bH-c8R" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page5ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y5X-bH-c8R" customClass="MapTutViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8lO-pU-Yia"/>
                         <viewControllerLayoutGuide type="bottom" id="Xhi-gP-Ws7"/>
@@ -286,9 +292,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="mapView" translatesAutoresizingMaskIntoConstraints="NO" id="pSS-Zs-FkZ">
-                                <rect key="frame" x="16" y="57" width="343" height="348"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do it all on a Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otf-x3-NIr">
                                 <rect key="frame" x="111" y="27" width="139.5" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -302,22 +305,25 @@
                                     <segue destination="GlE-Zw-x5h" kind="embed" id="TFC-zN-Sp6"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oun-W9-aS9">
+                                <rect key="frame" x="16" y="57" width="343" height="348"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="otf-x3-NIr" firstAttribute="top" secondItem="8lO-pU-Yia" secondAttribute="bottom" constant="7" id="0kF-JV-M1c"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pSS-Zs-FkZ" secondAttribute="trailing" id="7YK-bF-tdS"/>
                             <constraint firstItem="Yzd-d4-mWR" firstAttribute="top" secondItem="J97-6D-Fw0" secondAttribute="top" constant="493" id="AuL-gf-tb7"/>
-                            <constraint firstItem="pSS-Zs-FkZ" firstAttribute="top" secondItem="otf-x3-NIr" secondAttribute="bottom" constant="8" id="DJN-gO-6RL"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="pSS-Zs-FkZ" secondAttribute="leading" id="LDa-vD-cYC"/>
                             <constraint firstItem="otf-x3-NIr" firstAttribute="leading" secondItem="J97-6D-Fw0" secondAttribute="leadingMargin" constant="95" id="Sex-sp-473"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Yzd-d4-mWR" secondAttribute="trailing" id="WHj-Kc-fcm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="otf-x3-NIr" secondAttribute="trailing" constant="108.5" id="hgX-9e-Do1"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Yzd-d4-mWR" secondAttribute="leading" id="iZx-AX-sal"/>
-                            <constraint firstItem="Yzd-d4-mWR" firstAttribute="top" secondItem="pSS-Zs-FkZ" secondAttribute="bottom" constant="88" id="uGY-TH-wTY"/>
                             <constraint firstItem="Xhi-gP-Ws7" firstAttribute="top" secondItem="Yzd-d4-mWR" secondAttribute="bottom" constant="8" id="yYy-HM-KvY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapGif" destination="oun-W9-aS9" id="R52-Kp-MkX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZq-pr-pEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -326,11 +332,8 @@
     </scenes>
     <resources>
         <image name="cartView-1" width="550" height="689"/>
-        <image name="mapView" width="552" height="984"/>
-        <image name="swipeView" width="559" height="963"/>
-        <image name="tagView" width="562" height="876"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XDT-Y8-D9L"/>
+        <segue reference="TFC-zN-Sp6"/>
     </inferredMetricsTieBreakers>
 </document>
