@@ -134,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="1149.5999999999999" y="644.52773613193403"/>
         </scene>
-        <!--View Controller-->
+        <!--Cart Tut View Controller-->
         <scene sceneID="ydS-nR-stc">
             <objects>
-                <viewController storyboardIdentifier="Page3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yg6-Gj-1Zb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yg6-Gj-1Zb" customClass="CartTutViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N2R-6s-Pvk"/>
                         <viewControllerLayoutGuide type="bottom" id="HlB-ay-lHH"/>
@@ -152,7 +152,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cartView-1" translatesAutoresizingMaskIntoConstraints="NO" id="aWw-gX-7N0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="aWw-gX-7N0">
                                 <rect key="frame" x="16" y="58" width="343" height="348"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqJ-Sh-5TQ">
@@ -178,6 +178,9 @@
                             <constraint firstItem="cqJ-Sh-5TQ" firstAttribute="top" secondItem="q4M-df-PxA" secondAttribute="top" constant="493" id="xsY-nz-c6n"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cartGif" destination="aWw-gX-7N0" id="eqD-oQ-1aj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8Y-SX-tHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,10 +333,7 @@
             <point key="canvasLocation" x="3128.8000000000002" y="644.52773613193403"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="cartView-1" width="550" height="689"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TFC-zN-Sp6"/>
+        <segue reference="XDT-Y8-D9L"/>
     </inferredMetricsTieBreakers>
 </document>
