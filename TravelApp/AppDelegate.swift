@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        PlaceStore.shared.loadTags()
+        
         return true
     }
     

@@ -15,7 +15,7 @@ import FirebaseAuth
 final class PlaceStore: NSObject {
     static let shared: PlaceStore = PlaceStore()
     
-    var tagPreferences: [String: Bool]
+    var tagPreferences = [String: Bool]()
     var cartPlaceIds: [String] = []
     var currentNearbyFocusedPlaceIndex: Int = 0
     var currentSearchCoordinate: CLLocationCoordinate2D?
@@ -69,18 +69,12 @@ final class PlaceStore: NSObject {
         return popularCopy
     }
     
-    private override init() {
-        let plistManager = Plist(name: "tagPreferences")
-        tagPreferences = plistManager?.getValuesInPlistFile() as! [String: Bool]
-        
-        let cartPlistMgr = Plist(name: "cartPlaceIds")
-        let cartPlaces = cartPlistMgr?.getValuesInPlistFile() as! [String: [String]]
-        cartPlaceIds = cartPlaces["places"]!
-        
+    private override init() {        
         super.init()
         
         apiSearch.resultsUpdaterDelegate = self
-        self.loadCartPlacesFromPlist()
+        self.loadCartPlaces()
+//        self.loadTags()
     }
     
     func removePopularPlace(at index: Int) {
@@ -133,8 +127,33 @@ final class PlaceStore: NSObject {
     
     func setTags(tags: [String: Bool]) {
         tagPreferences = tags
-        let plistManager = Plist(name: "tagPreferences")        
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            ref.child("Tags").child((FIRAuth.auth()?.currentUser?.uid)!).setValue(["tags": tagPreferences])
+        }
+        
+        let plistManager = Plist(name: "tagPreferences")
         try! plistManager?.addValuesToPlistFile(dictionary: tags as NSDictionary)
+    }
+    
+    func loadTags() {
+        ref = FIRDatabase.database().reference()
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            let userId = (FIRAuth.auth()?.currentUser?.uid)!
+            ref.child("Tags").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let values = snapshot.value as? [String: [String: Bool]] {
+                    self.tagPreferences = (values["tags"]!)
+                } else {
+                    self.loadTagsFromPlist()
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+                self.loadTagsFromPlist()
+            }
+        } else {
+            loadCartPlacesFromPlist()
+        }
     }
     
     func loadTagsFromPlist() {
@@ -180,10 +199,26 @@ final class PlaceStore: NSObject {
         }
     }
     
+    func loadCartPlaces() {
+        ref = FIRDatabase.database().reference()
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            let userId = (FIRAuth.auth()?.currentUser?.uid)!
+            ref.child("Cart").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                let values = snapshot.value as? [String: [String]]
+                self.cartPlaceIds = (values?["places"]!)!
+            }) { (error) in
+                print(error.localizedDescription)
+                self.loadCartPlacesFromPlist()
+            }
+        } else {
+            loadCartPlacesFromPlist()
+        }
+    }
+    
     func loadCartPlacesFromPlist() {
         let plistManager = Plist(name: "cartPlaceIds")
-        let placeIds = plistManager?.getValuesInPlistFile()?["places"] as! [String]
-        cartPlaceIds = placeIds
+        cartPlaceIds = plistManager?.getValuesInPlistFile()?["places"] as! [String]
     }
 }
 

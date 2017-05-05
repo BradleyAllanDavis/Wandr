@@ -60,7 +60,9 @@ class TagViewController: UIViewController {
         newNode.changeText(node: newNode, newText: types[index])
         let typeString = types[index]
         
-        if availableTypes[typeString] != nil && tagPreferences[availableTypes[typeString]!]! {
+        if availableTypes[typeString] != nil &&
+            tagPreferences[availableTypes[typeString]!] != nil &&
+            tagPreferences[availableTypes[typeString]!]! {
             newNode.state = .selected
         }
         
@@ -68,13 +70,13 @@ class TagViewController: UIViewController {
         floatingCollectionScene.addChild(newNode)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMap" {
-            if segue.destination is MapViewController {
-                PlaceStore.shared.setTags(tags: tagPreferences)
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toMap" {
+//            if segue.destination is MapViewController {
+//                PlaceStore.shared.setTags(tags: tagPreferences)
+//            }
+//        }
+//    }
     
     func commitSelection() {
         var atLeastOnePreferenceSet = false
