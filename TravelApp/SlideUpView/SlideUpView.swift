@@ -100,11 +100,13 @@ class SlideUpView: UIVisualEffectView {
         cvNoResultLabel.isHidden = true
         tvNoResultLabel.isHidden = true
         
-        collectionView.scrollToItem(
-            at: IndexPath(row: 0, section: 0),
-            at: .centeredHorizontally,
-            animated: true
-        )
+        if PlaceStore.shared.apiSearchMode == .initial {
+            collectionView.scrollToItem(
+                at: IndexPath(row: 0, section: 0),
+                at: .centeredHorizontally,
+                animated: true
+            )
+        }
     }
     
     func updatePopularPlaces(notification: Notification) {
@@ -122,7 +124,7 @@ class SlideUpView: UIVisualEffectView {
         let cvLabelFrame = CGRect(x: 0, y: (collectionViewFrame.height / 2) - 15, width: collectionViewFrame.width, height: 30)
         
         layout.scrollDirection = .horizontal
-
+        
         cvNoResultLabel = UILabel(frame: cvLabelFrame)
         
         cvNoResultLabel.font = UIFont(name: "Avenir", size: 14.0)
@@ -271,32 +273,41 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PlaceStore.shared.nearbyPlaces.count
+        return PlaceStore.shared.nearbyPlaces.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "slideCollectionCell", for: indexPath) as! SlideUpCollectionViewCell
-        let placeData = PlaceStore.shared.nearbyPlaces[indexPath.row]
-        let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
         
-        cell.titleLabel.text = placeData["name"] as? String
-        cell.placeId = placeData["place_id"] as? String
+        cell.collectionView = collectionView
+        cell.indexPath = indexPath
         
-        if photo.status == .downloaded {
-            cell.imageView.image = photo.image
+        if indexPath.row < PlaceStore.shared.nearbyPlaces.count {
+            let placeData = PlaceStore.shared.nearbyPlaces[indexPath.row]
+            let photo = PlaceStore.shared.getPhoto(for: placeData["place_id"] as! String)
+            
+            cell.titleLabel.text = placeData["name"] as? String
+            cell.placeId = placeData["place_id"] as? String
+            
+            if photo.status == .downloaded {
+                cell.imageView.image = photo.image
+            } else {
+                cell.imageView.image = #imageLiteral(resourceName: "Placeholder_location.png")
+            }
+            
+            if collectionViewScrollStatus == .idle && centerPath?.row == indexPath.row {
+                cell.imageView.alpha = 1.0
+            } else {
+                cell.imageView.alpha = 0.6
+            }
+            
+            if collectionViewScrollStatus == .neverScrolled && indexPath.row == 0 {
+                centerPath = indexPath
+                cell.imageView.alpha = 1.0
+            }
         } else {
-            cell.imageView.image = #imageLiteral(resourceName: "Placeholder_location.png")
-        }
-        
-        if collectionViewScrollStatus == .idle && centerPath?.row == indexPath.row {
-            cell.imageView.alpha = 1.0
-        } else {
-            cell.imageView.alpha = 0.6
-        }
-        
-        if collectionViewScrollStatus == .neverScrolled && indexPath.row == 0 {
-            centerPath = indexPath
-            cell.imageView.alpha = 1.0
+            cell.imageView.image = #imageLiteral(resourceName: "more-items.png")
+            cell.titleLabel.text = "Get More Places"
         }
         
         return cell
@@ -320,10 +331,6 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
         let width = UIScreen.main.bounds.width / 3
         return UIEdgeInsets(top: 0.0, left: width, bottom: 0.0, right: width)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        parentVc?.transitionToSwipeView(index: indexPath.row, dataType: .nearby)
-//    }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         getCenterCell()

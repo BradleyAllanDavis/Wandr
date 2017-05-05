@@ -42,7 +42,14 @@ class PlacesAPISearch: NSObject {
                 }
                 
                 if let data = data {
+//                    PlaceStore.shared.nextPageTokens[type] = data["next_page_toke"] as? String
                     let placesDictArray = data["results"] as! [Dictionary<String, AnyObject>]
+                    
+                    if data.index(forKey: "next_page_token") != nil {
+                        if let nextPageToken = data["next_page_token"] as? String {
+                            PlaceStore.shared.nextPageTokens[type] = nextPageToken
+                        }
+                    }
                     
                     //prevent duplicates from showing up in different types
                     for place in placesDictArray {
@@ -76,11 +83,26 @@ class PlacesAPISearch: NSObject {
         
         let keyString = "&key=" + key
         let base = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-        let locationString = "&location=" + location.latitude.description + "," + location.longitude.description
-        let radiusString = "&radius=" + searchRadius.description
-        let typeString = "&type=" + type
-        let query = base + locationString + radiusString + typeString + keyString
-        let url = URL(string: query)
+        var query: String?
+        
+        if PlaceStore.shared.apiSearchMode == .initial {
+            let locationString = "&location=" + location.latitude.description + "," + location.longitude.description
+            let radiusString = "&radius=" + searchRadius.description
+            let typeString = "&type=" + type
+            query = base + locationString + radiusString + typeString + keyString
+        } else {
+            var tokens = PlaceStore.shared.nextPageTokens
+            if let token = PlaceStore.shared.nextPageTokens[type] {
+                query = base + "pagetoken=" + token + keyString
+            }
+        }
+        
+        if query == nil {
+            print("no more results for that type")
+            return
+        }
+        
+        let url = URL(string: query!)
         let task = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             var json = Dictionary<String, AnyObject>()
             

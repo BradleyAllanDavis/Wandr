@@ -117,6 +117,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         
         panningSource = .searchUpdate
         
+        PlaceStore.shared.apiSearchMode = .initial
         PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
     }
     
@@ -185,6 +186,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let loc2 = CLLocation(latitude: center.latitude + span.latitudeDelta * 0.5, longitude: center.longitude)
         let metersInLatitude = loc1.distance(from: loc2)
         
+        PlaceStore.shared.apiSearchMode = .initial
         PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: Int(metersInLatitude / 2))
         redoSearchBlurView.isHidden = true;
     }
@@ -294,13 +296,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
     // Changes the focus of the map when scrolling through the CollectionView
     func nearbyFocusedPlaceChanged(notification: Notification) {
         let selectedIndex = PlaceStore.shared.currentNearbyFocusedPlaceIndex
-        let placeLoc = PlaceStore.shared.nearbyPlaces[selectedIndex]["geometry"]!["location"] as! Dictionary<String, AnyObject>
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
-        let span = MKCoordinateSpanMake(0.025, 0.025)
-        let region = MKCoordinateRegion(center: location, span: span)
         
-        mapView.setRegion(region, animated: true)
-        panningSource = .automatic
+        if selectedIndex < PlaceStore.shared.nearbyPlaces.count {
+            let placeLoc = PlaceStore.shared.nearbyPlaces[selectedIndex]["geometry"]!["location"] as! Dictionary<String, AnyObject>
+            let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
+            let span = MKCoordinateSpanMake(0.025, 0.025)
+            let region = MKCoordinateRegion(center: location, span: span)
+            
+            mapView.setRegion(region, animated: true)
+            panningSource = .automatic
+        }
     }
     
     // Called after nearby places have been updated
@@ -355,6 +360,7 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
         mapView.setRegion(coordinateRegion, animated: true)
         
         //starts the request for places nearby the selected location
+        PlaceStore.shared.apiSearchMode = .initial
         PlaceStore.shared.updateCurrentPlaces(with: place.coordinate, searchRadius: 4000)
     }
     

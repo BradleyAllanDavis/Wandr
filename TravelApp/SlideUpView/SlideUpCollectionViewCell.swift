@@ -14,34 +14,54 @@ class SlideUpCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     var placeId: String!
     var indexPath: IndexPath!
+    weak var collectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellDoubleTapped(gesture:)))
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(cellSingleTapped(gesture:)))
+        
         doubleTapGesture.numberOfTapsRequired = 2
+        singleTapGesture.numberOfTapsRequired = 1
+        
         self.addGestureRecognizer(doubleTapGesture)
+        self.addGestureRecognizer(singleTapGesture)
+        
+        singleTapGesture.require(toFail: doubleTapGesture)
+    }
+    
+    func cellSingleTapped(gesture: UITapGestureRecognizer) {
+        print("Single tapped")
+        if indexPath.row >= PlaceStore.shared.nearbyPlaces.count {
+            PlaceStore.shared.apiSearchMode = .morePlaces
+            PlaceStore.shared.updateCurrentPlaces(with: PlaceStore.shared.currentSearchCoordinate!, searchRadius: 4000)
+        }
     }
     
     func cellDoubleTapped(gesture: UITapGestureRecognizer) {
-        if PlaceStore.shared.savePlaceToCart(placeId: placeId) {
-            layer.borderColor = UIColor.red.cgColor
-            let width = self.frame.width / 2
-            let iv = UIImageView(frame: CGRect(x: self.frame.width / 2, y: self.frame.width / 2, width: 0, height: 0))
-            iv.image = #imageLiteral(resourceName: "heart.png")
-            iv.alpha = 0.0
-            contentView.addSubview(iv)
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                iv.frame = CGRect(x: self.frame.width / 4, y: (self.frame.width / 4) - 20, width: width, height: width)
-                iv.alpha = 1.0
-            }, completion: { (finished: Bool) in
+        if indexPath.row < PlaceStore.shared.nearbyPlaces.count {
+            if PlaceStore.shared.savePlaceToCart(placeId: placeId) {
+                layer.borderColor = UIColor.red.cgColor
+                let width = self.frame.width / 2
+                let iv = UIImageView(frame: CGRect(x: self.frame.width / 2, y: self.frame.width / 2, width: 0, height: 0))
+                iv.image = #imageLiteral(resourceName: "heart.png")
+                iv.alpha = 0.0
+                contentView.addSubview(iv)
+                
                 UIView.animate(withDuration: 0.5, animations: {
-                    iv.alpha = 0.0
+                    iv.frame = CGRect(x: self.frame.width / 4, y: (self.frame.width / 4) - 20, width: width, height: width)
+                    iv.alpha = 1.0
                 }, completion: { (finished: Bool) in
-                    iv.removeFromSuperview()
+                    UIView.animate(withDuration: 0.5, animations: {
+                        iv.alpha = 0.0
+                    }, completion: { (finished: Bool) in
+                        iv.removeFromSuperview()
+                    })
                 })
-            })
+            }
+        } else {
+            print("dumb")
         }
     }
     

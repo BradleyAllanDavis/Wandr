@@ -12,6 +12,11 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
+enum SearchMode {
+    case initial
+    case morePlaces
+}
+
 final class PlaceStore: NSObject {
     static let shared: PlaceStore = PlaceStore()
     
@@ -20,6 +25,8 @@ final class PlaceStore: NSObject {
     var currentNearbyFocusedPlaceIndex: Int = 0
     var currentSearchCoordinate: CLLocationCoordinate2D?
     var ref: FIRDatabaseReference!
+    var apiSearchMode: SearchMode = .initial
+    var nextPageTokens = [String: String]()
     
     fileprivate let apiSearch = PlacesAPISearch()
     fileprivate var _photos: [PlacePhoto] = []
@@ -205,8 +212,12 @@ final class PlaceStore: NSObject {
         if FIRAuth.auth()?.currentUser != nil {
             let userId = (FIRAuth.auth()?.currentUser?.uid)!
             ref.child("Cart").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
-                let values = snapshot.value as? [String: [String]]
-                self.cartPlaceIds = (values?["places"]!)!
+                if let values = snapshot.value as? [String: [String]] {
+                    self.cartPlaceIds = values["places"]!
+                } else {
+                    self.loadCartPlacesFromPlist()
+                }
+
             }) { (error) in
                 print(error.localizedDescription)
                 self.loadCartPlacesFromPlist()
@@ -227,14 +238,22 @@ final class PlaceStore: NSObject {
 extension PlaceStore: PlacesAPISearchResultUpdater {
     func didReceivePlacesFromAPI(places: [Dictionary<String, AnyObject>]) {
         concurrentNearbyPlaceQueue.async(flags: .barrier, execute: {
-            self._nearbyPlaces = places
+            
+            if self.apiSearchMode == .initial {
+                self._nearbyPlaces = places
+            } else {
+                self._nearbyPlaces += places
+            }
+            
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "ReceivedNewNearbyPlaces"), object: nil)
             }
         })
         
         concurrentPhotoQueue.async(flags: .barrier, execute: {
-            self._photos.removeAll()
+            if self.apiSearchMode == .initial {
+                self._photos.removeAll()
+            }
         })
         
         //just sort nearby places by rating to get popular
