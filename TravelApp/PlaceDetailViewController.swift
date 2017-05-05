@@ -8,6 +8,7 @@
 
 import UIKit
 import Cosmos
+import GooglePlaces
 
 class PlaceDetailViewController: UIViewController {
     
@@ -15,10 +16,9 @@ class PlaceDetailViewController: UIViewController {
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var placeTitleLabel: UILabel!
     var starLabel: CosmosView?
+    var place: GMSPlace?
     
     var placeTitle: String = "default"
-    var placeDescription: String?
-    var placeID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +30,8 @@ class PlaceDetailViewController: UIViewController {
         self.view.addSubview(blur)
         self.view.sendSubview(toBack: blur)
         
-        if let place = PlaceStore.shared.getPlace(for: self.placeID!) {
-            self.placeTitleLabel.text = place["name"] as? String
+        
+        self.placeTitleLabel.text = place?.name
             
 //            starLabel = CosmosView(frame: CGRect(x: self.view.center.x, y: 90, width: 100, height: 30))
 //            starLabel?.rating = place["rating"] as! Double
@@ -41,11 +41,10 @@ class PlaceDetailViewController: UIViewController {
 //            starLabel?.settings.updateOnTouch = false
 //            self.view.addSubview(starLabel!)
             
-            let photo = PlaceStore.shared.getPhoto(for: place["place_id"] as! String)
-            self.photo.image = photo.image
-            
-            self.vicinity?.text = place["vicinity"] as? String
-        }
+        let photo = PlaceStore.shared.getPhoto(for: (place?.placeID)!)
+        self.photo.image = photo.image
+        
+        self.vicinity?.text = place?.formattedAddress
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.dismissVC))
         swipeDown.direction = .down

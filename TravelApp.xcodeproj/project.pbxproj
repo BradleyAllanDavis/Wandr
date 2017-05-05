@@ -24,6 +24,7 @@
 		4072F1F31EBACE7300D86F3F /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4072F1F21EBACE7300D86F3F /* DetailView.xib */; };
 		407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */; };
 		407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */; };
+		408C99E81EBC2A08008C94E6 /* CartCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C99E61EBC2A08008C94E6 /* CartCollectionReusableView.swift */; };
 		40B459391E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */; };
 		40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */; };
 		56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56237F551E804BDA0000ED5E /* tagPreferences.plist */; };
@@ -99,6 +100,7 @@
 		407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelNavBarView.swift; path = TravelApp/SearchBar/TravelNavBarView.swift; sourceTree = "<group>"; };
 		407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchBar.swift; path = TravelApp/SearchBar/TravelSearchBar.swift; sourceTree = "<group>"; };
 		407C8CB71E9C54F4002AF485 /* TravelSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelSearchController.swift; path = TravelApp/SearchBar/TravelSearchController.swift; sourceTree = "<group>"; };
+		408C99E61EBC2A08008C94E6 /* CartCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionReusableView.swift; sourceTree = "<group>"; };
 		40B459351E9F58AE005420B0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideUpCollectionViewCell.swift; path = SlideUpView/SlideUpCollectionViewCell.swift; sourceTree = "<group>"; };
 		40B459381E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SlideUpCollectionViewCell.xib; path = SlideUpView/SlideUpCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 		FAA243641E71BD8A009AB3DB /* CartView */ = {
 			isa = PBXGroup;
 			children = (
+				408C99E61EBC2A08008C94E6 /* CartCollectionReusableView.swift */,
 				4072F1F21EBACE7300D86F3F /* DetailView.xib */,
 				40003B351EB99C8000CFBEB3 /* circle-x-delete-button.png */,
 				40003B331EB969EC00CFBEB3 /* cartPlaceIds.plist */,
@@ -428,7 +431,7 @@
 				TargetAttributes = {
 					FAA243211E706432009AB3DB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = XD286KBMQK;
+						DevelopmentTeam = QVW9R3V5SU;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -569,6 +572,7 @@
 				40003B321EB966CD00CFBEB3 /* CartCollectionViewCell.swift in Sources */,
 				56DABE121EB7B95A0068C804 /* CardSwipeController.swift in Sources */,
 				4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */,
+				408C99E81EBC2A08008C94E6 /* CartCollectionReusableView.swift in Sources */,
 				4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */,
 				FA85AF3B1EADB0BD00918965 /* Page1ViewController.swift in Sources */,
 				960A1A441EBB152B00C3C886 /* CardView.swift in Sources */,
@@ -745,7 +749,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = XD286KBMQK;
+				DEVELOPMENT_TEAM = QVW9R3V5SU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Cosmos\"",
@@ -757,7 +761,7 @@
 				);
 				INFOPLIST_FILE = TravelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jason.cs407.TravelApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -771,7 +775,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = XD286KBMQK;
+				DEVELOPMENT_TEAM = QVW9R3V5SU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Cosmos\"",
@@ -783,7 +787,7 @@
 				);
 				INFOPLIST_FILE = TravelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jason.cs407.TravelApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;

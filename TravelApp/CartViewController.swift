@@ -17,11 +17,20 @@ enum CollectionViewState {
     case editing
 }
 
+struct PlaceStruct {
+    var placePhoto: PlacePhoto
+    var place: GMSPlace
+}
+
 class CartViewController: UIViewController {
     var cartPlaces = [GMSPlace]()
     var cartPhotos = [PlacePhoto]()
     var collectionViewState: CollectionViewState = .normal
     var ref: FIRDatabaseReference!
+    
+    var placeArray = [GMSPlace]()
+    var sortedPlaces = [String : [String: [String: [PlaceStruct]]]]()
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -63,11 +72,10 @@ class CartViewController: UIViewController {
     
     @IBAction func deleteItemFromCart(_ sender: Any) {
         let button = sender as! CartDeleteButton
-        let place = cartPlaces[button.index!]
+        let place = getPlaceForIndexPath(indexPath: button.indexPath!)?.place
         
-        PlaceStore.shared.removePlacefromCart(placeId: place.placeID)
-        cartPlaces.remove(at: button.index!)
-        cartPhotos.remove(at: button.index!)
+        PlaceStore.shared.removePlacefromCart(placeId: (place?.placeID)!)
+        removePlaceAtIndexPath(indexPath: button.indexPath!)
         collectionView.reloadData()
         
         
@@ -86,7 +94,6 @@ class CartViewController: UIViewController {
     }
     
     func handleTap(gesture: UITapGestureRecognizer) {
-        print("handle tap")
         if collectionViewState == .editing {
             self.endShake(gesture: gesture)
         } else {
@@ -119,31 +126,18 @@ class CartViewController: UIViewController {
 extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cartCell", for: indexPath) as! CartCollectionViewCell
-        let photo = cartPhotos[indexPath.row]
-        let place = cartPlaces[indexPath.row]
+//        let photo = cartPhotos[indexPath.row]
+//        let place = cartPlaces[indexPath.row]
+        let pStruct = getPlaceForIndexPath(indexPath: indexPath)
         
-        cell.titleLabel.text = place.name
-        cell.addressLabel.text = place.formattedAddress
-        cell.ratingView.rating = Double(place.rating)
-        cell.deleteButton.index = indexPath.row
+        cell.titleLabel.text = pStruct?.place.name
+        cell.addressLabel.text = pStruct?.place.formattedAddress
+        cell.ratingView.rating = Double((pStruct?.place.rating)!)
+        cell.deleteButton.indexPath = indexPath
         
-        switch place.openNowStatus {
-        case .no:
-            cell.openLabel.text = "Closed Now"
-            cell.openLabel.textColor = .red
-            break
-        case .yes:
-            cell.openLabel.text = "Open Now"
-            cell.openLabel.textColor = .green
-            break
-        case .unknown:
-            cell.openLabel.text = "Hours Unavailable"
-            cell.openLabel.textColor = .yellow
-            break
-        }
         
-        if photo.status == .downloaded {
-            cell.imageView.image = photo.image
+        if pStruct?.placePhoto.status == .downloaded {
+            cell.imageView.image = pStruct?.placePhoto.image
         } else {
             cell.imageView.image = #imageLiteral(resourceName: "Placeholder_location.png")
         }
@@ -157,12 +151,115 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         return cell
     }
     
+    func getPlaceForIndexPath(indexPath: IndexPath) -> PlaceStruct? {
+        var count = 0
+        
+        for countries in sortedPlaces.values {
+            for states in countries.values {
+                for places in states.values {
+                    if indexPath.section == count {
+                        return places[indexPath.row]
+                    }
+                    
+                    count += 1
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    func removePlaceAtIndexPath(indexPath: IndexPath) {
+        var count = 0
+        
+        for countryName in sortedPlaces.keys {
+            let states = sortedPlaces[countryName]
+            
+            for stateName in (states?.keys)! {
+                let cities = states?[stateName]
+                
+                for cityName in (cities?.keys)! {
+                    if indexPath.section == count {
+                        sortedPlaces[countryName]?[stateName]?[cityName]?.remove(at: indexPath.row)
+                        
+                        if sortedPlaces[countryName]?[stateName]?[cityName]?.count == 0 {
+                            sortedPlaces[countryName]?[stateName]?.removeValue(forKey: cityName)
+                        }
+                        return
+                    }
+                    
+                    count += 1
+                }
+            }
+        }
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        var count = 0
+        
+       for countries in sortedPlaces.values {
+        
+            for states in countries.values {
+
+                for _ in states.keys {
+                    count += 1
+                }
+            }
+        }
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cartPlaces.count
+        var count = 0
+        
+        for countries in sortedPlaces.values {
+            
+            for states in countries.values {
+                
+                for places in states.values {
+                    print("count \(places.count)")
+                    if section == count {
+                        return places.count
+                    }
+                    
+                    count += 1
+                }
+            }
+        }
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "cartHeader", for: indexPath) as! CartCollectionReusableView
+        let title = getTitleForSection(indexPath: indexPath)
+        headerView.headerTitle.text = title
+        
+        return headerView
+    }
+    
+    func getTitleForSection(indexPath: IndexPath) -> String {
+        var count = 0
+        
+        for countryName in sortedPlaces.keys {
+            let states = sortedPlaces[countryName]
+            
+            for stateName in (states?.keys)! {
+                let cities = states?[stateName]
+                
+                for cityName in (cities?.keys)! {
+                    
+                    if indexPath.section == count {
+                        return cityName + ", " + stateName + ", " + countryName
+                    }
+                    
+                    count += 1
+                }
+            }
+        }
+        
+        return ""
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -171,10 +268,9 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select place \(cartPlaces[indexPath.row].name)")
         let detailVC = PlaceDetailViewController(nibName: "DetailView", bundle: nil)
-        detailVC.placeTitle = cartPlaces[indexPath.row].name
-        detailVC.placeID = cartPlaces[indexPath.row].placeID
+        let place = getPlaceForIndexPath(indexPath: indexPath)
+        detailVC.place = place?.place
         detailVC.modalPresentationStyle = .overCurrentContext
         self.present(detailVC, animated: true, completion: nil)
     }
@@ -182,9 +278,54 @@ extension CartViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
 
 extension CartViewController: GMSPlaceRequestDelegate {
     func didReceiveGMSPlace(place: GMSPlace) {
-        cartPlaces.append(place)
+        
+        var country = ""
+        var stateRegion = ""
+        var city = ""
+        
+        for component in place.addressComponents! {
+            switch component.type {
+            case "country":
+                country = component.name
+                break
+            case "administrative_area_level_1":
+                stateRegion = component.name
+                break
+            case "locality":
+                city = component.name
+                break
+            default:
+                break
+            }
+        }
+        
         let placePhoto = PlaceStore.shared.getPhoto(for: place.placeID)
-        cartPhotos.append(placePhoto)
+        let pStruct = PlaceStruct(placePhoto: placePhoto, place: place)
+        
+        var countryDict = sortedPlaces[country]
+        
+        if countryDict == nil {
+            countryDict = [String: [String: [PlaceStruct]]]()
+            countryDict?[stateRegion] = [String: [PlaceStruct]]()
+            countryDict?[stateRegion]?[city] = [pStruct]
+        } else {
+            var stateDict = countryDict?[stateRegion]
+            
+            if stateDict == nil {
+                countryDict?[stateRegion] = [String: [PlaceStruct]]()
+                countryDict?[stateRegion]?[city] = [pStruct]
+            } else {
+                let cityDict = stateDict?[city]
+                
+                if cityDict == nil {
+                    countryDict?[stateRegion]?[city] = []
+                } else {
+                    countryDict?[stateRegion]?[city]?.append(pStruct)
+                }
+            }
+        }
+        
+        sortedPlaces[country] = countryDict
         collectionView?.reloadData()
     }
     
