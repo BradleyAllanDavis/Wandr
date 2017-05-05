@@ -422,9 +422,9 @@ extension SlideUpView: UITableViewDataSource, UITableViewDelegate {
         header.addGestureRecognizer(panGesture)
         
         let headerLabel = UILabel(frame: CGRect(x: 20, y: 0, width: header.frame.width - 20, height: header.frame.height))
-        let swipeViewButton = UIButton(frame: CGRect(x: header.frame.width - 40, y: 0, width: 30, height:header.frame.height))
-        let image = UIImage(named: "wandricon.png")
-        swipeViewButton.setImage(image, for: .normal)
+        let swipeViewButton = UIButton(frame: CGRect(x: header.frame.width - 100, y: 0, width: 100, height: header.frame.height))
+        swipeViewButton.setTitle("Discover", for: .normal)
+        swipeViewButton.backgroundColor = UIColor(red: 0/255, green: 166/255, blue: 255/255, alpha: 0.3)
         swipeViewButton.addTarget(self, action: #selector(self.toSwipeView(sender:)), for: .touchUpInside)
         
         headerLabel.text = "Popular"
