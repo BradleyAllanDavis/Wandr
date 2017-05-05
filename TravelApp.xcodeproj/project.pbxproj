@@ -19,6 +19,7 @@
 		40425EF51EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40425EF41EA95400009EE626 /* NearbyCollectionViewFlowLayout.swift */; };
 		4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */; };
 		4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */; };
+		40613B861EBCC983002FC4F8 /* more-items.png in Resources */ = {isa = PBXBuildFile; fileRef = 40613B851EBCC983002FC4F8 /* more-items.png */; };
 		406F669F1EAE6525006D827D /* availableTags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 406F669E1EAE6525006D827D /* availableTags.plist */; };
 		4072F1F31EBACE7300D86F3F /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4072F1F21EBACE7300D86F3F /* DetailView.xib */; };
 		407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */; };
@@ -100,6 +101,7 @@
 		4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopularTableViewCell.swift; path = SlideUpView/PopularTableViewCell.swift; sourceTree = "<group>"; };
 		4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopularTableViewCell.xib; path = SlideUpView/PopularTableViewCell.xib; sourceTree = "<group>"; };
 		4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesAPISearch.swift; path = TravelApp/SearchBar/PlacesAPISearch.swift; sourceTree = "<group>"; };
+		40613B851EBCC983002FC4F8 /* more-items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-items.png"; sourceTree = "<group>"; };
 		406F669E1EAE6525006D827D /* availableTags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = availableTags.plist; sourceTree = "<group>"; };
 		4072F1F21EBACE7300D86F3F /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelNavBarView.swift; path = TravelApp/SearchBar/TravelNavBarView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		40B4592E1E9F2E47005420B0 /* SlideUpView */ = {
 			isa = PBXGroup;
 			children = (
+				40613B851EBCC983002FC4F8 /* more-items.png */,
 				408C99EC1EBC5F77008C94E6 /* SlideUpView.swift */,
 				408C99EA1EBC553C008C94E6 /* heart.png */,
 				40B459371E9F5FA8005420B0 /* SlideUpCollectionViewCell.swift */,
@@ -511,6 +514,7 @@
 				FAC619E61EBBF3EA000FBEFD /* mapTut.gif in Resources */,
 				56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */,
 				40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */,
+				40613B861EBCC983002FC4F8 /* more-items.png in Resources */,
 				FA333D381EAD451800FEA832 /* Welcome.storyboard in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
 				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,

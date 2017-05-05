@@ -148,7 +148,7 @@ final class PlaceStore: NSObject {
         
         if FIRAuth.auth()?.currentUser != nil {
             let userId = (FIRAuth.auth()?.currentUser?.uid)!
-            ref.child("Tags").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("Tags").child(userId).observe(.value, with: { (snapshot) in
                 if let values = snapshot.value as? [String: [String: Bool]] {
                     self.tagPreferences = (values["tags"]!)
                 } else {
@@ -211,7 +211,7 @@ final class PlaceStore: NSObject {
         
         if FIRAuth.auth()?.currentUser != nil {
             let userId = (FIRAuth.auth()?.currentUser?.uid)!
-            ref.child("Cart").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("Cart").child(userId).observe(.value, with: { (snapshot) in
                 if let values = snapshot.value as? [String: [String]] {
                     self.cartPlaceIds = values["places"]!
                 } else {
