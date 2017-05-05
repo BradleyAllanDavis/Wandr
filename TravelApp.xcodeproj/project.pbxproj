@@ -48,6 +48,8 @@
 		FA452EFD1EAD7E5B009F007D /* TravelSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */; };
 		FA555D9F1EB01A2700E3D151 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA555D9E1EB01A2700E3D151 /* GoogleService-Info.plist */; };
 		FA85AF3B1EADB0BD00918965 /* Page1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */; };
+		FA9924041EBCCDA10099F85A /* CartTutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9924031EBCCDA10099F85A /* CartTutViewController.swift */; };
+		FA9924061EBCCDA90099F85A /* cartTut.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA9924051EBCCDA90099F85A /* cartTut.gif */; };
 		FAA243261E706432009AB3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA243251E706432009AB3DB /* AppDelegate.swift */; };
 		FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA2432E1E706432009AB3DB /* Assets.xcassets */; };
 		FAA243321E706432009AB3DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243301E706432009AB3DB /* LaunchScreen.storyboard */; };
@@ -130,6 +132,8 @@
 		FA333D391EAD452E00FEA832 /* TagTutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTutViewController.swift; sourceTree = "<group>"; };
 		FA555D9E1EB01A2700E3D151 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TravelApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
+		FA9924031EBCCDA10099F85A /* CartTutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTutViewController.swift; sourceTree = "<group>"; };
+		FA9924051EBCCDA90099F85A /* cartTut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cartTut.gif; sourceTree = "<group>"; };
 		FAA243221E706432009AB3DB /* TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA243251E706432009AB3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAA2432E1E706432009AB3DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				FA333D391EAD452E00FEA832 /* TagTutViewController.swift */,
 				FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */,
 				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
+				FA9924031EBCCDA10099F85A /* CartTutViewController.swift */,
 				FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */,
 				FAC619E71EBBF414000FBEFD /* SwipeTutViewController.swift */,
 				FAC619E91EBBF444000FBEFD /* MapTutViewController.swift */,
@@ -380,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC619E51EBBF3EA000FBEFD /* mapTut.gif */,
+				FA9924051EBCCDA90099F85A /* cartTut.gif */,
 				FAC619DF1EBBF264000FBEFD /* tagTut.gif */,
 				FAC619EB1EBBF57A000FBEFD /* swipeCardsTut.gif */,
 			);
@@ -514,6 +520,7 @@
 				FA333D381EAD451800FEA832 /* Welcome.storyboard in Resources */,
 				FAA2432F1E706432009AB3DB /* Assets.xcassets in Resources */,
 				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,
+				FA9924061EBCCDA90099F85A /* cartTut.gif in Resources */,
 				40003B341EB969EC00CFBEB3 /* cartPlaceIds.plist in Resources */,
 				406F669F1EAE6525006D827D /* availableTags.plist in Resources */,
 				FAC619EC1EBBF57A000FBEFD /* swipeCardsTut.gif in Resources */,
@@ -605,6 +612,7 @@
 				408C99E81EBC2A08008C94E6 /* CartCollectionReusableView.swift in Sources */,
 				FAC619E81EBBF414000FBEFD /* SwipeTutViewController.swift in Sources */,
 				408C99ED1EBC5F77008C94E6 /* SlideUpView.swift in Sources */,
+				FA9924041EBCCDA10099F85A /* CartTutViewController.swift in Sources */,
 				4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */,
 				FA85AF3B1EADB0BD00918965 /* Page1ViewController.swift in Sources */,
 				960A1A441EBB152B00C3C886 /* CardView.swift in Sources */,
