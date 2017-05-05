@@ -13,6 +13,7 @@ target 'TravelApp' do
   pod 'Firebase/Database'
   pod 'ZLSwipeableViewSwift'
   pod 'Cartography'
+  pod 'SwiftyGif', '~> 3.0'
   use_frameworks!
 end
 

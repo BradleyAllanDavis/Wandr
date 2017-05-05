@@ -86,7 +86,7 @@ class TagViewController: UIViewController {
         }
         
         if !atLeastOnePreferenceSet {
-            showAlertMsg("Error", message: "Choose at least one preference", time: 3)
+            showAlertMsg("Oops!", message: "Choose at least one preference", time: 3)
             return
         }
         

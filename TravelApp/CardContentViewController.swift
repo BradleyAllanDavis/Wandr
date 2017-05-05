@@ -22,6 +22,8 @@ class CardContentViewController: UIViewController {
     var starLabel: CosmosView?
     var type: String?
     
+    let typeTexts = ["park":"Parks", "night_club":"Night Clubs", "movie_theater":"Movie Theaters", "casino":"Casinos", "bar":"Bars", "art_gallery":"Art Galleries", "aquarium":"Aquariums", "museum":"Museums", "restaurant":"Food"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,7 +37,8 @@ class CardContentViewController: UIViewController {
         view.layer.rasterizationScale = UIScreen.main.scale
         
         // Corner Radius
-        view.layer.cornerRadius = 10.0;
+        view.layer.cornerRadius = 10.0
+        starView.layer.cornerRadius = 10.0
         
         // Glow effect for light background
         label.layer.shadowColor = UIColor.darkGray.cgColor
@@ -57,9 +60,17 @@ class CardContentViewController: UIViewController {
         starLabel?.backgroundColor = .none
         starLabel?.settings.updateOnTouch = false
         starView.addSubview(starLabel!)
+        
+        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if type != nil {
+            if let typeText = typeTexts[type!] {
+                descrip.text = "Based on your interest in \(typeText)"
+            }
+        }
         descrip.isScrollEnabled = true
     }
     

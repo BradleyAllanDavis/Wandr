@@ -58,6 +58,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
   - SIFloatingCollection (3.0.1)
+  - SwiftyGif (3.0.3)
   - ZLSwipeableViewSwift (0.0.7)
 
 DEPENDENCIES:
@@ -73,6 +74,7 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - SIFloatingCollection
+  - SwiftyGif (~> 3.0)
   - ZLSwipeableViewSwift
 
 SPEC CHECKSUMS:
@@ -94,8 +96,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   SIFloatingCollection: 096160b220e3a1b1cbcf349108ee24d3aa6b86de
+  SwiftyGif: 89a0bb19709bdb6990e10405ad456d8bea804a65
   ZLSwipeableViewSwift: f5ee94c2e4220f900f5a129118af2aef23062900
 
-PODFILE CHECKSUM: ac741b7288f5de9a1865f22361ddf9493e9587eb
+PODFILE CHECKSUM: 6ced40898add5635ca0a2d9f7eeabe506a7acb47
 
 COCOAPODS: 1.2.1

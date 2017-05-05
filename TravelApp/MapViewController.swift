@@ -327,6 +327,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         }
         self.present(vc, animated: true, completion: nil)
     }
+    
+    // Transitions to Swipe View with selected index of popular table
+    func transitionToSwipeView() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "CardSwipe", bundle: nil)
+        let vc: UINavigationController = storyboard.instantiateViewController(withIdentifier: "SwipeNavigationView") as! UINavigationController
+        if let cardView = vc.viewControllers.first as? CardSwipeController {
+            cardView.placeIndex = 0
+            cardView.dataType = .popular
+        }
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 
 //# MARK: - UISearchResultsUpdating methods

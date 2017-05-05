@@ -41,7 +41,7 @@
 		96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96AA8ADE1E771BA0001AB7D0 /* Preference.storyboard */; };
 		96C0D02B1E77064300B316B8 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C0D02A1E77064300B316B8 /* Preference.swift */; };
 		FA333D381EAD451800FEA832 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA333D371EAD451800FEA832 /* Welcome.storyboard */; };
-		FA333D3A1EAD452E00FEA832 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */; };
+		FA333D3A1EAD452E00FEA832 /* TagTutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA333D391EAD452E00FEA832 /* TagTutViewController.swift */; };
 		FA452EFB1EAD7E36009F007D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5C2D01E7C588F00181BC7 /* LocationService.swift */; };
 		FA452EFC1EAD7E43009F007D /* PlacesAPISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */; };
 		FA452EFD1EAD7E5B009F007D /* TravelSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB61E9C54F4002AF485 /* TravelSearchBar.swift */; };
@@ -57,6 +57,11 @@
 		FAA243611E71BD2C009AB3DB /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA2435F1E71BD2C009AB3DB /* Tag.storyboard */; };
 		FAA2436D1E71C2D0009AB3DB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2436C1E71C2D0009AB3DB /* MapViewController.swift */; };
 		FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA243711E71C38B009AB3DB /* Map.storyboard */; };
+		FAC619E01EBBF264000FBEFD /* tagTut.gif in Resources */ = {isa = PBXBuildFile; fileRef = FAC619DF1EBBF264000FBEFD /* tagTut.gif */; };
+		FAC619E61EBBF3EA000FBEFD /* mapTut.gif in Resources */ = {isa = PBXBuildFile; fileRef = FAC619E51EBBF3EA000FBEFD /* mapTut.gif */; };
+		FAC619E81EBBF414000FBEFD /* SwipeTutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC619E71EBBF414000FBEFD /* SwipeTutViewController.swift */; };
+		FAC619EA1EBBF444000FBEFD /* MapTutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC619E91EBBF444000FBEFD /* MapTutViewController.swift */; };
+		FAC619EC1EBBF57A000FBEFD /* swipeCardsTut.gif in Resources */ = {isa = PBXBuildFile; fileRef = FAC619EB1EBBF57A000FBEFD /* swipeCardsTut.gif */; };
 		FAF76E451EAD6B2B00A5E094 /* OnboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */; };
 		FAF76E471EAD735500A5E094 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF76E461EAD735500A5E094 /* PlaceDetailViewController.swift */; };
 		FAF76E491EAD741E00A5E094 /* WelcomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF76E481EAD741E00A5E094 /* WelcomeButtonViewController.swift */; };
@@ -120,7 +125,7 @@
 		96C0D02A1E77064300B316B8 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		D877152BD7B5F48564990CAE /* Pods-TravelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TravelApp/Pods-TravelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FA333D371EAD451800FEA832 /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
-		FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		FA333D391EAD452E00FEA832 /* TagTutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTutViewController.swift; sourceTree = "<group>"; };
 		FA555D9E1EB01A2700E3D151 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "TravelApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1ViewController.swift; sourceTree = "<group>"; };
 		FAA243221E706432009AB3DB /* TravelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +144,11 @@
 		FAA243601E71BD2C009AB3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tag.storyboard; sourceTree = "<group>"; };
 		FAA2436C1E71C2D0009AB3DB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FAA243711E71C38B009AB3DB /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		FAC619DF1EBBF264000FBEFD /* tagTut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tagTut.gif; sourceTree = "<group>"; };
+		FAC619E51EBBF3EA000FBEFD /* mapTut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mapTut.gif; sourceTree = "<group>"; };
+		FAC619E71EBBF414000FBEFD /* SwipeTutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeTutViewController.swift; sourceTree = "<group>"; };
+		FAC619E91EBBF444000FBEFD /* MapTutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTutViewController.swift; sourceTree = "<group>"; };
+		FAC619EB1EBBF57A000FBEFD /* swipeCardsTut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = swipeCardsTut.gif; sourceTree = "<group>"; };
 		FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageViewController.swift; sourceTree = "<group>"; };
 		FAF76E461EAD735500A5E094 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		FAF76E481EAD741E00A5E094 /* WelcomeButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeButtonViewController.swift; path = ../WelcomeButtonViewController.swift; sourceTree = "<group>"; };
@@ -188,10 +198,12 @@
 			children = (
 				FAA243301E706432009AB3DB /* LaunchScreen.storyboard */,
 				FAF76E481EAD741E00A5E094 /* WelcomeButtonViewController.swift */,
-				FA333D391EAD452E00FEA832 /* WelcomeViewController.swift */,
+				FA333D391EAD452E00FEA832 /* TagTutViewController.swift */,
 				FAF76E441EAD6B2B00A5E094 /* OnboardPageViewController.swift */,
 				FA333D371EAD451800FEA832 /* Welcome.storyboard */,
 				FA85AF3A1EADB0BD00918965 /* Page1ViewController.swift */,
+				FAC619E71EBBF414000FBEFD /* SwipeTutViewController.swift */,
+				FAC619E91EBBF444000FBEFD /* MapTutViewController.swift */,
 			);
 			name = WelcomeScreen;
 			sourceTree = "<group>";
@@ -284,6 +296,7 @@
 		FAA243241E706432009AB3DB /* TravelApp */ = {
 			isa = PBXGroup;
 			children = (
+				FAC619ED1EBBF781000FBEFD /* Gifs */,
 				1C76D6C91EB9342800A8657B /* WelcomeScreen */,
 				FAA243651E71BD93009AB3DB /* TagPreferences */,
 				FAA243661E71BD9D009AB3DB /* MapView */,
@@ -358,6 +371,16 @@
 				1C19700D1EAD3CB100941820 /* MapSettingsController.swift */,
 			);
 			name = MapView;
+			sourceTree = "<group>";
+		};
+		FAC619ED1EBBF781000FBEFD /* Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				FAC619E51EBBF3EA000FBEFD /* mapTut.gif */,
+				FAC619DF1EBBF264000FBEFD /* tagTut.gif */,
+				FAC619EB1EBBF57A000FBEFD /* swipeCardsTut.gif */,
+			);
+			name = Gifs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -481,6 +504,7 @@
 				4072F1F31EBACE7300D86F3F /* DetailView.xib in Resources */,
 				4037C06D1EA432730050114B /* Placeholder_location.png in Resources */,
 				FAA243721E71C38B009AB3DB /* Map.storyboard in Resources */,
+				FAC619E61EBBF3EA000FBEFD /* mapTut.gif in Resources */,
 				56237F561E804BDA0000ED5E /* tagPreferences.plist in Resources */,
 				40B4593A1E9F5FA8005420B0 /* SlideUpCollectionViewCell.xib in Resources */,
 				FA333D381EAD451800FEA832 /* Welcome.storyboard in Resources */,
@@ -488,11 +512,13 @@
 				4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */,
 				40003B341EB969EC00CFBEB3 /* cartPlaceIds.plist in Resources */,
 				406F669F1EAE6525006D827D /* availableTags.plist in Resources */,
+				FAC619EC1EBBF57A000FBEFD /* swipeCardsTut.gif in Resources */,
 				96AA8ADF1E771BA0001AB7D0 /* Preference.storyboard in Resources */,
 				56DABE181EB7B9820068C804 /* CardContentView.xib in Resources */,
 				40003B361EB99C8000CFBEB3 /* circle-x-delete-button.png in Resources */,
 				56DABE101EB7B9510068C804 /* CardSwipe.storyboard in Resources */,
 				562B5BB41EAECD31000D20CE /* APIConfig.plist in Resources */,
+				FAC619E01EBBF264000FBEFD /* tagTut.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +599,7 @@
 				56DABE121EB7B95A0068C804 /* CardSwipeController.swift in Sources */,
 				4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */,
 				408C99E81EBC2A08008C94E6 /* CartCollectionReusableView.swift in Sources */,
+				FAC619E81EBBF414000FBEFD /* SwipeTutViewController.swift in Sources */,
 				4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */,
 				FA85AF3B1EADB0BD00918965 /* Page1ViewController.swift in Sources */,
 				960A1A441EBB152B00C3C886 /* CardView.swift in Sources */,
@@ -580,12 +607,13 @@
 				56E5AE361E805B710076C72F /* BubblesScene.swift in Sources */,
 				FAA243581E7093A9009AB3DB /* CartViewController.swift in Sources */,
 				960A1A461EBB1FA800C3C886 /* CardContentViewController.swift in Sources */,
+				FAC619EA1EBBF444000FBEFD /* MapTutViewController.swift in Sources */,
 				56E5AE3A1E81C1840076C72F /* Plist.swift in Sources */,
 				1C19700E1EAD3CB100941820 /* MapSettingsController.swift in Sources */,
 				56E5AE381E805C220076C72F /* BubbleNode.swift in Sources */,
 				FAA2436D1E71C2D0009AB3DB /* MapViewController.swift in Sources */,
 				FAF76E491EAD741E00A5E094 /* WelcomeButtonViewController.swift in Sources */,
-				FA333D3A1EAD452E00FEA832 /* WelcomeViewController.swift in Sources */,
+				FA333D3A1EAD452E00FEA832 /* TagTutViewController.swift in Sources */,
 				FAA2435E1E70BB1D009AB3DB /* TagViewController.swift in Sources */,
 				407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */,
 				407C8CBA1E9C54F4002AF485 /* TravelSearchController.swift in Sources */,

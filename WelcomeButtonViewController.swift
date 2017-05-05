@@ -29,9 +29,13 @@ class WelcomeButtonViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
  
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        ref = FIRDatabase.database().reference()
+        guard let current = FBSDKAccessToken.current() else {
+            return
+        }
+
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: current.tokenString)
         
+        ref = FIRDatabase.database().reference()
         
         FIRAuth.auth()?.signIn(with:credential) { (user, error) in
             if error != nil {
