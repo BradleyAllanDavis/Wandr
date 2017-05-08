@@ -106,6 +106,8 @@ class SlideUpView: UIVisualEffectView {
                 at: .centeredHorizontally,
                 animated: true
             )
+        } else {
+            getCenterCell()
         }
     }
     
@@ -273,7 +275,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PlaceStore.shared.nearbyPlaces.count + 1
+        return PlaceStore.shared.nearbyPlaces.count > 0 ? PlaceStore.shared.nearbyPlaces.count + 1 : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -295,7 +297,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
                 cell.imageView.image = #imageLiteral(resourceName: "Placeholder_location.png")
             }
             
-            if collectionViewScrollStatus == .idle && centerPath?.row == indexPath.row {
+            if centerPath != nil && centerPath?.row == indexPath.row {
                 cell.imageView.alpha = 1.0
             } else {
                 cell.imageView.alpha = 0.6
@@ -337,6 +339,7 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        collectionViewScrollStatus = .idle
         getCenterCell()
     }
     
@@ -359,6 +362,8 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
             y: collectionView.center.y + collectionView.contentOffset.y
         )
         
+        collectionViewScrollStatus = .idle
+        
         if let centerIndexPath = collectionView.indexPathForItem(at: centerPoint) {
             let paths = collectionView.indexPathsForVisibleItems
             
@@ -376,8 +381,6 @@ extension SlideUpView: UICollectionViewDelegateFlowLayout, UICollectionViewDeleg
             PlaceStore.shared.currentNearbyFocusedPlaceIndex = centerIndexPath.row
             NotificationCenter.default.post(name: Notification.Name(rawValue: "NearbyFocusedPlaceChanged"), object: nil)
         }
-        
-        collectionViewScrollStatus = .idle
     }
 }
 
