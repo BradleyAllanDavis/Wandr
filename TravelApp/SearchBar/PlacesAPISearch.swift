@@ -48,6 +48,8 @@ class PlacesAPISearch: NSObject {
                         if let nextPageToken = data["next_page_token"] as? String {
                             PlaceStore.shared.nextPageTokens[type] = nextPageToken
                         }
+                    } else {
+                        PlaceStore.shared.nextPageTokens[type] = nil
                     }
                     
                     //prevent duplicates from showing up in different types

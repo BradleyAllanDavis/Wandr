@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tag View Controller-->
+        <!--Delegate-->
         <scene sceneID="Hw3-Sh-D1U">
             <objects>
                 <viewController id="Gfv-ey-Bvj" customClass="TagViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,6 +43,9 @@
                                 <rect key="frame" x="16" y="5" width="83" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Gfv-ey-Bvj" id="T3I-n8-jmZ"/>
+                                </connections>
                             </view>
                         </barButtonItem>
                     </navigationItem>
@@ -59,7 +62,7 @@
         <scene sceneID="aKr-67-VgT">
             <objects>
                 <navigationController storyboardIdentifier="TagNavigationView" id="evE-xR-Gnm" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wev-rG-40a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Wev-rG-40a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
