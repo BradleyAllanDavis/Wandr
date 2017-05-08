@@ -22,7 +22,7 @@ class CardSwipeController: UIViewController {
     var loadCardsFromXib = true
     
     var viewControllers : [CardContentViewController] = []
-    var topViewIdx = 0
+    var topViewIdx = -1
     var nextLoadViewIdx = 0
     var dataType: SwipeViewDataType = .popular
     
@@ -182,8 +182,18 @@ class CardSwipeController: UIViewController {
                 
                 Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
                 
-//                print(self.currentView)
+                print("Swiped right. Top card \(self.topViewIdx), next card \(self.nextLoadViewIdx), total card num \(self.viewControllers.count)")
+                
+                if self.viewControllers.count <= 1 {
+                    print("No more cards, exit card view")
+                    self.dismiss(animated: true, completion: nil)
+                    return
+                }
+                
                 let placeViewController = self.viewControllers.remove(at: self.topViewIdx)
+                if self.topViewIdx >= self.viewControllers.count {
+                    self.topViewIdx = 0
+                }
                 if self.topViewIdx < self.nextLoadViewIdx {
                     self.nextLoadViewIdx -= 1
                 }
@@ -193,7 +203,6 @@ class CardSwipeController: UIViewController {
                 }
             }
             if direction == .Left {
-                self.topViewIdx = (self.topViewIdx + 1) % self.viewControllers.count
                 print("Swiped left, dismiss place")
 
                 self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
@@ -221,6 +230,14 @@ class CardSwipeController: UIViewController {
                 self.popupView.addSubview(notInterested)
                 
                 Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+                
+                print("Swiped left. Top card \(self.topViewIdx), next card \(self.nextLoadViewIdx), total card num \(self.viewControllers.count)")
+                
+                if self.viewControllers.count < 4 && self.topViewIdx == self.viewControllers.count - 1 {
+                    print("No more cards, exit card view")
+                    self.dismiss(animated: true, completion: nil)
+                }
+                self.topViewIdx = (self.topViewIdx + 1) % self.viewControllers.count
             }
             if direction == .Down {
                 print("Swiped down, dismiss swipeview")
@@ -274,8 +291,18 @@ class CardSwipeController: UIViewController {
     // MARK: ()
     func nextCardView() -> UIView? {
         
-        if nextLoadViewIdx >= viewControllers.count {
+        print("Top card is \(topViewIdx), requesting card \(nextLoadViewIdx), total card number \(viewControllers.count)")
+        
+        if nextLoadViewIdx >= viewControllers.count && viewControllers.count > 4 {
             nextLoadViewIdx = 0
+        }
+        
+        if nextLoadViewIdx < 0 || nextLoadViewIdx >= viewControllers.count || nextLoadViewIdx == topViewIdx {  // out of cards
+            return nil
+        }
+        
+        if topViewIdx < 0 {
+            topViewIdx = 0
         }
         
         let cardView = CardView(frame: rect)
