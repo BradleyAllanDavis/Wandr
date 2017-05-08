@@ -82,7 +82,7 @@ final class PlaceStore: NSObject {
         
         apiSearch.resultsUpdaterDelegate = self
         self.loadCartPlaces()
-//        self.loadTags()
+        self.loadTags()
     }
     
     func removePopularPlace(at index: Int) {
