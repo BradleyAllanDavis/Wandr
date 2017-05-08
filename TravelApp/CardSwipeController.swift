@@ -30,6 +30,8 @@ class CardSwipeController: UIViewController {
     var placeIndex = -1
     var popupView: UIView!
     
+    var timer: Timer?
+    
     let supportTypes: [String] = ["park", "night_club", "movie_theater", "casino", "bar", "art_gallery", "aquarium", "museum", "restaurant"]
     let colorValues: [String:UIColor] = ["default" : UIColor.init(red: 181/255.0, green: 230/255.0, blue: 162/255.0, alpha: 1),
                                          "night_club" : UIColor.init(red: 0/255.0, green: 51/255.0, blue: 102/255.0,alpha: 1),
@@ -156,6 +158,9 @@ class CardSwipeController: UIViewController {
             if direction == .Right {
                 print("Swiped right, Add to cart")
                 
+                self.timer?.invalidate()
+                self.dismissPopup()
+                
                 self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
                 self.popupView.backgroundColor = UIColor.clear
                 self.popupView.layer.cornerRadius = 30
@@ -180,7 +185,7 @@ class CardSwipeController: UIViewController {
                 addedToCart.text = "Added to Cart"
                 self.popupView.addSubview(addedToCart)
                 
-                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+                self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
                 
                 print("Swiped right. Top card \(self.topViewIdx), next card \(self.nextLoadViewIdx), total card num \(self.viewControllers.count)")
                 
@@ -204,6 +209,9 @@ class CardSwipeController: UIViewController {
             }
             if direction == .Left {
                 print("Swiped left, dismiss place")
+                
+                self.timer?.invalidate()
+                self.dismissPopup()
 
                 self.popupView = UIView(frame: CGRect(x: self.view.center.x - 75, y: self.view.center.y - 100, width: 150, height: 150))
                 self.popupView.backgroundColor = UIColor.clear
@@ -229,7 +237,7 @@ class CardSwipeController: UIViewController {
                 notInterested.text = "Not Interested"
                 self.popupView.addSubview(notInterested)
                 
-                Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
+                self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.dismissPopup), userInfo: nil, repeats: false)
                 
                 print("Swiped left. Top card \(self.topViewIdx), next card \(self.nextLoadViewIdx), total card num \(self.viewControllers.count)")
                 
