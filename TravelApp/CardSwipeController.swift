@@ -189,18 +189,18 @@ class CardSwipeController: UIViewController {
                 
                 print("Swiped right. Top card \(self.topViewIdx), next card \(self.nextLoadViewIdx), total card num \(self.viewControllers.count)")
                 
-                if self.viewControllers.count <= 1 {
+                if self.viewControllers.count <= 1 || self.viewControllers.count < 4 && self.topViewIdx == self.viewControllers.count - 1 {
                     print("No more cards, exit card view")
                     self.dismiss(animated: true, completion: nil)
                     return
                 }
                 
                 let placeViewController = self.viewControllers.remove(at: self.topViewIdx)
-                if self.topViewIdx >= self.viewControllers.count {
-                    self.topViewIdx = 0
-                }
-                if self.topViewIdx < self.nextLoadViewIdx {
+                if self.topViewIdx < self.nextLoadViewIdx {  // decrement next view to load since card removed
                     self.nextLoadViewIdx -= 1
+                }
+                if self.topViewIdx >= self.viewControllers.count {  // in case remove last card
+                    self.topViewIdx = 0
                 }
                 let place = PlaceStore.shared.getPlace(for: placeViewController.placeId!)
                 if !PlaceStore.shared.cartPlaceIds.contains(place?["place_id"] as! String) {
@@ -254,8 +254,8 @@ class CardSwipeController: UIViewController {
         }
         
         constrain(swipeableView, view) { view1, view2 in
-            view1.left == view2.left+50
-            view1.right == view2.right-50
+            view1.left == view2.left + 50
+            view1.right == view2.right - 50
             view1.top == view2.top + 120
             view1.bottom == view2.bottom - 100
         }
@@ -301,7 +301,7 @@ class CardSwipeController: UIViewController {
         
         print("Top card is \(topViewIdx), requesting card \(nextLoadViewIdx), total card number \(viewControllers.count)")
         
-        if nextLoadViewIdx >= viewControllers.count && viewControllers.count > 4 {
+        if nextLoadViewIdx >= viewControllers.count && viewControllers.count > 4 {  // loop if more than 4 cards
             nextLoadViewIdx = 0
         }
         
@@ -309,7 +309,7 @@ class CardSwipeController: UIViewController {
             return nil
         }
         
-        if topViewIdx < 0 {
+        if topViewIdx < 0 {  // first time setup
             topViewIdx = 0
         }
         
