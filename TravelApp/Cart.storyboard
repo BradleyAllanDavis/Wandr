@@ -62,10 +62,11 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <button hidden="YES" opaque="NO" alpha="0.64999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZV5-Vn-5JA" customClass="CartDeleteButton" customModule="TravelApp" customModuleProvider="target">
-                                                            <rect key="frame" x="140" y="8" width="30" height="30"/>
+                                                            <rect key="frame" x="138" y="8" width="30" height="30"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="KnA-ID-5QR"/>
+                                                                <constraint firstAttribute="height" constant="30" id="Tk3-5E-gNA"/>
+                                                                <constraint firstAttribute="width" constant="30" id="xdd-Ve-6oJ"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                             <state key="normal" backgroundImage="circle-x-delete-button.png"/>
@@ -100,11 +101,10 @@
                                                         <constraint firstAttribute="trailing" secondItem="NrD-cl-nW8" secondAttribute="trailing" constant="8" id="2Xo-Ri-14R"/>
                                                         <constraint firstAttribute="trailing" secondItem="P8t-9T-FUO" secondAttribute="trailing" constant="8" id="7hr-0Z-hMM"/>
                                                         <constraint firstItem="P8t-9T-FUO" firstAttribute="leading" secondItem="0qf-xz-Q4r" secondAttribute="leading" constant="16" id="Gwg-Pn-neR"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ZV5-Vn-5JA" secondAttribute="trailing" constant="8" id="KO8-nh-n87"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZV5-Vn-5JA" secondAttribute="trailing" constant="10" id="Nut-yM-XwQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="aSa-UH-zZp" secondAttribute="trailing" constant="80" id="Ooe-5d-2f0"/>
-                                                        <constraint firstItem="ZV5-Vn-5JA" firstAttribute="top" secondItem="0qf-xz-Q4r" secondAttribute="topMargin" id="P8e-Nw-Ly4"/>
+                                                        <constraint firstItem="ZV5-Vn-5JA" firstAttribute="top" secondItem="0qf-xz-Q4r" secondAttribute="top" constant="8" id="app-a4-aGY"/>
                                                         <constraint firstItem="NrD-cl-nW8" firstAttribute="leading" secondItem="0qf-xz-Q4r" secondAttribute="leading" constant="100" id="d2a-nO-Rfq"/>
-                                                        <constraint firstItem="ZV5-Vn-5JA" firstAttribute="leading" secondItem="0qf-xz-Q4r" secondAttribute="leading" constant="140" id="egj-6t-IAL"/>
                                                         <constraint firstItem="d05-8U-4l1" firstAttribute="top" secondItem="0qf-xz-Q4r" secondAttribute="top" constant="93" id="eiy-c0-wTE"/>
                                                         <constraint firstItem="P8t-9T-FUO" firstAttribute="top" secondItem="d05-8U-4l1" secondAttribute="bottom" constant="3.5" id="hkc-jF-8f9"/>
                                                         <constraint firstItem="d05-8U-4l1" firstAttribute="leading" secondItem="0qf-xz-Q4r" secondAttribute="leading" constant="8" id="shU-7V-Sdo"/>
