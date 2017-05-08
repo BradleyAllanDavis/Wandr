@@ -30,6 +30,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         let center = CLLocationCoordinate2D(latitude: lat!, longitude: long!)
         let region = MKCoordinateRegion(center: center, span: self.mapView.region.span)
         mapView.setRegion(region, animated: true)
+        PlaceStore.shared.updateCurrentPlaces(with: center, searchRadius: 4000)
     }
 
     @IBOutlet weak var mapInfoButton: UIButton!
