@@ -20,6 +20,8 @@
 		4052B1461EA119C000BB16ED /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4052B1441EA119C000BB16ED /* PopularTableViewCell.swift */; };
 		4052B1471EA119C000BB16ED /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */; };
 		40613B861EBCC983002FC4F8 /* more-items.png in Resources */ = {isa = PBXBuildFile; fileRef = 40613B851EBCC983002FC4F8 /* more-items.png */; };
+		40613B881EBCE071002FC4F8 /* PlaceMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40613B871EBCE071002FC4F8 /* PlaceMapAnnotation.swift */; };
+		40613B8A1EBCE1FC002FC4F8 /* PlaceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40613B891EBCE1FC002FC4F8 /* PlaceAnnotationView.swift */; };
 		406F669F1EAE6525006D827D /* availableTags.plist in Resources */ = {isa = PBXBuildFile; fileRef = 406F669E1EAE6525006D827D /* availableTags.plist */; };
 		4072F1F31EBACE7300D86F3F /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4072F1F21EBACE7300D86F3F /* DetailView.xib */; };
 		407C8CB81E9C54F4002AF485 /* TravelNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */; };
@@ -104,6 +106,8 @@
 		4052B1451EA119C000BB16ED /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopularTableViewCell.xib; path = SlideUpView/PopularTableViewCell.xib; sourceTree = "<group>"; };
 		4060C1E81E91AA5D009477BE /* PlacesAPISearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesAPISearch.swift; path = TravelApp/SearchBar/PlacesAPISearch.swift; sourceTree = "<group>"; };
 		40613B851EBCC983002FC4F8 /* more-items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-items.png"; sourceTree = "<group>"; };
+		40613B871EBCE071002FC4F8 /* PlaceMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMapAnnotation.swift; sourceTree = "<group>"; };
+		40613B891EBCE1FC002FC4F8 /* PlaceAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationView.swift; sourceTree = "<group>"; };
 		406F669E1EAE6525006D827D /* availableTags.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = availableTags.plist; sourceTree = "<group>"; };
 		4072F1F21EBACE7300D86F3F /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		407C8CB51E9C54F4002AF485 /* TravelNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TravelNavBarView.swift; path = TravelApp/SearchBar/TravelNavBarView.swift; sourceTree = "<group>"; };
@@ -379,7 +383,9 @@
 			children = (
 				FAA243711E71C38B009AB3DB /* Map.storyboard */,
 				FAA2436C1E71C2D0009AB3DB /* MapViewController.swift */,
+				40613B891EBCE1FC002FC4F8 /* PlaceAnnotationView.swift */,
 				1C19700D1EAD3CB100941820 /* MapSettingsController.swift */,
+				40613B871EBCE071002FC4F8 /* PlaceMapAnnotation.swift */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -466,7 +472,7 @@
 				TargetAttributes = {
 					FAA243211E706432009AB3DB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3CBKZSSKFG;
+						DevelopmentTeam = QVW9R3V5SU;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -617,6 +623,7 @@
 				FAC619E81EBBF414000FBEFD /* SwipeTutViewController.swift in Sources */,
 				408C99ED1EBC5F77008C94E6 /* SlideUpView.swift in Sources */,
 				FA9924041EBCCDA10099F85A /* CartTutViewController.swift in Sources */,
+				40613B8A1EBCE1FC002FC4F8 /* PlaceAnnotationView.swift in Sources */,
 				4037C06B1EA400A80050114B /* PlacePhoto.swift in Sources */,
 				FA85AF3B1EADB0BD00918965 /* Page1ViewController.swift in Sources */,
 				960A1A441EBB152B00C3C886 /* CardView.swift in Sources */,
@@ -629,6 +636,7 @@
 				1C19700E1EAD3CB100941820 /* MapSettingsController.swift in Sources */,
 				56E5AE381E805C220076C72F /* BubbleNode.swift in Sources */,
 				FAA2436D1E71C2D0009AB3DB /* MapViewController.swift in Sources */,
+				40613B881EBCE071002FC4F8 /* PlaceMapAnnotation.swift in Sources */,
 				FAF76E491EAD741E00A5E094 /* WelcomeButtonViewController.swift in Sources */,
 				FA333D3A1EAD452E00FEA832 /* TagTutViewController.swift in Sources */,
 				FAA2435E1E70BB1D009AB3DB /* TagViewController.swift in Sources */,
@@ -793,7 +801,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 3CBKZSSKFG;
+				DEVELOPMENT_TEAM = QVW9R3V5SU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Cosmos\"",
@@ -805,7 +813,7 @@
 				);
 				INFOPLIST_FILE = TravelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelAp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -819,7 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 3CBKZSSKFG;
+				DEVELOPMENT_TEAM = QVW9R3V5SU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Cosmos\"",
@@ -831,7 +839,7 @@
 				);
 				INFOPLIST_FILE = TravelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelAp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs407.TravelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;

@@ -31,7 +31,6 @@ class PlacesAPISearch: NSObject {
     public func requestPlacesByType(location: CLLocationCoordinate2D, searchRadius: Int, types: [String]) {
         let downloadGroup = DispatchGroup()
         var placesArray = [Dictionary<String, AnyObject>]()
-        var placeIds = [String]()
         
         for type in types {
             downloadGroup.enter()
@@ -49,15 +48,17 @@ class PlacesAPISearch: NSObject {
                         if let nextPageToken = data["next_page_token"] as? String {
                             PlaceStore.shared.nextPageTokens[type] = nextPageToken
                         }
+                    } else {
+                        PlaceStore.shared.nextPageTokens[type] = nil
                     }
                     
                     //prevent duplicates from showing up in different types
                     for place in placesDictArray {
                         let placeId = place["place_id"] as! String
                         
-                        if !placeIds.contains(placeId) {
+                        if !PlaceStore.shared.currentPlaceIds.contains(placeId) {
                             placesArray.append(place)
-                            placeIds.append(placeId)
+                            PlaceStore.shared.currentPlaceIds.append(placeId)
                         }
                     }
                 }
@@ -91,7 +92,6 @@ class PlacesAPISearch: NSObject {
             let typeString = "&type=" + type
             query = base + locationString + radiusString + typeString + keyString
         } else {
-            var tokens = PlaceStore.shared.nextPageTokens
             if let token = PlaceStore.shared.nextPageTokens[type] {
                 query = base + "pagetoken=" + token + keyString
             }

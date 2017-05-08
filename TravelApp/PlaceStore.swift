@@ -27,6 +27,7 @@ final class PlaceStore: NSObject {
     var ref: FIRDatabaseReference!
     var apiSearchMode: SearchMode = .initial
     var nextPageTokens = [String: String]()
+    var currentPlaceIds = [String]()
     
     fileprivate let apiSearch = PlacesAPISearch()
     fileprivate var _photos: [PlacePhoto] = []
@@ -241,6 +242,7 @@ extension PlaceStore: PlacesAPISearchResultUpdater {
             
             if self.apiSearchMode == .initial {
                 self._nearbyPlaces = places
+                self.currentPlaceIds.removeAll()
             } else {
                 self._nearbyPlaces += places
             }

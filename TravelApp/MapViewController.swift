@@ -208,16 +208,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
             redoSearchBlurView.isHidden = false
             break
         case .automatic:
-            let currentPlaceName = PlaceStore.shared.getCurrentFocusedPlace()["name"] as? String
+            let currentPlaceId = PlaceStore.shared.getCurrentFocusedPlace()["place_id"] as? String
             
             panningSource = .user
             redoSearchBlurView.isHidden = true
             
             // Show annotation call out
             for annotation in mapView.annotations {
-                if annotation.title as? String  == currentPlaceName {
-                    mapView.selectAnnotation(annotation, animated: true)
-                    break
+                if let annotation = annotation as? PlaceMapAnnotation {
+                    if annotation.placeId  == currentPlaceId {
+                        mapView.selectAnnotation(annotation, animated: true)
+                        break
+                    }
                 }
             }
             break
@@ -227,22 +229,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, LocationServiceDel
         }
     }
     
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        let annotationView = PlaceAnnotationView()
+//        
+//        return annotationView
+//    }
+    
+    
     func addAnnotations() {
         // Add place annotations to map
         for place in PlaceStore.shared.nearbyPlaces {
             let placeLoc = place["geometry"]!["location"] as! Dictionary<String, AnyObject>
             let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(placeLoc["lat"] as! CLLocationDegrees, placeLoc["lng"] as! CLLocationDegrees)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = location
-            annotation.title = place["name"] as? String
+            let annotation = PlaceMapAnnotation(myCoordinate: location, title: (place["name"] as? String)!)
+//            annotation.coordinate = location
+            annotation.placeId = place["place_id"] as? String
             mapView.addAnnotation(annotation)
         }
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         var counter = 0;
+//        let placeAnnotationView = view as! PlaceAnnotationView
+        let annotation = view.annotation as! PlaceMapAnnotation
         for place in PlaceStore.shared.nearbyPlaces {
-            if place["name"] as? String == (view.annotation?.title)! {
+            if place["place_id"] as? String == (annotation.placeId)! {
                 slideView.animateMiddle()
                 slideView.collectionViewScrollStatus = .scrolling
                 slideView.collectionView.scrollToItem(
